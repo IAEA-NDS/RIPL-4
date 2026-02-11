@@ -1,0 +1,32 @@
+Directory: densities/total/
+File:      bsk14-comb-ld.readme (August 19, 2025)  
+***************************************************
+
+
+
+                           bsk14-comb/zxxx.ld
+
+   Nuclear level density normalisation parameters for the BSk14 + combinatorial model
+                (provided by S. Goriely on  August 19, 2025)
+             *************************************************
+
+
+Content
+-------
+The normalisation parameters alpha and delta are obtained by fitting the BSk14 plus combinatorial
+nuclear level density to the RIPL recommended spacings of s-wave neutron resonances D0 and to 
+the cumulative number of low-lying levels evaluated from the analysis of nuclear levels. 
+
+Format
+------
+Each record of the file contains:
+
+   Z      :  atomic number of the compound nucleus
+   A      :  mass number of the compound nucleus
+   Nlow   :  lowest level used for the fit
+   Ntop   :  highest level used for the fit
+   alpha  :  Normalisation parameter to fit D0
+   delta  :  adjustable energy shift in MeV
+
+The corresponding FORTRAN format is 
+(4i4,2f12.5)

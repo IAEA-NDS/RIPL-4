@@ -1,0 +1,63 @@
+Directory: DENSITIES
+File:      qrpabe.readme (19 August 2025)
+*******************************************************
+
+                             qrpabe/zxxx.dat  
+     QRPA+BE nuclear level densities at ground state deformations
+             (Provided by S. Goriely, August 19, 2025)
+       *******************************************************
+
+Contents
+--------
+The files contains the QRPA+ Boson Expansion (QRPA+BE) nuclear level densities
+at ground state deformations [1,2]. The nuclear level density is coherently
+obtained on the basis of the single-particle level scheme, pairing energy and
+QRPA phonons derived at the ground state deformation based on the D1M Gogny 
+interaction [3].
+
+The nuclear level density obtained within the QRPA+BE model [1,2]
+at the ground state deformation are given in table format (in a energy, spin 
+and parity grid). Each isotopic chain is included in a zxxx file (where xxx 
+corresponds to the atomic number Z).
+
+The nuclear level densities are provided for about 2706 nuclei with 10 <= Z <= 98
+
+Format
+------
+Each record of the file, per isotope, contains 2 sets of data including the
+positive-parity and negative-parity nuclear level density in a spin (50 first spins)
+and energy (60 rows for U=0.25 to 200MeV) grid. Also included are an estimate
+of the nuclear temperature, the cumulative number of levels, the total level
+density and the total state density
+- title line includes
+     Z     : charge number
+     A     : mass number
+
+The corresponding fortran format is (25x,i3,3x,i3)
+
+- 60 data lines including the energy-, spin-dependent level density for positive parities
+     U     : excitation energy in MeV
+     T     : nuclear temperature in MeV
+     Ncumul: cumulative number of positive-parity levels
+     Rhoobs: total level density in 1/MeV (positive parity)
+     Rhotot: total state density in 1/MeV (positive parity)
+     Rho   : spin-dependent level density (in 1/MeV) for the first 50 spins (positive parity)
+
+The corresponding fortran format is (f7.2,f7.3,1x,1p,53e9.2)
+
+- 60 data lines including the energy-, spin-dependent level density for negative parities
+     U     : excitation energy in MeV
+     T     : nuclear temperature in MeV
+     Ncumul: cumulative number of negative-parity levels
+     Rhoobs: total level density in 1/MeV (negative parity)
+     Rhotot: total state density in 1/MeV (negative parity)
+     Rho   : spin-dependent level density (in 1/MeV) for the first 50 spins (negative parity)
+
+The corresponding fortran format is (f7.2,f7.3,1x,1p,53e9.2)
+
+References
+----------
+[1] S. Hilaire, S. Goriely, S. Peru, G. Gosselin, A new approach to nuclear level densities: the QRPA plus boson expansion, Phys. Lett. B843, 137989 (2023)
+[2] S. Goriely, S. Peru, S. Hilaire, Qrpa prediction of the nuclear level densities and de-excitation photon strength functions, Phys. Lett. B868, 139677 (2025)
+[3] S. Goriely, S. Hilaire, M. Girod, S. Peru, Phys. Rev. Lett. 102 (2009) 242501
+
