@@ -1,0 +1,35 @@
+Directory: optical/om-data/
+File:      optman10.readme (February 16, 2009)
+*********************************************
+
+                    optman v10 code
+                  Optical model code
+                  
+    provided by R. Capote and E. Soukhovitskii on (February 16, 2009)
+    *****************************************************************
+
+Efrem Sh. SOUKHOVITSKI(1), Satoshi CHIBA(2), Roberto CAPOTE(3), Jose M. QUESADA(4), Satoshi KUNIEDA(2) and Gennadij B. MOROGOVSKIJ(1)
+(1)Joint Institute of Energy and Nuclear Research, Sosny (Belarus)
+(2)Japan Atomic Energy Agency, Nuclear Data Center
+(3)NAPC-Nuclear Data Section, International Atomic Energy Agency (Austria)
+(4)Departamento de Fisica, Atomica, Molecular y Nuclear, Universidad de Sevilla (Spain)
+
+A coupled-channel code to calculate nuclear cross sections, OPTMAN, has been improved after OPTMAN version 8 was published as 
+JAERI-Data/code 2005-002. The most important addition is the inclusion of dispersive relationships between imaginary and real
+parts of the optical potential within a Lane consistent formalism. The obtained coupled-channels optical model potentials allow
+for the description of nucleon induced reactions up to 200 MeV, including (p,n) reactions with excitation of isobaric analog
+states. Relativistic corrections consistent with those used in the ECIS06 code are also added.
+Keywords: NUCLEAR REACTIONS , direct reactions, (n,n), (n,n’), (p,p), (p,p’), (p,n’), .., OPTMAN,
+Soft-rotator and Rigid-rotator Model, Collective level structure, Coupled channels method,
+Lane consistency, Coulomb correction, Isobaric analog states,
+
+MAIN REFERENCES:   1. E.SH. SOUKHOVITSKII, S. CHIBA, O.IWAMOTO, K.SHIBATA
+                      T. FUKAHORI and G.B. MOROGOVSKII, TECHNICAL REPORT,
+                      JAERI-DATA/CODE 2005-002, JAPAN ATOMIC ENERGY
+                      INSTITUTE, 2005.
+                   2. E.SH. SOUKHOVITSKII, R. CAPOTE, J.M. QUESADA,
+                      S. CHIBA, PHYS. REV. C72, 024604 (2005).
+                   3. J.M. QUESADA, R. CAPOTE, E.Sh. SOUKHOVITSKI and
+                      S. CHIBA, PHYS. REV. C76, 057602 (2007).
+
+

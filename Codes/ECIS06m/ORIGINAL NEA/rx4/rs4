@@ -1,0 +1,453 @@
+1                    E. C. I. S. CODE FOR COUPLED CHANNELS CALCULATIONS ( 2006 ) WORKING FIELD LENGTH =    600000
+
+                        TO OBTAIN THE INPUT DESCRIPTION, PUNCH 'DESCRIPTION ' IN COLUMNS 1-12 OF THE FIRST CARD.
+
+
+  1 F - ROTATIONAL MODEL-(.F.: VIBRATIONAL MODEL).         | 54 F - OUTPUT OF THE LENGTH USED IN THE WORKING FIELD.
+  2 F - SECOND ORDER VIBRATIONAL MODEL-(.F.: FIRST ORDER)  | 55 F - OUTPUT OF C-MATRIX ELEMENTS AND COMPOUND NUCLEUS
+        OR CONSTRAINED ASYMMETRIC ROTATIONAL MODEL.        |        INTERMEDIATE RESULTS.
+  3 F - ANHARMONIC VIBRATIONAL MODEL-(.F.: HARMONIC) OR    | 56 F - OUTPUT OF S-MATRIX ELEMENTS.
+        ASYMMETRIC ROTATIONAL MODEL-(.F.: SYMMETRIC).      | 57 F - OUTPUT OF PHASE-SHIFTS AT EACH E.C.I.S. ITERATION.
+  4 F - PARAMETRISED SPIN-ORBIT DEFORMATION-(.F.:STANDARD) | 58 F - OUTPUT OF THE COEFFICIENTS OF EACH FORM FACTOR
+  5 T - DIFFERENT DEFORMATION FOR EACH POTENTIAL(.F.: SAME)|        FOR ALL SETS OF EQUATIONS.
+  6 F - USE OF DEFORMATION LENGTHS.                        | 59 F - TOTAL ELASTIC REACTION CROSS-SECTIONS WRITTEN ON
+  7 F - NUCLEAR MATRIX ELEMENTS AND FORM FACTORS ON CARDS. |        FILE 58 AND TOTAL INELASTIC REACTION
+  8 T - RELATIVISTIC KINEMATICS.                           |        CROSS-SECTIONS ON FILE 59.
+  9 F - SYMMETRISED WOODS-SAXON FORM FOR NEGATIVE RADII.   | 60 F - S-MATRIX ELEMENTS WRITTEN ON FILE 60.
+ 10 F - DISPERSION RELATIONS FOR POTENTIALS.               |
+                                                           | 61 F - REDUCED NUCLEAR MATRIX ELEMENTS WRITTEN ON FILE 61.
+ 11 T - DEFORMED COULOMB POTENTIAL.                        | 62 F - POTENTIALS WRITTEN ON FILE 62.
+ 12 T - DEFORMED IMAGINARY POTENTIAL.                      | 63 F - PENETRABILITIES WRITTEN ON FILE 63.
+ 13 F - DEFORMED REAL SPIN-ORBIT/TENSOR POTENTIAL.         | 64 F - RESULTS FOR EXPERIMENTAL DATA ON FILE 64
+ 14 F - DEFORMED IMAGINARY SPIN-ORBIT/TENSOR POTENTIAL.    |        AND AT EQUIDISTANT ANGLES WRITTEN ON FILE 66.
+ 15 T - REDUCED NUCLEAR MATRIX ELEMENTS READ FROM CARDS.   | 65 F - LEGENDRE EXPANSION FOR CROSS-SECTIONS WRITTEN ON
+ 16 T - HEAVY-ION DEFINITION OF RADII AND DEFORMATIONS.    |        FILE 65.
+ 17 F - FOLDING MODEL.                                     | 66 F - NO CALCULATION AT EQUIDISTANT ANGLES.
+ 18 F - PROJECTILE-TARGET ANTISYMMETRISATION.              | 67 F - NO PLOT OF EXPERIMENTAL DATA.
+ 19 F - DEFORMED COULOMB SPIN-ORBIT POTENTIAL.             | 68 F - NO PLOT OF CROSS-SECTIONS AT EQUIDISTANT ANGLES.
+ 20 F - DISPERSION RELATIONS FOR TRANSITION FORM-FACTORS.  | 69 F - NO PLOT OF POLARISATIONS AT EQUIDISTANT ANGLES.
+                                                           |
+ 21 F - USUAL COUPLED EQUATIONS-(.F.: ITERATIONS).         | 71 F - NO DETAILED OUTPUT OF LOGICAL CONTROLS.
+ 22 F - NO USE OF PADE FOR CONVERGENCE OF THE ITERATIONS.  | 72 F - NO OUTPUT OF EXPERIMENTAL DATA AS THEY ARE READ.
+ 23 F - NO USE OF PADE WITHOUT CONVERGENCE.                | 73 F - NO OUTPUT OF EXTERNAL POTENTIALS AS THEY ARE READ.
+ 24 F - COUPLING POTENTIALS COMPUTED AT EACH ITERATION.    | 74 F - OUTPUT OF VARIATIONS IN STORAGE.
+ 25 F - COMPLETE CALCULATION UP TO THE END-(.F.: ONE ITE-  | 75 F - NO COMPLETE OUTPUT AT THE FIRST RUN OF A SEARCH.
+        RATION ONLY AS SOON AS TWO ITERATIONS ARE ENOUGH). | 76 F - LO(51) TO LO(65) ARE ALWAYS USED-(.F.: ONLY FOR
+ 26 F - INTEGRATION STABILISED FOR LONG RANGE POTENTIAL.   |        COMPLETE OUTPUT)
+ 27 F - NUMEROV'S METHOD FOR SINGLE EQUATIONS-(.F.: MODI-  | 77 T - OUTPUT OF TIME DIFFERENCES DURING THE SEARCH.
+        FIED NUMEROV'S METHOD).                            | 78 F - OUTPUT OF DIFFERENCES BETWEEN EXPERIMENTAL
+ 28 F - COMPUTATION UP TO J-CONVERGENCE-(.F.: STOP WHEN    |        AND CALCULATED VALUES.
+        ALL THE INHOMOGENEOUS TERMS ARE NEGLIGIBLE).       |
+ 29 F - NO DIAGONAL TERM IN SECOND MEMBERS.                | 81 F - HAUSER-FESHBACH CORRECTIONS TO CROSS-SECTIONS.
+ 30 F - PURE DWBA CALCULATION.                             | 82 F - SIMPLEST COMPOUND NUCLEUS FORMALISM.
+                                                           | 83 F - NO ENGELBRETCH-WEIDENMULLER TRANSFORMATION IN
+ 31 F - INPUT OF EXPERIMENTAL DATA AND CHI2 CALCULATION.   |        IN COMPOUND NUCLEUS.
+ 32 F - AUTOMATIC SEARCH ON SOME PARAMETERS.               | 84 F - UNCOUPLED LEVELS FOR COMPOUND NUCLEUS.
+ 33 F - SYMMETRISED CHI2 FOR CROSS-SECTIONS.               | 85 F - FISSION DATA IN COMPOUND NUCLEUS.
+ 34 F - NEXT CALCULATION CHANGING ENERGY AND/OR SOME       | 86 F - GAMMA EMISSION DATA IN COMPOUND NUCLEUS.
+        PARAMETERS.                                        | 87 F - NO WIDTH FLUCTUATIONS.
+ 35 F - SEARCH SAVED ON TAPE 8 IF ENDED OR LACK OF TIME.   |
+ 36 F - RESTART A SEARCH FROM TAPE 8.                      | 91 F - EQUIDISTANT ANGLES IN THE LABORATORY SYSTEM.
+                                                           | 92 F - NON STANDARD OBSERVABLES AT EQUIDISTANT ANGLES.
+ 41 T - FACTORISATION OF 1/(1-COS(THETA)) IN AMPLITUDES.   | 93 F - NO RECOIL CORRECTION FOR REACTIONS.
+ 42 T - SCHMIDT'S ORTHOGONAL. IN USUAL COUPLED EQUATIONS.  | 94 F - NON RELATIVISTIC "REDUCED MASS" FOR DIRAC EQUATION.
+ 43 T - INTERPOLATION ON TOTAL SPIN.                       | 95 T - "REDUCED ENERGY" FOR NON COULOMB INTERACTION IN
+ 44 T - COULOMB CORRECTIONS.                               |        RELATIVISTIC SCHROEDINGER EQUATION OR USE OF REST
+ 45 F - ANGULAR MOMENTUM LIMIT FOR COULOMB CORRECTIONS.    |        MASS IN DIRAC EQUATION.
+ 46 F - RESTRICTED COULOMB CORRECTIONS.                    | 96 F - "REDUCED MASS" FOR COULOMB INTERACTION IN
+ 47 F - NO RECOIL CORRECTION FOR BOUND STATES.             |        RELATIVISTIC SCHROEDINGER EQUATION.
+                                                           | 97 T - SAME REDUCED MASS FOR ALL THE STATES.
+ 51 F - OUTPUT OF POTENTIALS.                              | 98 F - Q ADDED TO THE MASS OF RESIDUAL NUCLEUS.
+ 52 T - OUTPUT OF REDUCED NUCLEAR MATRIX ELEMENTS.         | 99 F - SCHROEDINGER EQUIVALENT TO DIRAC EQUATION.
+ 53 F - OUTPUT OF THE NUMBER OF ITERATIONS.                |100 F - COMPLETE DIRAC EQUATION.
+1
+          **********************************************************************************
+          *                                                                                *
+          *     12N+208PB 780 MEV ELECTRIC AND MAGNETIC COULOMB INTERACTION    ECIS06      *
+          *                                                                                *
+          **********************************************************************************
+
+ MAXIMUM NUMBER OF J  2001  (MIN 40) STOP WHEN MAXIMUM S-MATRIX ELEMENT IS LESS THAN        0.1000D-04
+
+ PLOT CONDITIONS FOR CROSS-SECTIONS    2    2     FOR POLARISATIONS    1    1
+
+      2 FACTORISATION OF 1/(1-COS(THETA)) IN THE AMPLITUDES.
+          ITERATION METHOD:  MAXIMUM NUMBER OF ITERATIONS        20
+          CONVERGENCE CRITERION:     1.0000D-05 FOR S-MATRIX     1.0000D-05 FOR POTENTIALS AND FUNCTIONS.
+
+ INTERPOLATION OF S-MATRIX  FROM   400  BY STEPS OF   9+1  FROM  1000  BY STEPS OF  99+1  FROM
+ UNCUMULATED INCREASES                                9                             90
+
+ FIRST ORDER VIBRATIONAL MODEL.
+
+
+ TARGET              MASS =  12.00000           PRODUCT OF CHARGES =  574.           AT**1/3 =   2.289428D+00
+ INCIDENT PARTICLE   MASS = 208.00000      SPIN = 0.0   AP**1/3 =   5.924992D+00
+          ENERGY(LAB) =   1.352000D+04 MEV          ENERGY(C. M.) =   7.361324D+02 MEV.
+
+ N =  1 -   SPIN = 1.0+ EXCITATION ENERGY =  0.0000 MEV          POTENTIAL    1       PHONON STATE WITH PHONON  1
+ N =  2 -   SPIN = 2.0+ EXCITATION ENERGY =  0.9600 MEV          POTENTIAL    1
+                       2 PHONONS STATE, WITH PHONONS  1 AND  2
+          PHONON  1     L =  1     K =  0     BETA = 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.10000 0.00000
+            AFTER HEAVY ION CORRECTION I = 1  BETA = 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.02787 0.00000
+          PHONON  2     L =  2     K =  0     BETA = 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.28400 0.00000
+            AFTER HEAVY ION CORRECTION I = 1  BETA = 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.02206 0.00000
+
+
+ OPTICAL POTENTIALS  **  1 **     REDUCED RADIUS MULTIPLIED BY     8.214421D+00
+
+      DEFORMED  VOLUME/SCALAR REAL POTENTIAL
+ DEPTH   50.000000 MEV   RADIUS  8.896218 FERMI (REDUCED VALUE 1.083000)   DIFFUSENESS 0.755000 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  VOLUME/SCALAR IMAGINARY POTENTIAL
+ DEPTH   42.200000 MEV   RADIUS  8.896218 FERMI (REDUCED VALUE 1.083000)   DIFFUSENESS 0.755000 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  SURFACE/VECTOR REAL POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  SURFACE/VECTOR IMAGINARY POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+  NOT DEFORMED  REAL SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+  NOT DEFORMED  IMAGINARY SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  COULOMB POTENTIAL
+  CHARGE PRODUCT   574.  RADIUS  9.857305 FERMI (REDUCED VALUE 1.200000)   DIFFUSENESS 0.550000 FERMI AT THE POWER (1+ 0.000000)
+
+  NOT DEFORMED  SPIN-ORBIT COULOMB POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+              THIRD CHARGE PARAMETER*********
+
+ INTEGRATION STEP SIZE = 0.02466          MATCHING RADIUS =  18.000 FERMI
+
+ SCATTERING ANGLES FROM  0.200 IN STEPS OF  0.200 UP TO  10.000 DEGREES   AVERAGED WITH +/-   0.000 DEGREES.
+
+
+       2 SOLUTIONS         4 COUPLED EQUATIONS        13 INDEPENDENT AMPLITUDES.
+
+
+ STORAGE OF COULOMB CORRECTIONS:
+ I = 1       3 FOR J = 1     4 FOR J = 2
+ I = 2       4 FOR J = 1     5 FOR J = 2
+        2006 COULOMB PHASES AND INDEFINITE INTEGRALS
+         355 COULOMB FUNCTIONS AND FINITE INTEGRALS.
+
+ LEVEL       WAVE NUMBER  COULOMB PARAMETER   REDUCED MASS       REDUCED ENERGY     STEP SIZE
+     1     20.2808922440     11.7092884864  11187.3386455125  11187.3386455125      0.0246575342
+     2     20.2671935923     11.7172028266  11187.3386455125  11187.3386455125      0.0246575342
+ INTEGRALS WITH REGULAR FUNCTIONS: (L+1)       DIRECT:      BACKWARDS RECURRENCE:
+                                     1    0.8818229642D-03    0.8818229704D-03
+                                     2    0.8820081543D-03    0.8820081566D-03
+ FOR I =   1  AND IP =   1       0 REDUCED MATRIX ELEMENTS
+ FOR I =   1  AND IP =   2       2 REDUCED MATRIX ELEMENTS
+          FORM FACTOR =   2 L =   2    2*S =   0    2*J =   0     REDUCED MATRIX ELEMENT       -0.100000D+01
+          FORM FACTOR =   2 L =   2    2*S =  -1    2*J =   0     REDUCED MATRIX ELEMENT       -0.224128D-01
+ FOR I =   2  AND IP =   2       0 REDUCED MATRIX ELEMENTS
+
+
+ NUCLEAR REDUCED MATRIX ELEMENTS:
+
+
+ STATE  1  WITH STATE  1           FROM   1 TO   0
+
+
+ STATE  1  WITH STATE  2           FROM   1 TO   2
+
+          N =  1   FORM FACTOR =  1   MULT. =  1   SP.-O. =  0      MATRIX ELEMENT  -1.000000D+00
+          N =  2   FORM FACTOR =  2   MULT. =  2   SP.-O. =  0      MATRIX ELEMENT  -2.241280D-02
+
+ STATE  2  WITH STATE  2           FROM   3 TO   2
+
+
+
+      CORRESPONDENCE TO MULTIPOLES:
+
+                    N =  1     L =  2     2*S =  0     2*J =  4
+                    N =  2     L =  2     2*S = -2     2*J =  4
+
+
+     CORRESPONDENCE TO FORM FACTORS IN THEIR COMPUTATION:
+
+          N =  1    F.F. =     2    MULT. =   1    SP.-O. =   0    COUL =   1    SPDO =   0    COR =   0    L =   2
+          N =  2    F.F. =     2    MULT. =   2    SP.-O. =   0    COUL =   2    SPDO =   0    COR =   0    L =   2
+
+
+     CORRESPONDENCE TO FORM FACTORS IN THEIR USE:
+
+          N =  1    ABOVE =   1    DISP. =   0    SP.-O. =   0    L =   2
+          N =  2    ABOVE =   2    DISP. =   0    SP.-O. =   0    L =   2
+ MAXIMUM J-VALUE =2000.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.221D-03
+ MAXIMUM J-VALUE =2000.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.265D-03
+ AMPLITUDE =  1  0.9999999D+00 (  0.1000067D+01)  NEW  0.1393567D-07 -0.5238272D-08   OLD  0.1608408D-03 -0.1335173D-03
+ AMPLITUDE =  2  0.9999999D+00 (  0.1000066D+01)  NEW  0.3621678D-08 -0.1046962D-08   OLD  0.3866680D-04 -0.3420132D-04
+ AMPLITUDE =  3  0.9999999D+00 (  0.1000066D+01)  NEW  0.3621678D-08 -0.1046962D-08   OLD  0.3866680D-04 -0.3420132D-04
+ AMPLITUDE =  4  0.9999999D+00 (  0.1000067D+01)  NEW -0.9786817D-08  0.3616807D-08   OLD -0.1125133D-03  0.9245750D-04
+ AMPLITUDE =  5  0.9999999D+00 (  0.1000067D+01)  NEW  0.2373489D-07 -0.8469118D-08   OLD  0.2715396D-03 -0.2255832D-03
+ AMPLITUDE =  6  0.9999999D+00 (  0.1000069D+01)  NEW  0.1651531D-04  0.3086275D-04   OLD  0.3044542D+00  0.4004419D+00
+ AMPLITUDE =  7  0.9999999D+00 (  0.1000069D+01)  NEW  0.1295733D-04  0.2627563D-04   OLD  0.2572758D+00  0.3278374D+00
+ AMPLITUDE =  8  0.9999999D+00 (  0.1000067D+01)  NEW  0.2455366D-06 -0.3708000D-07   OLD  0.3132930D-02 -0.1589135D-02
+ AMPLITUDE =  9  0.9999999D+00 (  0.1000069D+01)  NEW -0.1003342D-04 -0.1820461D-04   OLD -0.1803458D+00 -0.2394756D+00
+ AMPLITUDE = 10  0.9999999D+00 (  0.1000069D+01)  NEW  0.2411757D-04  0.4467530D-04   OLD  0.4436322D+00  0.5794315D+00
+ AMPLITUDE = 11  0.9999999D+00 (  0.1000069D+01)  NEW -0.2119662D-04 -0.3897293D-04   OLD -0.3892388D+00 -0.5048474D+00
+ AMPLITUDE = 12  0.9999999D+00 (  0.1000069D+01)  NEW  0.9371751D-05  0.1851641D-04   OLD  0.1846197D+00  0.2302419D+00
+ AMPLITUDE = 13 -0.9999999D+00 ( -0.1195714D+01)  NEW  0.2018315D-16  0.2419555D-16   OLD -0.2387564D-16 -0.3042387D-16
+ AMPLITUDE =  1  0.9999999D+00 (  0.1000066D+01)  NEW  0.1106859D-11  0.1414380D-12   OLD  0.1393567D-07 -0.5238272D-08
+ AMPLITUDE =  2  0.9999999D+00 (  0.1000064D+01)  NEW  0.2794937D-12  0.8834099D-13   OLD  0.3621678D-08 -0.1046962D-08
+ AMPLITUDE =  3  0.9999999D+00 (  0.1000064D+01)  NEW  0.2794937D-12  0.8834099D-13   OLD  0.3621678D-08 -0.1046962D-08
+ AMPLITUDE =  4  0.9999999D+00 (  0.1000066D+01)  NEW -0.7791726D-12 -0.1043775D-12   OLD -0.9786817D-08  0.3616807D-08
+ AMPLITUDE =  5  0.9999999D+00 (  0.1000065D+01)  NEW  0.1866047D-11  0.3061065D-12   OLD  0.2373489D-07 -0.8469118D-08
+ AMPLITUDE =  6  0.9999999D+00 (  0.1000068D+01)  NEW  0.4233717D-09  0.2480314D-08   OLD  0.1651531D-04  0.3086275D-04
+ AMPLITUDE =  7  0.9999999D+00 (  0.1000067D+01)  NEW  0.1915724D-09  0.2121187D-08   OLD  0.1295733D-04  0.2627563D-04
+ AMPLITUDE =  8  0.9999999D+00 (  0.1000070D+01)  NEW  0.1878670D-10  0.7193069D-11   OLD  0.2455366D-06 -0.3708000D-07
+ AMPLITUDE =  9  0.9999999D+00 (  0.1000068D+01)  NEW -0.2941430D-09 -0.1459646D-08   OLD -0.1003342D-04 -0.1820461D-04
+ AMPLITUDE = 10  0.9999999D+00 (  0.1000068D+01)  NEW  0.6223659D-09  0.3588776D-08   OLD  0.2411757D-04  0.4467530D-04
+ AMPLITUDE = 11  0.9999999D+00 (  0.1000068D+01)  NEW -0.5561784D-09 -0.3136325D-08   OLD -0.2119662D-04 -0.3897293D-04
+ AMPLITUDE = 12  0.9999999D+00 (  0.1000067D+01)  NEW  0.1504944D-09  0.1501328D-08   OLD  0.9371751D-05  0.1851641D-04
+ AMPLITUDE = 13  0.9116299D+00 (  0.9116299D+00)  NEW  0.1395239D-16  0.1698662D-16   OLD  0.2018315D-16  0.2419555D-16
+1      12N+208PB 780 MEV ELECTRIC AND MAGNETIC COULOMB INTERACTION    ECIS06  
+
+
+ TOTAL REACTION CROSS SECTION =   3428.684588 MILLIBARNS.
+
+ ELASTIC SCATTERING ON THE TARGET STATE OF SPIN =  1.0+
+
+      ANGLE    CROSS-SECTION     C. S./RUTHER.  
+      0.200     0.89853D+11           1.0004971
+      0.400     0.56001D+10           0.9976815
+      0.600     0.11108D+10           1.0018655
+      0.800     0.35025D+09           0.9983531
+      1.000     0.14263D+09           0.9925633
+      1.200     0.70570D+08           1.0183058
+      1.400     0.36615D+08           0.9788055
+      1.600     0.22312D+08           1.0174839
+      1.800     0.13809D+08           1.0086867
+      2.000     0.86193D+07           0.9595429
+      2.200     0.61458D+07           1.0016692
+      2.400     0.46106D+07           1.0642374
+      2.600     0.32402D+07           1.0300874
+      2.800     0.22572D+07           0.9651635
+      3.000     0.15878D+07           0.8946545
+      3.200     0.12424D+07           0.9061445
+      3.400     0.10793D+07           1.0031717
+      3.600     0.94375D+06           1.1024142
+      3.800     0.82204D+06           1.1919904
+      4.000     0.70779D+06           1.2599447
+      4.200     0.58183D+06           1.2588249
+      4.400     0.45868D+06           1.1952447
+      4.600     0.35725D+06           1.1119782
+      4.800     0.27489D+06           1.0143162
+      5.000     0.20523D+06           0.8915240
+      5.200     0.14988D+06           0.7616125
+      5.400     0.10983D+06           0.6489442
+      5.600     0.80807D+05           0.5521691
+      5.800     0.58475D+05           0.4597274
+      6.000     0.41570D+05           0.3742408
+      6.200     0.29745D+05           0.3052769
+      6.400     0.21641D+05           0.2521476
+      6.600     0.15672D+05           0.2064934
+      6.800     0.11122D+05           0.1651018
+      7.000     0.78742D+04           0.1312441
+      7.200     0.57003D+04           0.1063285
+      7.400     0.41761D+04           0.0869068
+      7.600     0.30064D+04           0.0695968
+      7.800     0.21246D+04           0.0545607
+      8.000     0.15210D+04           0.0432150
+      8.200     0.11200D+04           0.0351199
+      8.400     0.82484D+03           0.0284771
+      8.600     0.59071D+03           0.0224027
+      8.800     0.41796D+03           0.0173746
+      9.000     0.30390D+03           0.0138192
+      9.200     0.22719D+03           0.0112783
+      9.400     0.16742D+03           0.0090560
+      9.600     0.11915D+03           0.0070100
+      9.800     0.84638D+02           0.0054064
+     10.000     0.62530D+02           0.0043296
+1
+                                             +       C. S./RUTHER.    
+
+       1                                                 1                                                 1           
+       *.................................................*.................................................*...........
+   0.20.                                                 .                                                 +          .
+   0.40.                                                 .                                                 +          .
+   0.60.                                                 .                                                 +          .
+   0.80.                                                 .                                                 +          .
+   1.00.                                                 .                                                 +          .
+   1.20.                                                 .                                                 +          .
+   1.40.                                                 .                                                 +          .
+   1.60.                                                 .                                                 +          .
+   1.80.                                                 .                                                 +          .
+   2.00.                                                 .                                                +.          .
+   2.20.                                                 .                                                 +          .
+   2.40.                                                 .                                                 .+         .
+   2.60.                                                 .                                                 .+         .
+   2.80.                                                 .                                                +.          .
+   3.00.                                                 .                                               + .          .
+   3.20.                                                 .                                               + .          .
+   3.40.                                                 .                                                 +          .
+   3.60.                                                 .                                                 . +        .
+   3.80.                                                 .                                                 .   +      .
+   4.00.                                                 .                                                 .    +     .
+   4.20.                                                 .                                                 .    +     .
+   4.40.                                                 .                                                 .   +      .
+   4.60.                                                 .                                                 . +        .
+   4.80.                                                 .                                                 +          .
+   5.00.                                                 .                                               + .          .
+   5.20.                                                 .                                           +     .          .
+   5.40.                                                 .                                        +        .          .
+   5.60.                                                 .                                    +            .          .
+   5.80.                                                 .                                +                .          .
+   6.00.                                                 .                            +                    .          .
+   6.20.                                                 .                       +                         .          .
+   6.40.                                                 .                   +                             .          .
+   6.60.                                                 .               +                                 .          .
+   6.80.                                                 .          +                                      .          .
+   7.00.                                                 .     +                                           .          .
+   7.20.                                                 .+                                                .          .
+   7.40.                                              +  .                                                 .          .
+   7.60.                                         +       .                                                 .          .
+   7.80.                                    +            .                                                 .          .
+   8.00.                               +                 .                                                 .          .
+   8.20.                          +                      .                                                 .          .
+   8.40.                      +                          .                                                 .          .
+   8.60.                 +                               .                                                 .          .
+   8.80.           +                                     .                                                 .          .
+   9.00.      +                                          .                                                 .          .
+   9.20.  +                                              .                                                 .          .
+ -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -*
+   9.40.                                               + .                                                 .          .
+   9.60.                                         +       .                                                 .          .
+   9.80.                                    +            .                                                 .          .
+  10.00.                               +                 .                                                 .          .
+       *.................................................*.................................................*...........
+1      12N+208PB 780 MEV ELECTRIC AND MAGNETIC COULOMB INTERACTION    ECIS06  
+
+
+
+ INELASTIC SCATTERING TO THE TARGET STATE  2  SPIN =  2.0+
+
+      INELASTIC CROSS SECTION =      3.023217 MILLIBARNS.
+
+      ANGLE    CROSS-SECTION  
+      0.200     0.93694D+05
+      0.400     0.79134D+03
+      0.600     0.15172D+03
+      0.800     0.12672D+03
+      1.000     0.15540D+03
+      1.200     0.19595D+03
+      1.400     0.11424D+03
+      1.600     0.13989D+03
+      1.800     0.14031D+03
+      2.000     0.78861D+02
+      2.200     0.98632D+02
+      2.400     0.13018D+03
+      2.600     0.11720D+03
+      2.800     0.84230D+02
+      3.000     0.52808D+02
+      3.200     0.51834D+02
+      3.400     0.72768D+02
+      3.600     0.94218D+02
+      3.800     0.11353D+03
+      4.000     0.12537D+03
+      4.200     0.12291D+03
+      4.400     0.11179D+03
+      4.600     0.99176D+02
+      4.800     0.85376D+02
+      5.000     0.69981D+02
+      5.200     0.55391D+02
+      5.400     0.43780D+02
+      5.600     0.34713D+02
+      5.800     0.26827D+02
+      6.000     0.20130D+02
+      6.200     0.15192D+02
+      6.400     0.11667D+02
+      6.600     0.88581D+01
+      6.800     0.65634D+01
+      7.000     0.48307D+01
+      7.200     0.36062D+01
+      7.400     0.27335D+01
+      7.600     0.20418D+01
+      7.800     0.14770D+01
+      8.000     0.10781D+01
+      8.200     0.82066D+00
+      8.400     0.62211D+00
+      8.600     0.45617D+00
+      8.800     0.33507D+00
+      9.000     0.25072D+00
+      9.200     0.18967D+00
+      9.400     0.14456D+00
+      9.600     0.10664D+00
+      9.800     0.74932D-01
+     10.000     0.55417D-01
+1
+                                             +       CROSS-SECTION    
+
+       1                                                 1                                                 1           
+       *.................................................*.................................................*...........
+ *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *-
+ *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *-
+ *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *-
+ *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *-
+ *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *-
+   0.20.                                                 .                                                +.          .
+ -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -*
+   0.40.                                            +    .                                                 .          .
+   0.60.        +                                        .                                                 .          .
+   0.80.    +                                            .                                                 .          .
+   1.00.         +                                       .                                                 .          .
+   1.20.              +                                  .                                                 .          .
+   1.40.  +                                              .                                                 .          .
+   1.60.      +                                          .                                                 .          .
+   1.80.      +                                          .                                                 .          .
+ -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -*
+   2.00.                                            +    .                                                 .          .
+   2.20.                                                 +                                                 .          .
+   2.40.                                                 .     +                                           .          .
+   2.60.                                                 .  +                                              .          .
+   2.80.                                             +   .                                                 .          .
+   3.00.                                   +             .                                                 .          .
+   3.20.                                   +             .                                                 .          .
+   3.40.                                          +      .                                                 .          .
+   3.60.                                                +.                                                 .          .
+   3.80.                                                 .  +                                              .          .
+   4.00.                                                 .    +                                            .          .
+   4.20.                                                 .   +                                             .          .
+   4.40.                                                 . +                                               .          .
+   4.60.                                                 +                                                 .          .
+   4.80.                                              +  .                                                 .          .
+   5.00.                                         +       .                                                 .          .
+   5.20.                                    +            .                                                 .          .
+   5.40.                               +                 .                                                 .          .
+   5.60.                          +                      .                                                 .          .
+   5.80.                    +                            .                                                 .          .
+   6.00.              +                                  .                                                 .          .
+   6.20.        +                                        .                                                 .          .
+   6.40.  +                                              .                                                 .          .
+ -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -*
+   6.60.                                              +  .                                                 .          .
+   6.80.                                        +        .                                                 .          .
+   7.00.                                 +               .                                                 .          .
+   7.20.                           +                     .                                                 .          .
+   7.40.                     +                           .                                                 .          .
+   7.60.               +                                 .                                                 .          .
+   7.80.       +                                         .                                                 .          .
+   8.00. +                                               .                                                 .          .
+ -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -*
+   8.20.                                             +   .                                                 .          .
+   8.40.                                       +         .                                                 .          .
+   8.60.                                +                .                                                 .          .
+   8.80.                         +                       .                                                 .          .
+   9.00.                   +                             .                                                 .          .
+   9.20.             +                                   .                                                 .          .
+   9.40.       +                                         .                                                 .          .
+   9.60.+                                                .                                                 .          .
+ -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -* -*
+   9.80.                                           +     .                                                 .          .
+  10.00.                                    +            .                                                 .          .
+       *.................................................*.................................................*...........
+ *** TOTAL TIME ***  0H  0MN  0S 460 MS          DIFFERENCE SINCE LAST CALL      460 MILLISECONDS.
+
+
+ *** WORKSPACE USED IN THIS COMPUTATION    195919  ***              404081 MEMORIES NOT USED.

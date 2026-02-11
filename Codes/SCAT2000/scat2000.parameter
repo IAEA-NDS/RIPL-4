@@ -1,0 +1,37 @@
+c***********************************************************************
+c  LTCMAX  Max number of partial waves + 1                             *
+c  LDAMAX                                                              *
+c  LFMAX                                                               *
+c  NANGMX  Max number of angles (for angular distributions)            *
+c  NEMAX   Max number of incident energies                             *
+c  NPCOFX  Max number of coefficients for the depth energy dependence  *
+c  NPTYPX  Max number of types of potentials                           *
+c                      1  real      volume                             *
+c                      2  real      surface                            *
+c                      3  imaginary volume                             *
+c                      4  imaginary surface                            *
+c                      5  real      spin-orbit                         *
+c                      6  imaginary spin-orbit                         *
+c  NPZENX  Max number of energy ranges for the depth energy variation  *
+c***********************************************************************
+c
+c  Potentials
+      integer    nptypx
+      parameter (nptypx = 6)
+      integer    npzenx
+      parameter (npzenx = 4)
+      integer    npcofx
+      parameter (npcofx = 7)
+c  Energies
+      integer    nemax
+      parameter (nemax  = 50)
+c  Angles
+      integer    nangmx
+      parameter (nangmx = 101)
+c  Partial waves
+      integer    ltcmax
+      parameter (ltcmax = 181)
+      integer    ldamax
+      parameter (ldamax = 2*(ltcmax - 1) + 1)
+      integer    lfmax
+      parameter (lfmax  = 6*(ltcmax - 1) + 2)

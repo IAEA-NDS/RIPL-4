@@ -1,0 +1,76 @@
+ 1 MEV NEUTRON ON 232 TH WITH DISPERSIVE POTENTIAL GIVEN FOR 10 MEV     DATD-000
+TFFFFFFTFTFTTTFFFFFTFFTFFFFTFFFFFTFFFFFFFFFFFFFFFF                      DATD-001
+FFFFFFFFFFFFFFFFFTTFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFF                      DATD-002
+    2   50   20    1                                                    DATD-003
+    .12500  17.                                                         DATD-004
+            1.000000    .50000   1.00866 232.03805    .00000            DATD-005
+ 2.           .04937                                                    DATD-006
+    6    8                                                              DATD-007
+    .21300    .06900    .00170                                          DATD-008
+  39.44626   1.25981    .62400                                          DATD-009
+    .44946   1.25300    .67802                                          DATD-010
+    .00000   1.18080    .60000                                          DATD-011
+   6.54228   1.18080    .60000                                          DATD-012
+   5.27756   1.12140    .59000                                          DATD-013
+   -.02924   1.12140    .59000                                          DATD-014
+    .00000    .00000    .00000                                          DATD-015
+    .00000    .00000    .00000                                          DATD-016
+    .00000  20.00000 180.00000                                          DATD-017
+         2    4    4    2    0                                          DATD-018
+9.95649    -10.39151  -5.66000  90.00000    .00000    .00000  75.00000  DATD-019
+   1.65000    .00000   5.00000    .03400    .00000  90.00000    .00870  DATD-020
+TT  1                                                                   DATD-021
+ 10 MEV NEUTRON ON 232 TH WITH DISPERSIVE POTENTIAL GIVEN FOR 10 MEV    DATD-022
+    0                                                                   DATD-023
+10.                                                                     DATD-024
+FT  1                                                                   DATD-025
+ 100 MEV NEUTRON ON 232 TH WITH DISPERSIVE POTENTIAL GIVEN FOR 10 MEV   DATD-026
+    0                                                                   DATD-027
+100.                                                                    DATD-028
+ 1 MEV NEUTRON ON 232 TH WITH DISPERSIVE COEFFICIENTS GIVEN FOR 10 MEV  DATD-029
+TFFFFFFTFTFTTTFFFFFTFFTFFFFTFFFFFFFFFFFFFFFFFFFFFF                      DATD-030
+FFFFFFFFFFFFFFFFFTTFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFF                      DATD-031
+    2   50   20    1                                                    DATD-032
+    .12500  17.                                                         DATD-033
+            1.000000    .50000   1.00866 232.03805    .00000            DATD-034
+ 2.           .04937                                                    DATD-035
+    6    8                                                              DATD-036
+    .21300    .06900    .00170                                          DATD-037
+  39.44626   1.25981    .62400                                          DATD-038
+    .44946   1.25300    .67802                                          DATD-039
+    .00000   1.18080    .60000                                          DATD-040
+   6.54228   1.18080    .60000                                          DATD-041
+   5.27756   1.12140    .59000                                          DATD-042
+   -.02924   1.12140    .59000                                          DATD-043
+    .00000    .00000    .00000                                          DATD-044
+    .00000    .00000    .00000                                          DATD-045
+    .00000  20.00000 180.00000                                          DATD-046
+         2    4    4    2    1                                          DATD-047
+-.9669461644.4170224.081078483.039380628.651838939                      DATD-048
+-.813906683.79893732                                                    DATD-049
+-.9679159844.2151015.081542926.033579228.660422817                      DATD-050
+-.816642493.78175981                                                    DATD-051
+ 100 MEV NEUTRON ON 232 TH WITH DISPERSIVE COEFFICIENTS GIVEN FOR 10 MEVDATD-052
+TFFFFFFTFTFTTTFFFFFTFFTFFFFTFFFFFFFFFFFFFFFFFFFFFF                      DATD-053
+FFFFFFFFFFFFFFFFFTTFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFF                      DATD-054
+    2   50   20    1                                                    DATD-055
+    .12500  17.                                                         DATD-056
+            100.0000    .50000   1.00866 232.03805    .00000            DATD-057
+ 2.           .04937                                                    DATD-058
+    6    8                                                              DATD-059
+    .21300    .06900    .00170                                          DATD-060
+  39.44626   1.25981    .62400                                          DATD-061
+    .44946   1.25300    .67802                                          DATD-062
+    .00000   1.18080    .60000                                          DATD-063
+   6.54228   1.18080    .60000                                          DATD-064
+   5.27756   1.12140    .59000                                          DATD-065
+   -.02924   1.12140    .59000                                          DATD-066
+    .00000    .00000    .00000                                          DATD-067
+    .00000    .00000    .00000                                          DATD-068
+    .00000  20.00000 180.00000                                          DATD-069
+         2    4    4    2    1                                          DATD-070
+423.182434266.128597-.54132551-.95195124-.29018362                      DATD-071
+18.755706817.4095736                                                    DATD-072
+423.016504266.279386-.54112846-.95187052-.29032306                      DATD-073
+18.747869017.4109391                                                    DATD-074
+FIN                                                                     DATD-075

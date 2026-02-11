@@ -1,0 +1,2079 @@
+1                    E. C. I. S. CODE FOR COUPLED CHANNELS CALCULATIONS ( 2006 ) WORKING FIELD LENGTH =    600000
+
+                        TO OBTAIN THE INPUT DESCRIPTION, PUNCH 'DESCRIPTION ' IN COLUMNS 1-12 OF THE FIRST CARD.
+
+
+  1 T - ROTATIONAL MODEL-(.F.: VIBRATIONAL MODEL).         | 54 T - OUTPUT OF THE LENGTH USED IN THE WORKING FIELD.
+  2 F - SECOND ORDER VIBRATIONAL MODEL-(.F.: FIRST ORDER)  | 55 T - OUTPUT OF C-MATRIX ELEMENTS AND COMPOUND NUCLEUS
+        OR CONSTRAINED ASYMMETRIC ROTATIONAL MODEL.        |        INTERMEDIATE RESULTS.
+  3 F - ANHARMONIC VIBRATIONAL MODEL-(.F.: HARMONIC) OR    | 56 F - OUTPUT OF S-MATRIX ELEMENTS.
+        ASYMMETRIC ROTATIONAL MODEL-(.F.: SYMMETRIC).      | 57 F - OUTPUT OF PHASE-SHIFTS AT EACH E.C.I.S. ITERATION.
+  4 F - PARAMETRISED SPIN-ORBIT DEFORMATION-(.F.:STANDARD) | 58 F - OUTPUT OF THE COEFFICIENTS OF EACH FORM FACTOR
+  5 F - DIFFERENT DEFORMATION FOR EACH POTENTIAL(.F.: SAME)|        FOR ALL SETS OF EQUATIONS.
+  6 F - USE OF DEFORMATION LENGTHS.                        | 59 F - TOTAL ELASTIC REACTION CROSS-SECTIONS WRITTEN ON
+  7 F - NUCLEAR MATRIX ELEMENTS AND FORM FACTORS ON CARDS. |        FILE 58 AND TOTAL INELASTIC REACTION
+  8 F - RELATIVISTIC KINEMATICS.                           |        CROSS-SECTIONS ON FILE 59.
+  9 F - SYMMETRISED WOODS-SAXON FORM FOR NEGATIVE RADII.   | 60 F - S-MATRIX ELEMENTS WRITTEN ON FILE 60.
+ 10 F - DISPERSION RELATIONS FOR POTENTIALS.               |
+                                                           | 61 F - REDUCED NUCLEAR MATRIX ELEMENTS WRITTEN ON FILE 61.
+ 11 T - DEFORMED COULOMB POTENTIAL.                        | 62 F - POTENTIALS WRITTEN ON FILE 62.
+ 12 T - DEFORMED IMAGINARY POTENTIAL.                      | 63 F - PENETRABILITIES WRITTEN ON FILE 63.
+ 13 F - DEFORMED REAL SPIN-ORBIT/TENSOR POTENTIAL.         | 64 F - RESULTS FOR EXPERIMENTAL DATA ON FILE 64
+ 14 F - DEFORMED IMAGINARY SPIN-ORBIT/TENSOR POTENTIAL.    |        AND AT EQUIDISTANT ANGLES WRITTEN ON FILE 66.
+ 15 F - REDUCED NUCLEAR MATRIX ELEMENTS READ FROM CARDS.   | 65 F - LEGENDRE EXPANSION FOR CROSS-SECTIONS WRITTEN ON
+ 16 F - HEAVY-ION DEFINITION OF RADII AND DEFORMATIONS.    |        FILE 65.
+ 17 F - FOLDING MODEL.                                     | 66 F - NO CALCULATION AT EQUIDISTANT ANGLES.
+ 18 F - PROJECTILE-TARGET ANTISYMMETRISATION.              | 67 F - NO PLOT OF EXPERIMENTAL DATA.
+ 19 F - DEFORMED COULOMB SPIN-ORBIT POTENTIAL.             | 68 F - NO PLOT OF CROSS-SECTIONS AT EQUIDISTANT ANGLES.
+ 20 F - DISPERSION RELATIONS FOR TRANSITION FORM-FACTORS.  | 69 T - NO PLOT OF POLARISATIONS AT EQUIDISTANT ANGLES.
+                                                           |
+ 21 F - USUAL COUPLED EQUATIONS-(.F.: ITERATIONS).         | 71 F - NO DETAILED OUTPUT OF LOGICAL CONTROLS.
+ 22 F - NO USE OF PADE FOR CONVERGENCE OF THE ITERATIONS.  | 72 F - NO OUTPUT OF EXPERIMENTAL DATA AS THEY ARE READ.
+ 23 F - NO USE OF PADE WITHOUT CONVERGENCE.                | 73 F - NO OUTPUT OF EXTERNAL POTENTIALS AS THEY ARE READ.
+ 24 F - COUPLING POTENTIALS COMPUTED AT EACH ITERATION.    | 74 F - OUTPUT OF VARIATIONS IN STORAGE.
+ 25 T - COMPLETE CALCULATION UP TO THE END-(.F.: ONE ITE-  | 75 F - NO COMPLETE OUTPUT AT THE FIRST RUN OF A SEARCH.
+        RATION ONLY AS SOON AS TWO ITERATIONS ARE ENOUGH). | 76 F - LO(51) TO LO(65) ARE ALWAYS USED-(.F.: ONLY FOR
+ 26 F - INTEGRATION STABILISED FOR LONG RANGE POTENTIAL.   |        COMPLETE OUTPUT)
+ 27 F - NUMEROV'S METHOD FOR SINGLE EQUATIONS-(.F.: MODI-  | 77 T - OUTPUT OF TIME DIFFERENCES DURING THE SEARCH.
+        FIED NUMEROV'S METHOD).                            | 78 F - OUTPUT OF DIFFERENCES BETWEEN EXPERIMENTAL
+ 28 F - COMPUTATION UP TO J-CONVERGENCE-(.F.: STOP WHEN    |        AND CALCULATED VALUES.
+        ALL THE INHOMOGENEOUS TERMS ARE NEGLIGIBLE).       |
+ 29 F - NO DIAGONAL TERM IN SECOND MEMBERS.                | 81 F - HAUSER-FESHBACH CORRECTIONS TO CROSS-SECTIONS.
+ 30 F - PURE DWBA CALCULATION.                             | 82 F - SIMPLEST COMPOUND NUCLEUS FORMALISM.
+                                                           | 83 F - NO ENGELBRETCH-WEIDENMULLER TRANSFORMATION IN
+ 31 F - INPUT OF EXPERIMENTAL DATA AND CHI2 CALCULATION.   |        IN COMPOUND NUCLEUS.
+ 32 F - AUTOMATIC SEARCH ON SOME PARAMETERS.               | 84 F - UNCOUPLED LEVELS FOR COMPOUND NUCLEUS.
+ 33 F - SYMMETRISED CHI2 FOR CROSS-SECTIONS.               | 85 F - FISSION DATA IN COMPOUND NUCLEUS.
+ 34 F - NEXT CALCULATION CHANGING ENERGY AND/OR SOME       | 86 F - GAMMA EMISSION DATA IN COMPOUND NUCLEUS.
+        PARAMETERS.                                        | 87 F - NO WIDTH FLUCTUATIONS.
+ 35 F - SEARCH SAVED ON TAPE 8 IF ENDED OR LACK OF TIME.   |
+ 36 F - RESTART A SEARCH FROM TAPE 8.                      | 91 F - EQUIDISTANT ANGLES IN THE LABORATORY SYSTEM.
+                                                           | 92 T - NON STANDARD OBSERVABLES AT EQUIDISTANT ANGLES.
+ 41 F - FACTORISATION OF 1/(1-COS(THETA)) IN AMPLITUDES.   | 93 F - NO RECOIL CORRECTION FOR REACTIONS.
+ 42 F - SCHMIDT'S ORTHOGONAL. IN USUAL COUPLED EQUATIONS.  | 94 F - NON RELATIVISTIC "REDUCED MASS" FOR DIRAC EQUATION.
+ 43 F - INTERPOLATION ON TOTAL SPIN.                       | 95 F - "REDUCED ENERGY" FOR NON COULOMB INTERACTION IN
+ 44 F - COULOMB CORRECTIONS.                               |        RELATIVISTIC SCHROEDINGER EQUATION OR USE OF REST
+ 45 F - ANGULAR MOMENTUM LIMIT FOR COULOMB CORRECTIONS.    |        MASS IN DIRAC EQUATION.
+ 46 F - RESTRICTED COULOMB CORRECTIONS.                    | 96 F - "REDUCED MASS" FOR COULOMB INTERACTION IN
+ 47 F - NO RECOIL CORRECTION FOR BOUND STATES.             |        RELATIVISTIC SCHROEDINGER EQUATION.
+                                                           | 97 F - SAME REDUCED MASS FOR ALL THE STATES.
+ 51 F - OUTPUT OF POTENTIALS.                              | 98 F - Q ADDED TO THE MASS OF RESIDUAL NUCLEUS.
+ 52 T - OUTPUT OF REDUCED NUCLEAR MATRIX ELEMENTS.         | 99 F - SCHROEDINGER EQUIVALENT TO DIRAC EQUATION.
+ 53 T - OUTPUT OF THE NUMBER OF ITERATIONS.                |100 F - COMPLETE DIRAC EQUATION.
+1
+          **********************************************************************************
+          *                                                                                *
+          *    28 SI + 104 MEV ALPHAS, SYMMETRIC ROTATOR, NON STANDARD OBS.    ECIS06      *
+          *                                                                                *
+          **********************************************************************************
+
+ MAXIMUM NUMBER OF J    60  (MIN  0) STOP WHEN MAXIMUM S-MATRIX ELEMENT IS LESS THAN        0.1000D-04
+
+ PLOT CONDITIONS FOR CROSS-SECTIONS    2    2     FOR POLARISATIONS    1    1
+
+          ITERATION METHOD:  MAXIMUM NUMBER OF ITERATIONS        20
+          CONVERGENCE CRITERION:     1.0000D-05 FOR S-MATRIX     1.0000D-05 FOR POTENTIALS AND FUNCTIONS.
+
+
+ SYMMETRIC ROTATIONAL MODEL.
+
+
+ TARGET              MASS =  28.00000           PRODUCT OF CHARGES =   28.           AT**1/3 =   3.036589D+00
+ INCIDENT PARTICLE   MASS =   4.00000      SPIN = 0.0   AP**1/3 =   1.587401D+00
+          ENERGY(LAB) =   1.040000D+02 MEV          ENERGY(C. M.) =   9.100000D+01 MEV.
+
+ N =  1 -   SPIN = 0.0+ EXCITATION ENERGY =  0.0000 MEV          POTENTIAL    1      GROUND STATE BAND.
+ N =  2 -   SPIN = 2.0+ EXCITATION ENERGY =  1.7800 MEV          POTENTIAL    1      GROUND STATE BAND.
+ N =  3 -   SPIN = 4.0+ EXCITATION ENERGY =  4.6100 MEV          POTENTIAL    1      GROUND STATE BAND.
+
+          MULTIPOLE EXPANSION UP TO IQMAX =  8                    K =   0.00 BAND.
+
+ BETA(I,J) FOR  L   K         V         W        VS        WS       VSO       WSO      COUL S.O. COUL
+         1      2   0    -0.32916  -0.32916  -0.32916  -0.32916  -0.32916  -0.32916  -0.32916  -0.32916
+         2      4   0    -0.10778  -0.10778  -0.10778  -0.10778  -0.10778  -0.10778  -0.10778  -0.10778
+
+
+ OPTICAL POTENTIALS  **  1 **     REDUCED RADIUS MULTIPLIED BY     3.036589D+00
+
+      DEFORMED  VOLUME/SCALAR REAL POTENTIAL
+ DEPTH   89.748700 MEV   RADIUS  4.381768 FERMI (REDUCED VALUE 1.442990)   DIFFUSENESS 0.627892 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  VOLUME/SCALAR IMAGINARY POTENTIAL
+ DEPTH   31.459900 MEV   RADIUS  4.340136 FERMI (REDUCED VALUE 1.429280)   DIFFUSENESS 0.728745 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  SURFACE/VECTOR REAL POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  SURFACE/VECTOR IMAGINARY POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  4.340136 FERMI (REDUCED VALUE 1.429280)   DIFFUSENESS 0.728745 FERMI AT THE POWER (1+ 0.000000)
+
+  NOT DEFORMED  REAL SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  4.340136 FERMI (REDUCED VALUE 1.429280)   DIFFUSENESS 0.728745 FERMI AT THE POWER (1+ 0.000000)
+
+  NOT DEFORMED  IMAGINARY SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  4.340136 FERMI (REDUCED VALUE 1.429280)   DIFFUSENESS 0.728745 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  COULOMB POTENTIAL
+  CHARGE PRODUCT    28.  RADIUS  3.947566 FERMI (REDUCED VALUE 1.300000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+  NOT DEFORMED  SPIN-ORBIT COULOMB POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+              THIRD CHARGE PARAMETER28.000000
+
+ INTEGRATION STEP SIZE = 0.12500          MATCHING RADIUS =  11.125 FERMI
+
+ SCATTERING ANGLES FROM  5.000 IN STEPS OF  1.000 UP TO  51.000 DEGREES   AVERAGED WITH +/-   0.000 DEGREES.
+
+
+       1 SOLUTIONS         9 COUPLED EQUATIONS         9 INDEPENDENT AMPLITUDES.
+
+
+ EQUIDISTANT ANGLES OUTPUT:
+
+          CHANNEL  1       2 OBSERVABLES.
+          CHANNEL  2      11 OBSERVABLES.
+          CHANNEL  3      11 OBSERVABLES.
+ OBSERVABLES FOR CHANNEL  1  :     0    1
+            GRAPH INFORMATION:     3    3
+ OBSERVABLES FOR CHANNEL  2  :     0   -1   -2   -3   -4   -5   -6   -7   -8   -9  -10
+            GRAPH INFORMATION:     3    0    0    0    0    0    0    0    0    0    0
+ OBSERVABLES FOR CHANNEL  3  :     0  -11  -12  -13  -14  -15  -16  -17  -18  -19  -20
+            GRAPH INFORMATION:     2    0    0    0    0    0    0    0    0    0    0
+
+ OBSERVABLE  1 LABELLED       TENSOR (2,2)                  5 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0
+ +  0.2000*A          +  0.2828*A          +  0.2390*A          +  0.1414*A          +  0.0535*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE  1 LABELLED       TENSOR (2,2)                 15 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.2000*A          + -0.4000*A          + -0.2928*A          + -0.1195*A          +  0.1581*A          +  0.1225*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0
+ +  0.0559*A          +  0.0423*A          +  0.0200*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE  2 LABELLED       TENSOR (1,1)                  5 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0
+ +  0.2000*A          +  0.1414*A          + -0.1195*A          + -0.2828*A          + -0.2138*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE  2 LABELLED       TENSOR (1,1)                 15 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.2000*A          + -0.2000*A          +  0.1464*A          +  0.0598*A          + -0.3162*A          + -0.2449*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0
+ + -0.2236*A          + -0.1690*A          + -0.0802*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE  3 LABELLED       TENSOR (0,0)                  3 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 2 0              0 0 4 0
+ +  0.2000*A          + -0.2390*A          +  0.3207*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE  3 LABELLED       TENSOR (0,0)                  9 COMPONENTS
+
+            0 0 0 0              0 0 2 2              0 0 2 0              0 0 4 4              0 0 4 2              0 0 4 0
+ +  0.2000*A          +  0.2928*A          +  0.1195*A          +  0.3354*A          +  0.2535*A          +  0.1203*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE  4 LABELLED       TENSOR (-1,-1)                5 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0
+ +  0.2000*A          + -0.1414*A          + -0.1195*A          +  0.2828*A          + -0.2138*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE  4 LABELLED       TENSOR (-1,-1)               15 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.2000*A          +  0.2000*A          +  0.1464*A          +  0.0598*A          +  0.3162*A          +  0.2449*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0
+ + -0.2236*A          + -0.1690*A          + -0.0802*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE  5 LABELLED       TENSOR (-2,-2)                5 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0
+ +  0.2000*A          + -0.2828*A          +  0.2390*A          + -0.1414*A          +  0.0535*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE  5 LABELLED       TENSOR (-2,-2)               15 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.2000*A          +  0.4000*A          + -0.2928*A          + -0.1195*A          + -0.1581*A          + -0.1225*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0
+ +  0.0559*A          +  0.0423*A          +  0.0200*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE  6 LABELLED      CARTESIAN (2,2)                1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-1-1
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0
+ +  0.2000*A          +  0.2828*A          +  0.2390*A          +  0.1414*A          +  0.0535*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE  6 LABELLED      CARTESIAN (2,2)               15 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.2000*A          + -0.4000*A          + -0.2928*A          + -0.1195*A          +  0.1581*A          +  0.1225*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0
+ +  0.0559*A          +  0.0423*A          +  0.0200*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE  7 LABELLED      CARTESIAN (1,1)                1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-2-2
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0
+ +  0.2000*A          +  0.1414*A          + -0.1195*A          + -0.2828*A          + -0.2138*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE  7 LABELLED      CARTESIAN (1,1)               15 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.2000*A          + -0.2000*A          +  0.1464*A          +  0.0598*A          + -0.3162*A          + -0.2449*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0
+ + -0.2236*A          + -0.1690*A          + -0.0802*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE  8 LABELLED      CARTESIAN (0,0)                1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-3-3
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 2 0              0 0 4 0
+ +  0.2000*A          + -0.2390*A          +  0.3207*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE  8 LABELLED      CARTESIAN (0,0)                9 COMPONENTS
+
+            0 0 0 0              0 0 2 2              0 0 2 0              0 0 4 4              0 0 4 2              0 0 4 0
+ +  0.2000*A          +  0.2928*A          +  0.1195*A          +  0.3354*A          +  0.2535*A          +  0.1203*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE  9 LABELLED      CARTESIAN (-1,-1)              1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-4-4
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0
+ +  0.2000*A          + -0.1414*A          + -0.1195*A          +  0.2828*A          + -0.2138*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE  9 LABELLED      CARTESIAN (-1,-1)             15 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.2000*A          +  0.2000*A          +  0.1464*A          +  0.0598*A          +  0.3162*A          +  0.2449*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0
+ + -0.2236*A          + -0.1690*A          + -0.0802*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE 10 LABELLED      CARTESIAN (-2,-2)              1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-5-5
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0
+ +  0.2000*A          + -0.2828*A          +  0.2390*A          + -0.1414*A          +  0.0535*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 10 LABELLED      CARTESIAN (-2,-2)             15 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.2000*A          +  0.4000*A          + -0.2928*A          + -0.1195*A          + -0.1581*A          + -0.1225*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0
+ +  0.0559*A          +  0.0423*A          +  0.0200*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE 11 LABELLED       TENSOR (4,4)                  9 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0              0 0 5 0
+ +  0.1111*A          +  0.1721*A          +  0.1773*A          +  0.1483*A          +  0.1043*A          +  0.0616*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000              0.00000
+
+            0 0 6 0              0 0 7 0              0 0 8 0
+ +  0.0300*A          +  0.0114*A          +  0.0029*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 11 LABELLED       TENSOR (4,4)                 45 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.1111*A          + -0.2434*A          + -0.2171*A          + -0.0886*A          +  0.1658*A          +  0.1284*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0              0 0 5 5              0 0 5 3              0 0 5 1
+ +  0.1091*A          +  0.0825*A          +  0.0391*A          + -0.0611*A          + -0.0456*A          + -0.0422*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 7 7              0 0 7 5
+ + -0.0285*A          + -0.0210*A          + -0.0192*A          + -0.0094*A          +  0.0104*A          +  0.0076*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 7 3              0 0 7 1              0 0 8 8              0 0 8 6              0 0 8 4              0 0 8 2
+ +  0.0069*A          +  0.0067*A          +  0.0026*A          +  0.0019*A          +  0.0017*A          +  0.0016*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 0
+ +  0.0008*A          +
+            0 0 0 0
+
+ OBSERVABLE 12 LABELLED       TENSOR (2,2)                  9 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0              0 0 5 0
+ +  0.1111*A          +  0.0861*A          + -0.0506*A          + -0.1377*A          + -0.0819*A          +  0.0616*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000              0.00000
+
+            0 0 6 0              0 0 7 0              0 0 8 0
+ +  0.1648*A          +  0.1593*A          +  0.0823*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 12 LABELLED       TENSOR (2,2)                 45 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.1111*A          + -0.1217*A          +  0.0620*A          +  0.0253*A          + -0.1540*A          + -0.1193*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0              0 0 5 5              0 0 5 3              0 0 5 1
+ + -0.0857*A          + -0.0648*A          + -0.0307*A          + -0.0611*A          + -0.0456*A          + -0.0422*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 7 7              0 0 7 5
+ + -0.1566*A          + -0.1156*A          + -0.1055*A          + -0.0515*A          +  0.1458*A          +  0.1070*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 7 3              0 0 7 1              0 0 8 8              0 0 8 6              0 0 8 4              0 0 8 2
+ +  0.0968*A          +  0.0931*A          +  0.0729*A          +  0.0533*A          +  0.0479*A          +  0.0456*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 0
+ +  0.0225*A          +
+            0 0 0 0
+
+ OBSERVABLE 13 LABELLED       TENSOR (0,0)                  5 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 2 0              0 0 4 0              0 0 6 0              0 0 8 0
+ +  0.1111*A          + -0.1266*A          +  0.1341*A          + -0.1498*A          +  0.2057*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 13 LABELLED       TENSOR (0,0)                 25 COMPONENTS
+
+            0 0 0 0              0 0 2 2              0 0 2 0              0 0 4 4              0 0 4 2              0 0 4 0
+ +  0.1111*A          +  0.1551*A          +  0.0633*A          +  0.1402*A          +  0.1060*A          +  0.0503*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 8 8              0 0 8 6
+ +  0.1423*A          +  0.1051*A          +  0.0960*A          +  0.0468*A          +  0.1823*A          +  0.1331*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 4              0 0 8 2              0 0 8 0
+ +  0.1196*A          +  0.1141*A          +  0.0562*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE 14 LABELLED       TENSOR (-2,-2)                9 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0              0 0 5 0
+ +  0.1111*A          + -0.0861*A          + -0.0506*A          +  0.1377*A          + -0.0819*A          + -0.0616*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000              0.00000
+
+            0 0 6 0              0 0 7 0              0 0 8 0
+ +  0.1648*A          + -0.1593*A          +  0.0823*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 14 LABELLED       TENSOR (-2,-2)               45 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.1111*A          +  0.1217*A          +  0.0620*A          +  0.0253*A          +  0.1540*A          +  0.1193*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0              0 0 5 5              0 0 5 3              0 0 5 1
+ + -0.0857*A          + -0.0648*A          + -0.0307*A          +  0.0611*A          +  0.0456*A          +  0.0422*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 7 7              0 0 7 5
+ + -0.1566*A          + -0.1156*A          + -0.1055*A          + -0.0515*A          + -0.1458*A          + -0.1070*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 7 3              0 0 7 1              0 0 8 8              0 0 8 6              0 0 8 4              0 0 8 2
+ + -0.0968*A          + -0.0931*A          +  0.0729*A          +  0.0533*A          +  0.0479*A          +  0.0456*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 0
+ +  0.0225*A          +
+            0 0 0 0
+
+ OBSERVABLE 15 LABELLED       TENSOR (-4,-4)                9 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0              0 0 5 0
+ +  0.1111*A          + -0.1721*A          +  0.1773*A          + -0.1483*A          +  0.1043*A          + -0.0616*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000              0.00000
+
+            0 0 6 0              0 0 7 0              0 0 8 0
+ +  0.0300*A          + -0.0114*A          +  0.0029*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 15 LABELLED       TENSOR (-4,-4)               45 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.1111*A          +  0.2434*A          + -0.2171*A          + -0.0886*A          + -0.1658*A          + -0.1284*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0              0 0 5 5              0 0 5 3              0 0 5 1
+ +  0.1091*A          +  0.0825*A          +  0.0391*A          +  0.0611*A          +  0.0456*A          +  0.0422*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 7 7              0 0 7 5
+ + -0.0285*A          + -0.0210*A          + -0.0192*A          + -0.0094*A          + -0.0104*A          + -0.0076*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 7 3              0 0 7 1              0 0 8 8              0 0 8 6              0 0 8 4              0 0 8 2
+ + -0.0069*A          + -0.0067*A          +  0.0026*A          +  0.0019*A          +  0.0017*A          +  0.0016*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 0
+ +  0.0008*A          +
+            0 0 0 0
+
+ OBSERVABLE 16 LABELLED      CARTESIAN (4,4)                1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-1-1
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0              0 0 5 0
+ +  0.1111*A          +  0.1721*A          +  0.1773*A          +  0.1483*A          +  0.1043*A          +  0.0616*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000              0.00000
+
+            0 0 6 0              0 0 7 0              0 0 8 0
+ +  0.0300*A          +  0.0114*A          +  0.0029*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 16 LABELLED      CARTESIAN (4,4)               45 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.1111*A          + -0.2434*A          + -0.2171*A          + -0.0886*A          +  0.1658*A          +  0.1284*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0              0 0 5 5              0 0 5 3              0 0 5 1
+ +  0.1091*A          +  0.0825*A          +  0.0391*A          + -0.0611*A          + -0.0456*A          + -0.0422*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 7 7              0 0 7 5
+ + -0.0285*A          + -0.0210*A          + -0.0192*A          + -0.0094*A          +  0.0104*A          +  0.0076*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 7 3              0 0 7 1              0 0 8 8              0 0 8 6              0 0 8 4              0 0 8 2
+ +  0.0069*A          +  0.0067*A          +  0.0026*A          +  0.0019*A          +  0.0017*A          +  0.0016*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 0
+ +  0.0008*A          +
+            0 0 0 0
+
+ OBSERVABLE 17 LABELLED      CARTESIAN (2,2)                1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-3-3
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0              0 0 5 0
+ +  0.1111*A          +  0.0861*A          + -0.0506*A          + -0.1377*A          + -0.0819*A          +  0.0616*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000              0.00000
+
+            0 0 6 0              0 0 7 0              0 0 8 0
+ +  0.1648*A          +  0.1593*A          +  0.0823*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 17 LABELLED      CARTESIAN (2,2)               45 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.1111*A          + -0.1217*A          +  0.0620*A          +  0.0253*A          + -0.1540*A          + -0.1193*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0              0 0 5 5              0 0 5 3              0 0 5 1
+ + -0.0857*A          + -0.0648*A          + -0.0307*A          + -0.0611*A          + -0.0456*A          + -0.0422*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 7 7              0 0 7 5
+ + -0.1566*A          + -0.1156*A          + -0.1055*A          + -0.0515*A          +  0.1458*A          +  0.1070*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 7 3              0 0 7 1              0 0 8 8              0 0 8 6              0 0 8 4              0 0 8 2
+ +  0.0968*A          +  0.0931*A          +  0.0729*A          +  0.0533*A          +  0.0479*A          +  0.0456*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 0
+ +  0.0225*A          +
+            0 0 0 0
+
+ OBSERVABLE 18 LABELLED      CARTESIAN (0,0)                1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-5-5
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 2 0              0 0 4 0              0 0 6 0              0 0 8 0
+ +  0.1111*A          + -0.1266*A          +  0.1341*A          + -0.1498*A          +  0.2057*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 18 LABELLED      CARTESIAN (0,0)               25 COMPONENTS
+
+            0 0 0 0              0 0 2 2              0 0 2 0              0 0 4 4              0 0 4 2              0 0 4 0
+ +  0.1111*A          +  0.1551*A          +  0.0633*A          +  0.1402*A          +  0.1060*A          +  0.0503*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 8 8              0 0 8 6
+ +  0.1423*A          +  0.1051*A          +  0.0960*A          +  0.0468*A          +  0.1823*A          +  0.1331*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 4              0 0 8 2              0 0 8 0
+ +  0.1196*A          +  0.1141*A          +  0.0562*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+
+ OBSERVABLE 19 LABELLED      CARTESIAN (-2,-2)              1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-7-7
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0              0 0 5 0
+ +  0.1111*A          + -0.0861*A          + -0.0506*A          +  0.1377*A          + -0.0819*A          + -0.0616*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000              0.00000
+
+            0 0 6 0              0 0 7 0              0 0 8 0
+ +  0.1648*A          + -0.1593*A          +  0.0823*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 19 LABELLED      CARTESIAN (-2,-2)             45 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.1111*A          +  0.1217*A          +  0.0620*A          +  0.0253*A          +  0.1540*A          +  0.1193*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0              0 0 5 5              0 0 5 3              0 0 5 1
+ + -0.0857*A          + -0.0648*A          + -0.0307*A          +  0.0611*A          +  0.0456*A          +  0.0422*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 7 7              0 0 7 5
+ + -0.1566*A          + -0.1156*A          + -0.1055*A          + -0.0515*A          + -0.1458*A          + -0.1070*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 7 3              0 0 7 1              0 0 8 8              0 0 8 6              0 0 8 4              0 0 8 2
+ + -0.0968*A          + -0.0931*A          +  0.0729*A          +  0.0533*A          +  0.0479*A          +  0.0456*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 0
+ +  0.0225*A          +
+            0 0 0 0
+
+ OBSERVABLE 20 LABELLED      CARTESIAN (-4,-4)              1 COMPONENTS
+ DEFINED WITH AN AXIS PERPENDICULAR TO THE REACTION PLANE
+ NOT COMPLETELY DEFINED BY TENSORS
+
+            0 0-9-9
+ +  1.0000*M          +
+            0 0 0 0
+ IMAGINARY PARTS
+  0.00000
+
+            0 0 0 0              0 0 1 0              0 0 2 0              0 0 3 0              0 0 4 0              0 0 5 0
+ +  0.1111*A          + -0.1721*A          +  0.1773*A          + -0.1483*A          +  0.1043*A          + -0.0616*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000              0.00000              0.00000              0.00000
+
+            0 0 6 0              0 0 7 0              0 0 8 0
+ +  0.0300*A          + -0.0114*A          +  0.0029*A          +
+            0 0 0 0              0 0 0 0              0 0 0 0
+ IMAGINARY PARTS
+  0.00000              0.00000              0.00000
+
+
+ AFTER TRANSFORMATION:
+
+
+ OBSERVABLE 20 LABELLED      CARTESIAN (-4,-4)             45 COMPONENTS
+
+            0 0 0 0              0 0 1 1              0 0 2 2              0 0 2 0              0 0 3 3              0 0 3 1
+ +  0.1111*A          +  0.2434*A          + -0.2171*A          + -0.0886*A          + -0.1658*A          + -0.1284*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 4 4              0 0 4 2              0 0 4 0              0 0 5 5              0 0 5 3              0 0 5 1
+ +  0.1091*A          +  0.0825*A          +  0.0391*A          +  0.0611*A          +  0.0456*A          +  0.0422*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 6 6              0 0 6 4              0 0 6 2              0 0 6 0              0 0 7 7              0 0 7 5
+ + -0.0285*A          + -0.0210*A          + -0.0192*A          + -0.0094*A          + -0.0104*A          + -0.0076*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 7 3              0 0 7 1              0 0 8 8              0 0 8 6              0 0 8 4              0 0 8 2
+ + -0.0069*A          + -0.0067*A          +  0.0026*A          +  0.0019*A          +  0.0017*A          +  0.0016*A
+            0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0              0 0 0 0
+
+            0 0 8 0
+ +  0.0008*A          +
+            0 0 0 0
+
+ LEVEL       WAVE NUMBER  COULOMB PARAMETER   REDUCED MASS       REDUCED ENERGY     STEP SIZE
+     1      3.9036719520      0.8647921325   3260.2291505000   3260.2291505000      0.1250000000
+     2      3.8653046354      0.8733761270   3260.2291505000   3260.2291505000      0.1250000000
+     3      3.8035081844      0.8875660649   3260.2291505000   3260.2291505000      0.1250000000
+
+
+ NUCLEAR REDUCED MATRIX ELEMENTS:
+
+
+ STATE  1  WITH STATE  1           FROM   1 TO   0
+
+
+ STATE  1  WITH STATE  2           FROM   1 TO   1
+
+          N =  1   FORM FACTOR =  1   MULT. =  1   SP.-O. =  0      MATRIX ELEMENT  -1.000000D+00
+
+ STATE  1  WITH STATE  3           FROM   2 TO   2
+
+          N =  2   FORM FACTOR =  2   MULT. =  2   SP.-O. =  0      MATRIX ELEMENT   1.000000D+00
+
+ STATE  2  WITH STATE  2           FROM   3 TO   4
+
+          N =  3   FORM FACTOR =  1   MULT. =  1   SP.-O. =  0      MATRIX ELEMENT   1.195229D+00
+          N =  4   FORM FACTOR =  2   MULT. =  2   SP.-O. =  0      MATRIX ELEMENT   1.195229D+00
+
+ STATE  2  WITH STATE  3           FROM   5 TO   7
+
+          N =  5   FORM FACTOR =  1   MULT. =  1   SP.-O. =  0      MATRIX ELEMENT  -1.603567D+00
+          N =  6   FORM FACTOR =  2   MULT. =  2   SP.-O. =  0      MATRIX ELEMENT  -1.139606D+00
+          N =  7   FORM FACTOR =  3   MULT. =  3   SP.-O. =  0      MATRIX ELEMENT  -1.254363D+00
+
+ STATE  3  WITH STATE  3           FROM   8 TO  11
+
+          N =  8   FORM FACTOR =  1   MULT. =  1   SP.-O. =  0      MATRIX ELEMENT   1.528942D+00
+          N =  9   FORM FACTOR =  2   MULT. =  2   SP.-O. =  0      MATRIX ELEMENT   1.206873D+00
+          N = 10   FORM FACTOR =  3   MULT. =  3   SP.-O. =  0      MATRIX ELEMENT   1.121936D+00
+          N = 11   FORM FACTOR =  4   MULT. =  4   SP.-O. =  0      MATRIX ELEMENT   1.346874D+00
+
+
+      CORRESPONDENCE TO MULTIPOLES:
+
+                    N =  1     L =  2     2*S =  0     2*J =  4
+                    N =  2     L =  4     2*S =  0     2*J =  8
+                    N =  3     L =  6     2*S =  0     2*J = 12
+                    N =  4     L =  8     2*S =  0     2*J = 16
+
+
+     CORRESPONDENCE TO FORM FACTORS IN THEIR COMPUTATION:
+
+          N =  1    F.F. =  3000    MULT. =   1    SP.-O. =   0    COUL =   1    SPDO =   0    COR =   0    L =   2
+          N =  2    F.F. =  5000    MULT. =   2    SP.-O. =   0    COUL =   2    SPDO =   0    COR =   0    L =   4
+          N =  3    F.F. =  7000    MULT. =   3    SP.-O. =   0    COUL =   3    SPDO =   0    COR =   0    L =   6
+          N =  4    F.F. =  9000    MULT. =   4    SP.-O. =   0    COUL =   4    SPDO =   0    COR =   0    L =   8
+
+
+     CORRESPONDENCE TO FORM FACTORS IN THEIR USE:
+
+          N =  1    ABOVE =   1    DISP. =   0    SP.-O. =   0    L =   2
+          N =  2    ABOVE =   2    DISP. =   0    SP.-O. =   0    L =   4
+          N =  3    ABOVE =   3    DISP. =   0    SP.-O. =   0    L =   6
+          N =  4    ABOVE =   4    DISP. =   0    SP.-O. =   0    L =   8
+          REQUIRED WORKING FIELD      9724
+          REQUIRED WORKING FIELD     23657  FOR J =    0.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    0.0+          3 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    0    0.0      1.7644538D-03  4.9998565D-01 I     0.49998877 1.56726733
+   2   1  2    2    2.0      2.3286401D-04  4.4506874D-03 I     0.00445678 1.51852308
+   3   1  3    4    4.0      4.5609160D-03  1.6675316D-03 I     0.00485619 0.35051595
+          REQUIRED WORKING FIELD     28275  FOR J =    2.0
+         6 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    2.0+          7 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    2    2.0     -1.2922894D-03  4.9901585D-01 I     0.49901752 1.57338600
+   2   1  2    0    0.0      8.4963567D-05  2.0163498D-03 I     0.00201814 1.52868392
+   3   1  2    2    2.0     -2.2419479D-03 -1.0289534D-03 I     0.00246679-2.71131668
+   4   1  2    4    4.0      3.3787771D-03 -3.5389937D-04 I     0.00339726-0.10436132
+   5   1  3    2    2.0      2.7489487D-03 -4.3687557D-04 I     0.00278345-0.15760653
+   6   1  3    4    4.0     -1.9252514D-03  1.6803443D-03 I     0.00255542 2.42401448
+   7   1  3    6    6.0      8.5927034D-04 -2.8253379D-03 I     0.00295311-1.27555476
+          REQUIRED WORKING FIELD     31801  FOR J =    4.0
+         6 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    4.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    4    4.0     -8.5967154D-04  5.0125009D-01 I     0.50125083 1.57251138
+   2   1  2    2    2.0      2.4773641D-03 -2.1596929D-04 I     0.00248676-0.08695721
+   3   1  2    4    4.0     -2.3204211D-03  1.3826963D-03 I     0.00270115 2.60420688
+   4   1  2    6    6.0      1.8565028D-03 -3.1544982D-03 I     0.00366025-1.03885665
+   5   1  3    0    0.0      1.4957542D-03  6.3664182D-04 I     0.00162561 0.40240638
+   6   1  3    2    2.0     -1.4296328D-03  1.2160247D-03 I     0.00187685 2.43675889
+   7   1  3    4    4.0      7.8335333D-04 -1.8896754D-03 I     0.00204561-1.17781535
+   8   1  3    6    6.0      1.4987485D-04  2.2833701D-03 I     0.00228828 1.50525278
+   9   1  3    8    8.0     -1.7562477D-03 -1.7325978D-03 I     0.00246704-2.36297311
+          REQUIRED WORKING FIELD     32035  FOR J =    6.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    6.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    6    6.0      1.4448871D-03  5.0118827D-01 I     0.50119035 1.56791341
+   2   1  2    4    4.0      1.5741898D-03 -2.2780174D-03 I     0.00276901-0.96611250
+   3   1  2    6    6.0     -9.1537146D-04  3.2133394D-03 I     0.00334118 1.84831163
+   4   1  2    8    8.0     -1.2971529D-03 -3.9109051D-03 I     0.00412041-1.89105444
+   5   1  3    2    2.0      4.1385165D-04 -1.6140286D-03 I     0.00166624-1.31979471
+   6   1  3    4    4.0      1.5048139D-04  1.6698567D-03 I     0.00167662 1.48092274
+   7   1  3    6    6.0     -7.1530371D-04 -1.9516700D-03 I     0.00207862-1.92210172
+   8   1  3    8    8.0      1.8386729D-03  1.5008631D-03 I     0.00237346 0.68458634
+   9   1  3   10   10.0     -1.9203654D-03  6.4038816D-04 I     0.00202433 2.81971728
+          REQUIRED WORKING FIELD     32047  FOR J =    8.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    8.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    8    8.0      2.3214120D-03  4.9846093D-01 I     0.49846634 1.56613920
+   2   1  2    6    6.0     -4.7735847D-04 -3.0113769D-03 I     0.00304898-1.72800658
+   3   1  2    8    8.0      2.1233142D-03  3.7327619D-03 I     0.00429441 1.05360987
+   4   1  2   10   10.0     -4.2720167D-03 -1.5510251D-03 I     0.00454487-2.79332527
+   5   1  3    4    4.0     -1.0486083D-03 -6.2461456D-04 I     0.00122054-2.60437005
+   6   1  3    6    6.0      1.1725091D-03  9.3732872D-04 I     0.00150112 0.67438795
+   7   1  3    8    8.0     -2.1120980D-03 -1.0633956D-03 I     0.00236469-2.67516626
+   8   1  3   10   10.0      2.4823843D-03 -5.5064349D-04 I     0.00254272-0.21828601
+   9   1  3   12   12.0     -1.0127111D-05  1.3652849D-03 I     0.00136532 1.57821377
+          REQUIRED WORKING FIELD     32047  FOR J =   10.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   10.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   10   10.0     -8.1863368D-04  4.9593960D-01 I     0.49594027 1.57244700
+   2   1  2    8    8.0     -2.5830374D-03 -1.8096848D-03 I     0.00315389-2.53046184
+   3   1  2   10   10.0      5.5062862D-03  7.3621320D-04 I     0.00555529 0.13291583
+   4   1  2   12   12.0     -3.8897568D-03  2.9091697D-03 I     0.00485731 2.49943351
+   5   1  3    6    6.0     -2.8627840D-04  7.1429717D-04 I     0.00076953 1.95197781
+   6   1  3    8    8.0      1.2743734D-03 -2.1396800D-04 I     0.00129221-0.16634898
+   7   1  3   10   10.0     -2.5993844D-03  1.2006575D-03 I     0.00286328 2.70888629
+   8   1  3   12   12.0      8.1217896D-04 -2.5335153D-03 I     0.00266051-1.26057285
+   9   1  3   14   14.0      3.3337627D-04  1.1539908D-04 I     0.00035278 0.33324324
+          REQUIRED WORKING FIELD     32047  FOR J =   12.0
+         9 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   12.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   12   12.0     -5.8788175D-03  4.9930933D-01 I     0.49934394 1.58256968
+   2   1  2   10   10.0     -2.9029092D-03  9.5783037D-04 I     0.00305685 2.82288537
+   3   1  2   12   12.0      4.0737384D-03 -5.9615341D-03 I     0.00722047-0.97134115
+   4   1  2   14   14.0      8.2551479D-04  5.1939531D-03 I     0.00525915 1.41317705
+   5   1  3    8    8.0      1.1257107D-03 -1.5595809D-04 I     0.00113646-0.13766558
+   6   1  3   10   10.0      4.0816235D-04 -8.5527125D-04 I     0.00094767-1.12552890
+   7   1  3   12   12.0     -6.3289794D-05  3.5739615D-03 I     0.00357452 1.58850306
+   8   1  3   14   14.0     -2.0024006D-03 -1.7310281D-03 I     0.00264690-2.42875406
+   9   1  3   16   16.0      5.5662215D-04  1.2235281D-03 I     0.00134419 1.14384847
+          REQUIRED WORKING FIELD     32047  FOR J =   14.0
+         8 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   14.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   14   14.0     -2.3199072D-03  5.0717028D-01 I     0.50717559 1.57537051
+   2   1  2   12   12.0     -4.7630513D-04  2.5561950D-03 I     0.00260019 1.75501730
+   3   1  2   14   14.0     -6.3300447D-03 -6.1124823D-03 I     0.00879954-2.37367810
+   4   1  2   16   16.0      5.3129031D-03  3.0158110D-03 I     0.00610918 0.51628469
+   5   1  3   10   10.0     -3.7227352D-04 -1.9140944D-03 I     0.00194996-1.76288889
+   6   1  3   12   12.0     -2.4101502D-04 -4.9766543D-04 I     0.00055295-2.02179816
+   7   1  3   14   14.0      4.5362021D-03  3.8398960D-04 I     0.00455243 0.08444870
+   8   1  3   16   16.0     -1.6700353D-03  7.2318982D-04 I     0.00181990 2.73293296
+   9   1  3   18   18.0      6.2802523D-03 -4.0605396D-03 I     0.00747861-0.57395086
+          REQUIRED WORKING FIELD     32047  FOR J =   16.0
+         9 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   16.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   16   16.0      9.6047991D-03  4.9869004D-01 I     0.49878252 1.55153865
+   2   1  2   14   14.0      1.9559715D-03  3.5695014D-03 I     0.00407028 1.06951476
+   3   1  2   16   16.0     -7.2396916D-03  1.1603480D-02 I     0.01367676 2.12862164
+   4   1  2   18   18.0     -1.0979864D-03 -1.7085517D-03 I     0.00203094-2.14198129
+   5   1  3   12   12.0     -3.2217728D-03  4.0001631D-05 I     0.00322202 3.12917726
+   6   1  3   14   14.0     -1.7468140D-04 -1.5517054D-03 I     0.00156151-1.68289818
+   7   1  3   16   16.0     -2.3173476D-05 -6.7137516D-03 I     0.00671379-1.57424796
+   8   1  3   18   18.0      4.1986738D-03  1.4501209D-03 I     0.00444204 0.33254947
+   9   1  3   20   20.0      1.0666425D-03 -1.5814651D-02 I     0.01585058-1.50345184
+          REQUIRED WORKING FIELD     32047  FOR J =   18.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   18.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   18   18.0      3.4101754D-03  4.8500253D-01 I     0.48501452 1.56376519
+   2   1  2   16   16.0     -9.0477950D-06  1.3062535D-03 I     0.00130628 1.57772274
+   3   1  2   18   18.0      5.4048896D-03  2.4092360D-03 I     0.00591754 0.41931501
+   4   1  2   20   20.0     -3.1947887D-02  1.7784093D-02 I     0.03656421 2.63365101
+   5   1  3   14   14.0      2.1723092D-03  1.2777253D-03 I     0.00252022 0.53168862
+   6   1  3   16   16.0      5.1891396D-04  3.7603486D-04 I     0.00064084 0.62708361
+   7   1  3   18   18.0      1.0142646D-03  5.6047443D-03 I     0.00569578 1.39176847
+   8   1  3   20   20.0      1.2281338D-02 -1.2303918D-02 I     0.01738441-0.78631660
+   9   1  3   22   22.0     -1.0508753D-02 -1.3198779D-02 I     0.01687133-2.24321060
+          REQUIRED WORKING FIELD     32047  FOR J =   20.0
+         8 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   20.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   20   20.0      5.5460580D-02  4.9151133D-01 I     0.49463043 1.45843476
+   2   1  2   18   18.0     -3.3352987D-02  1.3322862D-02 I     0.03591546 2.76156022
+   3   1  2   20   20.0     -5.1816743D-02  1.3660474D-02 I     0.05358716 2.88382699
+   4   1  2   22   22.0     -1.3731424D-02  6.5507576D-02 I     0.06693127 1.77742054
+   5   1  3   16   16.0      8.9250872D-03 -1.1977355D-02 I     0.01493701-0.93039780
+   6   1  3   18   18.0      1.5246772D-02 -6.2183127D-03 I     0.01646607-0.38725056
+   7   1  3   20   20.0      1.9401877D-02 -1.9088432D-02 I     0.02721766-0.77725488
+   8   1  3   22   22.0     -7.5643017D-03 -1.6439794D-02 I     0.01809656-2.00203531
+   9   1  3   24   24.0     -8.8336343D-03 -1.3889394D-03 I     0.00894216-2.98563642
+          REQUIRED WORKING FIELD     32047  FOR J =   22.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   22.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   22   22.0      1.7469047D-01  3.6418056D-01 I     0.40391117 1.12353570
+   2   1  2   20   20.0     -2.1942335D-02  7.0544545D-02 I     0.07387827 1.87235260
+   3   1  2   22   22.0     -9.9498598D-03  7.6512127D-02 I     0.07715637 1.70011353
+   4   1  2   24   24.0      2.0620223D-02  4.8534737D-02 I     0.05273343 1.16904855
+   5   1  3   18   18.0     -5.4096034D-03 -2.0985426D-02 I     0.02167145-1.82308295
+   6   1  3   20   20.0     -2.9638339D-03 -2.2062010D-02 I     0.02226020-1.70433786
+   7   1  3   22   22.0     -1.0860002D-02 -1.2145661D-02 I     0.01629284-2.30036808
+   8   1  3   24   24.0     -6.0773929D-03 -1.9357076D-03 I     0.00637822-2.83324231
+   9   1  3   26   26.0     -2.5643055D-03  5.0200726D-04 I     0.00261298 2.94827026
+          REQUIRED WORKING FIELD     32047  FOR J =   24.0
+         5 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   24.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   24   24.0      1.5695050D-01  1.6983889D-01 I     0.23125464 0.82481718
+   2   1  2   22   22.0      2.0999655D-02  5.3975946D-02 I     0.05791708 1.19976006
+   3   1  2   24   24.0      2.1395296D-02  3.7657687D-02 I     0.04331120 1.05412362
+   4   1  2   26   26.0      1.8657420D-02  2.1616062D-02 I     0.02855439 0.85873020
+   5   1  3   20   20.0     -1.1223098D-02 -5.7607307D-03 I     0.01261523-2.66736776
+   6   1  3   22   22.0     -7.3060833D-03 -3.8935622D-03 I     0.00827881-2.65195672
+   7   1  3   24   24.0     -3.7618914D-03 -1.6253791D-03 I     0.00409801-2.73375369
+   8   1  3   26   26.0     -1.6701367D-03 -5.4668265D-04 I     0.00175733-2.82525652
+   9   1  3   28   28.0     -7.2246427D-04 -5.1756770D-05 I     0.00072432-3.07007562
+          REQUIRED WORKING FIELD     32047  FOR J =   26.0
+         4 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   26.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   26   26.0      8.7813080D-02  7.2949769D-02 I     0.11416131 0.69320537
+   2   1  2   24   24.0      1.9273216D-02  2.3400707D-02 I     0.03031584 0.88181986
+   3   1  2   26   26.0      1.2603212D-02  1.4503559D-02 I     0.01921443 0.85538961
+   4   1  2   28   28.0      9.3966753D-03  9.2501623D-03 I     0.01318571 0.77754107
+   5   1  3   22   22.0     -3.6909950D-03 -4.7091447D-04 I     0.00372091-3.01469354
+   6   1  3   24   24.0     -2.1232738D-03 -1.0119185D-03 I     0.00235208-2.69685266
+   7   1  3   26   26.0     -1.2024188D-03 -7.8957668D-04 I     0.00143849-2.56055190
+   8   1  3   28   28.0     -5.9451914D-04 -4.0047493D-04 I     0.00071682-2.54879749
+   9   1  3   30   30.0     -2.8088705D-04 -1.5129180D-04 I     0.00031904-2.64752730
+          REQUIRED WORKING FIELD     32047  FOR J =   28.0
+         3 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   28.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   28   28.0      4.3127655D-02  3.3572783D-02 I     0.05465461 0.66146274
+   2   1  2   26   26.0      9.3156870D-03  9.9485984D-03 I     0.01362926 0.81824049
+   3   1  2   28   28.0      4.7183759D-03  6.2406637D-03 I     0.00782362 0.92342200
+   4   1  2   30   30.0      3.5681198D-03  4.2666184D-03 I     0.00556197 0.87431711
+   5   1  3   24   24.0     -1.1389845D-03 -4.6803669D-04 I     0.00123140-2.75170417
+   6   1  3   26   26.0     -7.5331815D-04 -5.8048905D-04 I     0.00095103-2.48505230
+   7   1  3   28   28.0     -4.6798682D-04 -4.3165164D-04 I     0.00063666-2.39656120
+   8   1  3   30   30.0     -2.4701915D-04 -2.3232040D-04 I     0.00033910-2.38684946
+   9   1  3   32   32.0     -1.2426276D-04 -1.0654070D-04 I     0.00016368-2.43282835
+          REQUIRED WORKING FIELD     32047  FOR J =   30.0
+         3 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   30.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   30   30.0      2.0324984D-02  1.6282551D-02 I     0.02604278 0.67541748
+   2   1  2   28   28.0      3.2133942D-03  4.5963779D-03 I     0.00560826 0.96066494
+   3   1  2   30   30.0      9.3001509D-04  2.9460050D-03 I     0.00308932 1.26501075
+   4   1  2   32   32.0      5.8963700D-04  2.0902816D-03 I     0.00217185 1.29585529
+   5   1  3   26   26.0     -4.5092822D-04 -3.5062991D-04 I     0.00057121-2.48067667
+   6   1  3   28   28.0     -3.0711056D-04 -3.1443982D-04 I     0.00043953-2.34440314
+   7   1  3   30   30.0     -1.9353846D-04 -2.2095754D-04 I     0.00029373-2.29014033
+   8   1  3   32   32.0     -1.0466257D-04 -1.2234983D-04 I     0.00016101-2.27843837
+   9   1  3   34   34.0     -5.6183860D-05 -6.0283792D-05 I     0.00008241-2.32100670
+          REQUIRED WORKING FIELD     32047  FOR J =   32.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   32.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   32   32.0      9.4041695D-03  8.1332415D-03 I     0.01243334 0.71305510
+   2   1  2   30   30.0      1.9332754D-04  2.2551636D-03 I     0.00226344 1.48527879
+   3   1  2   32   32.0     -7.9718268D-04  1.4519904D-03 I     0.00165643 2.07289262
+   4   1  2   34   34.0     -6.4347493D-04  1.0456050D-03 I     0.00122774 2.12246913
+   5   1  3   28   28.0     -1.9391509D-04 -2.0255281D-04 I     0.00028041-2.33441124
+   6   1  3   30   30.0     -1.2700568D-04 -1.6046794D-04 I     0.00020465-2.24031481
+   7   1  3   32   32.0     -7.8544602D-05 -1.0976881D-04 I     0.00013498-2.19187965
+   8   1  3   34   34.0     -4.3351217D-05 -6.1171166D-05 I     0.00007497-2.18732881
+   9   1  3   36   36.0     -2.4681362D-05 -3.1038584D-05 I     0.00003966-2.24259332
+          REQUIRED WORKING FIELD     32047  FOR J =   34.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   34.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   34   34.0      4.2792677D-03  4.0405382D-03 I     0.00588541 0.75671191
+   2   1  2   32   32.0     -9.7810650D-04  1.1281738D-03 I     0.00149314 2.28506715
+   3   1  2   34   34.0     -1.1843768D-03  7.1974517D-04 I     0.00138592 2.59553099
+   4   1  2   36   36.0     -1.0629137D-03  5.2947053D-04 I     0.00118749 2.67944117
+   5   1  3   30   30.0     -8.2935176D-05 -1.0743384D-04 I     0.00013572-2.22820755
+   6   1  3   32   32.0     -5.0996208D-05 -7.9109467D-05 I     0.00009412-2.14338609
+   7   1  3   34   34.0     -3.0521496D-05 -5.2876615D-05 I     0.00006105-2.09429819
+   8   1  3   36   36.0     -1.6484785D-05 -3.0129486D-05 I     0.00003434-2.07143442
+   9   1  3   38   38.0     -9.0273164D-06 -1.7126522D-05 I     0.00001936-2.05588480
+          REQUIRED WORKING FIELD     32047  FOR J =   36.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   36.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   36   36.0      1.9540702D-03  2.0468902D-03 I     0.00282987 0.80859343
+   2   1  2   34   34.0     -1.3087168D-03  5.6889840D-04 I     0.00142702 2.73153530
+   3   1  2   36   36.0     -1.3499204D-03  3.6279432D-04 I     0.00139782 2.87904402
+   4   1  2   38   38.0     -1.3271578D-03  2.7318674D-04 I     0.00135498 2.93858477
+   5   1  3   32   32.0     -3.3959623D-05 -5.3958741D-05 I     0.00006376-2.13252677
+   6   1  3   34   34.0     -1.8666391D-05 -3.8140243D-05 I     0.00004246-2.02593980
+   7   1  3   36   36.0     -9.6085441D-06 -2.5318257D-05 I     0.00002708-1.93351553
+   8   1  3   38   38.0     -4.1056204D-06 -1.4928642D-05 I     0.00001548-1.83917773
+   9   1  3   40   40.0     -1.4655522D-06 -9.2938611D-06 I     0.00000941-1.72719878
+          REQUIRED WORKING FIELD     32047  FOR J =   38.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   38.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   38   38.0      8.4119970D-04  9.8126524D-04 I     0.00129248 0.86210238
+   2   1  2   36   36.0     -1.4645139D-03  2.8951068D-04 I     0.00149286 2.94642519
+   3   1  2   38   38.0     -1.1506693D-03  1.7337583D-04 I     0.00116366 2.99204370
+   4   1  2   40   40.0     -9.5541770D-04  1.2281578D-04 I     0.00096328 3.01374708
+   5   1  3   34   34.0     -1.1206586D-05 -2.7276349D-05 I     0.00002949-1.96062409
+   6   1  3   36   36.0     -4.3434185D-06 -1.8048989D-05 I     0.00001856-1.80695212
+   7   1  3   38   38.0     -1.1917982D-06 -1.1444199D-05 I     0.00001151-1.67456222
+   8   1  3   40   40.0      2.8656370D-08 -6.5415162D-06 I     0.00000654-1.56641566
+   9   1  3   42   42.0      3.3153754D-07 -3.9684661D-06 I     0.00000398-1.48744688
+          REQUIRED WORKING FIELD     32047  FOR J =   40.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   40.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   40   40.0      2.9298578D-04  3.6741915D-04 I     0.00046993 0.89763320
+   2   1  2   38   38.0     -1.0084462D-03  1.2812864D-04 I     0.00101655 3.01521429
+   3   1  2   40   40.0     -5.9181980D-04  6.5872941D-05 I     0.00059547 3.03074318
+   4   1  2   42   42.0     -3.9815920D-04  4.0859579D-05 I     0.00040025 3.03932942
+   5   1  3   36   36.0     -1.3425892D-06 -1.3149271D-05 I     0.00001322-1.67254742
+   6   1  3   38   38.0      1.5942427D-07 -7.5650107D-06 I     0.00000757-1.54972555
+   7   1  3   40   40.0      4.3261491D-07 -4.2455962D-06 I     0.00000427-1.46924948
+   8   1  3   42   42.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   9   1  3   44   44.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+          REQUIRED WORKING FIELD     32047  FOR J =   42.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   42.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   42   42.0      7.7170323D-05  9.8817883D-05 I     0.00012538 0.90778910
+   2   1  2   40   40.0     -4.1230923D-04  4.2153080D-05 I     0.00041446 3.03971007
+   3   1  2   42   42.0     -1.8944806D-04  1.8063029D-05 I     0.00019031 3.04653446
+   4   1  2   44   44.0     -1.0518591D-04  9.5776029D-06 I     0.00010562 3.05078900
+   5   1  3   38   38.0      6.4454767D-07 -5.0072528D-06 I     0.00000505-1.44277749
+   6   1  3   40   40.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   7   1  3   42   42.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   8   1  3   44   44.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   9   1  3   46   46.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+          REQUIRED WORKING FIELD     32047  FOR J =   44.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   44.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   44   44.0      1.5489732D-05  1.8934317D-05 I     0.00002446 0.88512954
+   2   1  2   42   42.0     -1.0788695D-04  9.8059305D-06 I     0.00010833 3.05095091
+   3   1  2   44   44.0     -4.0436380D-05  3.5261755D-06 I     0.00004059 3.05460965
+   4   1  2   46   46.0     -1.8960740D-05  1.6044768D-06 I     0.00001903 3.05717277
+   5   1  3   40   40.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   6   1  3   42   42.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   7   1  3   44   44.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   8   1  3   46   46.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   9   1  3   48   48.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+          REQUIRED WORKING FIELD     32047  FOR J =   46.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   46.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   46   46.0      2.4589705D-06  2.6469783D-06 I     0.00000361 0.82220286
+   2   1  2   44   44.0     -1.9341345D-05  1.6337713D-06 I     0.00001941 3.05732230
+   3   1  2   46   46.0     -6.0909053D-06  5.0068555D-07 I     0.00000611 3.05957490
+   4   1  2   48   48.0     -2.4588258D-06  1.9799778D-07 I     0.00000247 3.06124069
+   5   1  3   42   42.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   6   1  3   44   44.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   7   1  3   46   46.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   8   1  3   48   48.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   9   1  3   50   50.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+          REQUIRED WORKING FIELD     32047  FOR J =   48.0
+         1 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   48.0+          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   48   48.0      3.1748806D-07  2.7758611D-07 I     0.00000042 0.71844463
+   2   1  2   46   46.0     -2.4965720D-06  2.0002744D-07 I     0.00000250 3.06164260
+   3   1  2   48   48.0     -6.7470770D-07  5.2986305D-08 I     0.00000068 3.06322127
+   4   1  2   50   50.0     -2.3832455D-07  1.8489217D-08 I     0.00000024 3.06416774
+   5   1  3   44   44.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   6   1  3   46   46.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   7   1  3   48   48.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   8   1  3   50   50.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   9   1  3   52   52.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+ MAXIMUM J-VALUE =  48.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.270D-05
+          REQUIRED WORKING FIELD     25691  FOR J =    1.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    1.0-          5 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    1    1.0      1.7063728D-04  4.9826341D-01 I     0.49826344 1.57045386
+   2   1  2    1    1.0     -9.0282047D-04 -2.6478985D-03 I     0.00279758-1.89939273
+   3   1  2    3    3.0      3.0010046D-03  1.8071195D-03 I     0.00350310 0.54201469
+   4   1  3    3    3.0     -3.3981536D-03  2.2177624D-04 I     0.00340538 3.07642133
+   5   1  3    5    5.0      2.8026534D-03 -1.9659945D-03 I     0.00342345-0.61171598
+          REQUIRED WORKING FIELD     30135  FOR J =    3.0
+         6 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    3.0-          8 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    3    3.0     -1.5255309D-03  5.0023772D-01 I     0.50024005 1.57384593
+   2   1  2    1    1.0      1.9637808D-03  1.2133990D-03 I     0.00230841 0.55346959
+   3   1  2    3    3.0     -2.5150514D-03  2.5234260D-04 I     0.00252768 3.04159433
+   4   1  2    5    5.0      2.8960607D-03 -1.9369490D-03 I     0.00348410-0.58949324
+   5   1  3    1    1.0     -2.2368564D-03  7.3776469D-05 I     0.00223807 3.10862239
+   6   1  3    3    3.0      1.6297323D-03 -1.4526796D-03 I     0.00218319-0.72802156
+   7   1  3    5    5.0     -8.2992152D-04  2.1960311D-03 I     0.00234762 1.93212352
+   8   1  3    7    7.0     -6.9426556D-04 -2.5874894D-03 I     0.00267901-1.83293819
+          REQUIRED WORKING FIELD     32015  FOR J =    5.0
+         6 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    5.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    5    5.0      2.3014496D-04  5.0160163D-01 I     0.50160169 1.57033751
+   2   1  2    3    3.0      2.2405393D-03 -1.3790987D-03 I     0.00263096-0.55175382
+   3   1  2    5    5.0     -1.8261043D-03  2.3578510D-03 I     0.00298230 2.22978034
+   4   1  2    7    7.0      4.5077309D-04 -3.8649497D-03 I     0.00389115-1.45468985
+   5   1  3    1    1.0      1.4450726D-03 -9.8133732D-04 I     0.00174678-0.59655553
+   6   1  3    3    3.0     -6.0899457D-04  1.6592217D-03 I     0.00176745 1.92256689
+   7   1  3    5    5.0      1.8260683D-05 -2.0259117D-03 I     0.00202599-1.56178301
+   8   1  3    7    7.0      1.0499417D-03  2.0569199D-03 I     0.00230939 1.09882872
+   9   1  3    9    9.0     -2.1871044D-03 -5.5498932D-04 I     0.00225642-2.89308273
+          REQUIRED WORKING FIELD     32043  FOR J =    7.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    7.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    7    7.0      2.2498446D-03  5.0008598D-01 I     0.50009104 1.56629744
+   2   1  2    5    5.0      6.7684745D-04 -2.8420579D-03 I     0.00292154-1.33699754
+   3   1  2    7    7.0      3.8405167D-04  3.7752134D-03 I     0.00379470 1.46941530
+   4   1  2    9    9.0     -2.9832807D-03 -3.1828146D-03 I     0.00436237-2.32384593
+   5   1  3    3    3.0     -5.5336519D-04 -1.3683164D-03 I     0.00147598-1.95510138
+   6   1  3    5    5.0      7.5841628D-04  1.3985734D-03 I     0.00159098 1.07390065
+   7   1  3    7    7.0     -1.4406190D-03 -1.6562307D-03 I     0.00219510-2.28668375
+   8   1  3    9    9.0      2.3835673D-03  6.0380253D-04 I     0.00245886 0.24809984
+   9   1  3   11   11.0     -1.0463400D-03  1.3826722D-03 I     0.00173396 2.21860475
+          REQUIRED WORKING FIELD     32047  FOR J =    9.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =    9.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1    9    9.0      1.3172916D-03  4.9688296D-01 I     0.49688471 1.56814522
+   2   1  2    7    7.0     -1.6496287D-03 -2.7187324D-03 I     0.00318006-2.11617445
+   3   1  2    9    9.0      4.0049657D-03  2.8413126D-03 I     0.00491048 0.61703842
+   4   1  2   11   11.0     -4.7148978D-03  6.1097711D-04 I     0.00475432 3.01272638
+   5   1  3    5    5.0     -9.3085554D-04  2.0253171D-04 I     0.00095263 2.92735573
+   6   1  3    7    7.0      1.3569109D-03  3.6851508D-04 I     0.00140606 0.26518747
+   7   1  3    9    9.0     -2.5862626D-03 -1.0335794D-04 I     0.00258833-3.10164970
+   8   1  3   11   11.0      1.9629567D-03 -1.7267831D-03 I     0.00261438-0.72147718
+   9   1  3   13   13.0      5.6968642D-04  7.1112562D-04 I     0.00091118 0.89538186
+          REQUIRED WORKING FIELD     32047  FOR J =   11.0
+         8 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   11.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   11   11.0     -3.5451932D-03  4.9656055D-01 I     0.49657320 1.57793570
+   2   1  2    9    9.0     -3.1987879D-03 -4.8961939D-04 I     0.00323604-2.98970745
+   3   1  2   11   11.0      5.8811462D-03 -2.4402724D-03 I     0.00636732-0.39331166
+   4   1  2   13   13.0     -1.9354378D-03  4.6470205D-03 I     0.00503396 1.96543694
+   5   1  3    7    7.0      5.6412759D-04  6.1124584D-04 I     0.00083178 0.82546461
+   6   1  3    9    9.0      9.2600813D-04 -6.7511325D-04 I     0.00114598-0.62996269
+   7   1  3   11   11.0     -1.8272532D-03  2.6178778D-03 I     0.00319251 2.18017219
+   8   1  3   13   13.0     -7.0057425D-04 -2.5730952D-03 I     0.00266676-1.83662185
+   9   1  3   15   15.0     -1.7495258D-04  3.8093928D-04 I     0.00041919 2.00132935
+          REQUIRED WORKING FIELD     32047  FOR J =   13.0
+         9 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   13.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   13   13.0     -5.9822225D-03  5.0357161D-01 I     0.50360715 1.58267535
+   2   1  2   11   11.0     -1.9061733D-03  2.0655778D-03 I     0.00281071 2.31608146
+   3   1  2   13   13.0     -3.3395466D-04 -8.0910498D-03 I     0.00809794-1.61204749
+   4   1  2   15   15.0      3.5788064D-03  4.5872374D-03 I     0.00581813 0.90826686
+   5   1  3    9    9.0      8.8646859D-04 -1.2325638D-03 I     0.00151824-0.94729570
+   6   1  3   11   11.0     -6.6149282D-05 -7.0860158D-04 I     0.00071168-1.66387843
+   7   1  3   13   13.0      2.4436168D-03  3.1146595D-03 I     0.00395883 0.90554525
+   8   1  3   15   15.0     -2.4235123D-03 -4.0832177D-04 I     0.00245767-2.97467680
+   9   1  3   17   17.0      3.3983870D-03  4.8511379D-04 I     0.00343284 0.14179033
+          REQUIRED WORKING FIELD     32047  FOR J =   15.0
+         8 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   15.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   15   15.0      4.3233078D-03  5.0631535D-01 I     0.50633381 1.56225777
+   2   1  2   13   13.0      8.3642482D-04  2.9354004D-03 I     0.00305224 1.29320893
+   3   1  2   15   15.0     -1.0320301D-02  1.4957520D-03 I     0.01042813 2.99766187
+   4   1  2   17   17.0      4.7688889D-03  6.7254294D-04 I     0.00481608 0.14010323
+   5   1  3   11   11.0     -2.1792596D-03 -1.5147023D-03 I     0.00265396-2.53419413
+   6   1  3   13   13.0     -1.0515148D-04 -7.4048020D-04 I     0.00074791-1.71185764
+   7   1  3   15   15.0      4.1239754D-03 -4.0524702D-03 I     0.00578184-0.77665312
+   8   1  3   17   17.0      2.6790583D-04  1.4355304D-03 I     0.00146032 1.38629381
+   9   1  3   19   19.0      5.5942305D-03 -1.0866009D-02 I     0.01222152-1.09534917
+          REQUIRED WORKING FIELD     32047  FOR J =   17.0
+         8 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   17.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   17   17.0      8.2344829D-03  4.8821645D-01 I     0.48828589 1.55393147
+   2   1  2   15   15.0      2.7786989D-03  3.6165690D-03 I     0.00456078 0.91567026
+   3   1  2   17   17.0      2.6011788D-03  1.4472788D-02 I     0.01470468 1.39296595
+   4   1  2   19   19.0     -1.5364826D-02  8.5595870D-04 I     0.01538865 3.08594120
+   5   1  3   13   13.0     -1.9439717D-03  1.6849646D-03 I     0.00257257 2.42744639
+   6   1  3   15   15.0     -6.9247747D-04 -1.6793670D-03 I     0.00181653-1.96189886
+   7   1  3   17   17.0     -4.2031222D-03 -2.8009579D-03 I     0.00505090-2.55377515
+   8   1  3   19   19.0      1.0291876D-02 -2.2584227D-03 I     0.01053675-0.21601364
+   9   1  3   21   21.0     -5.1211936D-03 -1.6840176D-02 I     0.01760165-1.86601555
+          REQUIRED WORKING FIELD     32047  FOR J =   19.0
+         8 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   19.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   19   19.0      1.3431926D-02  4.9244251D-01 I     0.49262566 1.54352696
+   2   1  2   17   17.0     -1.2851460D-02  2.2892961D-04 I     0.01285350 3.12378103
+   3   1  2   19   19.0     -1.7749429D-02 -9.1641409D-03 I     0.01997558-2.66498531
+   4   1  2   21   21.0     -3.3256927D-02  4.6580091D-02 I     0.05723398 2.19083871
+   5   1  3   15   15.0      7.2386615D-03 -3.3841635D-03 I     0.00799067-0.43732136
+   6   1  3   17   17.0      7.1525246D-03  1.4806842D-03 I     0.00730418 0.20413215
+   7   1  3   19   19.0      1.7172312D-02  2.4819469D-03 I     0.01735074 0.14353793
+   8   1  3   21   21.0      3.5780479D-03 -2.0361915D-02 I     0.02067390-1.39684965
+   9   1  3   23   23.0     -1.1815836D-02 -6.5706270D-03 I     0.01351988-2.63408851
+          REQUIRED WORKING FIELD     32047  FOR J =   21.0
+         7 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   21.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   21   21.0      1.2138460D-01  4.5256367D-01 I     0.46855960 1.30874848
+   2   1  2   19   19.0     -4.1156251D-02  4.4506262D-02 I     0.06061884 2.31710731
+   3   1  2   21   21.0     -4.8234173D-02  6.0221423D-02 I     0.07715669 2.24611449
+   4   1  2   23   23.0      8.7841860D-03  6.2957990D-02 I     0.06356784 1.43216671
+   5   1  3   17   17.0      3.9934450D-03 -1.9923010D-02 I     0.02031930-1.37297401
+   6   1  3   19   19.0      1.1715036D-02 -1.9809254D-02 I     0.02301410-1.03673023
+   7   1  3   21   21.0     -1.5383762D-03 -2.5785512D-02 I     0.02583136-1.63038618
+   8   1  3   23   23.0     -9.6344586D-03 -6.9757824D-03 I     0.01189472-2.51491066
+   9   1  3   25   25.0     -5.0395340D-03  4.5143889D-04 I     0.00505971 3.05225162
+          REQUIRED WORKING FIELD     32047  FOR J =   23.0
+         6 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   23.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   23   23.0      1.8315930D-01  2.5729154D-01 I     0.31582632 0.95214526
+   2   1  2   21   21.0      5.8168623D-03  7.0538544D-02 I     0.07077798 1.48851889
+   3   1  2   23   23.0      1.6224688D-02  5.9067730D-02 I     0.06125551 1.30272821
+   4   1  2   25   25.0      2.2197398D-02  3.3196388D-02 I     0.03993400 0.98140872
+   5   1  3   19   19.0     -1.1852725D-02 -1.4131260D-02 I     0.01844396-2.26872826
+   6   1  3   21   21.0     -1.0050638D-02 -1.1542677D-02 I     0.01530519-2.28720686
+   7   1  3   23   23.0     -7.2538545D-03 -3.7597666D-03 I     0.00817033-2.66340226
+   8   1  3   25   25.0     -3.1413376D-03 -7.2017116D-04 I     0.00322283-2.91623080
+   9   1  3   27   27.0     -1.3070397D-03  1.7759952D-04 I     0.00131905 3.00654055
+          REQUIRED WORKING FIELD     32047  FOR J =   25.0
+         5 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   25.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   25   25.0      1.2069273D-01  1.1061816D-01 I     0.16371657 0.74187144
+   2   1  2   23   23.0      2.3145500D-02  3.6320378D-02 I     0.04306836 1.00342984
+   3   1  2   25   25.0      1.7775267D-02  2.3135657D-02 I     0.02917565 0.91568187
+   4   1  2   27   27.0      1.3843439D-02  1.4034191D-02 I     0.01971292 0.79224053
+   5   1  3   21   21.0     -6.9985753D-03 -1.4448326D-03 I     0.00714616-2.93800612
+   6   1  3   23   23.0     -3.9231331D-03 -1.5844856D-03 I     0.00423102-2.75774360
+   7   1  3   25   25.0     -2.0514896D-03 -1.0684728D-03 I     0.00231306-2.66142199
+   8   1  3   27   27.0     -9.6498925D-04 -4.8272239D-04 I     0.00107899-2.67775624
+   9   1  3   29   29.0     -4.3839005D-04 -1.4079188D-04 I     0.00046044-2.83084085
+          REQUIRED WORKING FIELD     32047  FOR J =   27.0
+         4 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   27.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   27   27.0      6.2048765D-02  4.9063748D-02 I     0.07910310 0.66906217
+   2   1  2   25   25.0      1.4053226D-02  1.5114477D-02 I     0.02063833 0.82176658
+   3   1  2   27   27.0      8.0717971D-03  9.3767708D-03 I     0.01237246 0.86004891
+   4   1  2   29   29.0      5.9578600D-03  6.2208811D-03 I     0.00861368 0.80699155
+   5   1  3   23   23.0     -1.9753583D-03 -4.4288743D-04 I     0.00202440-2.92103396
+   6   1  3   25   25.0     -1.2316773D-03 -7.6215211D-04 I     0.00144841-2.58746994
+   7   1  3   27   27.0     -7.3892767D-04 -5.8852453D-04 I     0.00094466-2.46901547
+   8   1  3   29   29.0     -3.8013790D-04 -3.1153784D-04 I     0.00049149-2.45505070
+   9   1  3   31   31.0     -1.8518297D-04 -1.3245321D-04 I     0.00022768-2.52070103
+          REQUIRED WORKING FIELD     32047  FOR J =   29.0
+         3 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   29.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   29   29.0      2.9689929D-02  2.3260625D-02 I     0.03771669 0.66456875
+   2   1  2   27   27.0      5.7009781D-03  6.6947646D-03 I     0.00879324 0.86539865
+   3   1  2   29   29.0      2.4674065D-03  4.2526277D-03 I     0.00491660 1.04505728
+   4   1  2   31   31.0      1.8610613D-03  2.9710427D-03 I     0.00350580 1.01119085
+   5   1  3   25   25.0     -7.0206018D-04 -4.2728087D-04 I     0.00082186-2.59486629
+   6   1  3   27   27.0     -4.7696520D-04 -4.3248609D-04 I     0.00064385-2.40506319
+   7   1  3   29   29.0     -3.0077415D-04 -3.1058223D-04 I     0.00043235-2.34015272
+   8   1  3   31   31.0     -1.6103529D-04 -1.6960361D-04 I     0.00023388-2.33028584
+   9   1  3   33   33.0     -8.3762021D-05 -8.1643352D-05 I     0.00011697-2.36900274
+          REQUIRED WORKING FIELD     32047  FOR J =   31.0
+         3 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   31.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   31   31.0      1.3857828D-02  1.1493858D-02 I     0.01800412 0.69241997
+   2   1  2   29   29.0      1.4642890D-03  3.2034443D-03 I     0.00352224 1.14205514
+   3   1  2   31   31.0     -1.4903279D-04  2.0628914D-03 I     0.00206827 1.64291564
+   4   1  2   33   33.0     -2.3267781D-04  1.4781162D-03 I     0.00149632 1.72693020
+   5   1  3   27   27.0     -2.9495585D-04 -2.7060101D-04 I     0.00040028-2.39923137
+   6   1  3   29   29.0     -1.9805901D-04 -2.2541029D-04 I     0.00030006-2.29169551
+   7   1  3   31   31.0     -1.2378788D-04 -1.5631320D-04 I     0.00019939-2.24059228
+   8   1  3   33   33.0     -6.7623602D-05 -8.7083960D-05 I     0.00011026-2.23106368
+   9   1  3   35   35.0     -3.7478489D-05 -4.3333008D-05 I     0.00005729-2.28387422
+          REQUIRED WORKING FIELD     32047  FOR J =   33.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   33.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   33   33.0      6.3498892D-03  5.7356407D-03 I     0.00855679 0.73461674
+   2   1  2   31   31.0     -6.0322998D-04  1.5951140D-03 I     0.00170537 1.93234641
+   3   1  2   33   33.0     -1.0774684D-03  1.0220333D-03 I     0.00148509 2.38259227
+   4   1  2   35   35.0     -8.5791009D-04  7.4086175D-04 I     0.00113353 2.42927552
+   5   1  3   29   29.0     -1.2724335D-04 -1.4884754D-04 I     0.00019582-2.27810336
+   6   1  3   31   31.0     -8.0836908D-05 -1.1325333D-04 I     0.00013914-2.19070472
+   7   1  3   33   33.0     -4.9400136D-05 -7.6381389D-05 I     0.00009096-2.14488780
+   8   1  3   35   35.0     -2.7328562D-05 -4.2791432D-05 I     0.00005077-2.13914812
+   9   1  3   37   37.0     -1.5616770D-05 -2.2779815D-05 I     0.00002762-2.17176036
+          REQUIRED WORKING FIELD     32047  FOR J =   35.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   35.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   35   35.0      2.8905682D-03  2.8666011D-03 I     0.00407097 0.78123519
+   2   1  2   33   33.0     -1.1514696D-03  7.9850784D-04 I     0.00140125 2.53526373
+   3   1  2   35   35.0     -1.2753557D-03  5.0977859D-04 I     0.00137347 2.76133213
+   4   1  2   37   37.0     -1.2566203D-03  3.8176997D-04 I     0.00131333 2.84664692
+   5   1  3   31   31.0     -5.3556134D-05 -7.6354622D-05 I     0.00009326-2.18247006
+   6   1  3   33   33.0     -3.1586006D-05 -5.4934923D-05 I     0.00006337-2.09260906
+   7   1  3   35   35.0     -1.8007925D-05 -3.6620603D-05 I     0.00004081-2.02781654
+   8   1  3   37   37.0     -9.0312318D-06 -2.1319261D-05 I     0.00002315-1.97149619
+   9   1  3   39   39.0     -4.3611693D-06 -1.2828854D-05 I     0.00001355-1.89849003
+          REQUIRED WORKING FIELD     32047  FOR J =   37.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   37.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   37   37.0      1.3040880D-03  1.4451555D-03 I     0.00194657 0.83666462
+   2   1  2   35   35.0     -1.4484972D-03  4.0779287D-04 I     0.00150481 2.86716737
+   3   1  2   37   37.0     -1.3222236D-03  2.5537395D-04 I     0.00134666 2.95080209
+   4   1  2   39   39.0     -1.2120059D-03  1.8878118D-04 I     0.00122662 2.98707497
+   5   1  3   33   33.0     -2.0549003D-05 -3.8311816D-05 I     0.00004347-2.06310867
+   6   1  3   35   35.0     -9.9586735D-06 -2.6416543D-05 I     0.00002823-1.93130722
+   7   1  3   37   37.0     -4.2133881D-06 -1.7274828D-05 I     0.00001778-1.81002877
+   8   1  3   39   39.0     -1.2529059D-06 -1.0140450D-05 I     0.00001022-1.69372855
+   9   1  3   41   41.0     -8.1238016D-08 -6.3367907D-06 I     0.00000634-1.58361568
+          REQUIRED WORKING FIELD     32047  FOR J =   39.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   39.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   39   39.0      5.1425519D-04  6.2535582D-04 I     0.00080965 0.88258102
+   2   1  2   37   37.0     -1.3015105D-03  1.9841195D-04 I     0.00131655 2.99030998
+   3   1  2   39   39.0     -8.7930247D-04  1.1093179D-04 I     0.00088627 3.01609680
+   4   1  2   41   41.0     -6.5656210D-04  7.3947588D-05 I     0.00066071 3.02943682
+   5   1  3   35   35.0     -4.9555052D-06 -1.9216234D-05 I     0.00001984-1.82317871
+   6   1  3   37   37.0     -1.1931824D-06 -1.1975513D-05 I     0.00001203-1.67010376
+   7   1  3   39   39.0      1.1190180D-07 -7.2175835D-06 I     0.00000722-1.55529352
+   8   1  3   41   41.0      3.7259071D-07 -3.9231914D-06 I     0.00000394-1.47610899
+   9   1  3   43   43.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+          REQUIRED WORKING FIELD     32047  FOR J =   41.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   41.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   41   41.0      1.5585220D-04  1.9897154D-04 I     0.00025274 0.90632844
+   2   1  2   39   39.0     -6.8519530D-04  7.6675633D-05 I     0.00068947 3.03015295
+   3   1  2   41   41.0     -3.5371395D-04  3.6006412D-05 I     0.00035554 3.04014681
+   4   1  2   43   43.0     -2.1553235D-04  2.0664634D-05 I     0.00021652 3.04600765
+   5   1  3   37   37.0      2.3074762D-07 -8.5211911D-06 I     0.00000852-1.54372367
+   6   1  3   39   39.0      4.9348137D-07 -4.4333933D-06 I     0.00000446-1.45994256
+   7   1  3   41   41.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   8   1  3   43   43.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   9   1  3   45   45.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+          REQUIRED WORKING FIELD     32047  FOR J =   43.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   43.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   43   43.0      3.5688201D-05  4.5072194D-05 I     0.00005749 0.90107491
+   2   1  2   41   41.0     -2.2196363D-04  2.1230728D-05 I     0.00022298 3.04623318
+   3   1  2   43   43.0     -9.1713325D-05  8.3189353D-06 I     0.00009209 3.05113434
+   4   1  2   45   45.0     -4.6670731D-05  4.0806905D-06 I     0.00004685 3.05437870
+   5   1  3   39   39.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   6   1  3   41   41.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   7   1  3   43   43.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   8   1  3   45   45.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   9   1  3   47   47.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+          REQUIRED WORKING FIELD     32047  FOR J =   45.0
+         2 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   45.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   45   45.0      6.3412762D-06  7.3510343D-06 I     0.00000971 0.85901128
+   2   1  2   43   43.0     -4.7722695D-05  4.1660891D-06 I     0.00004790 3.05451555
+   3   1  2   45   45.0     -1.6344547D-05  1.3802676D-06 I     0.00001640 3.05734434
+   4   1  2   47   47.0     -7.0958514D-06  5.8448102D-07 I     0.00000712 3.05940878
+   5   1  3   41   41.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   6   1  3   43   43.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   7   1  3   45   45.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   8   1  3   47   47.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   9   1  3   49   49.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+          REQUIRED WORKING FIELD     32047  FOR J =   47.0
+         1 ITERATIONS.
+
+
+ CHANNEL SPIN AND PARITY =   47.0-          9 COUPLED CHANNELS AND  1 SOLUTIONS
+
+  IC  ICP N    L    J                   C MATRIX                    |C|      PHASE
+   1   1  1   47   47.0      9.0582989D-07  8.8707420D-07 I     0.00000127 0.77493748
+   2   1  2   45   45.0     -7.2212417D-06  5.9310589D-07 I     0.00000725 3.05964309
+   3   1  2   47   47.0     -2.1025468D-06  1.6880633D-07 I     0.00000211 3.06147790
+   4   1  2   49   49.0     -7.9231676D-07  6.2562319D-08 I     0.00000079 3.06279490
+   5   1  3   43   43.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   6   1  3   45   45.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   7   1  3   47   47.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   8   1  3   49   49.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+   9   1  3   51   51.0      0.0000000D+00  0.0000000D+00 I     0.00000000 0.00000000
+ MAXIMUM J-VALUE =  47.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.781D-05
+1     28 SI + 104 MEV ALPHAS, SYMMETRIC ROTATOR, NON STANDARD OBS.    ECIS06  
+
+
+ TOTAL REACTION CROSS SECTION =   1307.625640 MILLIBARNS.
+
+ ELASTIC SCATTERING ON THE TARGET STATE OF SPIN =  0.0+
+
+      ANGLE    CROSS-SECTION     C. S./RUTHER.  
+      5.000     0.29073D+05           0.8578227
+      6.000     0.14613D+05           0.8935713
+      7.000     0.58613D+04           0.6635594
+      8.000     0.15462D+04           0.2983989
+      9.000     0.16386D+03           0.0506085
+     10.000     0.20580D+03           0.0967876
+     11.000     0.58810D+03           0.4045101
+     12.000     0.77989D+03           0.7588486
+     13.000     0.68692D+03           0.9194417
+     14.000     0.43743D+03           0.7864442
+     15.000     0.19369D+03           0.4582254
+     16.000     0.49469D+02           0.1512637
+     17.000     0.12942D+02           0.0503495
+     18.000     0.40035D+02           0.1954111
+     19.000     0.78213D+02           0.4730428
+     20.000     0.94996D+02           0.7039920
+     21.000     0.84426D+02           0.7589146
+     22.000     0.58114D+02           0.6278536
+     23.000     0.31758D+02           0.4089333
+     24.000     0.15477D+02           0.2357130
+     25.000     0.10936D+02           0.1956154
+     26.000     0.13806D+02           0.2881387
+     27.000     0.18178D+02           0.4400117
+     28.000     0.20007D+02           0.5585618
+     29.000     0.18298D+02           0.5861164
+     30.000     0.14348D+02           0.5247753
+     31.000     0.10193D+02           0.4237398
+     32.000     0.73100D+01           0.3439167
+     33.000     0.61050D+01           0.3237721
+     34.000     0.61149D+01           0.3641777
+     35.000     0.65375D+01           0.4356721
+     36.000     0.67168D+01           0.4991986
+     37.000     0.63782D+01           0.5269696
+     38.000     0.56073D+01           0.5134586
+     39.000     0.46798D+01           0.4735793
+     40.000     0.38697D+01           0.4315852
+     41.000     0.33250D+01           0.4076363
+     42.000     0.30407D+01           0.4087665
+     43.000     0.29095D+01           0.4278615
+     44.000     0.28027D+01           0.4498396
+     45.000     0.26355D+01           0.4606903
+     46.000     0.23907D+01           0.4541788
+     47.000     0.21021D+01           0.4331525
+     48.000     0.18199D+01           0.4059504
+     49.000     0.15807D+01           0.3810190
+     50.000     0.13963D+01           0.3630388
+     51.000     0.12574D+01           0.3520556
+1
+                                             +       C. S./RUTHER.    
+
+        1                                1                                1                                1           
+       .*................................*................................*................................*...........
+   5.00..                                .                                .                              + .          .
+   6.00..                                .                                .                              + .          .
+   7.00..                                .                                .                          +     .          .
+   8.00..                                .                                .               +                .          .
+   9.00..                                .                      +         .                                .          .
+  10.00..                                .                                +                                .          .
+  11.00..                                .                                .                   +            .          .
+  12.00..                                .                                .                            +   .          .
+  13.00..                                .                                .                               +.          .
+  14.00..                                .                                .                             +  .          .
+  15.00..                                .                                .                     +          .          .
+  16.00..                                .                                .     +                          .          .
+  17.00..                                .                      +         .                                .          .
+  18.00..                                .                                .         +                      .          .
+  19.00..                                .                                .                     +          .          .
+  20.00..                                .                                .                           +    .          .
+  21.00..                                .                                .                            +   .          .
+  22.00..                                .                                .                         +      .          .
+  23.00..                                .                                .                   +            .          .
+  24.00..                                .                                .           +                    .          .
+  25.00..                                .                                .         +                      .          .
+  26.00..                                .                                .              +                 .          .
+  27.00..                                .                                .                    +           .          .
+  28.00..                                .                                .                        +       .          .
+  29.00..                                .                                .                        +       .          .
+  30.00..                                .                                .                       +        .          .
+  31.00..                                .                                .                    +           .          .
+  32.00..                                .                                .                 +              .          .
+  33.00..                                .                                .                +               .          .
+  34.00..                                .                                .                  +             .          .
+  35.00..                                .                                .                    +           .          .
+  36.00..                                .                                .                      +         .          .
+  37.00..                                .                                .                       +        .          .
+  38.00..                                .                                .                      +         .          .
+  39.00..                                .                                .                     +          .          .
+  40.00..                                .                                .                    +           .          .
+  41.00..                                .                                .                   +            .          .
+  42.00..                                .                                .                   +            .          .
+  43.00..                                .                                .                    +           .          .
+  44.00..                                .                                .                     +          .          .
+  45.00..                                .                                .                     +          .          .
+  46.00..                                .                                .                     +          .          .
+  47.00..                                .                                .                    +           .          .
+  48.00..                                .                                .                   +            .          .
+  49.00..                                .                                .                  +             .          .
+  50.00..                                .                                .                 +              .          .
+  51.00..                                .                                .                 +              .          .
+       .*................................*................................*................................*...........
+1     28 SI + 104 MEV ALPHAS, SYMMETRIC ROTATOR, NON STANDARD OBS.    ECIS06  
+
+
+
+ INELASTIC SCATTERING TO THE TARGET STATE  2  SPIN =  2.0+
+
+      INELASTIC CROSS SECTION =     23.988702 MILLIBARNS.
+
+      ANGLE    CROSS-SECTION    TENSOR (2,2)      TENSOR (1,1)      TENSOR (0,0)      TENSOR (-1,-1)    TENSOR (-2,-2)  
+                               CARTESIAN (2,2)   CARTESIAN (1,1)   CARTESIAN (0,0)   CARTESIAN (-1,-1) CARTESIAN (-2,-2)
+      5.000     0.66937D+02           0.0108147         0.0000001         0.9675445         0.0000001         0.0216405
+                                      0.0108148         0.0000000         0.9675447         0.0000000         0.0216405
+      6.000     0.86140D+02           0.0847154         0.0000001         0.7953411         0.0000001         0.1199433
+                                      0.0847154         0.0000000         0.7953412         0.0000000         0.1199433
+      7.000     0.10561D+03           0.1721693         0.0000001         0.6169148         0.0000001         0.2109157
+                                      0.1721694         0.0000000         0.6169149         0.0000000         0.2109157
+      8.000     0.11150D+03           0.2402270         0.0000001         0.4858064         0.0000001         0.2739664
+                                      0.2402270         0.0000000         0.4858065         0.0000000         0.2739664
+      9.000     0.97126D+02           0.2918831         0.0000001         0.3900845         0.0000001         0.3180322
+                                      0.2918832         0.0000000         0.3900846         0.0000000         0.3180323
+     10.000     0.66861D+02           0.3350723         0.0000001         0.3119640         0.0000001         0.3529636
+                                      0.3350723         0.0000000         0.3119641         0.0000000         0.3529636
+     11.000     0.33368D+02           0.3762329         0.0000001         0.2370715         0.0000001         0.3866955
+                                      0.3762330         0.0000000         0.2370715         0.0000000         0.3866955
+     12.000     0.10079D+02           0.3928385         0.0000001         0.1941770         0.0000001         0.4129843
+                                      0.3928386         0.0000000         0.1941771         0.0000000         0.4129844
+     13.000     0.37165D+01           0.0551631         0.0000001         0.7389395         0.0000001         0.2058971
+                                      0.0551631         0.0000000         0.7389397         0.0000000         0.2058972
+     14.000     0.11510D+02           0.1372270         0.0000001         0.6355246         0.0000001         0.2272481
+                                      0.1372271         0.0000000         0.6355248         0.0000000         0.2272482
+     15.000     0.24284D+02           0.2299449         0.0000001         0.4860008         0.0000001         0.2840541
+                                      0.2299449         0.0000000         0.4860009         0.0000000         0.2840542
+     16.000     0.32688D+02           0.2742245         0.0000001         0.4121339         0.0000001         0.3136414
+                                      0.2742246         0.0000000         0.4121340         0.0000000         0.3136414
+     17.000     0.32252D+02           0.3010627         0.0000001         0.3652529         0.0000001         0.3336843
+                                      0.3010627         0.0000000         0.3652529         0.0000000         0.3336844
+     18.000     0.24510D+02           0.3196048         0.0000001         0.3290149         0.0000001         0.3513801
+                                      0.3196049         0.0000000         0.3290150         0.0000000         0.3513801
+     19.000     0.14485D+02           0.3298433         0.0000001         0.2987893         0.0000001         0.3713672
+                                      0.3298434         0.0000000         0.2987894         0.0000000         0.3713673
+     20.000     0.70007D+01           0.3155628         0.0000001         0.2896469         0.0000001         0.3947902
+                                      0.3155628         0.0000000         0.2896469         0.0000000         0.3947903
+     21.000     0.42479D+01           0.2525813         0.0000001         0.3557411         0.0000001         0.3916774
+                                      0.2525814         0.0000000         0.3557412         0.0000000         0.3916775
+     22.000     0.55330D+01           0.2434589         0.0000001         0.3983071         0.0000001         0.3582338
+                                      0.2434590         0.0000000         0.3983072         0.0000000         0.3582339
+     23.000     0.85628D+01           0.2768720         0.0000001         0.3723610         0.0000001         0.3507668
+                                      0.2768721         0.0000000         0.3723611         0.0000000         0.3507668
+     24.000     0.11035D+02           0.3045967         0.0000001         0.3391835         0.0000001         0.3562197
+                                      0.3045967         0.0000000         0.3391835         0.0000000         0.3562197
+     25.000     0.11654D+02           0.3257428         0.0000001         0.3085727         0.0000001         0.3656843
+                                      0.3257429         0.0000000         0.3085727         0.0000000         0.3656844
+     26.000     0.10346D+02           0.3429024         0.0000001         0.2797901         0.0000001         0.3773073
+                                      0.3429025         0.0000000         0.2797902         0.0000000         0.3773074
+     27.000     0.79135D+01           0.3556390         0.0000001         0.2539023         0.0000001         0.3904585
+                                      0.3556391         0.0000000         0.2539024         0.0000000         0.3904585
+     28.000     0.54627D+01           0.3575008         0.0000001         0.2402190         0.0000001         0.4022800
+                                      0.3575009         0.0000000         0.2402190         0.0000000         0.4022801
+     29.000     0.38658D+01           0.3347063         0.0000001         0.2627007         0.0000001         0.4025929
+                                      0.3347064         0.0000000         0.2627007         0.0000000         0.4025929
+     30.000     0.34379D+01           0.2935067         0.0000001         0.3233644         0.0000001         0.3831288
+                                      0.2935067         0.0000000         0.3233645         0.0000000         0.3831288
+     31.000     0.39105D+01           0.2734563         0.0000001         0.3634548         0.0000001         0.3630887
+                                      0.2734564         0.0000000         0.3634549         0.0000000         0.3630888
+     32.000     0.46738D+01           0.2780554         0.0000001         0.3660856         0.0000001         0.3558589
+                                      0.2780554         0.0000000         0.3660857         0.0000000         0.3558589
+     33.000     0.51413D+01           0.2902253         0.0000001         0.3535278         0.0000001         0.3562468
+                                      0.2902253         0.0000000         0.3535278         0.0000000         0.3562468
+     34.000     0.50317D+01           0.3009484         0.0000001         0.3404604         0.0000001         0.3585910
+                                      0.3009485         0.0000000         0.3404605         0.0000000         0.3585910
+     35.000     0.44329D+01           0.3054069         0.0000001         0.3353427         0.0000001         0.3592503
+                                      0.3054069         0.0000000         0.3353427         0.0000000         0.3592504
+     36.000     0.36543D+01           0.2985183         0.0000001         0.3467246         0.0000001         0.3547570
+                                      0.2985184         0.0000000         0.3467246         0.0000000         0.3547570
+     37.000     0.30039D+01           0.2763676         0.0000001         0.3814237         0.0000001         0.3422086
+                                      0.2763676         0.0000000         0.3814238         0.0000000         0.3422086
+     38.000     0.26349D+01           0.2438652         0.0000001         0.4328597         0.0000001         0.3232750
+                                      0.2438652         0.0000000         0.4328597         0.0000000         0.3232750
+     39.000     0.25277D+01           0.2155637         0.0000001         0.4790655         0.0000001         0.3053706
+                                      0.2155637         0.0000000         0.4790656         0.0000000         0.3053707
+     40.000     0.25651D+01           0.2004782         0.0000001         0.5056420         0.0000001         0.2938796
+                                      0.2004782         0.0000000         0.5056421         0.0000000         0.2938796
+     41.000     0.26226D+01           0.1961787         0.0000001         0.5156586         0.0000001         0.2881626
+                                      0.1961787         0.0000000         0.5156587         0.0000000         0.2881626
+     42.000     0.26179D+01           0.1967489         0.0000001         0.5179739         0.0000001         0.2852770
+                                      0.1967489         0.0000000         0.5179740         0.0000000         0.2852771
+     43.000     0.25190D+01           0.1976024         0.0000001         0.5197733         0.0000001         0.2826240
+                                      0.1976025         0.0000000         0.5197734         0.0000000         0.2826241
+     44.000     0.23341D+01           0.1955897         0.0000001         0.5262219         0.0000001         0.2781883
+                                      0.1955897         0.0000000         0.5262220         0.0000000         0.2781883
+     45.000     0.21004D+01           0.1884267         0.0000001         0.5411167         0.0000001         0.2704564
+                                      0.1884267         0.0000000         0.5411168         0.0000000         0.2704564
+     46.000     0.18703D+01           0.1752127         0.0000001         0.5657567         0.0000001         0.2590304
+                                      0.1752127         0.0000000         0.5657568         0.0000000         0.2590305
+     47.000     0.16917D+01           0.1580526         0.0000001         0.5961739         0.0000001         0.2457732
+                                      0.1580527         0.0000000         0.5961740         0.0000000         0.2457733
+     48.000     0.15864D+01           0.1423651         0.0000001         0.6230058         0.0000001         0.2346289
+                                      0.1423651         0.0000000         0.6230059         0.0000000         0.2346290
+     49.000     0.15408D+01           0.1330862         0.0000001         0.6383491         0.0000001         0.2285644
+                                      0.1330863         0.0000000         0.6383492         0.0000000         0.2285645
+     50.000     0.15168D+01           0.1305409         0.0000001         0.6424908         0.0000001         0.2269681
+                                      0.1305409         0.0000000         0.6424909         0.0000000         0.2269682
+     51.000     0.14764D+01           0.1313808         0.0000001         0.6416887         0.0000001         0.2269303
+                                      0.1313809         0.0000000         0.6416888         0.0000000         0.2269303
+1
+                                             +       CROSS-SECTION    
+
+        1                                1                                1                                1           
+       .*................................*................................*................................*...........
+ *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *-
+   5.00..                                .                                .                          +     .          .
+   6.00..                                .                                .                              + .          .
+   7.00..                                .                                .                                .+         .
+   8.00..                                .                                .                                . +        .
+   9.00..                                .                                .                                +          .
+  10.00..                                .                                .                          +     .          .
+  11.00..                                .                                .                +               .          .
+  12.00..                                .                                +                                .          .
+  13.00..                                .                  +             .                                .          .
+  14.00..                                .                                . +                              .          .
+  15.00..                                .                                .            +                   .          .
+  16.00..                                .                                .                +               .          .
+  17.00..                                .                                .                +               .          .
+  18.00..                                .                                .            +                   .          .
+  19.00..                                .                                .    +                           .          .
+  20.00..                                .                           +    .                                .          .
+  21.00..                                .                    +           .                                .          .
+  22.00..                                .                        +       .                                .          .
+  23.00..                                .                              + .                                .          .
+  24.00..                                .                                .+                               .          .
+  25.00..                                .                                . +                              .          .
+  26.00..                                .                                +                                .          .
+  27.00..                                .                             +  .                                .          .
+  28.00..                                .                       +        .                                .          .
+  29.00..                                .                  +             .                                .          .
+  30.00..                                .                 +              .                                .          .
+  31.00..                                .                   +            .                                .          .
+  32.00..                                .                     +          .                                .          .
+  33.00..                                .                      +         .                                .          .
+  34.00..                                .                      +         .                                .          .
+  35.00..                                .                    +           .                                .          .
+  36.00..                                .                  +             .                                .          .
+  37.00..                                .               +                .                                .          .
+  38.00..                                .             +                  .                                .          .
+  39.00..                                .            +                   .                                .          .
+  40.00..                                .             +                  .                                .          .
+  41.00..                                .             +                  .                                .          .
+  42.00..                                .             +                  .                                .          .
+  43.00..                                .            +                   .                                .          .
+  44.00..                                .           +                    .                                .          .
+  45.00..                                .          +                     .                                .          .
+  46.00..                                .        +                       .                                .          .
+  47.00..                                .       +                        .                                .          .
+  48.00..                                .      +                         .                                .          .
+  49.00..                                .     +                          .                                .          .
+  50.00..                                .     +                          .                                .          .
+  51.00..                                .     +                          .                                .          .
+       .*................................*................................*................................*...........
+1     28 SI + 104 MEV ALPHAS, SYMMETRIC ROTATOR, NON STANDARD OBS.    ECIS06  
+
+
+
+ INELASTIC SCATTERING TO THE TARGET STATE  3  SPIN =  4.0+
+
+      INELASTIC CROSS SECTION =      2.908773 MILLIBARNS.
+
+      ANGLE    CROSS-SECTION    TENSOR (4,4)      TENSOR (2,2)      TENSOR (0,0)      TENSOR (-2,-2)    TENSOR (-4,-4)  
+                               CARTESIAN (4,4)   CARTESIAN (2,2)   CARTESIAN (0,0)   CARTESIAN (-2,-2) CARTESIAN (-4,-4)
+      5.000     0.13793D+01           0.0312100         0.2462916         0.5300370         0.1231001         0.0693612
+                                      0.0312099         0.2462916         0.5300371         0.1231002         0.0693611
+      6.000     0.17659D+01           0.1293673         0.1287885         0.4952425         0.0398035         0.2067981
+                                      0.1293673         0.1287885         0.4952426         0.0398036         0.2067980
+      7.000     0.24651D+01           0.2331557         0.0496440         0.4312064         0.0033697         0.2826240
+                                      0.2331557         0.0496441         0.4312065         0.0033697         0.2826240
+      8.000     0.32440D+01           0.2886261         0.0171317         0.3978022         0.0045377         0.2919023
+                                      0.2886260         0.0171317         0.3978023         0.0045377         0.2919022
+      9.000     0.38854D+01           0.2996126         0.0146416         0.3956379         0.0285812         0.2615266
+                                      0.2996126         0.0146416         0.3956380         0.0285812         0.2615266
+     10.000     0.42662D+01           0.2744726         0.0334166         0.4143657         0.0696536         0.2080914
+                                      0.2744726         0.0334166         0.4143659         0.0696536         0.2080913
+     11.000     0.43763D+01           0.2203098         0.0696510         0.4423306         0.1244179         0.1432906
+                                      0.2203097         0.0696510         0.4423307         0.1244180         0.1432906
+     12.000     0.42819D+01           0.1480557         0.1189181         0.4659423         0.1867762         0.0803075
+                                      0.1480556         0.1189182         0.4659424         0.1867763         0.0803075
+     13.000     0.40652D+01           0.0756453         0.1728504         0.4710851         0.2458941         0.0345249
+                                      0.0756453         0.1728505         0.4710852         0.2458942         0.0345248
+     14.000     0.37776D+01           0.0244519         0.2198514         0.4482815         0.2889583         0.0184568
+                                      0.0244518         0.2198515         0.4482815         0.2889584         0.0184568
+     15.000     0.34277D+01           0.0104983         0.2495592         0.3972570         0.3070818         0.0356036
+                                      0.0104983         0.2495593         0.3972571         0.3070819         0.0356035
+     16.000     0.30039D+01           0.0387125         0.2567589         0.3259476         0.2988647         0.0797162
+                                      0.0387125         0.2567590         0.3259476         0.2988648         0.0797162
+     17.000     0.25081D+01           0.1046479         0.2413062         0.2457738         0.2690250         0.1392470
+                                      0.1046479         0.2413062         0.2457738         0.2690251         0.1392470
+     18.000     0.19791D+01           0.1981881         0.2059539         0.1694054         0.2257528         0.2006997
+                                      0.1981881         0.2059539         0.1694054         0.2257529         0.2006997
+     19.000     0.14888D+01           0.3001400         0.1569664         0.1145784         0.1818698         0.2464453
+                                      0.3001401         0.1569664         0.1145784         0.1818698         0.2464454
+     20.000     0.11169D+01           0.3671078         0.1119912         0.1099616         0.1607582         0.2501812
+                                      0.3671078         0.1119912         0.1099616         0.1607582         0.2501812
+     21.000     0.91626D+00           0.3336517         0.1062539         0.1765642         0.1902680         0.1932621
+                                      0.3336517         0.1062539         0.1765642         0.1902680         0.1932622
+     22.000     0.88942D+00           0.2026575         0.1555261         0.2700787         0.2576275         0.1141101
+                                      0.2026575         0.1555261         0.2700788         0.2576275         0.1141101
+     23.000     0.98695D+00           0.0803252         0.2190023         0.3153008         0.3081040         0.0772676
+                                      0.0803252         0.2190024         0.3153008         0.3081040         0.0772676
+     24.000     0.11274D+01           0.0264167         0.2599071         0.3040413         0.3205421         0.0890927
+                                      0.0264167         0.2599072         0.3040413         0.3205422         0.0890927
+     25.000     0.12294D+01           0.0272078         0.2757268         0.2647110         0.3074285         0.1249258
+                                      0.0272078         0.2757269         0.2647110         0.3074286         0.1249258
+     26.000     0.12407D+01           0.0576334         0.2744909         0.2179222         0.2824991         0.1674543
+                                      0.0576334         0.2744909         0.2179222         0.2824991         0.1674543
+     27.000     0.11528D+01           0.1011419         0.2621839         0.1744704         0.2537624         0.2084413
+                                      0.1011419         0.2621840         0.1744704         0.2537625         0.2084413
+     28.000     0.99774D+00           0.1458089         0.2421240         0.1428699         0.2267387         0.2424585
+                                      0.1458089         0.2421240         0.1428699         0.2267388         0.2424585
+     29.000     0.82838D+00           0.1776402         0.2175540         0.1342182         0.2079286         0.2626589
+                                      0.1776403         0.2175540         0.1342182         0.2079286         0.2626589
+     30.000     0.69509D+00           0.1789595         0.1951124         0.1594730         0.2052024         0.2612527
+                                      0.1789595         0.1951124         0.1594730         0.2052024         0.2612527
+     31.000     0.62654D+00           0.1426760         0.1845996         0.2132387         0.2204555         0.2390301
+                                      0.1426760         0.1845996         0.2132387         0.2204556         0.2390301
+     32.000     0.62264D+00           0.0910862         0.1893115         0.2650241         0.2414115         0.2131667
+                                      0.0910862         0.1893115         0.2650241         0.2414116         0.2131666
+     33.000     0.65989D+00           0.0559677         0.2009231         0.2891375         0.2527615         0.2012101
+                                      0.0559677         0.2009231         0.2891375         0.2527616         0.2012101
+     34.000     0.70486D+00           0.0473365         0.2099408         0.2867098         0.2506748         0.2053380
+                                      0.0473365         0.2099408         0.2867098         0.2506749         0.2053380
+     35.000     0.72879D+00           0.0582234         0.2124026         0.2711327         0.2392394         0.2190019
+                                      0.0582233         0.2124026         0.2711327         0.2392395         0.2190018
+     36.000     0.71741D+00           0.0789230         0.2078203         0.2543636         0.2234252         0.2354678
+                                      0.0789230         0.2078204         0.2543636         0.2234252         0.2354678
+     37.000     0.67311D+00           0.1013927         0.1967077         0.2451782         0.2072681         0.2494532
+                                      0.1013927         0.1967078         0.2451783         0.2072682         0.2494531
+     38.000     0.61030D+00           0.1186011         0.1801396         0.2504802         0.1944171         0.2563619
+                                      0.1186011         0.1801397         0.2504803         0.1944171         0.2563618
+     39.000     0.54733D+00           0.1242488         0.1605337         0.2744254         0.1883184         0.2524736
+                                      0.1242488         0.1605338         0.2744254         0.1883185         0.2524735
+     40.000     0.49873D+00           0.1151924         0.1422134         0.3146059         0.1908250         0.2371631
+                                      0.1151924         0.1422135         0.3146060         0.1908251         0.2371631
+     41.000     0.47062D+00           0.0950655         0.1298522         0.3598667         0.2000292         0.2151863
+                                      0.0950655         0.1298523         0.3598668         0.2000292         0.2151863
+     42.000     0.46034D+00           0.0732693         0.1251696         0.3963130         0.2106444         0.1946036
+                                      0.0732693         0.1251697         0.3963130         0.2106444         0.1946036
+     43.000     0.45944D+00           0.0582516         0.1258527         0.4170715         0.2177527         0.1810713
+                                      0.0582515         0.1258528         0.4170716         0.2177528         0.1810713
+     44.000     0.45821D+00           0.0528524         0.1279454         0.4245059         0.2195664         0.1751297
+                                      0.0528524         0.1279455         0.4245060         0.2195665         0.1751297
+     45.000     0.44961D+00           0.0552800         0.1283105         0.4254446         0.2170052         0.1739595
+                                      0.0552800         0.1283106         0.4254447         0.2170053         0.1739594
+     46.000     0.43137D+00           0.0618410         0.1253406         0.4267830         0.2121832         0.1738521
+                                      0.0618409         0.1253406         0.4267831         0.2121833         0.1738520
+     47.000     0.40576D+00           0.0685921         0.1187854         0.4336529         0.2074441         0.1715254
+                                      0.0685920         0.1187855         0.4336530         0.2074442         0.1715253
+     48.000     0.37759D+00           0.0721116         0.1095746         0.4486640         0.2048621         0.1647876
+                                      0.0721116         0.1095746         0.4486641         0.2048621         0.1647876
+     49.000     0.35177D+00           0.0702534         0.0996355         0.4712274         0.2057243         0.1531593
+                                      0.0702534         0.0996355         0.4712275         0.2057243         0.1531592
+     50.000     0.33139D+00           0.0629669         0.0912917         0.4975482         0.2099825         0.1382105
+                                      0.0629669         0.0912917         0.4975483         0.2099825         0.1382105
+     51.000     0.31698D+00           0.0523737         0.0861978         0.5223196         0.2162101         0.1228987
+                                      0.0523736         0.0861979         0.5223198         0.2162102         0.1228986
+1
+                                             +       CROSS-SECTION    
+
+       1                                                 1                                                 1           
+       *.................................................*.................................................*...........
+   5.00.                                                 .                                                 .      +   .
+ *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *-
+   6.00.                                                 .           +                                     .          .
+   7.00.                                                 .                   +                             .          .
+   8.00.                                                 .                         +                       .          .
+   9.00.                                                 .                            +                    .          .
+  10.00.                                                 .                               +                 .          .
+  11.00.                                                 .                               +                 .          .
+  12.00.                                                 .                               +                 .          .
+  13.00.                                                 .                             +                   .          .
+  14.00.                                                 .                            +                    .          .
+  15.00.                                                 .                          +                      .          .
+  16.00.                                                 .                       +                         .          .
+  17.00.                                                 .                   +                             .          .
+  18.00.                                                 .              +                                  .          .
+  19.00.                                                 .        +                                        .          .
+  20.00.                                                 . +                                               .          .
+  21.00.                                               + .                                                 .          .
+  22.00.                                              +  .                                                 .          .
+  23.00.                                                 +                                                 .          .
+  24.00.                                                 .  +                                              .          .
+  25.00.                                                 .   +                                             .          .
+  26.00.                                                 .    +                                            .          .
+  27.00.                                                 .  +                                              .          .
+  28.00.                                                 +                                                 .          .
+  29.00.                                             +   .                                                 .          .
+  30.00.                                         +       .                                                 .          .
+  31.00.                                       +         .                                                 .          .
+  32.00.                                       +         .                                                 .          .
+  33.00.                                        +        .                                                 .          .
+  34.00.                                         +       .                                                 .          .
+  35.00.                                          +      .                                                 .          .
+  36.00.                                          +      .                                                 .          .
+  37.00.                                        +        .                                                 .          .
+  38.00.                                      +          .                                                 .          .
+  39.00.                                    +            .                                                 .          .
+  40.00.                                  +              .                                                 .          .
+  41.00.                                 +               .                                                 .          .
+  42.00.                                +                .                                                 .          .
+  43.00.                                +                .                                                 .          .
+  44.00.                                +                .                                                 .          .
+  45.00.                                +                .                                                 .          .
+  46.00.                               +                 .                                                 .          .
+  47.00.                             +                   .                                                 .          .
+  48.00.                            +                    .                                                 .          .
+  49.00.                          +                      .                                                 .          .
+  50.00.                         +                       .                                                 .          .
+  51.00.                        +                        .                                                 .          .
+       *.................................................*.................................................*...........
+ *** TOTAL TIME ***  0H  0MN  0S  69 MS          DIFFERENCE SINCE LAST CALL       69 MILLISECONDS.
+
+
+ *** WORKSPACE USED IN THIS COMPUTATION     32047  ***              567953 MEMORIES NOT USED.

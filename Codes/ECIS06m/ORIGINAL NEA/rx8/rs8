@@ -1,0 +1,1472 @@
+1                    E. C. I. S. CODE FOR COUPLED CHANNELS CALCULATIONS ( 2006 ) WORKING FIELD LENGTH =    600000
+
+                        TO OBTAIN THE INPUT DESCRIPTION, PUNCH 'DESCRIPTION ' IN COLUMNS 1-12 OF THE FIRST CARD.
+
+
+  1 T - ROTATIONAL MODEL-(.F.: VIBRATIONAL MODEL).         | 54 T - OUTPUT OF THE LENGTH USED IN THE WORKING FIELD.
+  2 F - SECOND ORDER VIBRATIONAL MODEL-(.F.: FIRST ORDER)  | 55 F - OUTPUT OF C-MATRIX ELEMENTS AND COMPOUND NUCLEUS
+        OR CONSTRAINED ASYMMETRIC ROTATIONAL MODEL.        |        INTERMEDIATE RESULTS.
+  3 F - ANHARMONIC VIBRATIONAL MODEL-(.F.: HARMONIC) OR    | 56 F - OUTPUT OF S-MATRIX ELEMENTS.
+        ASYMMETRIC ROTATIONAL MODEL-(.F.: SYMMETRIC).      | 57 F - OUTPUT OF PHASE-SHIFTS AT EACH E.C.I.S. ITERATION.
+  4 F - PARAMETRISED SPIN-ORBIT DEFORMATION-(.F.:STANDARD) | 58 F - OUTPUT OF THE COEFFICIENTS OF EACH FORM FACTOR
+  5 F - DIFFERENT DEFORMATION FOR EACH POTENTIAL(.F.: SAME)|        FOR ALL SETS OF EQUATIONS.
+  6 F - USE OF DEFORMATION LENGTHS.                        | 59 F - TOTAL ELASTIC REACTION CROSS-SECTIONS WRITTEN ON
+  7 F - NUCLEAR MATRIX ELEMENTS AND FORM FACTORS ON CARDS. |        FILE 58 AND TOTAL INELASTIC REACTION
+  8 F - RELATIVISTIC KINEMATICS.                           |        CROSS-SECTIONS ON FILE 59.
+  9 F - SYMMETRISED WOODS-SAXON FORM FOR NEGATIVE RADII.   | 60 F - S-MATRIX ELEMENTS WRITTEN ON FILE 60.
+ 10 F - DISPERSION RELATIONS FOR POTENTIALS.               |
+                                                           | 61 F - REDUCED NUCLEAR MATRIX ELEMENTS WRITTEN ON FILE 61.
+ 11 T - DEFORMED COULOMB POTENTIAL.                        | 62 F - POTENTIALS WRITTEN ON FILE 62.
+ 12 T - DEFORMED IMAGINARY POTENTIAL.                      | 63 F - PENETRABILITIES WRITTEN ON FILE 63.
+ 13 F - DEFORMED REAL SPIN-ORBIT/TENSOR POTENTIAL.         | 64 F - RESULTS FOR EXPERIMENTAL DATA ON FILE 64
+ 14 F - DEFORMED IMAGINARY SPIN-ORBIT/TENSOR POTENTIAL.    |        AND AT EQUIDISTANT ANGLES WRITTEN ON FILE 66.
+ 15 F - REDUCED NUCLEAR MATRIX ELEMENTS READ FROM CARDS.   | 65 F - LEGENDRE EXPANSION FOR CROSS-SECTIONS WRITTEN ON
+ 16 T - HEAVY-ION DEFINITION OF RADII AND DEFORMATIONS.    |        FILE 65.
+ 17 F - FOLDING MODEL.                                     | 66 T - NO CALCULATION AT EQUIDISTANT ANGLES.
+ 18 F - PROJECTILE-TARGET ANTISYMMETRISATION.              | 67 F - NO PLOT OF EXPERIMENTAL DATA.
+ 19 F - DEFORMED COULOMB SPIN-ORBIT POTENTIAL.             | 68 F - NO PLOT OF CROSS-SECTIONS AT EQUIDISTANT ANGLES.
+ 20 F - DISPERSION RELATIONS FOR TRANSITION FORM-FACTORS.  | 69 F - NO PLOT OF POLARISATIONS AT EQUIDISTANT ANGLES.
+                                                           |
+ 21 F - USUAL COUPLED EQUATIONS-(.F.: ITERATIONS).         | 71 F - NO DETAILED OUTPUT OF LOGICAL CONTROLS.
+ 22 F - NO USE OF PADE FOR CONVERGENCE OF THE ITERATIONS.  | 72 T - NO OUTPUT OF EXPERIMENTAL DATA AS THEY ARE READ.
+ 23 F - NO USE OF PADE WITHOUT CONVERGENCE.                | 73 F - NO OUTPUT OF EXTERNAL POTENTIALS AS THEY ARE READ.
+ 24 F - COUPLING POTENTIALS COMPUTED AT EACH ITERATION.    | 74 F - OUTPUT OF VARIATIONS IN STORAGE.
+ 25 F - COMPLETE CALCULATION UP TO THE END-(.F.: ONE ITE-  | 75 T - NO COMPLETE OUTPUT AT THE FIRST RUN OF A SEARCH.
+        RATION ONLY AS SOON AS TWO ITERATIONS ARE ENOUGH). | 76 F - LO(51) TO LO(65) ARE ALWAYS USED-(.F.: ONLY FOR
+ 26 F - INTEGRATION STABILISED FOR LONG RANGE POTENTIAL.   |        COMPLETE OUTPUT)
+ 27 F - NUMEROV'S METHOD FOR SINGLE EQUATIONS-(.F.: MODI-  | 77 T - OUTPUT OF TIME DIFFERENCES DURING THE SEARCH.
+        FIED NUMEROV'S METHOD).                            | 78 F - OUTPUT OF DIFFERENCES BETWEEN EXPERIMENTAL
+ 28 F - COMPUTATION UP TO J-CONVERGENCE-(.F.: STOP WHEN    |        AND CALCULATED VALUES.
+        ALL THE INHOMOGENEOUS TERMS ARE NEGLIGIBLE).       |
+ 29 T - NO DIAGONAL TERM IN SECOND MEMBERS.                | 81 F - HAUSER-FESHBACH CORRECTIONS TO CROSS-SECTIONS.
+ 30 F - PURE DWBA CALCULATION.                             | 82 F - SIMPLEST COMPOUND NUCLEUS FORMALISM.
+                                                           | 83 F - NO ENGELBRETCH-WEIDENMULLER TRANSFORMATION IN
+ 31 T - INPUT OF EXPERIMENTAL DATA AND CHI2 CALCULATION.   |        IN COMPOUND NUCLEUS.
+ 32 T - AUTOMATIC SEARCH ON SOME PARAMETERS.               | 84 F - UNCOUPLED LEVELS FOR COMPOUND NUCLEUS.
+ 33 T - SYMMETRISED CHI2 FOR CROSS-SECTIONS.               | 85 F - FISSION DATA IN COMPOUND NUCLEUS.
+ 34 F - NEXT CALCULATION CHANGING ENERGY AND/OR SOME       | 86 F - GAMMA EMISSION DATA IN COMPOUND NUCLEUS.
+        PARAMETERS.                                        | 87 F - NO WIDTH FLUCTUATIONS.
+ 35 T - SEARCH SAVED ON TAPE 8 IF ENDED OR LACK OF TIME.   |
+ 36 F - RESTART A SEARCH FROM TAPE 8.                      | 91 F - EQUIDISTANT ANGLES IN THE LABORATORY SYSTEM.
+                                                           | 92 F - NON STANDARD OBSERVABLES AT EQUIDISTANT ANGLES.
+ 41 F - FACTORISATION OF 1/(1-COS(THETA)) IN AMPLITUDES.   | 93 F - NO RECOIL CORRECTION FOR REACTIONS.
+ 42 F - SCHMIDT'S ORTHOGONAL. IN USUAL COUPLED EQUATIONS.  | 94 F - NON RELATIVISTIC "REDUCED MASS" FOR DIRAC EQUATION.
+ 43 F - INTERPOLATION ON TOTAL SPIN.                       | 95 F - "REDUCED ENERGY" FOR NON COULOMB INTERACTION IN
+ 44 T - COULOMB CORRECTIONS.                               |        RELATIVISTIC SCHROEDINGER EQUATION OR USE OF REST
+ 45 F - ANGULAR MOMENTUM LIMIT FOR COULOMB CORRECTIONS.    |        MASS IN DIRAC EQUATION.
+ 46 F - RESTRICTED COULOMB CORRECTIONS.                    | 96 F - "REDUCED MASS" FOR COULOMB INTERACTION IN
+ 47 F - NO RECOIL CORRECTION FOR BOUND STATES.             |        RELATIVISTIC SCHROEDINGER EQUATION.
+                                                           | 97 F - SAME REDUCED MASS FOR ALL THE STATES.
+ 51 F - OUTPUT OF POTENTIALS.                              | 98 F - Q ADDED TO THE MASS OF RESIDUAL NUCLEUS.
+ 52 T - OUTPUT OF REDUCED NUCLEAR MATRIX ELEMENTS.         | 99 F - SCHROEDINGER EQUIVALENT TO DIRAC EQUATION.
+ 53 T - OUTPUT OF THE NUMBER OF ITERATIONS.                |100 F - COMPLETE DIRAC EQUATION.
+1
+          **********************************************************************************
+          *                                                                                *
+          *        28SI + 16O  56.MEV  G.S. , 1.78 MEV.   HEAVY IONS OPTION    ECIS06      *
+          *                                                                                *
+          **********************************************************************************
+
+ MAXIMUM NUMBER OF J   110  (MIN  0) STOP WHEN MAXIMUM S-MATRIX ELEMENT IS LESS THAN        0.1000D-04
+
+ PLOT CONDITIONS FOR CROSS-SECTIONS    5    4     FOR POLARISATIONS    1    1
+
+          ITERATION METHOD:  MAXIMUM NUMBER OF ITERATIONS        20
+          CONVERGENCE CRITERION:     1.0000D-05 FOR S-MATRIX     1.0000D-05 FOR POTENTIALS AND FUNCTIONS.
+
+
+ SYMMETRIC ROTATIONAL MODEL.
+
+
+ TARGET              MASS =  28.00000           PRODUCT OF CHARGES =  112.           AT**1/3 =   3.036589D+00
+ INCIDENT PARTICLE   MASS =  16.00000      SPIN = 0.0   AP**1/3 =   2.519842D+00
+          ENERGY(LAB) =   5.600000D+01 MEV          ENERGY(C. M.) =   3.563636D+01 MEV.
+
+ N =  1 -   SPIN = 0.0  EXCITATION ENERGY =  0.0000 MEV          POTENTIAL    1      GROUND STATE BAND.
+ N =  2 -   SPIN = 2.0  EXCITATION ENERGY =  1.7800 MEV          POTENTIAL    1      GROUND STATE BAND.
+
+          MULTIPOLE EXPANSION UP TO IQMAX =  2                    K =   0.00 BAND.
+
+ BETA(I,J) FOR  L   K         V         W        VS        WS       VSO       WSO      COUL S.O. COUL
+         1      2   0    -0.22300  -0.22300  -0.22300  -0.22300  -0.22300  -0.22300  -0.22300  -0.22300
+
+          AFTER HEAVY ION CORRECTION I =  7
+
+
+ BETA(I,J) FOR  L   K         V         W        VS        WS       VSO       WSO      COUL S.O. COUL
+         1      2   0    -0.12187  -0.12187  -0.12187  -0.12187  -0.12187  -0.12187  -0.06660  -0.06660
+
+
+ OPTICAL POTENTIALS  **  1 **     REDUCED RADIUS MULTIPLIED BY     5.556431D+00
+
+      DEFORMED  VOLUME/SCALAR REAL POTENTIAL
+ DEPTH   50.000000 MEV   RADIUS  6.917757 FERMI (REDUCED VALUE 1.245000)   DIFFUSENESS 0.539000 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  VOLUME/SCALAR IMAGINARY POTENTIAL
+ DEPTH    5.250000 MEV   RADIUS  6.917757 FERMI (REDUCED VALUE 1.245000)   DIFFUSENESS 0.539000 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  SURFACE/VECTOR REAL POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  SURFACE/VECTOR IMAGINARY POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+  NOT DEFORMED  REAL SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+  NOT DEFORMED  IMAGINARY SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+      DEFORMED  COULOMB POTENTIAL
+  CHARGE PRODUCT   112.  RADIUS  6.917757 FERMI (REDUCED VALUE 1.245000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+
+  NOT DEFORMED  SPIN-ORBIT COULOMB POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+              THIRD CHARGE PARAMETER*********
+
+ INTEGRATION STEP SIZE = 0.12500          MATCHING RADIUS =  13.750 FERMI
+
+       1 SOLUTIONS         4 COUPLED EQUATIONS         4 INDEPENDENT AMPLITUDES.
+
+
+ STORAGE OF COULOMB CORRECTIONS:
+ I = 1       3 FOR J = 1     4 FOR J = 2
+ I = 2       4 FOR J = 1     5 FOR J = 2
+
+
+         2  EXPERIMENTAL ANGULAR DISTRIBUTIONS.
+
+
+
+         3 PARAMETERS IN SEARCH
+         4 RESULTS STORED
+        12 RUNS    STARTING SCALE     50.00
+            MULTIPLICATION FACTOR      1.00
+
+         1         1          0.01000000
+         2         5          0.00100000
+         3      2001          0.00010000
+         115 COULOMB PHASES AND INDEFINITE INTEGRALS
+          65 COULOMB FUNCTIONS AND FINITE INTEGRALS.
+
+ LEVEL       WAVE NUMBER  COULOMB PARAMETER   REDUCED MASS       REDUCED ENERGY     STEP SIZE
+     1      4.1665630260      9.4281041860   9484.3029832727   9484.3029832727      0.1250000000
+     2      4.0611723435      9.6727710581   9484.3029832727   9484.3029832727      0.1250000000
+ INTEGRALS WITH REGULAR FUNCTIONS: (L+1)       DIRECT:      BACKWARDS RECURRENCE:
+                                     1   -0.3575028668D-02   -0.3575028668D-02
+                                     2   -0.3588635232D-02   -0.3588635233D-02
+ MAXIMUM J-VALUE = 108.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.170D-02
+ MAXIMUM J-VALUE = 109.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.165D-02
+ *** TOTAL TIME ***  0H  0MN  0S  29 MS          DIFFERENCE SINCE LAST CALL       29 MILLISECONDS.
+
+ RUN   1   MAX =  12   ***** CHI2 =  0.1494995398D+05 *****     W(1) =     50.00     W(2) = 1.00     W(3) =   0.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        8.323782D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        6.626172D+03
+
+ *** VARIABLES
+
+   1    5.000000D+01   2    5.250000D+00   3   -1.218695D-01
+ *** TOTAL TIME ***  0H  0MN  0S  49 MS          DIFFERENCE SINCE LAST CALL       20 MILLISECONDS.
+
+ RUN   2   MAX =  12   ***** CHI2 =  0.1682859766D+05 *****     W(1) =     50.00     W(2) = 1.00     W(3) =  50.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        1.054511D+04
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        6.283491D+03
+
+ *** VARIABLES
+
+   1    5.050000D+01   2    5.250000D+00   3   -1.218695D-01
+ *** TOTAL TIME ***  0H  0MN  0S  60 MS          DIFFERENCE SINCE LAST CALL       11 MILLISECONDS.
+
+ RUN   3   MAX =  12   ***** CHI2 =  0.1584832459D+05 *****     W(1) =     50.00     W(2) = 1.00     W(3) =   5.25000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        8.807252D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        7.041073D+03
+
+ *** VARIABLES
+
+   1    5.000000D+01   2    5.300000D+00   3   -1.218695D-01
+ *** TOTAL TIME ***  0H  0MN  0S  80 MS          DIFFERENCE SINCE LAST CALL       20 MILLISECONDS.
+
+ RUN   4   MAX =  12   ***** CHI2 =  0.1589634999D+05 *****     W(1) =     50.00     W(2) = 1.00     W(3) =  -0.12187
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        8.473602D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        7.422748D+03
+
+ *** VARIABLES
+
+   1    5.000000D+01   2    5.250000D+00   3   -1.168695D-01
+ *** TOTAL TIME ***  0H  0MN  0S 100 MS          DIFFERENCE SINCE LAST CALL       20 MILLISECONDS.
+
+ RUN   5   MAX =  12   ***** CHI2 =  0.1311912212D+05 *****     W(1) =    100.00     W(2) = 1.00     W(3) =   0.13213
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        7.466277D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        5.652845D+03
+
+ *** VARIABLES
+
+   1    4.991823D+01   2    5.150000D+00   3   -1.241663D-01
+ *** TOTAL TIME ***  0H  0MN  0S 119 MS          DIFFERENCE SINCE LAST CALL       19 MILLISECONDS.
+
+ RUN   6   MAX =  12   ***** CHI2 =  0.9980575998D+04 *****     W(1) =    200.00     W(2) = 1.00     W(3) =   0.30621
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        5.977332D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        4.003244D+03
+
+ *** VARIABLES
+
+   1    4.973473D+01   2    4.950000D+00   3   -1.304798D-01
+ *** TOTAL TIME ***  0H  0MN  0S 139 MS          DIFFERENCE SINCE LAST CALL       20 MILLISECONDS.
+
+ RUN   7   MAX =  12   ***** CHI2 =  0.6190708016D+05 *****     W(1) =    400.00     W(2) = 1.00     W(3) =   0.76695
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        5.930777D+04
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.599309D+03
+
+ *** VARIABLES
+
+   1    4.912881D+01   2    4.550000D+00   3   -1.437470D-01
+ *** TOTAL TIME ***  0H  0MN  0S 160 MS          DIFFERENCE SINCE LAST CALL       21 MILLISECONDS.
+
+ RUN   8   MAX =  12   ***** CHI2 =  0.1049327676D+05 *****     W(1) =    400.00     W(2) = 1.00     W(3) =   0.50000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        7.474327D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        3.018950D+03
+
+ *** VARIABLES
+
+   1    4.943177D+01   2    4.750000D+00   3   -1.371134D-01
+ *** TOTAL TIME ***  0H  0MN  0S 180 MS          DIFFERENCE SINCE LAST CALL       20 MILLISECONDS.
+
+ RUN   9   MAX =  12   ***** CHI2 =  0.7924882099D+04 *****     W(1) =    200.00     W(2) = 1.00     W(3) =   0.57648
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        5.058778D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.866105D+03
+
+ *** VARIABLES
+
+   1    4.976697D+01   2    4.750000D+00   3   -1.382378D-01
+ *** TOTAL TIME ***  0H  0MN  0S 199 MS          DIFFERENCE SINCE LAST CALL       19 MILLISECONDS.
+
+ RUN  10   MAX =  12   ***** CHI2 =  0.5601859960D+04 *****     W(1) =    183.77     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.961303D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.640557D+03
+
+ *** VARIABLES
+
+   1    4.992677D+01   2    4.566230D+00   3   -1.428362D-01
+ *** TOTAL TIME ***  0H  0MN  0S 219 MS          DIFFERENCE SINCE LAST CALL       20 MILLISECONDS.
+
+ RUN  11   MAX =  12   ***** CHI2 =  0.5541159800D+04 *****     W(1) =     84.69     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.699301D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.841859D+03
+
+ *** VARIABLES
+
+   1    4.998393D+01   2    4.481544D+00   3   -1.417853D-01
+ *** TOTAL TIME ***  0H  0MN  0S 240 MS          DIFFERENCE SINCE LAST CALL       21 MILLISECONDS.
+
+ RUN  12   MAX =  12   ***** CHI2 =  0.5171294581D+04 *****     W(1) =     82.88     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.536563D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.634732D+03
+
+ *** VARIABLES
+
+   1    5.005539D+01   2    4.564427D+00   3   -1.453031D-01
+
+
+
+ OUTPUT ON TAPE  8 OF DW FROM DW(1) TO DW(  5143)
+
+
+
+
+ RUN  12   MAX =  12   ***** CHI2 =  0.5171294581D+04 *****     KE = 3     W(1) =     82.8832
+
+
+ STANDARD ERRORS (VARIANCE AT BEST FIT EQUAL TO DEGREE OF FREEDOM:    84.RENORMALISATION FACTOR   0.746241D+01 )
+   1.497115D-01   7.075526D-02   4.568544D-03
+
+ ERROR ENHANCEMENTS (MULTI/SINGLE VARIABLE ERROR)
+   1.492892D+00   1.026230D+00   1.518498D+00
+
+ ERROR CORRELATION MATRIX:
+   1.000000D+00
+  -6.871062D-02   1.000000D+00
+   7.385287D-01  -1.949480D-01   1.000000D+00
+
+
+ SEARCH ENDED BY NUMBER OF EVALUATIONS.
+1
+ ******* FINAL RESULTS *******
+
+ **** FIRST CONTROL CARD ****  1  1 1 1 1 1 1 1 1 1 2  2 2 2 2 2 2 2 2 2 3  3 3 3 3 3 3 3 3 3 4  4 4 4 4 4 4 4 4 4 5
+             1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0
+             T F F F F F F F F F  T T F F F T F F F F  F F F F F F F F T F  T T T F T F F F F F  F F F T F F F F F F
+
+ *** SECOND CONTROL CARD ****  1  1 1 1 1 1 1 1 1 1 2  2 2 2 2 2 2 2 2 2 3  3 3 3 3 3 3 3 3 3 4  4 4 4 4 4 4 4 4 4 5
+             1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0
+             F T T T F F F F F F  F F F F F T F F F F  F T F F T F T F F F  F F F F F F F F F F  F F F F F F F F F F
+
+
+ OPTICAL POTENTIALS  **  1 **     REDUCED RADIUS MULTIPLIED BY     0.555643D+01
+
+ VOLUME/SCALAR REAL POTENTIAL
+ DEPTH   50.055391 MEV   RADIUS  6.917757 FERMI (REDUCED VALUE 1.245000)   DIFFUSENESS 0.539000 FERMI AT THE POWER (1+ 0.000000)
+ VOLUME/SCALAR IMAGINARY POTENTIAL
+ DEPTH    4.564427 MEV   RADIUS  6.917757 FERMI (REDUCED VALUE 1.245000)   DIFFUSENESS 0.539000 FERMI AT THE POWER (1+ 0.000000)
+ SURFACE/VECTOR REAL POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ SURFACE/VECTOR IMAGINARY POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ REAL SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ IMAGINARY SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ COULOMB POTENTIAL
+  CHARGE PRODUCT   112.  RADIUS  6.917757 FERMI (REDUCED VALUE 1.245000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ SPIN-ORBIT COULOMB POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+              THIRD CHARGE PARAMETER 0.000000
+
+ BETA(I,J) FOR  L   K         V         W        VS        WS       VSO       WSO      COUL S.O. COUL
+         1      2   0    -0.14530  -0.14530  -0.14530  -0.14530  -0.14530  -0.14530  -0.07941  -0.07941
+
+          WITHOUT HEAVY ION CORRECTION:
+
+         1      2   0    -0.26588  -0.26588  -0.26588  -0.26588  -0.26588  -0.26588  -0.26588  -0.26588
+
+
+ NUCLEAR REDUCED MATRIX ELEMENTS:
+
+
+ STATE  1  WITH STATE  1           FROM   1 TO   0
+
+
+ STATE  1  WITH STATE  2           FROM   1 TO   1
+
+          N =  1   FORM FACTOR =  1   MULT. =  1   SP.-O. =  0      MATRIX ELEMENT  -1.000000D+00
+
+ STATE  2  WITH STATE  2           FROM   2 TO   2
+
+          N =  2   FORM FACTOR =  1   MULT. =  1   SP.-O. =  0      MATRIX ELEMENT   1.195229D+00
+
+
+      CORRESPONDENCE TO MULTIPOLES:
+
+                    N =  1     L =  2     2*S =  0     2*J =  4
+
+
+     CORRESPONDENCE TO FORM FACTORS IN THEIR COMPUTATION:
+
+          N =  1    F.F. =  3000    MULT. =   1    SP.-O. =   0    COUL =   1    SPDO =   0    COR =   0    L =   2
+
+
+     CORRESPONDENCE TO FORM FACTORS IN THEIR USE:
+
+          N =  1    ABOVE =   1    DISP. =   0    SP.-O. =   0    L =   2
+          REQUIRED WORKING FIELD     18745
+          REQUIRED WORKING FIELD     16961  FOR J =    0.0
+         5 ITERATIONS.
+          REQUIRED WORKING FIELD     18521  FOR J =    2.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    4.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    6.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    8.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   10.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   12.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   14.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   16.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   18.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   20.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   22.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   24.0
+         8 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   26.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   28.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   30.0
+         5 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   32.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   34.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   36.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   38.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   40.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   42.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   44.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   46.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   48.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   50.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   52.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   54.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   56.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   58.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD      7751  FOR J =   60.0
+          REQUIRED WORKING FIELD      7751  FOR J =   62.0
+          REQUIRED WORKING FIELD      7751  FOR J =   64.0
+          REQUIRED WORKING FIELD      7751  FOR J =   66.0
+          REQUIRED WORKING FIELD      7751  FOR J =   68.0
+          REQUIRED WORKING FIELD      7751  FOR J =   70.0
+          REQUIRED WORKING FIELD      7751  FOR J =   72.0
+          REQUIRED WORKING FIELD      7751  FOR J =   74.0
+          REQUIRED WORKING FIELD      7751  FOR J =   76.0
+          REQUIRED WORKING FIELD      7751  FOR J =   78.0
+          REQUIRED WORKING FIELD      7751  FOR J =   80.0
+          REQUIRED WORKING FIELD      7751  FOR J =   82.0
+          REQUIRED WORKING FIELD      7751  FOR J =   84.0
+          REQUIRED WORKING FIELD      7751  FOR J =   86.0
+          REQUIRED WORKING FIELD      7751  FOR J =   88.0
+          REQUIRED WORKING FIELD      7751  FOR J =   90.0
+          REQUIRED WORKING FIELD      7751  FOR J =   92.0
+          REQUIRED WORKING FIELD      7751  FOR J =   94.0
+          REQUIRED WORKING FIELD      7751  FOR J =   96.0
+          REQUIRED WORKING FIELD      7751  FOR J =   98.0
+          REQUIRED WORKING FIELD      7751  FOR J =  100.0
+          REQUIRED WORKING FIELD      7751  FOR J =  102.0
+          REQUIRED WORKING FIELD      7751  FOR J =  104.0
+          REQUIRED WORKING FIELD      7751  FOR J =  106.0
+          REQUIRED WORKING FIELD      7751  FOR J =  108.0
+ MAXIMUM J-VALUE = 108.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.202D-02
+          REQUIRED WORKING FIELD     17853  FOR J =    1.0
+         5 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    3.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    5.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    7.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    9.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   11.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   13.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   15.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   17.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   19.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   21.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   23.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   25.0
+         8 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   27.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   29.0
+         5 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   31.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   33.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   35.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   37.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   39.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   41.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   43.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   45.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   47.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   49.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   51.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   53.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   55.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   57.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   59.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD      7751  FOR J =   61.0
+          REQUIRED WORKING FIELD      7751  FOR J =   63.0
+          REQUIRED WORKING FIELD      7751  FOR J =   65.0
+          REQUIRED WORKING FIELD      7751  FOR J =   67.0
+          REQUIRED WORKING FIELD      7751  FOR J =   69.0
+          REQUIRED WORKING FIELD      7751  FOR J =   71.0
+          REQUIRED WORKING FIELD      7751  FOR J =   73.0
+          REQUIRED WORKING FIELD      7751  FOR J =   75.0
+          REQUIRED WORKING FIELD      7751  FOR J =   77.0
+          REQUIRED WORKING FIELD      7751  FOR J =   79.0
+          REQUIRED WORKING FIELD      7751  FOR J =   81.0
+          REQUIRED WORKING FIELD      7751  FOR J =   83.0
+          REQUIRED WORKING FIELD      7751  FOR J =   85.0
+          REQUIRED WORKING FIELD      7751  FOR J =   87.0
+          REQUIRED WORKING FIELD      7751  FOR J =   89.0
+          REQUIRED WORKING FIELD      7751  FOR J =   91.0
+          REQUIRED WORKING FIELD      7751  FOR J =   93.0
+          REQUIRED WORKING FIELD      7751  FOR J =   95.0
+          REQUIRED WORKING FIELD      7751  FOR J =   97.0
+          REQUIRED WORKING FIELD      7751  FOR J =   99.0
+          REQUIRED WORKING FIELD      7751  FOR J =  101.0
+          REQUIRED WORKING FIELD      7751  FOR J =  103.0
+          REQUIRED WORKING FIELD      7751  FOR J =  105.0
+          REQUIRED WORKING FIELD      7751  FOR J =  107.0
+          REQUIRED WORKING FIELD      7751  FOR J =  109.0
+ MAXIMUM J-VALUE = 109.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.196D-02
+1         28SI + 16O  56.MEV  G.S. , 1.78 MEV.   HEAVY IONS OPTION    ECIS06  
+
+
+
+
+                              **********   STATE    1    **********
+
+
+
+
+                                             C. S./RUTHER.    
+
+          ANGLE          CALC. VAL.           EXP. VAL.          EXP. ERROR          COR. ERROR             CHI2
+
+           8.640         0.10179D+01         0.10210D+01         0.61300D-01         0.61206D-01         0.25956D-02
+          10.990         0.10055D+01         0.10078D+01         0.60500D-01         0.60432D-01         0.14210D-02
+          13.350         0.10582D+01         0.99330D+00         0.59600D-01         0.61515D-01         0.11115D+01
+          15.690         0.89308D+00         0.93810D+00         0.56300D-01         0.54933D-01         0.67158D+00
+          20.390         0.11036D+01         0.98640D+00         0.59200D-01         0.62617D-01         0.35013D+01
+          22.730         0.12655D+01         0.11520D+01         0.69100D-01         0.72425D-01         0.24578D+01
+          25.060         0.11907D+01         0.11851D+01         0.71100D-01         0.71269D-01         0.62480D-02
+          27.390         0.10785D+01         0.10427D+01         0.62600D-01         0.63665D-01         0.31575D+00
+          29.720         0.84734D+00         0.83720D+00         0.50200D-01         0.50503D-01         0.40327D-01
+          32.040         0.67975D+00         0.63970D+00         0.38400D-01         0.39584D-01         0.10237D+01
+          34.360         0.51253D+00         0.49910D+00         0.29900D-01         0.30300D-01         0.19657D+00
+          36.670         0.34951D+00         0.32810D+00         0.19700D-01         0.20332D-01         0.11084D+01
+          38.980         0.28249D+00         0.32230D+00         0.19300D-01         0.18069D-01         0.48554D+01
+          41.270         0.19561D+00         0.24850D+00         0.14900D-01         0.13220D-01         0.16004D+02
+          43.560         0.12392D+00         0.15450D+00         0.93000D-02         0.83291D-02         0.13476D+02
+          45.080         0.11126D+00         0.14820D+00         0.89000D-02         0.77115D-02         0.22943D+02
+          48.120         0.71936D-01         0.90100D-01         0.54000D-02         0.48251D-02         0.14171D+02
+          50.380         0.41131D-01         0.88400D-01         0.53000D-02         0.36152D-02         0.17096D+03
+          52.640         0.37979D-01         0.53600D-01         0.32000D-02         0.26936D-02         0.33632D+02
+          55.630         0.21495D-01         0.31400D-01         0.19000D-02         0.15720D-02         0.39696D+02
+          57.110         0.13171D-01         0.17800D-01         0.11000D-02         0.94623D-03         0.23929D+02
+          58.600         0.11829D-01         0.19200D-01         0.12000D-02         0.94191D-03         0.61234D+02
+          61.550         0.11389D-01         0.13800D-01         0.83000D-03         0.75403D-03         0.10222D+02
+          64.480         0.32674D-02         0.34700D-02         0.21000D-03         0.20378D-03         0.98818D+00
+          67.390         0.46293D-02         0.56100D-02         0.34000D-03         0.30886D-03         0.10082D+02
+          70.270         0.28426D-02         0.35100D-02         0.21000D-03         0.18898D-03         0.12472D+02
+          71.700         0.89163D-03         0.69500D-03         0.42000D-04         0.47572D-04         0.17085D+02
+          73.130         0.43679D-03         0.44400D-03         0.27000D-04         0.26780D-04         0.72548D-01
+          74.550         0.13155D-02         0.11200D-02         0.67000D-04         0.72612D-04         0.72469D+01
+          75.960         0.21026D-02         0.28300D-02         0.17000D-03         0.14653D-03         0.24638D+02
+          77.370         0.18749D-02         0.22100D-02         0.13000D-03         0.11974D-03         0.78299D+01
+          78.760         0.92420D-03         0.19100D-02         0.11000D-03         0.76517D-04         0.16598D+03
+          80.150         0.12463D-03         0.49800D-03         0.30000D-04         0.15008D-04         0.61892D+03
+          81.540         0.85884D-04         0.30400D-03         0.18000D-04         0.95673D-05         0.51975D+03
+          82.910         0.63794D-03         0.57200D-03         0.34000D-04         0.35906D-04         0.33724D+01
+          84.280         0.11169D-02         0.12300D-02         0.74000D-04         0.70515D-04         0.25730D+01
+          85.640         0.10862D-02         0.17600D-02         0.11000D-03         0.86416D-04         0.60793D+02
+          86.990         0.66893D-03         0.12600D-02         0.76000D-04         0.55376D-04         0.11393D+03
+          88.330         0.25005D-03         0.45200D-03         0.27000D-04         0.20082D-04         0.10112D+03
+          89.660         0.13054D-03         0.76000D-04         0.50000D-05         0.65529D-05         0.69269D+02
+          90.990         0.33993D-03         0.36000D-03         0.22000D-04         0.21378D-04         0.88175D+00
+          92.300         0.63214D-03         0.11300D-02         0.68000D-04         0.50860D-04         0.95820D+02
+          93.610         0.75539D-03         0.16200D-02         0.97000D-04         0.66237D-04         0.17039D+03
+          94.910         0.66770D-03         0.12400D-02         0.74000D-04         0.54301D-04         0.11108D+03
+          96.190         0.48310D-03         0.45900D-03         0.28000D-04         0.28726D-04         0.70371D+00
+
+
+ WEIGHT IN THE CHI2            0.10000D+01
+ EXPERIMENTAL NORMALISATION    0.10000D+01
+ NORMALISATION ERROR           0.00000D+00
+ CALCULATED NORMALISATION      0.10000D+01
+
+ ***** CHI2 =   0.253656D+04   *****
+
+1
+                                             +       C. S./RUTHER.    
+
+                                             +    CALCULATED VALUE
+                                             *    EXPERIMENTAL VALUE
+
+       1                   1                   1                   1                   1                   1           
+       *...................*...................*...................*...................*...................*...........
+   8.64.                   .                   .                   .                   .                   *          .
+  10.99.                   .                   .                   .                   .                   *          .
+  13.35.                   .                   .                   .                   .                   *          .
+  15.69.                   .                   .                   .                   .                  *.          .
+  20.39.                   .                   .                   .                   .                   *+         .
+  22.73.                   .                   .                   .                   .                   .*+        .
+  25.06.                   .                   .                   .                   .                   .*+        .
+  27.39.                   .                   .                   .                   .                   *+         .
+  29.72.                   .                   .                   .                   .                 *+.          .
+  32.04.                   .                   .                   .                   .               *+  .          .
+  34.36.                   .                   .                   .                   .             *     .          .
+  36.67.                   .                   .                   .                   .         *+        .          .
+  38.98.                   .                   .                   .                   .        +*         .          .
+  41.27.                   .                   .                   .                   .     + *           .          .
+  43.56.                   .                   .                   .                   . + *               .          .
+  45.08.                   .                   .                   .                   .+ *                .          .
+  48.12.                   .                   .                   .                + *.                   .          .
+  50.38.                   .                   .                   .           +      *.                   .          .
+  52.64.                   .                   .                   .           +  *    .                   .          .
+  55.63.                   .                   .                   .      +  *         .                   .          .
+  57.11.                   .                   .                   . +  *              .                   .          .
+  58.60.                   .                   .                   .+    *             .                   .          .
+  61.55.                   .                   .                   .+ *                .                   .          .
+  64.48.                   .                   .         +*        .                   .                   .          .
+  67.39.                   .                   .            + *    .                   .                   .          .
+  70.27.                   .                   .        + *        .                   .                   .          .
+  71.70.                   .                * +.                   .                   .                   .          .
+  73.13.                   .            *      .                   .                   .                   .          .
+  74.55.                   .                   .*+                 .                   .                   .          .
+  75.96.                   .                   .     +  *          .                   .                   .          .
+  77.37.                   .                   .    + *            .                   .                   .          .
+  78.76.                   .                  +.     *             .                   .                   .          .
+  80.15.                   . +           *     .                   .                   .                   .          .
+  81.54.                  +.         *         .                   .                   .                   .          .
+  82.91.                   .              *+   .                   .                   .                   .          .
+  84.28.                   .                   .+*                 .                   .                   .          .
+  85.64.                   .                   .+   *              .                   .                   .          .
+  86.99.                   .                +  . *                 .                   .                   .          .
+  88.33.                   .       +    *      .                   .                   .                   .          .
+  89.66.                 * . +                 .                   .                   .                   .          .
+  90.99.                   .          *        .                   .                   .                   .          .
+  92.30.                   .               +   .*                  .                   .                   .          .
+  93.61.                   .                 + .   *               .                   .                   .          .
+  94.91.                   .               +   . *                 .                   .                   .          .
+  96.19.                   .            *+     .                   .                   .                   .          .
+       *...................*...................*...................*...................*...................*...........
+1         28SI + 16O  56.MEV  G.S. , 1.78 MEV.   HEAVY IONS OPTION    ECIS06  
+
+
+
+
+                              **********   STATE    2    **********
+
+
+
+
+                                             CROSS-SECTION    
+
+          ANGLE          CALC. VAL.           EXP. VAL.          EXP. ERROR          COR. ERROR             CHI2
+
+           8.720         0.27346D+02         0.49918D+02         0.29951D+01         0.22168D+01         0.10368D+03
+          11.100         0.16865D+02         0.30423D+02         0.18254D+01         0.13591D+01         0.99517D+02
+          13.470         0.13030D+02         0.15418D+02         0.92510D+00         0.85047D+00         0.78785D+01
+          15.840         0.35204D+02         0.38317D+02         0.22990D+01         0.22036D+01         0.19952D+01
+          20.580         0.27644D+02         0.36708D+02         0.22025D+01         0.19113D+01         0.22493D+02
+          22.940         0.11660D+02         0.17359D+02         0.10415D+01         0.85361D+00         0.44560D+02
+          27.650         0.67063D+01         0.85562D+01         0.51340D+00         0.45453D+00         0.16564D+02
+          30.000         0.95509D+01         0.20861D+02         0.12516D+01         0.84688D+00         0.17835D+03
+          32.350         0.15332D+02         0.19838D+02         0.11903D+01         0.10464D+01         0.18535D+02
+          34.690         0.10452D+02         0.10049D+02         0.60290D+00         0.61489D+00         0.43106D+00
+          37.020         0.92690D+01         0.11158D+02         0.66950D+00         0.61020D+00         0.95825D+01
+          39.350         0.95043D+01         0.66944D+01         0.40170D+00         0.47864D+00         0.34463D+02
+          43.980         0.62763D+01         0.31731D+01         0.19040D+00         0.26778D+00         0.13430D+03
+          45.510         0.44001D+01         0.24092D+01         0.14460D+00         0.19542D+00         0.10379D+03
+          48.570         0.46783D+01         0.68714D+01         0.41230D+00         0.34020D+00         0.41557D+02
+          50.860         0.44418D+01         0.87197D+01         0.52320D+00         0.37342D+00         0.13124D+03
+          53.140         0.16711D+01         0.51004D+01         0.30600D+00         0.17515D+00         0.38333D+03
+          56.160         0.20134D+01         0.25257D+01         0.15150D+00         0.13527D+00         0.14344D+02
+          57.660         0.25835D+01         0.22436D+01         0.13460D+00         0.14444D+00         0.55384D+01
+          59.160         0.21543D+01         0.28934D+01         0.17360D+00         0.14979D+00         0.24349D+02
+          62.140         0.41394D+00         0.10966D+01         0.65800D-01         0.40427D-01         0.28514D+03
+          65.100         0.12451D+01         0.95020D+00         0.57000D-01         0.65248D-01         0.20423D+02
+          68.030         0.78826D+00         0.65990D+00         0.39600D-01         0.43280D-01         0.87955D+01
+          70.940         0.21597D+00         0.32740D+00         0.19600D-01         0.15919D-01         0.48998D+02
+          72.390         0.47205D+00         0.37760D+00         0.22700D-01         0.25381D-01         0.13847D+02
+          73.830         0.65136D+00         0.45240D+00         0.27100D-01         0.32518D-01         0.37437D+02
+          75.260         0.65137D+00         0.52050D+00         0.31200D-01         0.34903D-01         0.14060D+02
+          76.690         0.38725D+00         0.42080D+00         0.25200D-01         0.24175D-01         0.19261D+01
+          78.110         0.17208D+00         0.25900D+00         0.15500D-01         0.12634D-01         0.47327D+02
+          79.520         0.14527D+00         0.14790D+00         0.89000D-02         0.88206D-02         0.88679D-01
+          80.920         0.27628D+00         0.15740D+00         0.94000D-02         0.12454D-01         0.91123D+02
+          82.310         0.37918D+00         0.20270D+00         0.12200D-01         0.16686D-01         0.11186D+03
+          83.700         0.37508D+00         0.30710D+00         0.18400D-01         0.20335D-01         0.11176D+02
+          85.080         0.23861D+00         0.27960D+00         0.16800D-01         0.15520D-01         0.69771D+01
+          86.450         0.13114D+00         0.12580D+00         0.75000D-02         0.76577D-02         0.48705D+00
+          87.820         0.11178D+00         0.45900D-01         0.28000D-02         0.43695D-02         0.22733D+03
+          89.170         0.15502D+00         0.70300D-01         0.42000D-02         0.62368D-02         0.18451D+03
+          90.510         0.19326D+00         0.20990D+00         0.12600D-01         0.12090D-01         0.18935D+01
+          91.850         0.21438D+00         0.25760D+00         0.15500D-01         0.14140D-01         0.93429D+01
+          93.180         0.18387D+00         0.22970D+00         0.13800D-01         0.12347D-01         0.13780D+02
+          94.490         0.13734D+00         0.12360D+00         0.74000D-02         0.78006D-02         0.31040D+01
+          95.800         0.95119D-01         0.50100D-01         0.30000D-02         0.41337D-02         0.11861D+03
+          97.100         0.89455D-01         0.89700D-01         0.54000D-02         0.53926D-02         0.20566D-02
+
+
+ WEIGHT IN THE CHI2            0.10000D+01
+ EXPERIMENTAL NORMALISATION    0.10000D+01
+ NORMALISATION ERROR           0.00000D+00
+ CALCULATED NORMALISATION      0.10000D+01
+
+ ***** CHI2 =   0.263473D+04   *****
+
+1
+                                             +       CROSS-SECTION    
+
+                                             +    CALCULATED VALUE
+                                             *    EXPERIMENTAL VALUE
+
+       1                        1                        1                        1                        1           
+       *........................*........................*........................*........................*...........
+ *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *-
+   8.72.                        .                        .                        .          +     *       .          .
+  11.10.                        .                        .                        .     +     *            .          .
+  13.47.                        .                        .                        .  + *                   .          .
+  15.84.                        .                        .                        .             +*         .          .
+  20.58.                        .                        .                        .          +  *          .          .
+  22.94.                        .                        .                        . +   *                  .          .
+  27.65.                        .                        .                    + * .                        .          .
+  30.00.                        .                        .                        +       *                .          .
+  32.35.                        .                        .                        .    + *                 .          .
+  34.69.                        .                        .                        *                        .          .
+  37.02.                        .                        .                       +.*                       .          .
+  39.35.                        .                        .                    *  +.                        .          .
+  43.98.                        .                        .            *      +    .                        .          .
+  45.51.                        .                        .         *     +        .                        .          .
+  48.57.                        .                        .                +   *   .                        .          .
+  50.86.                        .                        .               +       *.                        .          .
+  53.14.                        .                        .     +           *      .                        .          .
+  56.16.                        .                        .       + *              .                        .          .
+  57.66.                        .                        .        *+              .                        .          .
+  59.16.                        .                        .       +   *            .                        .          .
+  62.14.                        .              +         .*                       .                        .          .
+  65.10.                        .                       *. +                      .                        .          .
+  68.03.                        .                   * +  .                        .                        .          .
+  70.94.                        .       +    *           .                        .                        .          .
+  72.39.                        .             *  +       .                        .                        .          .
+  73.83.                        .               *   +    .                        .                        .          .
+  75.26.                        .                 * +    .                        .                        .          .
+  76.69.                        .              +*        .                        .                        .          .
+  78.11.                        .     +   *              .                        .                        .          .
+  79.52.                        .   *                    .                        .                        .          .
+  80.92.                        .    *     +             .                        .                        .          .
+  82.31.                        .       *     +          .                        .                        .          .
+  83.70.                        .           * +          .                        .                        .          .
+  85.08.                        .        + *             .                        .                        .          .
+  86.45.                        . *+                     .                        .                        .          .
+  87.82.                *       .+                       .                        .                        .          .
+  89.17.                    *   .    +                   .                        .                        .          .
+  90.51.                        .      +*                .                        .                        .          .
+  91.85.                        .       + *              .                        .                        .          .
+  93.18.                        .      + *               .                        .                        .          .
+  94.49.                        . *+                     .                        .                        .          .
+  95.80.                *      +.                        .                        .                        .          .
+  97.10.                       *.                        .                        .                        .          .
+       *........................*........................*........................*........................*...........
+
+ ************ CHI2 **********    0.5171294581D+04
+
+
+ *** TOTAL TIME ***  0H  0MN  0S 259 MS          DIFFERENCE SINCE LAST CALL       19 MILLISECONDS.
+
+
+ *** WORKSPACE USED IN THIS COMPUTATION     18745  ***              581255 MEMORIES NOT USED.
+1
+
+     28SI + 16O  56.MEV  G.S. , 1.78 MEV.   RESTART              ECIS06  
+
+ RESTART OF COMPUTATION
+
+ LAST TITLE : ''    28SI + 16O  56.MEV  G.S. , 1.78 MEV.   HEAVY IONS OPTION    ECIS06  ''
+
+ AVAILABLE WORKING SPACE  600000
+
+ INPUT FROM TAPE  8 OF DW FROM DW(1) TO DW(  5143)
+
+
+
+ MAXIMUM NUMBER OF EVALUATIONS INCREASED BY 100     NEW VALUE   112
+ NO SAVE ON TAPE  8
+ *** TOTAL TIME ***  0H  0MN  0S 259 MS          DIFFERENCE SINCE LAST CALL        0 MILLISECONDS.
+ *** TOTAL TIME ***  0H  0MN  0S 280 MS          DIFFERENCE SINCE LAST CALL       21 MILLISECONDS.
+
+ RUN  13   MAX = 112   ***** CHI2 =  0.4748397734D+04 *****     W(1) =     90.97     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.306489D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.441909D+03
+
+ *** VARIABLES
+
+   1    4.986802D+01   2    4.547318D+00   3   -1.544000D-01
+ *** TOTAL TIME ***  0H  0MN  0S 299 MS          DIFFERENCE SINCE LAST CALL       19 MILLISECONDS.
+
+ RUN  14   MAX = 112   ***** CHI2 =  0.4599334605D+04 *****     W(1) =     61.79     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.142512D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.456823D+03
+
+ *** VARIABLES
+
+   1    4.974260D+01   2    4.513797D+00   3   -1.605786D-01
+ *** TOTAL TIME ***  0H  0MN  0S 320 MS          DIFFERENCE SINCE LAST CALL       21 MILLISECONDS.
+
+ RUN  15   MAX = 112   ***** CHI2 =  0.4864068117D+04 *****     W(1) =     32.27     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.299145D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.564923D+03
+
+ *** VARIABLES
+
+   1    4.993599D+01   2    4.504233D+00   3   -1.638061D-01
+ *** TOTAL TIME ***  0H  0MN  0S 340 MS          DIFFERENCE SINCE LAST CALL       20 MILLISECONDS.
+
+ RUN  16   MAX = 112   ***** CHI2 =  0.4582801363D+04 *****     W(1) =     16.14     W(2) = 1.00     W(3) =   0.29905
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.096731D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.486070D+03
+
+ *** VARIABLES
+
+   1    4.975313D+01   2    4.497660D+00   3   -1.609700D-01
+ *** TOTAL TIME ***  0H  0MN  0S 359 MS          DIFFERENCE SINCE LAST CALL       19 MILLISECONDS.
+
+ RUN  17   MAX = 112   ***** CHI2 =  0.4568837934D+04 *****     W(1) =     32.27     W(2) = 1.00     W(3) =   0.58801
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.042488D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.526350D+03
+
+ *** VARIABLES
+
+   1    4.971430D+01   2    4.465385D+00   3   -1.600540D-01
+ *** TOTAL TIME ***  0H  0MN  0S 380 MS          DIFFERENCE SINCE LAST CALL       21 MILLISECONDS.
+
+ RUN  18   MAX = 112   ***** CHI2 =  0.4563113893D+04 *****     W(1) =     11.32     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.021346D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.541768D+03
+
+ *** VARIABLES
+
+   1    4.971456D+01   2    4.461725D+00   3   -1.611862D-01
+ *** TOTAL TIME ***  0H  0MN  0S 399 MS          DIFFERENCE SINCE LAST CALL       19 MILLISECONDS.
+
+ RUN  19   MAX = 112   ***** CHI2 =  0.4564777360D+04 *****     W(1) =      9.03     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.020086D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.544692D+03
+
+ *** VARIABLES
+
+   1    4.969861D+01   2    4.461933D+00   3   -1.620894D-01
+ *** TOTAL TIME ***  0H  0MN  0S 419 MS          DIFFERENCE SINCE LAST CALL       20 MILLISECONDS.
+
+ RUN  20   MAX = 112   ***** CHI2 =  0.4563104402D+04 *****     W(1) =      4.52     W(2) = 1.00     W(3) =   0.99107
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.007880D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.555225D+03
+
+ *** VARIABLES
+
+   1    4.972253D+01   2    4.457209D+00   3   -1.613766D-01
+ *** TOTAL TIME ***  0H  0MN  0S 440 MS          DIFFERENCE SINCE LAST CALL       21 MILLISECONDS.
+
+ RUN  21   MAX = 112   ***** CHI2 =  0.4564101234D+04 *****     W(1) =      9.03     W(2) = 1.00     W(3) =   0.45695
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.024861D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.539240D+03
+
+ *** VARIABLES
+
+   1    4.972836D+01   2    4.466241D+00   3   -1.614579D-01
+ *** TOTAL TIME ***  0H  0MN  0S 459 MS          DIFFERENCE SINCE LAST CALL       19 MILLISECONDS.
+
+ RUN  22   MAX = 112   ***** CHI2 =  0.4562870469D+04 *****     W(1) =      1.60     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.012147D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.550724D+03
+
+ *** VARIABLES
+
+   1    4.971705D+01   2    4.457881D+00   3   -1.612166D-01
+ *** TOTAL TIME ***  0H  0MN  0S 479 MS          DIFFERENCE SINCE LAST CALL       20 MILLISECONDS.
+
+ RUN  23   MAX = 112   ***** CHI2 =  0.4562852330D+04 *****     W(1) =      2.66     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.011360D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.551492D+03
+
+ *** VARIABLES
+
+   1    4.971289D+01   2    4.457935D+00   3   -1.614824D-01
+ *** TOTAL TIME ***  0H  0MN  0S 500 MS          DIFFERENCE SINCE LAST CALL       21 MILLISECONDS.
+
+ RUN  24   MAX = 112   ***** CHI2 =  0.4562817053D+04 *****     W(1) =      1.09     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.012041D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.550776D+03
+
+ *** VARIABLES
+
+   1    4.971490D+01   2    4.458139D+00   3   -1.613730D-01
+ *** TOTAL TIME ***  0H  0MN  0S 519 MS          DIFFERENCE SINCE LAST CALL       19 MILLISECONDS.
+
+ RUN  25   MAX = 112   ***** CHI2 =  0.4562853572D+04 *****     W(1) =      2.19     W(2) = 1.00     W(3) =   1.00000
+
+                     WEIGHT            EXP. NORM.          ERR. NORM.          CALC. NORM.            CHI2
+         1        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.016004D+03
+         2        1.000000D+00        1.000000D+00        0.000000D+00        1.000000D+00        2.546849D+03
+
+ *** VARIABLES
+
+   1    4.971631D+01   2    4.460328D+00   3   -1.613906D-01
+
+ RUN  25   MAX = 112   ***** CHI2 =  0.4562817053D+04 *****     KE = 0     W(1) =      0.5473
+
+
+ STANDARD ERRORS (VARIANCE AT BEST FIT EQUAL TO DEGREE OF FREEDOM:    84.RENORMALISATION FACTOR   0.729570D+01 )
+   1.282126D-01   6.620573D-02   5.821529D-03
+
+ ERROR ENHANCEMENTS (MULTI/SINGLE VARIABLE ERROR)
+   1.172950D+00   1.057496D+00   1.139502D+00
+
+ ERROR CORRELATION MATRIX:
+   1.000000D+00
+   2.491274D-01   1.000000D+00
+   4.384142D-01  -7.870583D-02   1.000000D+00
+
+
+ SEARCH ENDED WITHOUT ERRORS.
+1
+ ******* FINAL RESULTS *******
+
+ **** FIRST CONTROL CARD ****  1  1 1 1 1 1 1 1 1 1 2  2 2 2 2 2 2 2 2 2 3  3 3 3 3 3 3 3 3 3 4  4 4 4 4 4 4 4 4 4 5
+             1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0
+             T F F F F F F F F F  T T F F F T F F F F  F F F F F F F F T F  T T T F F F F F F F  F F F T F F F F F F
+
+ *** SECOND CONTROL CARD ****  1  1 1 1 1 1 1 1 1 1 2  2 2 2 2 2 2 2 2 2 3  3 3 3 3 3 3 3 3 3 4  4 4 4 4 4 4 4 4 4 5
+             1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0  1 2 3 4 5 6 7 8 9 0
+             F T T T F F F F F F  F F F F F T F F F F  F T F F T F T F F F  F F F F F F F F F F  F F F F F F F F F F
+
+
+ OPTICAL POTENTIALS  **  1 **     REDUCED RADIUS MULTIPLIED BY     0.555643D+01
+
+ VOLUME/SCALAR REAL POTENTIAL
+ DEPTH   49.714896 MEV   RADIUS  6.917757 FERMI (REDUCED VALUE 1.245000)   DIFFUSENESS 0.539000 FERMI AT THE POWER (1+ 0.000000)
+ VOLUME/SCALAR IMAGINARY POTENTIAL
+ DEPTH    4.458139 MEV   RADIUS  6.917757 FERMI (REDUCED VALUE 1.245000)   DIFFUSENESS 0.539000 FERMI AT THE POWER (1+ 0.000000)
+ SURFACE/VECTOR REAL POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ SURFACE/VECTOR IMAGINARY POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ REAL SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ IMAGINARY SPIN-ORBIT/TENSOR POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ COULOMB POTENTIAL
+  CHARGE PRODUCT   112.  RADIUS  6.917757 FERMI (REDUCED VALUE 1.245000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+ SPIN-ORBIT COULOMB POTENTIAL
+ DEPTH    0.000000 MEV   RADIUS  0.000000 FERMI (REDUCED VALUE 0.000000)   DIFFUSENESS 0.000000 FERMI AT THE POWER (1+ 0.000000)
+              THIRD CHARGE PARAMETER 0.000000
+
+ BETA(I,J) FOR  L   K         V         W        VS        WS       VSO       WSO      COUL S.O. COUL
+         1      2   0    -0.16137  -0.16137  -0.16137  -0.16137  -0.16137  -0.16137  -0.08819  -0.08819
+
+          WITHOUT HEAVY ION CORRECTION:
+
+         1      2   0    -0.29528  -0.29528  -0.29528  -0.29528  -0.29528  -0.29528  -0.29528  -0.29528
+
+
+ NUCLEAR REDUCED MATRIX ELEMENTS:
+
+
+ STATE  1  WITH STATE  1           FROM   1 TO   0
+
+
+ STATE  1  WITH STATE  2           FROM   1 TO   1
+
+          N =  1   FORM FACTOR =  1   MULT. =  1   SP.-O. =  0      MATRIX ELEMENT  -1.000000D+00
+
+ STATE  2  WITH STATE  2           FROM   2 TO   2
+
+          N =  2   FORM FACTOR =  1   MULT. =  1   SP.-O. =  0      MATRIX ELEMENT   1.195229D+00
+
+
+      CORRESPONDENCE TO MULTIPOLES:
+
+                    N =  1     L =  2     2*S =  0     2*J =  4
+
+
+     CORRESPONDENCE TO FORM FACTORS IN THEIR COMPUTATION:
+
+          N =  1    F.F. =  3000    MULT. =   1    SP.-O. =   0    COUL =   1    SPDO =   0    COR =   0    L =   2
+
+
+     CORRESPONDENCE TO FORM FACTORS IN THEIR USE:
+
+          N =  1    ABOVE =   1    DISP. =   0    SP.-O. =   0    L =   2
+          REQUIRED WORKING FIELD     18745
+          REQUIRED WORKING FIELD     16961  FOR J =    0.0
+         5 ITERATIONS.
+          REQUIRED WORKING FIELD     18521  FOR J =    2.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    4.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    6.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    8.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   10.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   12.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   14.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   16.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   18.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   20.0
+         8 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   22.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   24.0
+         8 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   26.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   28.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   30.0
+         5 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   32.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   34.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   36.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   38.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   40.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   42.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   44.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   46.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   48.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   50.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   52.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   54.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   56.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   58.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD      7751  FOR J =   60.0
+          REQUIRED WORKING FIELD      7751  FOR J =   62.0
+          REQUIRED WORKING FIELD      7751  FOR J =   64.0
+          REQUIRED WORKING FIELD      7751  FOR J =   66.0
+          REQUIRED WORKING FIELD      7751  FOR J =   68.0
+          REQUIRED WORKING FIELD      7751  FOR J =   70.0
+          REQUIRED WORKING FIELD      7751  FOR J =   72.0
+          REQUIRED WORKING FIELD      7751  FOR J =   74.0
+          REQUIRED WORKING FIELD      7751  FOR J =   76.0
+          REQUIRED WORKING FIELD      7751  FOR J =   78.0
+          REQUIRED WORKING FIELD      7751  FOR J =   80.0
+          REQUIRED WORKING FIELD      7751  FOR J =   82.0
+          REQUIRED WORKING FIELD      7751  FOR J =   84.0
+          REQUIRED WORKING FIELD      7751  FOR J =   86.0
+          REQUIRED WORKING FIELD      7751  FOR J =   88.0
+          REQUIRED WORKING FIELD      7751  FOR J =   90.0
+          REQUIRED WORKING FIELD      7751  FOR J =   92.0
+          REQUIRED WORKING FIELD      7751  FOR J =   94.0
+          REQUIRED WORKING FIELD      7751  FOR J =   96.0
+          REQUIRED WORKING FIELD      7751  FOR J =   98.0
+          REQUIRED WORKING FIELD      7751  FOR J =  100.0
+          REQUIRED WORKING FIELD      7751  FOR J =  102.0
+          REQUIRED WORKING FIELD      7751  FOR J =  104.0
+          REQUIRED WORKING FIELD      7751  FOR J =  106.0
+          REQUIRED WORKING FIELD      7751  FOR J =  108.0
+ MAXIMUM J-VALUE = 108.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.224D-02
+          REQUIRED WORKING FIELD     17853  FOR J =    1.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    3.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    5.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    7.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =    9.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   11.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   13.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   15.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   17.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   19.0
+         7 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   21.0
+         8 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   23.0
+         8 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   25.0
+         8 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   27.0
+         8 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   29.0
+         6 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   31.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   33.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   35.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   37.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   39.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   41.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   43.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   45.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   47.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   49.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   51.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   53.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   55.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   57.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD     18745  FOR J =   59.0
+         3 ITERATIONS.
+          REQUIRED WORKING FIELD      7751  FOR J =   61.0
+          REQUIRED WORKING FIELD      7751  FOR J =   63.0
+          REQUIRED WORKING FIELD      7751  FOR J =   65.0
+          REQUIRED WORKING FIELD      7751  FOR J =   67.0
+          REQUIRED WORKING FIELD      7751  FOR J =   69.0
+          REQUIRED WORKING FIELD      7751  FOR J =   71.0
+          REQUIRED WORKING FIELD      7751  FOR J =   73.0
+          REQUIRED WORKING FIELD      7751  FOR J =   75.0
+          REQUIRED WORKING FIELD      7751  FOR J =   77.0
+          REQUIRED WORKING FIELD      7751  FOR J =   79.0
+          REQUIRED WORKING FIELD      7751  FOR J =   81.0
+          REQUIRED WORKING FIELD      7751  FOR J =   83.0
+          REQUIRED WORKING FIELD      7751  FOR J =   85.0
+          REQUIRED WORKING FIELD      7751  FOR J =   87.0
+          REQUIRED WORKING FIELD      7751  FOR J =   89.0
+          REQUIRED WORKING FIELD      7751  FOR J =   91.0
+          REQUIRED WORKING FIELD      7751  FOR J =   93.0
+          REQUIRED WORKING FIELD      7751  FOR J =   95.0
+          REQUIRED WORKING FIELD      7751  FOR J =   97.0
+          REQUIRED WORKING FIELD      7751  FOR J =   99.0
+          REQUIRED WORKING FIELD      7751  FOR J =  101.0
+          REQUIRED WORKING FIELD      7751  FOR J =  103.0
+          REQUIRED WORKING FIELD      7751  FOR J =  105.0
+          REQUIRED WORKING FIELD      7751  FOR J =  107.0
+          REQUIRED WORKING FIELD      7751  FOR J =  109.0
+ MAXIMUM J-VALUE = 109.0                MAXIMUM SCATTERING COEFFICIENT AT THE END   0.217D-02
+1         28SI + 16O  56.MEV  G.S. , 1.78 MEV.   RESTART              ECIS06  
+
+
+
+
+                              **********   STATE    1    **********
+
+
+
+
+                                             C. S./RUTHER.    
+
+          ANGLE          CALC. VAL.           EXP. VAL.          EXP. ERROR          COR. ERROR             CHI2
+
+           8.640         0.10159D+01         0.10210D+01         0.61300D-01         0.61148D-01         0.68798D-02
+          10.990         0.10062D+01         0.10078D+01         0.60500D-01         0.60451D-01         0.72130D-03
+          13.350         0.10577D+01         0.99330D+00         0.59600D-01         0.61502D-01         0.10963D+01
+          15.690         0.89323D+00         0.93810D+00         0.56300D-01         0.54937D-01         0.66703D+00
+          20.390         0.11049D+01         0.98640D+00         0.59200D-01         0.62655D-01         0.35774D+01
+          22.730         0.12618D+01         0.11520D+01         0.69100D-01         0.72318D-01         0.23048D+01
+          25.060         0.11871D+01         0.11851D+01         0.71100D-01         0.71160D-01         0.78366D-03
+          27.390         0.10758D+01         0.10427D+01         0.62600D-01         0.63587D-01         0.27143D+00
+          29.720         0.84567D+00         0.83720D+00         0.50200D-01         0.50453D-01         0.28206D-01
+          32.040         0.67848D+00         0.63970D+00         0.38400D-01         0.39547D-01         0.96172D+00
+          34.360         0.51096D+00         0.49910D+00         0.29900D-01         0.30253D-01         0.15378D+00
+          36.670         0.35242D+00         0.32810D+00         0.19700D-01         0.20417D-01         0.14184D+01
+          38.980         0.28118D+00         0.32230D+00         0.19300D-01         0.18027D-01         0.52030D+01
+          41.270         0.19345D+00         0.24850D+00         0.14900D-01         0.13146D-01         0.17537D+02
+          43.560         0.12713D+00         0.15450D+00         0.93000D-02         0.84360D-02         0.10530D+02
+          45.080         0.11303D+00         0.14820D+00         0.89000D-02         0.77726D-02         0.20471D+02
+          48.120         0.68980D-01         0.90100D-01         0.54000D-02         0.47249D-02         0.19980D+02
+          50.380         0.42435D-01         0.88400D-01         0.53000D-02         0.36721D-02         0.15669D+03
+          52.640         0.39120D-01         0.53600D-01         0.32000D-02         0.27338D-02         0.28055D+02
+          55.630         0.19490D-01         0.31400D-01         0.19000D-02         0.14969D-02         0.63309D+02
+          57.110         0.12587D-01         0.17800D-01         0.11000D-02         0.92500D-03         0.31761D+02
+          58.600         0.12768D-01         0.19200D-01         0.12000D-02         0.97856D-03         0.43206D+02
+          61.550         0.11251D-01         0.13800D-01         0.83000D-03         0.74943D-03         0.11569D+02
+          64.480         0.26507D-02         0.34700D-02         0.21000D-03         0.18354D-03         0.19924D+02
+          67.390         0.51967D-02         0.56100D-02         0.34000D-03         0.32724D-03         0.15950D+01
+          70.270         0.28191D-02         0.35100D-02         0.21000D-03         0.18820D-03         0.13477D+02
+          71.700         0.65922D-03         0.69500D-03         0.42000D-04         0.40905D-04         0.76517D+00
+          73.130         0.32174D-03         0.44400D-03         0.27000D-04         0.22984D-04         0.28297D+02
+          74.550         0.14560D-02         0.11200D-02         0.67000D-04         0.76393D-04         0.19351D+02
+          75.960         0.23906D-02         0.28300D-02         0.17000D-03         0.15624D-03         0.79101D+01
+          77.370         0.21370D-02         0.22100D-02         0.13000D-03         0.12783D-03         0.32648D+00
+          78.760         0.10728D-02         0.19100D-02         0.11000D-03         0.82439D-04         0.10313D+03
+          80.150         0.17275D-03         0.49800D-03         0.30000D-04         0.17669D-04         0.33884D+03
+          81.540         0.11103D-03         0.30400D-03         0.18000D-04         0.10878D-04         0.31471D+03
+          82.910         0.71034D-03         0.57200D-03         0.34000D-04         0.37889D-04         0.13331D+02
+          84.280         0.12436D-02         0.12300D-02         0.74000D-04         0.74407D-04         0.33283D-01
+          85.640         0.12362D-02         0.17600D-02         0.11000D-03         0.92189D-04         0.32285D+02
+          86.990         0.81727D-03         0.12600D-02         0.76000D-04         0.61209D-04         0.52318D+02
+          88.330         0.37692D-03         0.45200D-03         0.27000D-04         0.24656D-04         0.92720D+01
+          89.660         0.22163D-03         0.76000D-04         0.50000D-05         0.85384D-05         0.29090D+03
+          90.990         0.39526D-03         0.36000D-03         0.22000D-04         0.23052D-04         0.23399D+01
+          92.300         0.65990D-03         0.11300D-02         0.68000D-04         0.51965D-04         0.81839D+02
+          93.610         0.77232D-03         0.16200D-02         0.97000D-04         0.66975D-04         0.16019D+03
+          94.910         0.70573D-03         0.12400D-02         0.74000D-04         0.55827D-04         0.91586D+02
+          96.190         0.56085D-03         0.45900D-03         0.28000D-04         0.30951D-04         0.10829D+02
+
+
+ WEIGHT IN THE CHI2            0.10000D+01
+ EXPERIMENTAL NORMALISATION    0.10000D+01
+ NORMALISATION ERROR           0.00000D+00
+ CALCULATED NORMALISATION      0.10000D+01
+
+ ***** CHI2 =   0.201204D+04   *****
+
+1
+                                             +       C. S./RUTHER.    
+
+                                             +    CALCULATED VALUE
+                                             *    EXPERIMENTAL VALUE
+
+       1                   1                   1                   1                   1                   1           
+       *...................*...................*...................*...................*...................*...........
+   8.64.                   .                   .                   .                   .                   *          .
+  10.99.                   .                   .                   .                   .                   *          .
+  13.35.                   .                   .                   .                   .                   *          .
+  15.69.                   .                   .                   .                   .                  *.          .
+  20.39.                   .                   .                   .                   .                   *+         .
+  22.73.                   .                   .                   .                   .                   .*+        .
+  25.06.                   .                   .                   .                   .                   .*         .
+  27.39.                   .                   .                   .                   .                   *+         .
+  29.72.                   .                   .                   .                   .                 *+.          .
+  32.04.                   .                   .                   .                   .               *+  .          .
+  34.36.                   .                   .                   .                   .             *     .          .
+  36.67.                   .                   .                   .                   .         *+        .          .
+  38.98.                   .                   .                   .                   .        +*         .          .
+  41.27.                   .                   .                   .                   .     + *           .          .
+  43.56.                   .                   .                   .                   . + *               .          .
+  45.08.                   .                   .                   .                   .+ *                .          .
+  48.12.                   .                   .                   .                + *.                   .          .
+  50.38.                   .                   .                   .            +     *.                   .          .
+  52.64.                   .                   .                   .           +  *    .                   .          .
+  55.63.                   .                   .                   .     +   *         .                   .          .
+  57.11.                   .                   .                   . +  *              .                   .          .
+  58.60.                   .                   .                   . +   *             .                   .          .
+  61.55.                   .                   .                   .+ *                .                   .          .
+  64.48.                   .                   .       +  *        .                   .                   .          .
+  67.39.                   .                   .             +*    .                   .                   .          .
+  70.27.                   .                   .        + *        .                   .                   .          .
+  71.70.                   .               +*  .                   .                   .                   .          .
+  73.13.                   .         +  *      .                   .                   .                   .          .
+  74.55.                   .                   .* +                .                   .                   .          .
+  75.96.                   .                   .       +*          .                   .                   .          .
+  77.37.                   .                   .      *            .                   .                   .          .
+  78.76.                   .                   .+    *             .                   .                   .          .
+  80.15.                   .    +        *     .                   .                   .                   .          .
+  81.54.                   .+        *         .                   .                   .                   .          .
+  82.91.                   .              * +  .                   .                   .                   .          .
+  84.28.                   .                   . *                 .                   .                   .          .
+  85.64.                   .                   . +  *              .                   .                   .          .
+  86.99.                   .                 + . *                 .                   .                   .          .
+  88.33.                   .           +*      .                   .                   .                   .          .
+  89.66.                 * .      +            .                   .                   .                   .          .
+  90.99.                   .          *+       .                   .                   .                   .          .
+  92.30.                   .               +   .*                  .                   .                   .          .
+  93.61.                   .                 + .   *               .                   .                   .          .
+  94.91.                   .                +  . *                 .                   .                   .          .
+  96.19.                   .            * +    .                   .                   .                   .          .
+       *...................*...................*...................*...................*...................*...........
+1         28SI + 16O  56.MEV  G.S. , 1.78 MEV.   RESTART              ECIS06  
+
+
+
+
+                              **********   STATE    2    **********
+
+
+
+
+                                             CROSS-SECTION    
+
+          ANGLE          CALC. VAL.           EXP. VAL.          EXP. ERROR          COR. ERROR             CHI2
+
+           8.720         0.30072D+02         0.49918D+02         0.29951D+01         0.23247D+01         0.72887D+02
+          11.100         0.19076D+02         0.30423D+02         0.18254D+01         0.14454D+01         0.61626D+02
+          13.470         0.16400D+02         0.15418D+02         0.92510D+00         0.95411D+00         0.10592D+01
+          15.840         0.43276D+02         0.38317D+02         0.22990D+01         0.24432D+01         0.41195D+01
+          20.580         0.33050D+02         0.36708D+02         0.22025D+01         0.20899D+01         0.30647D+01
+          22.940         0.14948D+02         0.17359D+02         0.10415D+01         0.96647D+00         0.62234D+01
+          27.650         0.91424D+01         0.85562D+01         0.51340D+00         0.53070D+00         0.12203D+01
+          30.000         0.10432D+02         0.20861D+02         0.12516D+01         0.88508D+00         0.13884D+03
+          32.350         0.17971D+02         0.19838D+02         0.11903D+01         0.11329D+01         0.27149D+01
+          34.690         0.13967D+02         0.10049D+02         0.60290D+00         0.71079D+00         0.30390D+02
+          37.020         0.11025D+02         0.11158D+02         0.66950D+00         0.66549D+00         0.40132D-01
+          39.350         0.10846D+02         0.66944D+01         0.40170D+00         0.51130D+00         0.65918D+02
+          43.980         0.80668D+01         0.31731D+01         0.19040D+00         0.30358D+00         0.25985D+03
+          45.510         0.51414D+01         0.24092D+01         0.14460D+00         0.21124D+00         0.16729D+03
+          48.570         0.56137D+01         0.68714D+01         0.41230D+00         0.37266D+00         0.11389D+02
+          50.860         0.57535D+01         0.87197D+01         0.52320D+00         0.42500D+00         0.48710D+02
+          53.140         0.20325D+01         0.51004D+01         0.30600D+00         0.19317D+00         0.25224D+03
+          56.160         0.22336D+01         0.25257D+01         0.15150D+00         0.14247D+00         0.42038D+01
+          57.660         0.31115D+01         0.22436D+01         0.13460D+00         0.15851D+00         0.29981D+02
+          59.160         0.27370D+01         0.28934D+01         0.17360D+00         0.16884D+00         0.85851D+00
+          62.140         0.40761D+00         0.10966D+01         0.65800D-01         0.40117D-01         0.29496D+03
+          65.100         0.13753D+01         0.95020D+00         0.57000D-01         0.68576D-01         0.38434D+02
+          68.030         0.98474D+00         0.65990D+00         0.39600D-01         0.48375D-01         0.45093D+02
+          70.940         0.17003D+00         0.32740D+00         0.19600D-01         0.14125D-01         0.12412D+03
+          72.390         0.44705D+00         0.37760D+00         0.22700D-01         0.24700D-01         0.79066D+01
+          73.830         0.69627D+00         0.45240D+00         0.27100D-01         0.33620D-01         0.52616D+02
+          75.260         0.75573D+00         0.52050D+00         0.31200D-01         0.37595D-01         0.39151D+02
+          76.690         0.46444D+00         0.42080D+00         0.25200D-01         0.26474D-01         0.27172D+01
+          78.110         0.19034D+00         0.25900D+00         0.15500D-01         0.13288D-01         0.26700D+02
+          79.520         0.11585D+00         0.14790D+00         0.89000D-02         0.78769D-02         0.16556D+02
+          80.920         0.25339D+00         0.15740D+00         0.94000D-02         0.11927D-01         0.64771D+02
+          82.310         0.39103D+00         0.20270D+00         0.12200D-01         0.16945D-01         0.12353D+03
+          83.700         0.42364D+00         0.30710D+00         0.18400D-01         0.21611D-01         0.29078D+02
+          85.080         0.27718D+00         0.27960D+00         0.16800D-01         0.16727D-01         0.20920D-01
+          86.450         0.14712D+00         0.12580D+00         0.75000D-02         0.81107D-02         0.69104D+01
+          87.820         0.10273D+00         0.45900D-01         0.28000D-02         0.41888D-02         0.18404D+03
+          89.170         0.14187D+00         0.70300D-01         0.42000D-02         0.59665D-02         0.14389D+03
+          90.510         0.18809D+00         0.20990D+00         0.12600D-01         0.11927D-01         0.33437D+01
+          91.850         0.23061D+00         0.25760D+00         0.15500D-01         0.14665D-01         0.33881D+01
+          93.180         0.20746D+00         0.22970D+00         0.13800D-01         0.13115D-01         0.28754D+01
+          94.490         0.16037D+00         0.12360D+00         0.74000D-02         0.84292D-02         0.19032D+02
+          95.800         0.10475D+00         0.50100D-01         0.30000D-02         0.43379D-02         0.15872D+03
+          97.100         0.86833D-01         0.89700D-01         0.54000D-02         0.53130D-02         0.29127D+00
+
+
+ WEIGHT IN THE CHI2            0.10000D+01
+ EXPERIMENTAL NORMALISATION    0.10000D+01
+ NORMALISATION ERROR           0.00000D+00
+ CALCULATED NORMALISATION      0.10000D+01
+
+ ***** CHI2 =   0.255078D+04   *****
+
+1
+                                             +       CROSS-SECTION    
+
+                                             +    CALCULATED VALUE
+                                             *    EXPERIMENTAL VALUE
+
+       1                        1                        1                        1                        1           
+       *........................*........................*........................*........................*...........
+ *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *- *-
+   8.72.                        .                        .                        .           +    *       .          .
+  11.10.                        .                        .                        .      +    *            .          .
+  13.47.                        .                        .                        .    *                   .          .
+  15.84.                        .                        .                        .              *+        .          .
+  20.58.                        .                        .                        .            +*          .          .
+  22.94.                        .                        .                        .   + *                  .          .
+  27.65.                        .                        .                      *+.                        .          .
+  30.00.                        .                        .                        +       *                .          .
+  32.35.                        .                        .                        .     +*                 .          .
+  34.69.                        .                        .                        *   +                    .          .
+  37.02.                        .                        .                        .*                       .          .
+  39.35.                        .                        .                    *   .+                       .          .
+  43.98.                        .                        .            *         + .                        .          .
+  45.51.                        .                        .         *       +      .                        .          .
+  48.57.                        .                        .                  + *   .                        .          .
+  50.86.                        .                        .                  +    *.                        .          .
+  53.14.                        .                        .       +         *      .                        .          .
+  56.16.                        .                        .        +*              .                        .          .
+  57.66.                        .                        .        *  +            .                        .          .
+  59.16.                        .                        .          +*            .                        .          .
+  62.14.                        .              +         .*                       .                        .          .
+  65.10.                        .                       *.  +                     .                        .          .
+  68.03.                        .                   *    +                        .                        .          .
+  70.94.                        .     +      *           .                        .                        .          .
+  72.39.                        .             * +        .                        .                        .          .
+  73.83.                        .               *    +   .                        .                        .          .
+  75.26.                        .                 *   +  .                        .                        .          .
+  76.69.                        .               *+       .                        .                        .          .
+  78.11.                        .      +  *              .                        .                        .          .
+  79.52.                        . + *                    .                        .                        .          .
+  80.92.                        .    *    +              .                        .                        .          .
+  82.31.                        .       *      +         .                        .                        .          .
+  83.70.                        .           *   +        .                        .                        .          .
+  85.08.                        .          *             .                        .                        .          .
+  86.45.                        . * +                    .                        .                        .          .
+  87.82.                *       +                        .                        .                        .          .
+  89.17.                    *   .   +                    .                        .                        .          .
+  90.51.                        .      +*                .                        .                        .          .
+  91.85.                        .        +*              .                        .                        .          .
+  93.18.                        .       +*               .                        .                        .          .
+  94.49.                        . *  +                   .                        .                        .          .
+  95.80.                *       .+                       .                        .                        .          .
+  97.10.                      +*.                        .                        .                        .          .
+       *........................*........................*........................*........................*...........
+
+ ************ CHI2 **********    0.4562817053D+04
+
+
+ *** TOTAL TIME ***  0H  0MN  0S 550 MS          DIFFERENCE SINCE LAST CALL       31 MILLISECONDS.
+
+
+ *** WORKSPACE USED IN THIS COMPUTATION     18745  ***              581255 MEMORIES NOT USED.

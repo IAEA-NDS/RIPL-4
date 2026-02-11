@@ -1,0 +1,95 @@
+COMPARISON WITH DWUCK FOR BE8 -  DWBA                           ECIS06  DAT5-000
+FFFFFFTFFFFFFFFFFFFFFFFFFFFFTTFFFFFFFFFFFFFFFTTFFF                      DAT5-001
+TTTTTFFFFFFFFFFFFFFFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFF                      DAT5-002
+    2         1    2         3    3                                     DAT5-003
+.12       18.                                                           DAT5-004
+          15.       1.        2.        8.        4.                    DAT5-005
+3.5     2 -5.       .5        1.        9.        4.                    DAT5-006
+0.        2.5       137.5                                               DAT5-007
+    1    1                                                              DAT5-008
+    1    2    1                                                         DAT5-009
+    1    4    1    7    142.84024                       (1)             DAT5-010
+    2    2                                                              DAT5-011
+    1    1    0    1    0    0    0   -1                                DAT5-012
+104.3     2.14      .78                                                 DAT5-013
+    1    1    0    2    0    0    0   -1                                DAT5-014
+                                                                        DAT5-015
+    1    1    0    3    0    0    0   -1                                DAT5-016
+                                                                        DAT5-017
+    1    1    0    4    0    0    0   -1                                DAT5-018
+13.9      2.52      .8                                                  DAT5-019
+    1    1    0    5    0    0    0   -1                                DAT5-020
+3.5       2.14      .78                                                 DAT5-021
+    1    1    0    6    0    0    0   -1                                DAT5-022
+                                                                        DAT5-023
+    1    1    0    7    0    0    0   -1                                DAT5-024
+4.        2.5                                                           DAT5-025
+    1    1    0    8    0    0    0   -1                                DAT5-026
+                                                                        DAT5-027
+    2    2    0    1    0    0    0   -1                                DAT5-028
+54.9      2.3713    .7                                                  DAT5-029
+    2    2   0    2    0    0    0    -1                                DAT5-030
+.41       2.7249    .63                                                 DAT5-031
+    2    2    0    3    0    0    0   -1                                DAT5-032
+                                                                        DAT5-033
+    2    2    0    4    0    0    0   -1                                DAT5-034
+8.7875    2.7249    .63                                                 DAT5-035
+    2    2    0    5    0    0    0   -1                                DAT5-036
+8.3825    2.609     .53                                                 DAT5-037
+    2    2    0    6    0    0    0   -1                                DAT5-038
+                                                                        DAT5-039
+    2    2    0    7    0    0    0   -1                                DAT5-040
+4.        2.6001                                                        DAT5-041
+    2    2    0    8    0    0    0   -1                                DAT5-042
+                                                                        DAT5-043
+    1    2    1    1    0    0    0   -8                                DAT5-044
+7.2       9.        1.        0.        0.        1.25      .65         DAT5-045
+0.        1.        1.        1.                                        DAT5-046
+COMPARISON WITH CHUCK FOR BE8 -  COUPLED EQUATIONS              ECIS06  DAT5-047
+FFFFFFTFFFFFFFFFFFFFFFFFFFFFTFFFFFFFFFFFFFFFFTTFFF                      DAT5-048
+FFFFFFFFFFFFFFFFFFFFFFTFFFTFFFFFFFFFFFFFFFFFFFFFFF                      DAT5-049
+    2              2         3    3                                     DAT5-050
+.12       18.                                                           DAT5-051
+          15.       1.        2.        8.        4.                    DAT5-052
+3.5     2 -5.       .5        1.        9.        4.                    DAT5-053
+0.        2.5       137.5                                               DAT5-054
+    1    1                                                              DAT5-055
+    1    2    1                                                         DAT5-056
+    1    4    1    7    142.84024                       (1)             DAT5-057
+    2    2                                                              DAT5-058
+    1    1    0    1    0    0    0   -1                                DAT5-059
+104.3     2.14      .78                                                 DAT5-060
+    1    1    0    2    0    0    0   -1                                DAT5-061
+                                                                        DAT5-062
+    1    1    0    3    0    0    0   -1                                DAT5-063
+                                                                        DAT5-064
+    1    1    0    4    0    0    0   -1                                DAT5-065
+13.9      2.52      .8                                                  DAT5-066
+    1    1    0    5    0    0    0   -1                                DAT5-067
+3.5       2.14      .78                                                 DAT5-068
+    1    1    0    6    0    0    0   -1                                DAT5-069
+                                                                        DAT5-070
+    1    1    0    7    0    0    0   -1                                DAT5-071
+4.        2.5                                                           DAT5-072
+    1    1    0    8    0    0    0   -1                                DAT5-073
+                                                                        DAT5-074
+    2    2    0    1    0    0    0   -1                                DAT5-075
+54.9      2.3713    .7                                                  DAT5-076
+    2    2   0    2    0    0    0    -1                                DAT5-077
+.41       2.7249    .63                                                 DAT5-078
+    2    2    0    3    0    0    0   -1                                DAT5-079
+                                                                        DAT5-080
+    2    2    0    4    0    0    0   -1                                DAT5-081
+8.7875    2.7249    .63                                                 DAT5-082
+    2    2    0    5    0    0    0   -1                                DAT5-083
+8.3825    2.609     .53                                                 DAT5-084
+    2    2    0    6    0    0    0   -1                                DAT5-085
+                                                                        DAT5-086
+    2    2    0    7    0    0    0   -1                                DAT5-087
+4.        2.6001                                                        DAT5-088
+    2    2    0    8    0    0    0   -1                                DAT5-089
+                                                                        DAT5-090
+    1    2    1    1    0    0    0   -8                                DAT5-091
+7.2       9.        1.        0.        0.        1.25      .65         DAT5-092
+0.        1.        1.        1.                                        DAT5-093
+FIN                                                                     DAT5-094

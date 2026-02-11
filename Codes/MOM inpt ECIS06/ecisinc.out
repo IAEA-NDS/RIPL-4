@@ -1,0 +1,228 @@
+
+                     e. c. i. s. code for coupled channels calculations ( 1995 ) working field length =   1200000
+
+                       to obtain the input description, punch 'description ' in columns 1-12 of the first card
+
+
+ 1- F - rotational model-(.f.: vibrational model)         | 45- F - angular momentum limit for coulomb corrections.
+ 2- F - second order vibrational model-(.f.: first order) | 46- F - restricted coulomb corrections.
+        or constrained asymmetric rotational model.       |
+ 3- F - anharmonic vibrational model-(.f.: harmonic) or   | 51- F - output of potentials.
+        asymmetric rotational model-(.f.: symmetric)      | 52- F - output of reduced nuclear matrix elements.
+ 4- F - parametrised spin-orbit deformation-(.f.:standard)| 53- F - output of the number of iterations.
+ 5- F - different deformation for each potential(.f.:same)| 54- F - output of the length used in the working field.
+ 6- F - use of deformation lengths.                       | 55- F - output of c-matrix elements.
+ 7- T - nuclear matrix elements and form factors on cards.| 56- F - output of s-matrix elements and compound nucleus
+ 8- T - relativistic kinematics.                          |         intermediate results.
+ 9- F - symmetrised woods-saxon form factors for          | 57- F - output of phase-shifts at each e.c.i.s. iteration.
+        negative values of the radius                     | 58- F - output of the coefficients of each form factor.
+                                                          |         for all sets of equations.
+11- F - deformed coulomb potential.                       | 59- T - output of time differences in a run.
+12- F - deformed imaginary potential.                     |
+13- F - deformed real spin-orbit/tensor potential.        | 61- F - reduced nuclear matrix elements punched on cards.
+14- F - deformed imaginary spin-orbit/tensor potential.   | 62- F - potentials punched on cards.
+15- T - reduced nuclear matrix elements read from cards.  | 63- T - penetrabilities punched on cards.
+16- F - heavy-ion definition of radii and deformations.   | 64- T - results at equidistant angles punched on cards.
+17- F - folding model.                                    | 65- T - legendre expansion for cross-sections punched.
+18- F - projectile-target antisymmetrisation.             | 66- F - no calculation at equidistant angles.
+19- F - deformed coulomb spin-orbit potential.            | 67- T - no plot of experimental data.
+                                                          | 68- T - no plot of cross-sections at equidistant angles.
+21- F - usual coupled equations-(.f.: iterations)         | 69- T - no plot of polarisations at equidistant angles.
+22- F - no use of pade approximants for convergence of    |
+        the iterations.                                   | 71- T - detailed output of logical controls.
+23- F - no use of pade approximant results when           | 72- T - no output of experimental data as they are read.
+        convergence is not obtained.                      | 73- T - no output of external potentials as they are read.
+24- F - coupling potentials computed at each iteration.   | 74- F - output of variations in storage.
+25- T - complete calculation up to the end-(.f.: one ite- | 75- T - no complete output at the first run of a search.
+        ration only as soon as two iterations are enough) | 76- F - lo(51) to lo(65) are always used-(.f.: only for
+26- F - integration stabilised for long range potential.  |         complete output)
+27- F - numerov's method for single equations-(.f.: modi- | 77- F - no output of time differences during the search.
+        fied numerov's method)                            | 78- F - no output of differences between experimental
+28- T - computation up to j-convergence-(.f.: stop when   |         and calculated values.
+        all the inhomogeneous terms are negligible)       |
+29- T - no diagonal term in second members.               | 81- F - hauser-feshbach corrections to cross-sections.
+                                                          | 82- F - simplest compound nucleus formalism.
+31- F - input of experimental data and chi2 calculation.  | 83- F - no engelbretch-weidenmuller transf. in c.-n.
+32- F - automatic search on some parameters.              | 84- F - uncoupled levels for compound nucleus.
+33- F - symmetrised chi2 for cross-sections.              | 85- F - fission data in compound nucleus.
+34- F - number of evaluations limited by the job card.    | 86- F - gamma emission data in compound nucleus.
+35- F - search saved on tape 8 if ended by lack of time.  | 87- F - no width fluctuations.
+36- F - restart a search from tape 8.                     |
+37- F - next calculation changing energy and/or some      | 91- F - equidistant angles in the laboratory system.
+        parameters.                                       | 92- F - pure dwba calculation.
+                                                          | 93- F - no recoil correction for reactions.
+41- T - factorisation of 1/(1-cos(theta)) in amplitudes.  | 94- F - non standard observables at equidistant angles.
+42- F - schmidt's orthogonal. in usual coupled equations. | 98- F - use of rest mass in dirac equations.
+43- F - interpolation on total spin.                      | 99- F - schroedinger equivalent to dirac equation.
+44- F - coulomb corrections.                              |100- F - complete dirac equation.
+ 
+         **********************************************************************************
+         *                                                                                *
+         *    Spherical optical model                                                     *
+         *                                                                                *
+         **********************************************************************************
+
+first call to hora              330000hund of s
+maximum number of j  1600  (min  0) stop when maximum s-matrix element is less than         .1000E-15
+
+plot conditions for cross-sections    2    2     for polarisations    1    1
+
+     1 factorisation of 1/(1-cos(theta)) in the amplitudes
+         iteration method:  maximum number of iterations         1
+         convergence criterion:        .10E-09 for s-matrix        .10E-09 for potentials and functions
+
+
+indications for expansion of cross-sections in legendre polynomials:    2    0    0
+
+external form factor model
+
+
+target              mass = 119.90219           product of charges =    0.           at**1/3 =    .493108E+01
+incident particle   mass =   1.00866   reduced mass =    .100025E+01   spin =  .5   ap**1/3 =    .100288E+01
+         energy(lab) =    .200000E+02 mev          energy(c. m.) =    .198314E+02 mev
+
+n =  1 -   spin =  .0+ excitation energy =   .0000 mev          potential    1
+
+integration step size =  .10000          matching radius =  12.000 fermi
+
+scattering angles from   .000 in steps of  2.000 up to 180.000 degrees   averaged with +/-    .000 degrees
+
+
+      1 solutions         1 coupled equations         2 independent amplitudes
+
+
+storage of coulomb corrections
+i = 1       2 for j = 1
+       1603 coulomb phases and indefinite integrals
+        803 coulomb functions and finite integrals
+
+level       wave number  coulomb parameter   sqrt(k out/k in)   rel. enhanc.      reduced mass       step size
+    1       .9792385366       .0000000000      1.0000000000      1.0207508242      1.0210014975       .1000000015
+number of finite coulomb integrals reduced from   803 to    39
+for i =   1  and ip =   1       0 reduced matrix elements
+maximum j-value =  25.5          maximum scattering coefficient at the end    .389E-18
+maximum j-value =  24.5          maximum scattering coefficient at the end    .703E-17
+  coefficients of legendre polynomials describing the cross-sections
+
+direct interaction for level 1,  52 coefficients
+   l        c(l)              c(l+1)             c(l+2)             c(l+3)             c(l+4)
+   0   1.6485629503E+02   1.4792870111E+02   1.3676139108E+02   1.2612871762E+02   1.1454747716E+02
+   5   9.9943673917E+01   8.4888611133E+01   6.9452806925E+01   5.5035401452E+01   4.1528174148E+01
+  10   3.0009365599E+01   2.1220675079E+01   1.4297708020E+01   8.5576248966E+00   3.9180491342E+00
+  15   1.8541436422E+00   6.6062688855E-01   1.9701514477E-01   5.2581808337E-02   1.2737632646E-02
+  20   2.8415988079E-03   5.9018847129E-04   1.1498369068E-04   2.1124113658E-05   3.6741708903E-06
+  25   6.0705285187E-07   9.5541049171E-08   1.4354686384E-08   2.0620736666E-09   2.8355553088E-10
+  30   3.7430399565E-11   4.8335437660E-12   7.0241415037E-13   2.0392123093E-13   1.5368089174E-13
+  35   1.5558302203E-13   1.6255042603E-13   1.6609825002E-13   1.6540913313E-13   1.5617065419E-13
+  40   1.4136141078E-13   1.2021578512E-13   9.2820972684E-14   6.3510088020E-14   3.0047992706E-14
+  45  -3.4413690370E-15  -3.8566096288E-14  -7.2090422825E-14  -1.0472786459E-13  -1.3522978717E-13
+  50  -1.6246214756E-13  -1.8669045467E-13
+File name missing or blank - please enter file name
+UNIT 7? 
+amplitude =  1   .1725118D+00 (   .1725118D+00)  new  -.1137705D-14  -.1542755D-15   old   .9482490D-17   .8355018D-18
+amplitude =  2   .1744556D+00 (   .1744556D+00)  new  -.1043801D-14  -.1397894D-15   old  -.9482490D-17  -.8355018D-18
+      Spherical optical model                                                 
+
+
+     ==> total cross section =   4045.568000 millibarns
+total reaction cross section =   1973.923000 millibarns
+
+elastic scattering on the target state of spin =   .0+
+
+ total elastic cross section =   2071.645000 millibarns
+
+    angle    cross-section     asym. or it11   
+      .000      .10085E+05            .0000000
+     2.000      .99064E+04           -.0058167
+     4.000      .93876E+04           -.0116272
+     6.000      .85761E+04           -.0174212
+     8.000      .75437E+04           -.0231793
+    10.000      .63774E+04           -.0288662
+    12.000      .51681E+04           -.0344212
+    14.000      .40001E+04           -.0397425
+    16.000      .29421E+04           -.0446627
+    18.000      .20416E+04           -.0489047
+    20.000      .13226E+04           -.0520036
+    22.000      .78717E+03           -.0531575
+    24.000      .41921E+03           -.0509362
+    26.000      .19047E+03           -.0427686
+    28.000      .66878E+02           -.0253380
+    30.000      .14264E+02           -.0307565
+    32.000      .28371E+01           -.8002063
+    34.000      .98238E+01           -.5132106
+    36.000      .20325E+02           -.3446905
+    38.000      .26683E+02           -.2664173
+    40.000      .26846E+02           -.1898118
+    42.000      .22305E+02           -.0643527
+    44.000      .16085E+02            .1803731
+    46.000      .11170E+02            .6037198
+    48.000      .95165E+01            .9488901
+    50.000      .11694E+02            .7752209
+    52.000      .17007E+02            .3918804
+    54.000      .23940E+02            .0910910
+    56.000      .30705E+02           -.1171262
+    58.000      .35740E+02           -.2692298
+    60.000      .38054E+02           -.3896351
+    62.000      .37367E+02           -.4907016
+    64.000      .34064E+02           -.5763814
+    66.000      .29019E+02           -.6426387
+    68.000      .23347E+02           -.6741227
+    70.000      .18150E+02           -.6386343
+    72.000      .14308E+02           -.4936155
+    74.000      .12349E+02           -.2428687
+    76.000      .12393E+02           -.0054191
+    78.000      .14180E+02            .0960137
+    80.000      .17156E+02            .0731502
+    82.000      .20602E+02           -.0051548
+    84.000      .23766E+02           -.0934562
+    86.000      .26004E+02           -.1729564
+    88.000      .26873E+02           -.2376964
+    90.000      .26205E+02           -.2862409
+    92.000      .24112E+02           -.3180626
+    94.000      .20956E+02           -.3319066
+    96.000      .17269E+02           -.3248058
+    98.000      .13646E+02           -.2917614
+   100.000      .10633E+02           -.2284222
+   102.000      .86278E+01           -.1421158
+   104.000      .78054E+01           -.0652418
+   106.000      .80998E+01           -.0324750
+   108.000      .92284E+01           -.0379071
+   110.000      .10762E+02           -.0528267
+   112.000      .12223E+02           -.0593737
+   114.000      .13192E+02           -.0528782
+   116.000      .13395E+02           -.0347149
+   118.000      .12757E+02           -.0089104
+   120.000      .11411E+02            .0175639
+   122.000      .96538E+01            .0319375
+   124.000      .78698E+01            .0115311
+   126.000      .64341E+01           -.0735399
+   128.000      .56205E+01           -.2288976
+   130.000      .55361E+01           -.3886405
+   132.000      .60987E+01           -.4623425
+   134.000      .70605E+01           -.4335704
+   136.000      .80744E+01           -.3388508
+   138.000      .87852E+01           -.2099230
+   140.000      .89240E+01           -.0606669
+   142.000      .83822E+01            .1060090
+   144.000      .72474E+01            .2895307
+   146.000      .57901E+01            .4774554
+   148.000      .44042E+01            .6075541
+   150.000      .35140E+01            .5116860
+   152.000      .34693E+01            .0859320
+   154.000      .44531E+01           -.3329994
+   156.000      .64251E+01           -.4828564
+   158.000      .91140E+01           -.4520343
+   160.000      .12064E+02           -.3486423
+   162.000      .14727E+02           -.2194680
+   164.000      .16576E+02           -.0792135
+   166.000      .17222E+02            .0698994
+   168.000      .16507E+02            .2306578
+   170.000      .14543E+02            .4080531
+   172.000      .11697E+02            .6064878
+   174.000      .85245E+01            .8194657
+   176.000      .56549E+01            .9848783
+   178.000      .36635E+01            .8419456
+   180.000      .29517E+01            .0000008
+
+
+*** workspace used in this computation     41633  ***             1158367 memories not used

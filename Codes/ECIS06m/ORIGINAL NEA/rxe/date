@@ -1,0 +1,100 @@
+ 10 MEV NEUTRON ON 232 TH WITH DISPERSIVE POTENTIAL.                    DATD-000
+FFFFFFFTFTFTTTFFFFFTFFTFFFFTFFFFFFFFFFFFFFFFFFFFFF                      DATD-001
+FFFFFFFFFFFTFFFFFTTFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFF                      DATD-002
+    2   50   20    1                                                    DATD-003
+    .12500  17.                                                         DATD-004
+      1     10.00000    .50000   1.00866 232.03805    .00000            DATD-005
+ 2.           .4937                                                     DATD-006
+    1    1                                                              DATD-007
+    2    0 .21300                                                       DATD-008
+  39.44626   1.25600    .65000                                          DATD-009
+    .44946   1.25600    .65000                                          DATD-010
+    .00000   1.18080    .60000                                          DATD-011
+   6.54228   1.18080    .60000                                          DATD-012
+   5.27756   1.12140    .59000                                          DATD-013
+   -.02924   1.12140    .59000                                          DATD-014
+    .00000    .00000    .00000                                          DATD-015
+    .00000    .00000    .00000                                          DATD-016
+    .00000  20.00000 180.00000                                          DATD-017
+         2    4    4    2    0                                          DATD-018
+9.95649    -10.39151  -5.66000  90.00000    .00000    .00000  75.00000  DATD-019
+   1.65000    .00000   5.00000    .03400    .00000  90.00000    .00870  DATD-020
+ 10 MEV NEUTRON ON 232 TH WITH THREE POTENTIALS.                        DATD-021
+FFFFFFFTFFFTTTFFFFFFFFTFFFFTFFFFFFFFFFFFFFFFFFFFFF                      DATD-022
+FFFFFFFFFFFFFFFFFTTFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFF                      DATD-023
+    2   50   20    3                                                    DATD-024
+    .12500  17.                                                         DATD-025
+      1 2   10.00000    .50000   1.00866 232.03805    .00000            DATD-026
+ 2.     3     .4937                                                     DATD-027
+    1    1                                                              DATD-028
+    2    0 .21300                                                       DATD-029
+  76.56333   1.25600    .65000                                          DATD-030
+    .42241   1.25600    .65000                                          DATD-031
+  -1.33606   1.18080    .60000                                          DATD-032
+   6.59292   1.18080    .60000                                          DATD-033
+   5.07937   1.12140    .59000                                          DATD-034
+   -.02836   1.12140    .59000                                          DATD-035
+    .00000    .00000    .00000                                          DATD-036
+    .00000    .00000    .00000                                          DATD-037
+  76.99658   1.25600    .65000                                          DATD-038
+    .44946   1.25600    .65000                                          DATD-039
+  -1.40721   1.18080    .60000                                          DATD-040
+   6.54228   1.18080    .60000                                          DATD-041
+   5.07698   1.12140    .59000                                          DATD-042
+   -.02924   1.12140    .59000                                          DATD-043
+    .00000    .00000    .00000                                          DATD-044
+    .00000    .00000    .00000                                          DATD-045
+  76.13009   1.25600    .65000                                          DATD-046
+    .39535   1.25600    .65000                                          DATD-047
+  -1.26491   1.18080    .60000                                          DATD-048
+   6.64355   1.18080    .60000                                          DATD-049
+   5.08176   1.12140    .59000                                          DATD-050
+   -.02747   1.12140    .59000                                          DATD-051
+    .00000    .00000    .00000                                          DATD-052
+    .00000    .00000    .00000                                          DATD-053
+    .00000  20.00000 180.00000                                          DATD-054
+ 10 MEV NEUTRON ON 232 TH WITH TWO POTENTIALS.                          DATD-055
+FFFFFFFTFFFTTTFFFFFFFFTFFFFTFFFFFFFFFFFFFFFFFFFFFF                      DATD-056
+FFFFFFFFFFFFFFFFFTTFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFF                      DATD-057
+    2   50   20    2                                                    DATD-058
+    .12500  17.                                                         DATD-059
+      1 1   10.00000    .50000   1.00866 232.03805    .00000            DATD-060
+ 2.     2     .4937                                                     DATD-061
+    1    1                                                              DATD-062
+    2    0 .21300                                                       DATD-063
+  76.99658   1.25600    .65000                                          DATD-064
+    .44946   1.25600    .65000                                          DATD-065
+  -1.40721   1.18080    .60000                                          DATD-066
+   6.54228   1.18080    .60000                                          DATD-067
+   5.07698   1.12140    .59000                                          DATD-068
+   -.02924   1.12140    .59000                                          DATD-069
+    .00000    .00000    .00000                                          DATD-070
+    .00000    .00000    .00000                                          DATD-071
+  76.13009   1.25600    .65000                                          DATD-072
+    .39535   1.25600    .65000                                          DATD-073
+  -1.26491   1.18080    .60000                                          DATD-074
+   6.64355   1.18080    .60000                                          DATD-075
+   5.08176   1.12140    .59000                                          DATD-076
+   -.02747   1.12140    .59000                                          DATD-077
+    .00000    .00000    .00000                                          DATD-078
+    .00000    .00000    .00000                                          DATD-079
+    .00000  20.00000 180.00000                                          DATD-080
+ 10 MEV NEUTRON ON 232 TH WITH ONE POTENTIAL.                           DATD-081
+FFFFFFFTFFFTTTFFFFFFFFTFFFFTFFFFFFFFFFFFFFFFFFFFFF                      DATD-082
+FFFFFFFFFFFFFFFFFTTFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFF                      DATD-083
+    2   50   20                                                         DATD-084
+    .12500  17.                                                         DATD-085
+      1     10.00000    .50000   1.00866 232.03805    .00000            DATD-086
+ 2.           .4937                                                     DATD-087
+    1    1                                                              DATD-088
+    2    0 .21300                                                       DATD-089
+  76.99658   1.25600    .65000                                          DATD-090
+    .44946   1.25600    .65000                                          DATD-091
+  -1.40721   1.18080    .60000                                          DATD-092
+   6.54228   1.18080    .60000                                          DATD-093
+   5.07698   1.12140    .59000                                          DATD-094
+   -.02924   1.12140    .59000                                          DATD-095
+    .00000    .00000    .00000                                          DATD-096
+    .00000    .00000    .00000                                          DATD-097
+    .00000  20.00000 180.00000                                          DATD-098
+FIN                                                                     DATD-099

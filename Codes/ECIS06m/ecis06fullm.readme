@@ -1,0 +1,144 @@
+                       ----------------           
+                       INFORMATION FILE           
+                       ----------------           
+                                                  
+NEA-0850/18 ECIS-06. (Abstract last modified 18-JUL-2007)
+
+      ECIS-06, Coupled Channel, Statistical Model, Schroedinger and Dirac Equation, Dispersion Relation
+
+1. NAME OR DESIGNATION OF PROGRAM - ECIS-06.
+
+2. COMPUTER FOR WHICH PROGRAM IS DESIGNED AND OTHER MACHINE VERSION PACKAGES AVAILABLE -
+
+Machines used: Package-ID Orig.Computer Test Computer NEA-0850/18 IBM PC,Linux-based PC Linux-based PC,PC Windows
+
+3. DESCRIPTION OF PROBLEM OR FUNCTION - ECIS-79 uses a sequential iteration method for solving the coupled differential equations arising in nuclear model calculations. It also performs parameter searches to fit calculated results to experimental data. It can be used for a range of models, e.g. first or second order harmonic or anharmonic vibrational model, symmetric or asymmetric rotational model, with a similar range of interaction potentials. It includes spin-orbit deformation.
+  
+ECIS-95 is a generalization of ECIS-79: for the rotational model vibrational bands are included. An option for solving the Dirac equation has been added. It also contains the statistical model including width fluctuation corrections as formulated by Peter Moldauer. Besides the use of Bessel expansion for form factors, the use of deformation lengths and the use of 'symmetrized' Woods-Saxon potentials, it includes:
+- two bound state transitions for particle-mode excitations with the possibility of the particle in the continuum
+- expression of cross sections in terms of Legendre polynomials
+- possibility of angular distribution for uncoupled states without
+  giving explicitly all the reduced nuclear matrix elements
+- for Coulomb excitation, use of the magnetic multipole.
+  
+New version differs from previous version in the following features:
+-------------------------------------------------------------------
+- The whole program was converted to double-precision
+- In ECIS03 the dispersion relation as described by "C. MAHAUX AND R. SARTOR IN NUCL. PHYS A528 (1991) 253", is added to the real potencial, (it is a generalisation of the dispersion relation as described in "MAHAUX, C. and SARTOR, R., Nucl. Phys. A458 (1986) 25" already introduced in ECIS96 and 97).
+- Conversion of all FORMATS from Hollerith notation into 'quotes' notation.
+  
+ECIS-06:
+- ECIS06 is primarily ECIS03 modified for the use of a different relativistic 'reduced mass' in front of 'scalar' potentials, differing from the one used in front of Coulomb potentials. It is the application to coupled equations of the principles described in 'DWBA05' announced in the Workshop 'Perspectives on Nuclear Data in the Next Decade', on the 26-28/9/2005 at Bruyeres-le-Chatel, France.
+- Some generalisations have been introduced, in particular for the dispersion relation.
+
+NEA-0850/18:
+
+This new version, NEA-0850/18, contains the following features:
+- The LOG tables description has been updated
+- The re-start of a search parameter calculation by a different job was not possible. This new version fixes this problem.
+- Automatic self-protecting features have been updated: in uninteresting situations, stop for low energy and external potential have been suppressed.
+
+4. METHOD OF SOLUTION - The ECIS method is designed to solve sets of coupled differential equations when the coupling terms are not too strong. The iteration technique searches for the one required solution among the many which are mathematically possible.
+The method supposes some ordering of the channels: first the ground state, then the state most strongly coupled to it. All channels must be coupled to some preceding one. The result of each iteration depends on this chosen order. If there is more than one equation related to the ground state the whole calculation must be repeated. The efficiency of the method is proportional to the ratio of the total number of equations to the number of those related to the ground state.
+The usual methods can also be used, but the iteration method is compulsory for spin-orbit deformation and Dirac formalism.
+
+5. RESTRICTIONS ON THE COMPLEXITY OF THE PROBLEM - 
+
+6. TYPICAL RUNNING TIME - CP time requirements are very problem-dependent.
+
+7. UNUSUAL FEATURES OF THE PROGRAM - 
+
+8. RELATED AND AUXILIARY PROGRAMS - The ECIS code has been developed over a period of more the fifteen years, and several earlier versions exist. The statistical model part is based on the version ANLECIS developed by P. Moldauer.
+
+9. STATUS
+NEA-0850/01: 02-AUG-1985 Obsolete
+NEA-0850/02: 02-AUG-1985 Obsolete
+NEA-0850/03: 16-MAR-1992 Obsolete
+NEA-0850/04: 01-FEB-1996 Obsolete
+NEA-0850/05: 05-MAR-2004 Obsolete
+NEA-0850/06: 05-MAR-2004 Obsolete
+NEA-0850/07: 31-MAR-1988 Obsolete
+NEA-0850/08: 27-OCT-1994 Obsolete
+NEA-0850/09: 12-JUN-1996 Obsolete
+NEA-0850/10: 18-JUL-1995 Obsolete
+NEA-0850/11: 12-JUN-1996 Obsolete
+NEA-0850/12: 01-FEB-1996 Obsolete
+NEA-0850/13: 01-FEB-1996 Obsolete
+NEA-0850/14: 05-MAR-2004 Obsolete
+NEA-0850/15: 07-JUL-2004 Obsolete
+NEA-0850/16: 12-MAR-2007 Obsolete
+NEA-0850/17: 18-JUL-2007 Obsolete
+NEA-0850/18: 18-JUL-2007 Tested at NEADB
+
+10. REFERENCES  - 
+- J. Raynal:
+'Spin-orbit transition interactions', Physical Review C (Nuclear Physics), Phys. Rev. C 71, 057602 (2005)
+- J. Raynal:
+Coupled Channel Formalism and ECIS Code.
+Specialists'' Meeting on the Use of the Optical Model for the Calculation of Neutron Cross Sections Below 20 MeV, OECD/NEA 1986
+(in French).
+- J. M. Quesada, R. Capote, A. Molina, M. Lozano and J. Raynal:
+"Analytical expressions for the dispersive contributions to the nucleon-nucleus optical potential", Physical Review C (Nuclear Physics), Phys. Rev. C 67, 067601 (2003) (3 pages)
+- J. Raynal:
+Aspects Geometriques des Reactions. CEA-N-1529 (1972)
+- J. Raynal:
+Optical-Model and Coupled-Channel Calculations in Nuclear Physics. 'International Atomic Energy Agency Report IAEA-SMR-9/8' pp. 281-322 (IAEA, Vienna, 1972) ICTP International Seminar Course: COMPUTING AS A LANGUAGE OF PHYSICS, Trieste, Italy, August 2-20 1971
+- J. Raynal: 
+Spin-Orbit Interaction in Inelastic Nucleon Scattering. 'THE STRUCTURE OF NUCLEI' 'International Atomic Energy Agency Report IAEA-SMR-9/9' pp. 75-116 (IAEA, Vienna, 1972) International Course on Nuclear Theory: "THE STRUCTURE OF NUCLEI", Trieste, Italy, January 13-March 12 1971
+- J. Raynal:
+Recurrence Relations for Distorted-Wave Born Approximation Coulomb Exitation Integrals and their Use in Coupled Channel Calculations. Phys. Rev. C., Vol. 23, pp. 2571-2585 (June 1981)
+- J. Raynal:
+Notes on ECIS-79  (May 25, 1982).
+- E. Sartori:
+"Report on the International Nuclear Model Code Intercomparison: Coupled-Channel Model Study" January 1984 NEANDC-182A/INDC(NEA)3
+NEA-0850/18:
+- Jacques Raynal:
+NOTES ON ECIS94  (Note CEA-N-2772, Septembre 1994)
+- Jacques Raynal:
+NOTES ON ECIS95
+- J. Raynal:
+'ECIS96', Proceedings of the Specialists' Meeting on the Nucleon Nucleus
+Optical Model up to 200 MeV, 13-15 November 1996, Bruyères-le-Chatel, France
+Publication 19 Nuclear Energy Agency, 1997 (p.159-166)
+(http://www.nea.fr/html/science/om200/raynal.pdf)
+- Jacques Raynal:
+An aberrant 'spin-orbit interaction' persists in the literature since more than
+thirty years (arXiv:nucl-th/0312038 v2 15 Dec. 2003)
+- K. Amos et al.:
+Raynal's use of the word 'aberrant' appears more appropriate for his ECIS
+formulation (arXiv:nucl-th/0401055 v1 27 Jan. 2004)
+- Jacques Raynal:
+Reply to K. Amos et al nucl-th/0401055 (arXiv:nucl-th/0407060 v2 27 Jul. 2004)
+- J. Raynal:
+'DWBA05'
+Workshop 'Perspectives on Nuclear Data in the Next Decade', on the 26-28/9/2005
+at Bruyeres-le-Chatel, France.
+
+11. MACHINE REQUIREMENTS - 
+
+12. PROGRAMMING LANGUAGE(S) USED -
+NEA-0850/18: FORTRAN-95 
+
+13. OPERATING SYSTEM UNDER WHICH PROGRAM IS EXECUTED - Unix, Linux, Windows.
+
+14. OTHER PROGRAMMING OR OPERATING INFORMATION OR RESTRICTIONS - 
+There are two machine-dependent features, the management of the working array and the control of the job time limit. Information on how to implement these functions on various computers is given in the comment cards in the main program.
+
+15. NAME AND ESTABLISHMENT OF AUTHOR - 
+          Jacques Raynal 
+          Service de Physique Theorique 
+          CEN Saclay 
+          91191 Gif-sur-Yvette Cedex 
+          France 
+
+16. MATERIAL AVAILABLE -
+NEA-0850/18:
+Fortran source codes
+15 test cases including inputs, outputs and intermediate output files
+Documentation in electronic form
+
+17. CATEGORIES  - 
+
+- A.  Cross Section and Resonance Integral Calculations
+
+Keywords: COUPLED CHANNEL THEORY, DIFFERENTIAL EQUATIONS, NUCLEAR MODELS, STATISTICAL MODELS 

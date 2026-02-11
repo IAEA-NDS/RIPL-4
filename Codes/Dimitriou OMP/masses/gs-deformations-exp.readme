@@ -1,0 +1,52 @@
+Directory: masses/
+File:      gs-deformations-exp.readme (November 1, 2001)
+*******************************************************
+
+
+                        gs-deformations-exp.dat
+
+         Compilations of experimental deformation parameters beta2
+               (provided by S. Goriely on November 1, 2001)
+         **********************************************************
+                      
+                    EXPERIMENTAL DEFORMATION PARAMETERS
+
+                S. Raman, C.W. Nestor, JR. and P. Tikkanen
+                  At. Data Nucl. Data Tables 78, 1 (2001).
+
+
+Content
+-------
+The Table contains 328 experimental deformation parameters beta2 derived from 
+the  model-independent experimental values of the reduced electric quadrupole
+transition  probability B(E2).  Assuming a uniform charge distribution out to
+the distance R and zero charge beyond, the model-dependent deformation
+parameter beta2 is  related to B(E2) by (Eq.2 of Raman et al. 1987)
+   
+   beta2=(4pi/3ZR0^2) [B(E2)/e^2]^2
+
+where R0=1.2 A^(1/3).
+
+
+Format
+------
+Each record of the file contains:
+
+   Z    : charge number
+   A    : mass number
+   El   : element symbol
+   beta2: experimental deformation parameter
+   error: estimated error on the experimental deformation parameter
+
+The corresponding FORTRAN format is (2i4,1x,a2,1x,2f8.4)
+
+
+References
+----------
+[1] S. Raman, C. H. Malarkey, W. T. Milner, C. W. Nestor, J. R. and P. H. 
+    Stelson (1987), At. Data Nucl. Data Tables 36, 1.
+[2] S. Raman, C. W. Nestor, JR. and P. Tikkanen (2001), At. Data Nucl. Data 
+    Tables 78, 1.
+
+
+

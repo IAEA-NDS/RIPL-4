@@ -1,0 +1,76 @@
+TEST ON COMPOUND NUCLEUS - USUAL COUPLED EQUATIONS              ECIS06  DAT1-000
+TFFFFFFFFFFTFFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                      DAT1-001
+FTTTTTFFFFFFFFFFTTTFFFFFFFTFFFTFFTFTFFFFTFFFFFFFFF                      DAT1-002
+    3                                                      4            DAT1-003
+.24828    14.4                                                          DAT1-004
+    2                                                                   DAT1-005
+   0.00      0.80000   0.50000   1.00867 238.05099   0.                 DAT1-006
+   2.00      0.04500                                                    DAT1-007
+   4.00      0.14800                                                    DAT1-008
+   1.00  -   0.68000                                                    DAT1-009
+   3.00  -   0.73190                                                    DAT1-010
+    4    4                                                              DAT1-011
+.25       .06                                                           DAT1-012
+46.       1.317     .62                                                 DAT1-013
+                                                                        DAT1-014
+                                                                        DAT1-015
+7.        1.447     .5                                                  DAT1-016
+7.        1.317     .62                                                 DAT1-017
+                                                                        DAT1-018
+                                                                        DAT1-019
+                                                                        DAT1-020
+   0.00000   5.00000 180.00000                                          DAT1-021
+                                                                        DAT1-022
+  .00128  4.8                                                           DAT1-023
+   92.    29.18407  3.127615  0.3883366 5.716096  -0.5777183 3.817615   DAT1-024
+TEST ON COMPOUND NUCLEUS - USUAL ITERATIONS                     ECIS06  DAT1-025
+TFFFFFFFFFFTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                      DAT1-026
+FTTTTTFFFFFFFFFFTTTFFFFFFFTFFFTFFTFTFFFFTFFFFFFFFF                      DAT1-027
+    3                                                      4            DAT1-028
+.24828    14.4                                                          DAT1-029
+    2    1                                                              DAT1-030
+   0.00      0.80000   0.50000   1.00867 238.05099   0.                 DAT1-031
+   2.00      0.04500                                                    DAT1-032
+   4.00      0.14800                                                    DAT1-033
+   1.00  -   0.68000                                                    DAT1-034
+   3.00  -   0.73190                                                    DAT1-035
+    4    4                                                              DAT1-036
+.25       .06                                                           DAT1-037
+46.       1.317     .62                                                 DAT1-038
+                                                                        DAT1-039
+                                                                        DAT1-040
+7.        1.447     .5                                                  DAT1-041
+7.        1.317     .62                                                 DAT1-042
+                                                                        DAT1-043
+                                                                        DAT1-044
+                                                                        DAT1-045
+   0.00000   5.00000 180.00000                                          DAT1-046
+                                                                        DAT1-047
+  .00128  4.8                                                           DAT1-048
+   92.    29.18407  3.127615  0.3883366 5.716096  -0.5777183 3.817615   DAT1-049
+TEST ON COMPOUND NUCLEUS - ITERATIONS WITH DEFORMED SPIN-ORBIT  ECIS06  DAT1-050
+TFFFFFFFFFFTTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                      DAT1-051
+FTTTTTFFTFFFTFFFTTTFFFFFFFTFFFTFFTFTFFFFTFFFFFFFFF                      DAT1-052
+    3                                                      4            DAT1-053
+.24828    14.4                                                          DAT1-054
+    2    2                                                              DAT1-055
+   0.00      0.80000   0.50000   1.00867 238.05099   0.                 DAT1-056
+   2.00      0.04500                                                    DAT1-057
+   4.00      0.14800                                                    DAT1-058
+   1.00  -   0.68000                                                    DAT1-059
+   3.00  -   0.73190                                                    DAT1-060
+    4    4                                                              DAT1-061
+.25       .06                                                           DAT1-062
+46.       1.317     .62                                                 DAT1-063
+                                                                        DAT1-064
+                                                                        DAT1-065
+7.        1.447     .5                                                  DAT1-066
+7.        1.317     .62                                                 DAT1-067
+                                                                        DAT1-068
+                                                                        DAT1-069
+                                                                        DAT1-070
+   0.00000   5.00000 180.00000                                          DAT1-071
+                                                                        DAT1-072
+  .00128  4.8                                                           DAT1-073
+   92.    29.18407  3.127615  0.3883366 5.716096  -0.5777183 3.817615   DAT1-074
+FIN                                                                     DAT1-075
