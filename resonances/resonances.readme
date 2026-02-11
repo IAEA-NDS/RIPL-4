@@ -1,0 +1,62 @@
+Directory: resonances/
+File: resonances.readme (18 August 2025)
+***************************************
+      
+
+                   resonances_L0.dat & resonances_L1.dat
+
+         Average parameters of s- and p- wave neutron resonances
+             (provided by S. Goriely on August 18, 2025)
+         ********************************************************
+
+
+Content
+-------
+The average resonance parameters recommended for RIPL-4 were taken from RIPL-3 
+and Boorkhaven National Laboratory (BNL, Mughabghab 2018). This compilation 
+includes the systematic evaluations of the average resonance spacings, the 
+neutron strength functions and the total radiative widths. The methodology used
+to extract resonance parameters is described in Capote et al. (2009) and Mughabghab(2018).
+A comparison between both s-wave and p-wave resonance parameters from both evaluations 
+is available in the final RIPL-4 report. 
+
+The recommended parameters are given separately for s- and p-wave resonances in 
+files resonances_L0.dat and resonances_L1.dat, respectively. The file for s-wave 
+resonances contents 324 nuclides and the file for p-wave resonances includes 248 
+nuclides.
+
+
+Format
+------
+Each record of the both files contains:
+
+   Z         : charge number of the target nucleus
+   N         : neutron number of the target nucleus
+   A         : mass number of the target nucleus
+   Sym       : element symbol of the target nucleus
+   L         : angular momentum of the incident neutron (L=0 s-wave, L=1 p-wave)
+   J         : spin of the target ground state
+   P         : parity of the target ground state
+   Sn        : neutron binding energy for the corresponding compound nucleus in MeV
+   D(RIPL-3) : average resonance spacing in eV from the RIPL-3 library
+   Err       : uncertainty of D(RIPL-3) in eV
+   D(BNL)    : average resonance spacing in eV from the BNL library
+   Err       : uncertainty of D(BNL) in eV
+   Gg(RIPL-3): average radiative width in eV from the RIPL-3 library
+   Err       : uncertainty of Gg(RIPL-3) in eV
+   Gg(BNL)   : average radiative width in eV from the BNL library
+   Err       : uncertainty of Gg(BNL) in eV
+   S(RIPL-3) : neutron strength function in 10**(-4) from the RIPL-3 library
+   Err       : uncertainty of S(RIPL-3) in 10**(-4)
+   S(BNL)    : neutron strength function in 10**(-4) from the BNL library
+   Err       : uncertainty of S(BNL) in 10**(-4)
+
+The corresponding FORTRAN format is
+(3i4,2x,a2,2x,i2,f5.1,1x,a1,f10.3,1p,12e12.3).
+
+
+References
+----------
+S.F. Mughabghab, Atlas of Neutron Resonances. Amsterdam-Tokio, Elsevier, 2018.
+R. Capote et al. Nuclear Data Sheets, 110, 3107, 2009 
+
