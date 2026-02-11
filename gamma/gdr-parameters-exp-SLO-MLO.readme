@@ -1,0 +1,572 @@
+Directory: gamma/
+File:      gdr-parameters-exp-SLO-MLO.readme (July 23, 2010)
+****************************************************************
+
+                       gdr-parameters-exp-SLO.dat
+                       gdr-parameters-exp-MLO.dat
+
+               GIANT DIPOLE RESONANCE PARAMETERS:
+            EXPERIMENTAL VALUES WITH UNCERTAINTIES
+
+           Vladimir A. Plujko *),  Roberto Capote &),
+          Olexandr M. Gorbachenko *), Vira M. Bondar *)
+
+  *) Nuclear Physics Department, Taras Shevchenko National University,
+                             Kiev, Ukraine
+
+  &) NAPC--Nuclear Data Section, International Atomic Energy Agency,
+                             Vienna, Austria
+
+Main reference: 
+  V.A.Plujko et al, Atomic Data and Nuclear Data Tables 97 (2011) 567–585
+
+Contents
+--------
+Isovector Giant Dipole Resonance (IVGDR or GDR) parameters and their uncertainties
+(one-sigma standard deviation) representing results from Ref.[1] of Lorentz-like curves
+fit to the photoabsorption cross section data are tabulated. The parameters are given
+for 131 isotopes from B-10 to Pu-239 cold atomic nuclei (262 entries) and 9 elements
+of natural isotopic composition (14 entries).
+
+This database   updates and extends compilation listed in the RIPL-1 database [2]
+as well as in the RIPL-3 [3] "gdr-parameters-exp.dat" file
+{http://www-nds.iaea.org/RIPL-3/gamma/gdr-parameters-exp-LOR.dat}
+which are based on the parameters of Lorentz curves fitted to the total photoneutron
+cross-section [4].  It also updates and extends the RIPL-3 database[3]
+contained in files "gdr-parameters&errors-exp-SLO.dat"
+{ http://www-nds.iaea.org/RIPL-3/gamma/gdr-parameters&errors-exp-SLO.dat}
+ and "gdr-parameters&errors-exp-MLO.dat"
+{http://www-nds.iaea.org/RIPL-3/gamma/gdr-parameters&errors-exp-MLO.dat}.
+
+Collection of photon-induced reaction cross-sections from the EXFOR library [5]
+were used as the required experimental database on photonuclear cross sections.
+The evaluated data compiled at the  Centre  for  Photonuclear  Experiment Data
+at Institute of Nuclear Physics of the Moscow State University[6,7] are also
+considered as experimental values. Namely for experimental data,  the total
+photoabsorption cross sections CS(g,abs) were used (if they existed in the
+EXFOR database) or a combination of experimental partial cross sections best
+suited for approximation to the total photoabsorption cross section.
+The present compilation covers experimental data as of the January 2010.
+
+The theoretical photoabsorption cross section was taken as a sum of the components
+corresponding to excitation of the GDR and a photoabsorption on a neutron-proton
+pair (quasideuteron contribution [8,9]). The GDR component of the photoabsorption
+cross section was calculated by a standard Lorentzian (SLO) model as well as by
+a Simplified version of the modified Lorentzian (SMLO) approach[1,3] and the GDR
+parameters are treated as variables in the least-squares fitting of the calculated
+total photo-absorption cross sections to the experimental data. The values and
+uncertainties of the corresponding GDR parameters are given in the files
+"ivgdr_slo_exp.dat" and "ivgdr_mlo_exp.dat".
+
+For deformed nuclei, an approximation of axially deformed nuclei was adopted. However,
+following Ref.[4], some deformed nuclei were considered as spherical ones, if the
+one-component Lorentz curve gives a better fit (that is, a fit having a lower
+chi^2 per degree of freedom) to the experimental data than a two-component one.
+
+A least-squares fitting procedure was employed, in which the data points were weighted
+according to the inverse square of their uncertainties. There were situations where no
+uncertainties dCS of the experimental cross-sections (CS) were given in the EXFOR database.
+For such cases the relative uncertainties rCS=dCS/CS were taken either as a constant value
+of 10% (rCS = 0.1) , or as an energy-dependent quantity. The energy-dependent relative
+uncertainties were assumed to take minimal values near the GDR energies and maximal values
+on the GDR tails, i.e. the triangular shape rCS(Eg)=rCS_min+b|E1-Eg| was accepted for
+spherical nuclei and the trapezoidal shape was used in deformed nuclei: rdCS(Eg)=rdCS_min+b(E1-Eg)
+at Eg < E1, rd(Eg)=rd_min at E1 <Eg < E2 and rdCS(Eg)= rdCS_min+b(Eg-E2) if Eg > E2. Here,
+b=(rCS_max-rCS_min)/(E1-Eg1ow) with  rCS_min = 0.1 and rCS_max =0.5 for minimal and maximal
+values of the relative uncertainty; Eg1ow the smallest value of gamma-ray energy Eg in the
+experimental database. The E1, E2 are the resonance energies, where the uncertainties are
+assumed to be the smallest. These energies of cross-section peaks were obtained from datafile
+"gdr-parameters-exp.dat"[2,3] if both the nucleus and the reference were present in the file.
+If the reference was different, the peak energies were taken from the first line of the database
+for this isotope. If the isotope was not listed, then the systematics [2] with parameters from
+Ref.[10] was used.
+
+The minimization of the least-squares functional (the chi^2- value) was undertaken by
+the CERN MINUIT package [11]. The standard deviation of the parameters was estimated
+using MINOS procedure of this code. The calculated mode was defined by the following
+sequence of commands:SEEK 1000, MIGRAD 10000 0.000001, IMPROVE 100, HESSE 1, MINOS 1.
+
+
+Format data files
+-----------------
+
+The data for each nuclide at given experimental data used in fitting
+(i.e. at fixed Id, see below) are listed in two lines and  this record  includes:
+
+Z         : atomic number;
+A         : mass number; 0 indicates a natural isotopic composition;
+El        : symbol of element;
+Id        : type of experimental data used in fitting:
+            0  experimental CS(g,abs) with experimental uncertainties dCS(g,abs)/CS(g,abs);
+            1a experimental CS(g,abs) with constant uncertainties (10%);
+            1b experimental CS(g,abs) with energy-dependent uncertainties;
+            2  evaluated experimental CS(g,abs) with experimental uncertainties;
+            3a evaluated experimental CS(g,abs) with constant uncertainties (10%);
+            3b evaluated experimental CS(g,abs) with energy-dependent uncertainties;
+            4  experimental total photoneutron cross section CS(g,sn)= CS(g, tot n)
+               with experimental uncertainties;
+            5a experimental CS(g,sn) with constant uncertainties (10%);
+            5b experimental CS(g,sn) with energy-dependent uncertainties;
+            6  composed CS(g,sn) as combination of the experimental cross-sections
+               CS(g,sn)=(CS(g,xn)+CS(g,1n))/2 with absolute uncertainties
+               dCS(g,sn)=0.5*SQRT(dCS(g,xn)^2+dCS(g,1n)^2) where CS(g,xn) is
+               the inclusive photoneutron yield cross section and CS(g,1n) is
+               photoneutron cross sections with ejection of one neutron;
+            7  composed CS(g,sn) as combination of the experimental cross-sections
+               CS(g,sn)=CS(g,xn)-CS(g,2n) with absolute uncertainties
+               dCS(g,sn)=SQRT(dCS(g,xn)^2+dCS(g,2n)^2);
+            8  composed CS(g,sn) as combination of the experimental cross-sections
+               CS(g,sn)=CS(g,1n)+CS(g,2n) with absolute uncertainties
+               dCS(g,sn)=SQRT(dCS(g,1n)^2+dCS(g,2n)^2);
+            9  composed CS(g,sn) as combination of the experimental cross-sections
+               CS(g,sn)=CS(g,1n)+CS(g,2n)+CS(g,3n) with absolute uncertainties
+               dCS(g,sn)=SQRT(dCS(g,1n)^2+dCS(g,2n)^2+dCS(g,3n)^2);
+           10  composed CS(g,sn) as combination of the experimental cross-sections
+               CS(g,sn)=CS(g,1n)+CS(g,2n)+CS(g,F) with absolute uncertainties
+               dCS(g,sn)=SQRT(dCS(g,1n)^2+dCS(g,2n)^2+dCS(g,F)^2);
+           11  composed CS(g,sn) as combination of the experimental cross-sections:
+               CS(g,sn)=(CS(g,xn)+CS(g,1n)+CS(g,F))/2 with absolute uncertainties
+               dCS(g,sn)=0.5*SQRT(dCS(g,xn)^2+dCS(g,1n)^2+dCS(g,F)^2);
+           12  experimental CS(g,1n) with experimental uncertainties;
+           13  experimental CS(g,xn) with experimental uncertainties;
+           13a experimental CS(g,xn) with constant uncertainties ;
+           13b experimental CS(g,xn) with energy-dependent uncertainties;
+ Er1      : energy of the first component of the GDR, MeV (the first line of the entry);
+dEr1      : uncertainty (one-sigma standard deviation, MeV) of the energy in the nearest
+            upper line (the second line of the entry);
+ Wr1      : width of the first component of the GDR, MeV (the first line of the entry);
+dWr1      : uncertainty (one-sigma standard deviation, MeV) of the width in the nearest
+            upper line (the second line of the entry);
+ Sr1      : strength of the first component of the GDR in units of the Thomas-Reiche-Kuhn
+            (TRK) sum rule CS_TRK (the first line of the entry); the GDR strength Sr1 is
+            related to the peak value CSr1 of the first cross-section component
+            CSr1=2*CS_TRK*Sr1/Wr1/PI, CS_TRK= 60 NZ/A = 15 A (1-I^2)[mb], I=(N-Z)/A;
+            (the values of CS_TRK for Zr-90 and Pb-208 are used for  Zr-0 and Pb-0);
+dSr1      : uncertainty (one-sigma standard deviation) of the strength in the nearest
+            upper line (the second line of the entry);
+ Er2      : energy of the second component of the GDR, MeV (the first line of the entry);
+dEr2      : uncertainty (one-sigma standard deviation, MeV) of the energy in the nearest
+            upper line (the second line of the entry);
+ Wr2      : width of the second component of the GDR, MeV (the first line of the entry);
+dWr2      : uncertainty (one-sigma standard deviation, MeV) of the width in the nearest
+            upper line (the second line of the entry);
+ Sr2      : strength of the second component of the GDR in units of the TRK sum rule
+            (the first line of the entry); the GDR strength Sr2 is related to the peak
+            value CSr2 of the second cross-section component CSr2=2*CS_TRK*Sr2/Wr2/PI;
+            (the values of CS_TRK for Zr-90 and Pb-208 are used for  Zr-0 and Pb-0);
+dSr2      : uncertainty (one-sigma standard deviation) of the strength in the nearest
+            upper line (the second line of the entry);
+  Sr      : sum Sr=Sr1+Sr2 of strengths of the first and second component of the GDR in
+            units of the TRK sum rule(the first line of the entry);
+            Sr*CS_TRK is total integrated photoabsorpttion cross-section CS__int;
+ dSr      : uncertainty (one-sigma standard deviation) of the total strength in the
+            nearest upper line (the second line of the entry);
+E_{min}-E_{max}:  fitting interval on gamma-ray energy, MeV;
+Ref.       : short references on the experimental data used in the fitting,
+             the list of full references is given below.
+
+
+FORTRAN format  of data reading for one entry (Id) is FORMAT(2I4,1X,A2,A3,2X,7F8.3,A22,/,16X,7F8.3)
+
+
+References to the contents
+--------------------------
+1. V. A. Plujko, R. Capote, O.M. Gorbachenko,  At. Data Nucl. Data Tables, 2010, in press.
+2. J. Kopecky, in  Handbook for calculations of nuclear reaction data. Reference Input
+   Parameter Library (RIPL),  Tech. Rep. IAEA-TECDOC-1034, (International Atomic Energy
+   Agency, Vienna, Austria, 1998); chapter 6; see directory GAMMA on the RIPL-1 web site at
+   http://www-nds.iaea.org/ripl/.
+3. R. Capote, M. Herman, P.Oblozinsky, P.G. Young, S. Goriely, T. Belgya,  A.V. Ignatyuk,
+   A.J.Koning, S.Hilaire, V.A.Plujko, M. Avrigeanu, O. Bersillon, M. B. Chadwick, T. Fukahori,
+   Zhigang Ge, Yinlu Han, S.Kailas, J.Kopecky, V.M. Maslov, G.Reffo, M.Sin, E.Sh.Soukhovitskii,
+   P. Talou, Nucl. Data Sheets, 110 (2009) 3107; http://www-nds.iaea.org/RIPL-3/.
+4. S.S.Dietrich, B.L.Berman; At. Data Nucl. Data Tables, 199 (1988)38.
+5. Experimental Nuclear Reaction Data Library EXFOR; http://www-nds.iaea.org/exfor/
+   International Network of Nuclear Reaction Data Centres: EXFOR/CSISRS database,
+   available online at http://www-nds.iaea.org/exfor/.
+6. B.S. Ishkhanov, V.V. Varlamov, Phys.Atomic Nuclei, 67(2004)1664.
+7. N.N. Peskov, V.V. Varlamov, in Proc. Int. Conf. Current Problems Nucl.Phys. Atom. Energy
+   (NPAE-Kyiv2008),9-15 June 2008, Kyiv, Ukraine, V.II (2008) 604; available online at
+   http://www.kinr.kiev.ua/NPAE-Kyiv2008/proceedings/
+   in subsection #6 Nuclear Data and Data Evaluation + Peskov_25-29.pdf.
+8. M.B. Chadwick, P. Oblozinsky, P.E. Hodgson, G. Reffo. Phys.Rev. C44(1991)814.
+9. M.B.Chadwick, P.Oblozinsky, A.I.Blokhin, T.Fukahori, Y.Han, Y. O.Lee,  M.N.Martins,
+   S.F.Mughabghab,V.V.Varlamov, B.Yu, J.Zhang. Handbook on photonuclear data for application.
+   Cross sections and spectra. IAEA TECDOC 1178, Vienna, 2000;  http://www-nds.iaea.org/reports-new/tecdocs/iaea-tecdoc-1178.pdf.
+10.B.L. Berman, S.C.Fultz, Rev.Mod.Phys.47 (1975) 713.
+11.CERN Program Library, MINUIT (D506), Function Minimization and Error Analysis;
+   code available online at http://wwwasdoc.web.cern.ch/wwwasdoc/cernlib.html;
+   user manual available online at http://wwwasdoc.web.cern.ch/wwwasdoc/minuit/minmain.html.
+
+
+References in the data files
+----------------------------
+1960Fas  R.W.Fast, P.A.Flournoy, R.S.Tickle, W.D.Whitehead;
+         Phys. Rev., 118(2), 535(1960).
+1962Fu1  S. C. Fultz, R. L. Bramblett, J. T. Caldwell, N. E. Hansen,
+         C. P. Jupiter; Phys. Rev., 128, 2345(1962).
+1962Fu2  S. C. Fultz, R. L. Bramblett, J. T. Caldwell, N. A. Kerr;
+         Phys. Rev., 127, 1273(1962).
+1963Br1  R. L. Bramblett, J. T. Caldwell, G. F. Auchampaugh,
+         S. C. Fultz; Phys. Rev., 129, 2723(1963).
+1963Bur  N. A. Burgov, G. V. Danilyan, B. S. Dolbilkin, L. E. Lazareva,
+         F.A.Nikolaev; Zhur. Eksper. Teoret. Fiz. 45,(6),1694(1963).
+1964Br1  R. L. Bramblett, J. T. Caldwell, R. R. Harvey, S. C. Fultz;
+         Phys. Rev., 133, B869(1964).
+1964Fu1  S. C. Fultz, R. L. Bramblett, J. T. Caldwell, R. R. Harvey;
+         Phys. Rev., 133, B1149(1964).
+1964Ha2  R. R. Harvey, J. T. Caldwell, R. L. Bramblett, S. C. Fultz;
+         Phys. Rev., 136, B126(1964).
+1965Be1  B.L. Berman, R.L. Bramblett, J.T. Caldwell, R.R. Harvey,
+         S.C. Fultz; Phys. Rev.Lett.,15,727(1965).
+1965Wyc  J. M. Wyckoff, B. Ziegler, H. W. Koch, R. Uhlig;
+         Phys. Rev. B137, 576(1965).
+1966Br1  R. L. Bramblett, J. T. Caldwell, B. L. Berman, R. R. Harvey,
+         S. C. Fultz; Phys. Rev., 148, 1198(1966).
+1966Fu1  S.C.Fultz, J.T.Caldwell, B.L.Berman, R.L.Bramblett, R.R.Harvey;
+         Phys.Rev. 143, 790 (1966).
+1967Be2  B. L. Berman, J. T. Caldwell, R. R. Harvey, M. A. Kelly,
+         R. L. Bramblett, S. C. Fultz; Phys. Rev., 162, 1098(1967).
+1967Cos  S. Costa, F. Ferrero, C. Manfredotti, L. Pasqualini,
+         G. Piragino, H. Arenhovel; Nuovo Cimento B, 51, 199(1967),
+1968Be5  R.Bergere, R. Beil, A. Veyssiere; Nucl. Phys. A121,
+         463(1968).
+1968Su1  R. E. Sund, M. P. Baker, L. A. Kull, R. B. Walton;
+         Phys.Rev., 176, 1366(1968).
+1969Be1  B. L. Berman, R. L. Bramblett, J. T. Caldwell, H. S. Davis,
+         M. A. Kelly, S. C. Fultz; Phys. Rev., 177, 1745(1969).
+1969Be6  R. Bergere, H. Beil, P. Carlos, A. Veyssiere; Nucl. Phys.,
+         A133, 417(1969).
+1969Be8  B. L. Berman, M. A. Kelly, R. L. Bramblett, J. T. Caldwell,
+         H. S. Davis, S. C. Fultz; Phys. Rev., 185, 1576(1969).
+1969Bez  N. Bezic, D. Brajnik, D. Jamnik, G. Kernel;
+         Nucl. Phys. A128, 426(1969).
+1969Dob  B.S.Dolbilkin, A.I.Isakov, V.I.Korin, L.E.Lazareva, N.V.Linkova,
+         B.A.Tulupov; Yadern.Fiz. 9, 675 (1969).
+1969Fu1  S. C. Fultz, B. L. Berman, J. T. Caldwell, R. L. Bramblett,
+         M. A. Kelly; Phys. Rev., 186, 1255(1969).
+1970Be8  B. L. Berman, S. C. Fultz, J. T. Caldwell, M. A. Kelly,
+         S. S. Dietrich; Phys. Rev., C2, 2318(1970).
+1970Gor  B.I.Goryachev, B.S.Ishkhanov, I.M.Kapitonov, I.M.Piskarev,
+         V.G.Shevchenko, O.P.Shevchenko; Yad.Fiz. 11, 252 (1970).
+1970Su1  R. E. Sund, V. V. Verbinski, H. Weber, L. A. Kull;
+         Phys. Rev., C2, 1129(1970).
+1970Ve1  A. Veyssiere, H. Beil, R. Bergere, P. Carlos, A. Lepretre;
+         Nucl. Phys. A159, 561(1970).
+1971Be4  H. Beil, R. Bergere, P. Carlos, A. Lepretre, A. Veyssiere,
+         A. Parlag; Nucl. Phys. A172, 426(1971).
+1971Ca1  P. Carlos, H. Beil, R. Bergere, A. Lepretre, A. Veyssiere;
+         Nucl. Phys. A172, 437(1971).
+1971Fu2  S.C.Fultz, R.A.Alvarez, B.L.Berman, M.A.Kelly, D.R.Lasher,
+         T.W.Phillips, J.McElhinney; Phys.Rev. C4, 149 (1971).
+1971Le1  A. Lepretre, H. Beil, R. Bergere, P. Carlos, A. Veyssiere,
+         M. Sugawara; Nucl. Phys. A175, 609(1971).
+1972Ahr  J.Ahrens,H.Borchert,H.B.Eppler,H.Gimm,H.Gundrum; C,72SENDAI,213,1972.
+1972De1  T.K.Deague, R.J.J.Stewart; Nucl.Phys. A191, 305 (1972).
+1972Yo   L. M. Young, Ph.D. Thesis, University of Illinois(1972),unpublished.
+1973Ve1  A. Veyssiere, H. Reil, R. Bergere, P. Carlos, A. Lepretre,
+         K. kernbach; Nucl. Phys. A199, 45(1973).
+1974Be3  H. Beil, R. Bergere, P. Carlos, A. Lepretre, A. De Miniac,
+         A. Veyssiere; Nucl. Phys. A227, 427(1974).
+1974Ca5  P. Carlos, H. Beil, R. Bergere, A. Lepretre, A. De Miniac,
+         A. Veyssiere; Nucl. Phys. A225, 171(1974).
+1974Fu3  S. C. Fultz, R. A. Alvarez, B. L. Berman, P. Meyer;
+         Phys. Rev., C10, 608(1974).
+1974Le1  A. Lepretre, H. Beil, R. Bergere, P. Carlos, A. De Miniac,
+         A. Veyssiere, K. Kernbach; Nucl. Phys. A219, 39(1974).
+1974Ve1  A. Veyssiere, H. Beil, R. Bergere, P. Carlos, A. Lepretre,
+         A. De Miniac; Nucl. Phys. A227, 513(1974).
+1975Ahr  J. Ahrens, H. Borchert, K. H. Czock, H. B. Eppler, H. Gimm,
+         H. Gundrum,M. Kroning, P. Riehn, G. Sita Ram, A. Zieger,
+         B. Ziegler; Nucl. Phys. A251, 479(1975).
+1975Mcc  J.J.McCarthy, R.C.Morrison, H.J.Vander-Molen;
+         Phys.Rev.C11,772(1975).
+1976Ca1  P. Carlos, H. Beil, R. Bergere, J. Fagot, A. Lepretre,
+         A. Veyssiere, G. V. Solodukhov; Nucl. Phys. A258, 365(1976).
+1976Gor  B.I.Goryachev, Y.V.Kuznetsov, V.N.Orlin, N.A.Pozhidaeva,
+         V.G.Shevchenko; Yad.Fiz. 23, 1145 (1976).
+1976Le2  A. Lepretre, H. Beil, R. Bergere, P. Carlos, J. Fagot,
+         A.De Miniac, A. Veyssiere, H. Miyase; Nucl. Phys. A258, 350(1976).
+1977Gor  A.M.Goryachev, G.N.Zalesnyi; Yad.Fiz. 26, 465 (1977).
+1976Gur  G. M. Gurevich, L. E. Lazareva, V. M. Mazur, G. V. Solodukhov,
+         B. A. Tulupov; Nucl. Phys. A273, 326(1976).
+1978Gur  G. M. Gurevich, L. E. Lazareva, V. M. Mazur, G. V. Solodukhov;
+         Prob. Yad. Fiz. Kosm. Luch. 8, 106(1978).
+1978Nor  J. W. Norbury, M. N. Thompson, K. Shoda, H. Tsubota;
+         Australian Jour. of Phys. 31, 471(1978).
+1979Al2  R. A. Alavarez, B. L. Berman, D. D. Faul, F. H. Lewis, Jr.,
+         P. Meyer; Phys. Rev., C20, 128(1979).
+1979Be4  B. L. Berman, D. D. Faul, R. A. Alvarez, P. Meyer, D. L. Olson;
+         Phys. Rev., C19, 1205(1979).
+1980Ca1  J. T. Caldwell, E. J. Dowdy, B. L. Berman, R. A. Avarez,
+         P. Meyer; Phys. Rev., C21, 1215(1980).
+1981Gur  G. M. Gurevich, L. E. Lazareva, V. M. Mazur, S. Yu. Merkulov,
+         G. V. Solodukhov, V. A. Tyutin; Nucl. Phys. A351, 257(1981).
+1981Ish  B.S.Ishkhanov, I.M.Kapitonov, V.I.Shvedunov, A.I.Gutii,
+         A.M.Parlag; Yad.Fiz. 33, 581 (1981).
+1985Ahr  J.Ahrens; Nucl.Phys. A446, 229c (1985).
+1986Ass  Y I.Assafiri, M.N.Thompson;
+         Nucl. Phys. A460 455 (1986).
+1986Be1  B. L. Berman, R. E. Pywell, M. N. Thompson, K. G. Mcneill,
+         J. W. Jury, J. G. Woodworth; Bull. Am. Phys. Soc. 31, 855(1986).
+1986Be2  B. L. Berman, J. T. Caldwell, E. J. Dowdy, S. S. Dietrich,
+         P. Meyer, R. A. Alvarez; Phys. Rev., C34, 2201(1986).
+1986Var  V.V.Varlamov, P.N.Zaikin, I.M.Kapitonov, M.V.Ufimtsev;
+         A.P.Chernyaev; Izv.Akad.Nauk SSSR, Ser.Fiz. 50, 192 (1986).
+1987Ahs  M.H.Ahsan, S.A.Siddiqui, H.H.Thies; Nucl.Phys. A469, 381 (1987).
+1987O'k  G.J. O'Keefe,M.N. Thompson,Y.I. Assafiri,R.E. Pywel;
+         Nucl. Phys. A469 239(1987).
+1989Bat  A. D. Bates, R. P. Rassool, E. A. Milne, M. N. Thompson, K.G. Mcneil;
+         Phys. Rev. C40, 506(1989).
+1989Ras  R.P.Rassool, M.N.Thompson; Phys.Rev. C39, 1631 (1989).
+         Phys. Rev. C40, 506(1989).
+1995Li1  Liu Jianfen and Su Zongdi; J.Chinese Nucl.Phys.,16,560(1995).
+2002Ish  B. S. Ishkhanov, I. M. Kapitonov, E. I. Lileeva, E. V. Shirokov,
+         V. A. Erokhova, M. A. Elkin, A. V. Izotova;
+         Moscow State Univ.Inst.of Nucl.Phys. Reports, No.2002, 27/711(2002).
+2003Er   V. A. Erokhova, M. A. Elkin, A. V. Izotova, B. S. Ishkhanov,
+         I. M. Kapitonov, E. I. Lilieva, E. V. Shirokov;
+         Izv. Ros. Akad. Nauk, Ser.Fiz. 67, 1479(2003).
+2003Rod  T.E.Rodrigues,J.D.T.Arruda-Neto,Z.Carvalheiro,J.Mesa;Phys.Rev.C68(2003).
+2003Var  V. V. Varlamov, M. E. Stepanov, V. V. Chesnokov;
+         Izv. Ros. Akad. Nauk, Ser.Fiz. 67, 656(2003).
+
+
+References to experimental and evaluated cross section data taken from EXFOR with 8-digit entry&subentry numbers
+----------------------------------------------------------------------------------------------------------------
+
+Nucl     : the target studied (symbol); nat is supra-index indicates a natural isotopic composition;
+Id       : type of experimental data used in fitting (without letter indicating method of uncertainty estimation);
+           see above "Format data files" for explanation;
+Reaction : type of reaction;
+Ref.     : short references on the experimental data; see above "References in the data files" for full references
+EXFOR    : EXFOR 8-digit entry&subentry number.
+
+------------------------------------------------------------------------------
+   Nucl    Id    Reaction        Ref.        EXFOR
+------------------------------------------------------------------------------
+   10B     5       g,sn        1987Ahs      M0207002
+   12C     0       g,abs       1963Bur      M0160002
+           0       g,abs       1969Bez      L0064002
+           1       g,abs       1975Ahr      M0372004
+           3       g,abs       2002Ish      M0648002
+           3       g,abs       2003Var      M0656002
+   13C     3       g,abs       2002Ish      M0648003
+   14C     3       g,abs       2002Ish      M0648004
+   14N     0       g,abs       1969Bez      L0064003
+           3       g,abs       2002Ish      M0648005
+   15N     1       g,abs       1989Bat      M0264003
+           3       g,abs       2002Ish      M0648006
+  natO     2       g,abs       1985Ahr      M0188006
+   16O     0       g,abs       1969Bez      L0064004
+           0       g,abs       1975Ahr      M0372005
+           3       g,abs       2002Ish      M0648007
+   17O     3       g,abs       2002Ish      M0648008
+   18O     3       g,abs       2002Ish      M0648009
+   19F     3       g,abs       2002Ish      M0648010
+   23Na    0       g,abs       1981Ish      M0043025
+           3       g,abs       2002Ish      M0648011
+   24Mg    3       g,abs       2002Ish      M0648012
+           3       g,abs       2003Var      M0656003
+   25Mg    3       g,asb       2002Ish      M0648013
+   26Mg    3       g,abs       2003Var      M0656004
+   27Al    1       g,abs       1975Ahr      M0372006
+           3       g,abs       2002Ish      M0648015
+           2       g,abs       1985Ahr      M0188007
+  natSi    0       g,abs       1975Ahr      M0372007
+   28Si    3       g,abs       2003Var      M0656005
+   29Si    3       g,abs       2002Ish      M0648017
+   30Si    3       g,abs       2002Ish      M0648018
+   32Si    3       g,abs       2002Ish      M0648019
+   34S     3       g,abs       1986Ass      M0510006
+           3       g,abs       2003Var      M0656006
+  natS     13      g,xn        1965Wyc      L0122009
+   40Ar    3       g,abs       2002Ish      M0648021
+  natAr    1       g,abs       1960Fas      M0214004
+  natK     4       g,sn        1974Ve1      L0039036
+  natCa    1       g,abs       1975Ahr      M0372008
+           2       g,abs       1985Ahr      M0188017
+   40Ca    3       g,abs       2003Er       M0653002
+   42Ca    3       g,abs       2003Er       M0653003
+   44Ca    3       g,abs       2003Er       M0653004
+   48Ca    0       g,abs       1987O'k      M0636010
+           3       g,abs       2003Er       M0653005
+   46Ti    3       g,abs       2002Ish      M0648026
+   48Ti    3       g,abs       2002Ish      M0648027
+   51V     3       g,abs       2003Var      M0656007
+           4       g,sn        1962Fu1      L0001008
+   52Cr    3       g,abs       2002Ish      M0648028
+   55Mn    4       g,sn        1979Al2      L0028011
+  natFe    0       g,abs       1969Dob      M0540002
+           13      g,xn        1967Cos      L0114003
+   54Fe    0       g,abs       1978Nor      M0507004
+   59Co    1       g,abs       1965Wyc      L0122011
+           8       g,sn        1979Al2      L0028008,L0028009
+   58Ni    3       g,abs       2002Ish      M0648029
+           3       g,abs       2003Var      M0656008
+           4       g,sn        1974Fu3      L0034002
+   60Ni    3       g,abs       2003Var      M0656009
+           4       g,sn        1974Fu3      L0034008
+           4       g,sn        1970Gor      M0597003
+   63Cu    3       g,abs       2003Var      M0656010
+           6       g,sn        1968Su1      L0013002,L0013003
+           4       g,sn        1964Fu1      L0006012
+   65Cu    3       g,abs       2003Var      M0656011
+           4       g,sn        1964Fu1      L0006013
+   64Zn    8       g,sn        1976Ca1      L0043002,L0043003
+   65Zn    1       g,abs       2003Rod      M0652007
+   70Ge    0       g,abs       1975Mcc      M0496004
+           8       g,sn        1976Ca1      L0043008,L0043009
+   72Ge    0       g,abs       1975Mcc      M0496010
+           8       g,sn        1976Ca1      L0043011,L0043012
+   74Ge    0       g,abs       1975Mcc      M0496013
+           8       g,sn        1976Ca1      L0043014,L0043015
+   76Ge    0       g,abs       1975Mcc      M0496007
+           8       g,sn        1976Ca1      L0043017,L0043018
+   75As    4       g,sn        1969Be1      L0014012
+           8       g,sn        1976Ca1      L0043020,L0043021
+   76Se    0       g,abs       1978Gur      M0023002
+           8       g,sn        1976Ca1      L0043023,L0043024
+   78Se    8       g,sn        1976Ca1      L0043026,L0043027
+   80Se    8       g,sn        1976Ca1      L0043029,L0043030
+   82Se    0       g,abs       1978Gur      M0023003
+           8       g,sn        1976Ca1      L0043032,L0043033
+   89Y     3       g,abs       2003Var      M0656012
+           4       g,sn        1971Le1      L0027019
+           4       g,sn        1967Be2      L0011018
+           12      g,1n        1972Yo       L0059002
+   90Zr    3       g,abs       2003Var      M0656013
+           4       g,sn        1967Be2      L0011019
+           8       g,sn        1971Le1      L0027012,L0027013
+   91Zr    4       g,sn        1967Be2      L0011020
+   92Zr    4       g,sn        1967Be2      L0011021
+   94Zr    4       g,sn        1967Be2      L0011022
+  natZr    8       g,sn        1987Ber      L0057002,L0057003
+   93Nb    8       g,sn        1971Le1      L0027015,L0027016
+   92Mo    3       g,abs       2003Var      M0656014
+           4       g,sn        1974Be3      L0032020
+   94Mo    4       g,sn        1974Be3      L0032005
+   96Mo    4       g,sn        1974Be3      L0032022
+   98Mo    4       g,sn        1974Be3      L0032023
+  100Mo    9       g,sn        1974Be3      L0032017,L0032018,L0032019
+  103Rh    3       g,abs       2003Var      M0656015
+           4       g,sn        1974Le1      L0035041
+  107Ag    4       g,sn        1969Ish      M0524002
+           4       g,sn        1969Be1      L0014013
+  109Ag    4       g,sn        1969Ish      M0524003
+  115In    4       g,sn        1969Fu1      L0017029
+           4       g,sn        1974Le1      L0035045
+  116Sn    4       g,sn        1974Le1      L0035046
+           4       g,sn        1969Fu1      L0017030
+  117Sn    4       g,sn        1974Le1      L0035047
+           4       g,sn        1969Fu1      L0017031
+  118Sn    4       g,sn        1974Le1      L0035048
+  118Sn    4       g,sn        1969Fu1      L0017032
+  119Sn    4       g,sn        1969Fu1      L0017033
+  120Sn    4       g,sn        1974Le1      L0035049
+           4       g,sn        1969Fu1      L0017034
+  124Sn    3       g,abs       2003Var      M0656016
+           4       g,sn        1974Le1      L0035050
+           4       g,sn        1969Fu1      L0017035
+  124Te    6       g,sn        1976Le2      L0042004,L0042002
+  126Te    6       g,sn        1976Le2      L0042007,L0042005
+  128Te    6       g,sn        1976Le2      L0042010,L0042008
+  130Te    6       g,sn        1976Le2      L0042013,L0042011
+  127I     4       g,sn        1969Be6      L0015022
+           4       g,sn        1989Ras      M0511002
+           4       g,sn        1966Br1      L0009009
+           8       g,sn        1987Ber      L0057005,L0057006
+  133Cs    4       g,sn        1974Le1      L0035053
+           4       g,sn        1969Be1      L0014014
+  138Ba    4       g,sn        1970Be8      L0019008
+  139La    4       g,sn        1971Be4      L0024017
+  140Ce    6       g,sn        1976Le2      L0042016,L0042014
+  142Ce    6       g,sn        1976Le2      L0042019,L0042017
+  141Pr    4       g,sn        1966Br1      L0009010
+           4       g,sn        1972De1      M0398002
+           4       g,sn        1987Ber      L0057015
+           12      g,1n        1970Su1      L0020002
+           12      g,1n        1971Be4      L0024011
+           12      g,1n        1972Yo       L0059003
+  142Nd    3       g,abs       2003Var      M0656017
+           4       g,sn        1971Ca1      L0025023
+  143Nd    4       g,sn        1971Ca1      L0025024
+  144Nd    4       g,sn        1971Ca1      L0025025
+  145Nd    4       g,sn        1971Ca1      L0025026
+  146Nd    4       g,sn        1971Ca1      L0025027
+  148Nd    4       g,sn        1971Ca1      L0025028
+  150Nd    4       g,sn        1971Ca1      L0025029
+  144Sm    4       g,sn        1974Ca5      L0033017
+  148Sm    4       g,sn        1974Ca5      L0033018
+  150Sm    4       g,sn        1974Ca5      L0033019
+  152Sm    4       g,sn        1974Ca5      L0033020
+  154Sm    0       g,abs       1981Gur      M0073002
+           4       g,sn        1974Ca5      L0033021
+  153Eu    4       g,sn        1969Be8      L0016018
+  156Gd    0       g,abs       1981Gur      M0073003
+  160Gd    3       g,abs       2003Var      M0656018
+           4       g,sn        1969Be8      L0016019
+  159Tb    4       g,sn        1976Gor      M0057002
+           4       g,sn        1964Br1      L0005006
+           4       g,sn        1968Be5      L0012019
+           12      g,1n        1968Be5      L0012007
+  165Ho    0       g,abs       1981Gur      M0073004
+           4       g,sn        1969Be8      L0016020
+           4       g,sn        1968Be5      L0012020
+  168Er    0       g,abs       1981Gur      M0073005
+  174Yb    0       g,abs       1981Gur      M0073006
+  175Lu    4       g,sn        1969Be6      L0015026
+  176Hf    4       g,sn        1977Gor      M0007002
+  178Hf    0       g,abs       1981Gur      M0073007
+           4       g,sn        1977Gor      M0007003
+  180Hf    0       g,abs       1981Gur      M0073008
+           4       g,sn        1977Gor      M0007004
+  181Ta    0       g,abs       1981Gur      M0073009
+           3       g,abs       2003Var      M0656019
+           4       g,sn        1968Be5      L0012021
+           4       g,sn        1963Br1      L0003005
+  182W     0       g,abs       1981Gur      M0073010
+           4       g,sn        1978Gor      M0025002
+  184W     0       g,abs       1981Gur      M0073011
+           4       g,sn        1978Gor      M0025003
+  186W     0       g,abs       1981Gur      M0073012
+           4       g,sn        1969Be8      L0016021
+           4       g,sn        1978Gor      M0025004
+  186Os    7       g,sn        1979Be4      L0046004,L0046002
+  188Os    9       g,sn        1979Be4      L0046005,L0046006,L0046007
+  189Os    9       g,sn        1979Be4      L0046009,L0046010,L0046011
+  190Os    9       g,sn        1979Be4      L0046013,L0046014,L0046015
+  192Os    9       g,sn        1979Be4      L0046017,L0046018,L0046019
+  191Ir    4       g,sn        1978Gor      M0008002
+  193Ir    4       g,sn        1978Gor      M0008003
+  194Pt    4       g,sn        1978Gor      M0008004
+  195Pt    4       g,sn        1978Gor      M0008005
+  196Pt    4       g,sn        1978Gor      M0008006
+  198Pt    4       g,sn        1978Gor      M0008007
+  197Au    0       g,abs       1981Gur      M0073013
+           4       g,sn        1970Ve1      L0021010
+           4       g,sn        1962Fu2      L0002005
+           8       g,sn        1987Ber      L0057009,L0057010
+  206Pb    4       g,sn        1964Ha2      L0007014
+  207Pb    4       g,sn        1964Ha2      L0007015
+  208Pb    3       g,abs       2003Var      M0656020
+           4       g,sn        1970Ve1      L0021011
+           4       g,sn        1964Ha2      L0007016
+           12      g,1n        1972Yo       L0059004
+  natPb    8       g,sn        1987Ber      L0057012,L0057013
+  209Bi    0       g,abs       1976Gur      M0056008
+           4       g,sn        1964Ha2      L0007017
+           12      g,1n        1972Yo       L0059005
+  232Th    0       g,abs       1976Gur      M0090002
+           4       g,sn        1973Ve1      L0031014
+           10      g,sn        1980Ca1      L0050002,L0050003,L0050004
+  233U     11      g,sn        1986Be2      L0058004,L0058003,L0058002
+  234U     11      g,sn        1986Be2      L0058007,L0058006,L0058005
+  235U     0       g,abs       1976Gur      M0090003
+  236U     10      g,sn        1980Ca1      L0050010,L0050011,L0050012
+  238U     0       g,abs       1976Gur      M0090004
+           4       g,sn        1973Ve1      L0031015
+  237Np    10      g,sn        1973Ve1      L0031007,L0031008,L0031009
+           10      g,sn        1986Be2      L0058008,L0058009,L0058010
+  239Pu    0       g,abs       1976Gur      M0090005
+           10      g,sn        1986Be2      L0058012,L0058013,L0058014
