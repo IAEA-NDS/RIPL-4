@@ -1,0 +1,29 @@
+
+c     om-utility.cmb common block
+c     Common blocks and declarations for om-summary.f and
+c     om-modify.f codes (1/16/2002)
+c
+c     Parameter statement
+c
+C     RCN, 08/2004, to handle new extension to the OMP RIPL-2 format
+C     parameter (ndim1=10, ndim2=11, ndim3=25, ndim4=30, ndim5=10,
+      parameter (ndim1=10, ndim2=13, ndim3=25, ndim4=30, ndim5=10,
+     1 ndim6=10,ndim7=120)
+c
+c     Common block and declarations for RIPL optical parameters
+c
+      character*1 author,refer,summary
+      common/lib/author(80),refer(80),summary(320),iref,emin,emax,
+     + izmin,izmax,iamin,iamax,imodel,jrange(6),epot(6,ndim1),
+     + rco(6,ndim1,ndim2),aco(6,ndim1,ndim2),pot(6,ndim1,ndim3),
+     + ncoll(ndim4),nvib(ndim4),nisotop,iz(ndim4),ia(ndim4),
+     + lmax(ndim4),bandk(ndim4),def(ndim4,ndim5),idef(ndim4),
+     + izproj,iaproj,exv(ndim7,ndim4),iparv(ndim7,ndim4),irel,idr,
+     + nph(ndim7,ndim4),defv(ndim7,ndim4),thetm(ndim7,ndim4),
+     + beta0(ndim4),gamma0(ndim4),xmubeta(ndim4),ex(ndim6,ndim4),
+     + spin(ndim6,ndim4),ipar(ndim6,ndim4),spinv(ndim7,ndim4),
+     + jcoul,ecoul(ndim1),rcoul(ndim1),rcoul0(ndim1),beta(ndim1),
+     + rcoul1(ndim1),rcoul2(ndim1)
+      common/io/ki,ko,ieof
+c
+ 

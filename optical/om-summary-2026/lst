@@ -1,0 +1,105 @@
+Comparing files om_retrieve-2021.f and OM_RETRIEVE.F
+***** om_retrieve-2021.f
+     +                 OPT_ko(k,n),OPT_nca(k,n),OPT_numb(k,n),
+     +                 defv(k,n),defr(k,n),         
+     +                 SR_ntu(k,n),SR_nnb(k,n),SR_nng(k,n),SR_nno(k,n)
+***** OM_RETRIEVE.F
+     +                 OPT_ko(k,n),OPT_nca(k,n),OPT_numb(k,n),
+!           keep no "effective" deformations for this type            
+!     +                 defv(k,n),defr(k,n),         
+     +                 SR_ntu(k,n),SR_nnb(k,n),SR_nng(k,n),SR_nno(k,n)
+*****
+
+***** om_retrieve-2021.f
+C approximation, MESOL must be less than or equal to 20;
+      mesol = 5 ! 
+c     mesol = 2 ! automatic selection
+ccc     Set default mevol here for all but imodel=5.   dmart 06.10.2021
+***** OM_RETRIEVE.F
+C approximation, MESOL must be less than or equal to 20;
+      mesol = 5 ! automatic selection
+c     mesol = 2 ! exact CC solution
+ccc     Set default mevol here for all but imodel=5.   dmart 06.10.2021
+*****
+
+***** om_retrieve-2021.f
+        mepot = 1
+        mesol = 2
+***** OM_RETRIEVE.F
+        mepot = 1
+        meham = 5
+        mesol = 2
+*****
+
+***** om_retrieve-2021.f
+        mesha = 2
+        mevol = 1
+***** OM_RETRIEVE.F
+        mesha = 2
+        mesho = 2
+        mehao = 2
+        mevol = 1
+*****
+
+***** om_retrieve-2021.f
+     +         OPT_ko(k,ntar),OPT_nca(k,ntar),OPT_numb(k,ntar),
+     +         defv(k,ntar), defr(k,ntar),
+     +            SR_ntu(k,ntar), SR_nnb(k,ntar),
+***** OM_RETRIEVE.F
+     +         OPT_ko(k,ntar),OPT_nca(k,ntar),OPT_numb(k,ntar),
+!       "Effective" deformations are not used for soft deformed, set to default
+!     +         defv(k,ntar), defr(k,ntar),
+     +          0.0, 1.0,         
+     +            SR_ntu(k,ntar), SR_nnb(k,ntar),
+*****
+
+***** om_retrieve-2021.f
+        CARRss = rco(1,1,7)  ! Real vol radius
+        CARDss = rco(4,1,7)  ! Real sur radius WHY IN IMAG BLOCK???
+        CAARss = aco(1,1,7)  ! Real vol diffuseness
+***** OM_RETRIEVE.F
+        CARRss = rco(1,1,7)  ! Real vol radius
+        CARDss = rco(4,1,7)  ! Imag surf radius 
+        CAARss = aco(1,1,7)  ! Real vol diffuseness
+*****
+
+***** om_retrieve-2021.f
+      if(imodel.ge.3 .or. (idr.ne.0 .and. imodel.eq.1)) then 
+        write(ko,'(6F12.5)')
+C               Vr0                         Vr1       
+     +    pot(1,1,14)+pot(1,1,15)*iatar, -pot(1,1,3)-pot(1,1,4)*iatar, 
+C               Vr2                         Vr3      
+     +    pot(1,1,5) +pot(1,1,6) *iatar, -pot(1,1,7), 
+C          VRLA           ALAVR  
+     +    pot(1,1,16),  pot(1,1,17)
+
+        write(ko,'(6F12.5)')  0.d0, 0.d0, 0.d0, 
+***** OM_RETRIEVE.F
+      if(imodel.ge.3 .or. (idr.ne.0 .and. imodel.eq.1)) then 
+          
+      b1= pot(1,1,1)+pot(1,1,2)*iatar   
+          
+        write(ko,'(6F12.5)')
+C               Vr0                         
+     +   b1*(pot(1,1,14)+pot(1,1,15)*iatar),
+C               Vr1     
+     +   b1*(-pot(1,1,3)-pot(1,1,4)*iatar), 
+C               Vr2                         Vr3      
+     +   b1*(pot(1,1,5) +pot(1,1,6) *iatar), -b1*pot(1,1,7), 
+C          VRLA           ALAVR  
+     +    b1*pot(1,1,16),  pot(1,1,17) !pot(1,1,16)+pot(1,1,2)*iatar
+                                                                                                                               
+                                                                                      
+        write(ko,'(6F12.5)')  0.d0, 0.d0, 0.d0, 
+*****
+
+***** om_retrieve-2021.f
+C        b(1,j,13)  =  pot(1,j,16)  
+         b(1,j,13)  =  pot(1,j,16) + pot(1,j,2)*atar
+
+***** OM_RETRIEVE.F
+C        b(1,j,13)  =  pot(1,j,16)  
+         b(1,j,13)  =  pot(1,j,16) !+ pot(1,j,2)*atar
+
+*****
+
