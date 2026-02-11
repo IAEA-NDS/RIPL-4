@@ -1,0 +1,60 @@
+Directory: MASSES
+File:      density-bskg3.readme (18 April, 2024)
+*************************************************
+
+                                 DENSITY-BSKG3
+        Compilations of ground state properties based on the BSkG3 model
+Compilations of deformed proton and neutron densities based on the HFB model with BSkG3 Skyrme interaction
+                  (provided by S. Goriely, 18 April, 2024)
+  ******************************************************************************************************  
+                      
+               BSkG3 PREDICTION OF PROTON AND NEUTRON DENSITIES
+
+           G. Grams, W. Ryssens, G. Grams, S. Goriely, N. Chamel
+                  Universite Libre de Bruxelles (Belgium)
+ 
+
+Content
+--------
+
+The data file contains the predictions of the deformed density distribution obtained
+within the Hartree-Fock-Bogoliubov method with the BSkG3 Skyrme effective 
+interaction [1 and references therein]. The axial densities are expanded in terms 
+of spherical harmonics $Y_{\lambda0}$. The 3 first multipoles are provided.
+
+The present BSkG3 compilation of neutron and proton densities includes all nuclei
+with N,Z>=8 and Z<=118 between the proton and neutron driplines.
+The densities are tabulated in the radius grid in steps of 0.1 fm up to 20 fm.
+
+Format
+------
+Each isotopic chain is included in one unique file named by the elemental
+symbol (XX.rad) in the density-bskg3 subdirectory.
+
+For each isotope of the considered element, we provide Z,A,nrho,dr
+in the format (2i4,i5,f7.3)
+     Z    : charge number
+     A    : mass number
+     nrho : number of radii provided in the table for the corresponding nucleus
+     dr   : radius increment
+Followed by "nrho" lines with
+     r    : the nuclear radius in [fm] by steps of 0.1 fm
+     rhon0 : the neutron density in [fm^-3]
+     rhon2 : second multipole if the the neutron density harmonics expansion
+     rhon4 : fourth multipole if the the neutron density harmonics expansion
+     rhon6 : sixth multipole if the the neutron density harmonics expansion
+     rhon8 : eighth multipole if the the neutron density harmonics expansion
+     rhop0 : the proton density in [fm^-3]
+     rhop2 : second multipole if the the proton density harmonics expansion
+     rhop4 : fourth multipole if the the proton density harmonics expansion
+     rhop6 : sixth multipole if the the proton density harmonics expansion
+     rhop8 : eighth multipole if the the proton density harmonics expansion
+
+The corresponding fortran format is (f7.3,1p,10e13.5)
+
+References
+----------
+[1] G. Grams, W. Ryssens, G. Scamps, S. Goriely and N. Chamel (2023), Eur. Phys. J. A. 59, 270
+
+Dates: Original 18 April 2024
+

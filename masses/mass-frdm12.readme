@@ -1,0 +1,69 @@
+Directory: MASSES
+File:      mass-frdm12.readme (18 April, 2024)
+*************************************************
+
+                               MASS-FRDM12.DAT
+      Compilations of ground state properties based on the FRDM model
+                   (provided by S. Goriely, 18 April, 2024)
+  ***********************************************************************  
+                      
+               FRDM PREDICTION OF GROUND-STATES PROPERTIES 
+
+                          P. Moller, J.R. Nix         
+                 Los Alamos National Laboratory (USA)
+                      W.D. Myers, W.J. Swiatecki                     
+                  Lawrence Berkeley Laboratory (USA)
+ 
+                                                                            
+Contents
+---------
+
+The data file contains the atomic mass excesses and binding energies, ground-state 
+shell-plus-pairing corrections, ground-state microscopic corrections, and nuclear 
+ground-state deformations of 9318 nuclei ranging from 16O to A = 339 [1]. The calculations 
+are based on the finite-range droplet macroscopic and the folded-Yukawa single-particle 
+microscopic nuclear-structure models, which are completely specified. Relative to FRDM 
+mass table in Möller et al. (1995) [2], the results are obtained in the same model, 
+but with improved treatment of deformation and fewer of the approximations that were 
+necessary earlier, due to limitations in computer power. The more accurate 
+execution of the model and the more extensive and more accurate experimental mass 
+data base available allowed to determine one additional macroscopic-model parameter, 
+the density-symmetry coefficient L, which was not varied in the previous calculation, 
+but set to zero. Because the FRDM is inaccurate for some highly deformed shapes occurring 
+in fission, because some effects are derived in terms of perturbations around a sphere, 
+only its macroscopic parameters to ground-state masses were adjusted.
+
+The values of ten constants are determined directly from an optimization to fit ground-state 
+masses of 2149 nuclei ranging from 16O to 265Sg and 264Hs. The error of the mass model is 
+0.606 MeV for the 2457 nuclei included in the Atomic Mass Evaluation (AME) 2020 [3].
+
+Format
+------
+Each record of the file contains Z,A,s,fl,Mexp,Err,Mth,Emic,beta2,beta3,beta4,beta6
+defined as follows:
+
+     Z    : charge number
+     A    : mass number
+     s    : element symbol
+     fl   : flag corresponding to 0 if no experimental data available
+                                  1 for a mass excess recommended by AME2020 [3]
+                                  2 for a measured mass from AME2020 [3] 
+     Mexp : experimental or recommended atomic mass excess in MeV of AME2020 [3]
+     Err  : error on the experimental or recommended atomic mass excess in MeV of AME2020 [3]
+     Mth  : calculated FRDM atomic mass excess in MeV 
+     Emic : calculated FRDM microscopic energy in MeV 
+     beta2: calculated quadrupole deformation of the nuclear ground-state
+     beta3: calculated octupole deformation of the nuclear ground-state
+     beta4: calculated hexadecapole deformation of the nuclear ground-state
+     beta6: calculated hexacontatetrapole deformation of the nuclear ground-state
+
+The corresponding fortran format is (2i4,1x,a2,1x,i1,4f10.3,4f8.3)
+
+References
+----------
+[1] P. Moller, A.J. Sierk, T.Ichikawa, H. Sagawa (2016) At. Data and Nucl. Data Tables 109-110, 1
+[2] P. Moller, J.R. Nix, W.D. Myers, W.J. Swiatecki (1995) At. Data and Nucl. Data Tables 59, 185
+[3] M. Wang, W.J. Huang, F.G. Kondev, G. Audi, S. Naimi (2021) Chinese Physics C 45, 030003
+
+Dates: Original 18 April 2024
+

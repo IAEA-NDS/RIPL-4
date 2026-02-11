@@ -1,0 +1,35 @@
+Directory: masses/
+File:      abundance.readme (September 23, 2024) 
+*************************************************
+
+			    abundance.dat
+
+		Natural abundances of stable isotopes
+             (provided by M. Verpelli, September 23, 2024)
+            ***********************************************
+
+
+Content
+-------
+The abundance file has been extracted from the NUBASE 2020 database
+The abundances are given for all stable isotopes.
+
+
+Format
+------
+Each record of the file contains: 
+
+   Z        : charge number
+   A        : mass number
+   El       : element symbol
+   abundance: abundance in %
+   uncert   : uncertainties in abundance in %
+
+The corresponding FORTRAN format is (2i4,1x,a2,1x,2f10.6)
+
+References
+----------
+[1] F.G. Kondev, M. Wang, W.J. Huang, S. Naimi, G. Audi, The NUBASE2020 evaluation of nuclear physics properties,
+         Chinese Physics C 45, 030001 (2021)  
+
+Dates: Original 23 September, 2024

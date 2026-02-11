@@ -1,0 +1,66 @@
+Directory: MASSES
+File:      mass-hfb27.readme (18 April, 2024)
+*************************************************
+
+                               MASS-HFB27.DAT
+      Compilations of ground state properties based on the HFB27 model
+                   (provided by S. Goriely, 18 April, 2024)
+  ***********************************************************************  
+                      
+                HFB27 PREDICTION OF GROUND-STATES PROPERTIES 
+
+                         S. Goriely, N. Chamel
+                 Universite Libre de Bruxelles (Belgium)
+                               M. Pearson                                
+                 Universite de Montreal, Quebec (Canada)
+ 
+
+Content
+--------
+
+The data file contains the predictions of the ground state properties obtained
+within the Hartree-Fock-Bogoliubov method. In the framework of the HFB theory, 
+a 10-parameter Skyrme force, along with a 4-parameter delta-function pairing 
+force (with blocking for odd nuclei) and a 6-parameter Wigner term, is fitted 
+to all the 2353 measured masses of nuclei with N and Z >= 8 known in 2013.
+The Skyrme force, BSk27, is a standard Skyrme force which is characterized by 
+the following nuclear matter properties: the energy per nucleon at equilibrium 
+in symmetric nuclear matter av=-16.051 MeV, the corresponding density 
+rho0=0.1586fm-3, the isoscalar effective mass M*/M=0.80, the isovector effective
+mass M*/M=0.72 and the symmetry coefficient J=30MeV.
+All details about the BSk27 force and HFB model can be found in [1] and references 
+therein. The final rms error of this fit is 0.518 MeV for the 2457 masses of 
+nuclei with Z,N >= 8 included in the 2020 Atomic Mass Evaluation [2]. 
+
+The present HFB-27 compilation includes 10175 nuclei with N,Z>=8 and Z<=124 between the
+proton and neutron driplines. The table also includes the experimental masses and the 
+corresponding error when available [2], the calculated masses, the deformation parameters 
+and charge radii. 
+
+Format
+------
+Each record of the file contains Z,A,s,fl,Mexp,Err,Mth,beta20,beta40,Rch
+defined as follows:
+
+     Z     : charge number
+     A     : mass number
+     s     : element symbol
+     fl    : flag corresponding to 0 if no experimental data available
+                                   1 for a mass excess recommended by AME2020 [2]
+                                   2 for a measured mass from AME2020 [2] 
+     Mexp  : experimental or recommended atomic mass excess in MeV of AME2020 [2]
+     Err   : error on the experimental or recommended atomic mass excess in MeV of AME2020 [2]
+     Mth   : calculated HFB-27 atomic mass excess in MeV 
+     beta20: calculated axial quadrupole deformation of the nuclear ground-state
+     beta40: calculated hexadecapole deformation of the nuclear ground-state
+     Rch   : calculated charge radius of the nuclear ground-state
+
+The corresponding fortran format is (2i4,1x,a2,1x,i1,3f10.3,3f8.3)
+
+References
+----------
+[1] S. Goriely, N. Chamel, and J.M. Pearson, (2013) Phys. Rev. C88, 061302(R)
+[2] M. Wang, W.J. Huang, F.G. Kondev, G. Audi, S. Naimi (2021) Chinese Physics C 45, 030003
+
+Dates: Original 18 April 2024
+

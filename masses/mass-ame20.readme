@@ -1,0 +1,45 @@
+Directory: MASSES
+File:      mass-bskg3.readme (18 April, 2024)
+*************************************************
+
+                               MASS-AME20.DAT
+                Compilations of experimental atomic masses 
+                 (provided by S. Goriely, 18 April, 2024)
+  ***********************************************************************  
+
+                The AME2020 atomic mass evalutation (II)
+           M. Wang, W.J. HUang, F.G. Kondev, G. Audi, S. Naimi
+                  Chinese Physics C, 45, 030003 (2021)
+                      
+                                                                            
+Contents
+---------
+
+The data file contains the experimental atomic masses and related uncertainties, 
+as published in the atomic mass evaluation of 2020 [1].
+The file include both the purely experimental masses and the recommended ones. 
+A flag (fl) indicates if the mass is experimentally known (fl=2) or is recommended
+(fl=1), i.e. interpolated or extrapolated on the basis of the smooth properties of 
+the mass surface.
+
+Format
+------
+Each record of the file contains Z,A,s,fl,Mexp,Err
+defined as follows:
+
+     Z     : charge number
+     A     : mass number
+     s     : element symbol
+     fl    : flag corresponding to 1 for a mass excess recommended by AME2020 [1]
+                                   2 for a measured mass from AME2020 [1] 
+     Mexp  : experimental or recommended atomic mass excess in MeV of AME2020 [1]
+     Err   : error on the experimental or recommended atomic mass excess in MeV of AME2020 [1]
+
+The corresponding fortran format is (2i4,1x,a2,1x,i1,2f10.3)
+
+References
+----------
+[1] M. Wang, W.J. Huang, F.G. Kondev, G. Audi, S. Naimi (2021) Chinese Physics C 45, 030003
+
+Dates: Original 18 April 2024
+
