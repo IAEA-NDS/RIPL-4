@@ -1,0 +1,64 @@
+Directory: FISSION
+File:      hfbpath-bskg3.readme (21 August 2025)
+**************************************************
+
+                         HFBPATH-BSKG3.DAT
+                        BSkG3 fission path
+             (Provided by S. Goriely, 21 August 2025)
+       *****************************************************
+ 
+Contents
+--------
+The files contains the BSkG3 predictions of the fission paths.
+The fission path corresponds to the path projected along one deformation 
+parameter, namely the quadrupole deformation beta20 derived from a 3D 
+potential energy surface. The fission paths are obtained within 
+the HFB approach based on the BSkG3 energy density functional [1,2] which has 
+proven its capacity to estimate the fission barrier heights with a 
+relatively high degree of accuracy. In particular, the barriers 
+determined from the present BSkG3 fission path reproduce the 
+45 RIPL-4 primary empirical barriers (i.e the highest barriers) of nuclei
+with 90 <= Z <= 96 with an rms deviation of 0.3 MeV. 
+An rms deviation of 0.5 MeV is obtained for the secondary barriers.
+
+The least-action fission paths, i.e. the deformation energy relative to 
+the ground state, between the ground state configuration and the 
+scission point as a function of the beta20 deformation 
+parameters, are provided for about 2500 nuclei with 90 <= Z <= 118 lying 
+between the valley of beta-stability and the neutron drip line. 
+Along the fission paths the beta22 and beta30 deformations are given,
+as well as the collective inertias. Note that the collective inertias
+are obtained with respect to the line number variable, i.e. the collective 
+inertia with respect to beta20 can be estimated from the effective one 
+by the relation mu_20=mu/(dbeta20)^2 where dbeta20 is the beta20 step
+preceeding the deformation beta20.
+The fission paths are included in the hfbpath-bskg3/zxxx.dat file where 
+xxx stands for the charge number Z.
+
+Format
+------
+Each record of the file, per isotope, contains 
+- title line including
+     Z     : charge number
+     A     : mass number
+     s     : element symbol
+     nbeta : number of beta2 deformation points 
+     Egs   : Ground state binding energy in [MeV]
+
+The corresponding fortran format is (4x,i4,4x,i4,1x,a2,9x,i4,7x,f10.3)
+
+- nbeta data lines describing the fission path and including
+     beta20   : quadrupole deformation parameter
+     beta22   : quadrupole deformation parameter
+     beta30   : octupole deformation parameter
+     E-Egs    : energy above ground state in [MeV]
+     MI_ATD   : collective inertia along the fission path in [hbar^2/MeV] with respect to the line number
+     i        : index providing information on the ground state (-1), barriers (1) or wells (2)
+
+The corresponding fortran format is (5f11.3,6x,i2)
+
+
+References
+----------
+[1] G. Grams, W. Ryssens, G. Scamps, S. Goriely, N. Chamel, Eur. Phys. J. A59, 270 (2023)
+[2] A. Sanchez-Fernandez, S. Bara, W. Ryssens, S. Goriely, Phys. Lett. B (2026) in press

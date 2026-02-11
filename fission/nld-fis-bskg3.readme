@@ -1,0 +1,72 @@
+Directory: Fission  
+File:      nld-fis-bskg3.readme (19 August 2025)
+*******************************************************
+
+                        nld-fis-bskg3/Maxi/zxxx.dat  
+BSkG3 plus combinatorial nuclear level densities at the fission saddle points
+             (Provided by S. Goriely, August 19, 2025)
+       *******************************************************
+
+Contents
+--------
+The files contains the BSkG3 plus combinatorial nuclear level densities
+at fission saddle points and wells [1]. The nuclear level density is coherently
+obtained on the basis of the single-particle level scheme and pairing energy
+derived at the deformation of the saddle points (Max) or wells (Min) based 
+on the BSkG3 Skyrme interaction [2].
+
+The nuclear level density obtained within the BSkG3 plus combinatorial model [1]
+are given in table format (in a energy, spin and parity grid). Each isotopic chain 
+is included in a zxxx.dat file (where xxx corresponds to the atomic number Z).
+
+The nuclear level densities are provided for about 2500 nuclei with 90 <= Z <= 118.
+The directory Max1, Max2 and Max3 correspond to the inner, first outer and second outer saddle points, respectively
+The directory Min1 and Min2 correspond to the first and second superdeformed wells, respectively
+The maxima and minima can coherently be identified from the last column of the 
+hfbpath-bskg3 fission paths available in the same Fission directory.
+
+Format
+------
+Each record of the file, per isotope, contains 2 sets of data including the
+positive-parity and negative-parity nuclear level density in a spin (50 first spins)
+and energy (60 rows for U=0.25 to 200MeV) grid. Also included are an estimate
+of the nuclear temperature, the cumulative number of levels, the total level
+density and the total state density
+- title line includes
+     Z     : charge number
+     A     : mass number
+     b2    : quadrupole axial deformation parameter
+     b2    : quadrupole axial deformation parameter
+     b30   : octupole axial deformation parameter
+     b40   : hexadecapole deformation parameter
+     Icr   : cranking moment of inertia
+
+The corresponding fortran format is (25x,i3,3x,i3,64x,4(5x,f5.2),5x,f7.2)
+
+- 60 data lines including the energy-, spin-dependent level density for positive parities
+     U     : excitation energy in MeV
+     T     : nuclear temperature in MeV
+     Ncumul: cumulative number of positive-parity levels
+     Rhoobs: total level density in 1/MeV (positive parity)
+     Rhotot: total state density in 1/MeV (positive parity)
+     Rho   : spin-dependent level density (in 1/MeV) for the first 50 spins (positive parity)
+
+The corresponding fortran format is (f7.2,f7.3,1x,1p,53e9.2)
+
+- 60 data lines including the energy-, spin-dependent level density for negative parities
+     U     : excitation energy in MeV
+     T     : nuclear temperature in MeV
+     Ncumul: cumulative number of negative-parity levels
+     Rhoobs: total level density in 1/MeV (negative parity)
+     Rhotot: total state density in 1/MeV (negative parity)
+     Rho   : spin-dependent level density (in 1/MeV) for the first 50 spins (negative parity)
+
+The corresponding fortran format is (f7.2,f7.3,1x,1p,53e9.2)
+
+References
+----------
+[1] S. Goriely, W. Ryssens, S. Hilaire, A.J. Koning, Improved microscopic nuclear level densities within the triaxial hfb plus combinatorial method,
+Eur. Phys. J. A (2025) submitted
+[2] G. Grams, W. Ryssens, G. Scamps, S. Goriely, N. Chamel, Skyrme-Hartree-Fock-Bogoliubov mass models on a 3d mesh: iii. from atomic nuclei to neutron stars
+Eur. Phys. J. A59, 270 (2023)
+

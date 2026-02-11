@@ -1,0 +1,68 @@
+Directory: FISSION
+File:      empirical-barriers-ripl4.readme (30 May 2025)
+***********************************************************
+
+                    empirical-barriers-ripl4.dat
+                     Fission barrier parameters
+                  (Provided by R. Capote, M. Sin) 
+
+Contents
+--------
+The file contains empirical double-humped fission barrier parameters, i.e 
+inner and outer barrier heights and widths with estimated uncertainties. 
+Uncertainties were estimated adhoc based on early assessment [1] considering 
+the spread of the two closest barriers derived from calculations. Outliers were discarded. 
+JENDL-5 [8], Maslov [3], and EMPIRE [4-7] calculations were used to assess barriers for A>238. 
+The evaluated saddle point symmetry is described by the following symbols:
+      S = symmetric 
+      GA= axially symmetric
+      MA= mass asymmetric
+
+These tabulated empirical barriers have a dual goal:
+1)	To be used in actual fission XS calculations with full damping model 
+2)	To be used as empirically derived values to compare barriers derived in fission path calculations.
+Based on barriers derived by calculations from the following references:
+
+
+Format
+------
+Each record of the file contains Z,A,s,Syma,Ea,dEa,hwa,dhwa,Symb,Eb,dEb,hwb,dhwa
+defined as follows:
+
+     Z     : charge number
+     A     : mass number
+     s     : element symbol
+     Syma  : inner saddle point symmetry
+     Ea    : inner barrier height in [MeV]
+     dEa   : estimated uncertainty of the inner barrier height in [MeV]
+     hwa   : inner barrier curvature in [MeV]
+     dhwa  : estimated uncertainty of inner barrier curvature in [MeV]
+     Symb  : outer saddle point symmetry
+     Eb    : 2nd barrier height in [MeV]
+     dEb   : estimated uncertainty of the 2nd barrier height in [MeV]
+     hwb   : outer barrier curvature in [MeV]
+     dhwb  : estimated uncertainty of the outer barrier curvature in [MeV]
+  
+The corresponding fortran format is (2i4,1x,a2,2x,2(2x,a2,f8.2,f3.1,f5.2,f4.2))
+
+
+
+References:
+-----------
+
+PRE-ACTINIDES: 
+1)	G.N. Smirenkin "Preparation of Evaluated Data for a Fission Barrier Parameter Library for Isotopes with Z = 82 - 98, with Consideration of the Level Density Models Used", 
+	Technical Report INDC(CCP)-359, International Atomic Energy Agency, Vienna, Austria, 1993. Available online at https://nds.iaea.org/publications/indc/indc-ccp-0359/ 
+ACTINIDES:
+1)	S. Bjornholm and J.E. Lynn, "The double humped fission barrier", Rev. Mod. Phys. 52 (1980) 725--932 
+2)	G.N. Smirenkin "Preparation of Evaluated Data for a Fission Barrier Parameter Library for Isotopes with Z = 82 - 98, with Consideration of the Level Density Models Used",
+	Technical Report INDC(CCP)-359, International Atomic Energy Agency, Vienna, Austria, 1993. Available online at https://nds.iaea.org/publications/indc/indc-ccp-0359/ 
+3)	V.M. Maslov, "Fission level density and barrier parameters for actinide neutron induced cross section calculations", Technical Report INDC(BLR)-013 (1999), 
+	International Atomic Energy Agency, Vienna, Austria. Available online at https://nds.iaea.org/publications/indc/indc-blr-0013.pdf 
+4)	M. Sin, R. Capote, A. Ventura, M. Herman, and P. Oblozinsky, "Fission of light actinides: Th-232(n,f) and Pa-231(n,f) reactions", Phys. Rev. C74, 014608 (2006), http://dx.doi.org/10.1103/PhysRevC.74.014608
+5)	M. Sin, R. Capote, M.W. Herman, and A. Trkov, "Extended optical model for fission", Phys. Rev. C93, 034605 (2016), http://dx.doi.org/10.1103/PhysRevC.93.034605
+6)	M. Sin, R. Capote, M.W. Herman, and A. Trkov, "Neutron induced reactions on $^{232-237}$U from 10 keV up to 30 MeV", Nucl. Data Sheets 139, 138--170 (2017), https://doi.org/10.1016/j.nds.2017.01.003
+7)	M. Sin, R. Capote, M.W. Herman, A. Trkov, and B.V. Carlson, "Modeling photon induced reactions on $^{233-238}$U actinide targets", Phys. Rev. C103, 054605 (2021), https://doi.org/10.1103/PhysRevC.103.054605
+8)	O. Iwamoto, N. Iwamoto, S. Kunieda, F. Minato, S. Nakayama, H. Iwamoto, K. Yamamoto, Y. Nagaya, Yasunobu, K. Tada, C. Konno, et al., 
+	"Japanese evaluated nuclear data library version 5 JENDL-5", Journal of Nuclear Science and Technology (Tokyo) 60(1), 1-60, http://dx.doi.org/https://doi.org/10.1080/00223131.2022.2141903
+

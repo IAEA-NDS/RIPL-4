@@ -1,0 +1,52 @@
+Directory: FISSION
+File:      barriers-bskg3.readme (12 December 2024)
+*******************************************************
+
+                          BARRIERS-BSKG3_LAP.DAT
+                          BARRIERS-BSKG3_MEP.DAT
+               Fission barrier heights and deformations
+       (Provided by S. Goriely & W. Ryssens, 12 December, 2024)
+       ********************************************************
+ 
+Contents
+--------
+The file contains the HFB fission barrier heights and deformation parameters
+obtained within the Energy Density Functional theory with the BSkG3 
+effective Skyrme interaction [1]. 
+It includes the inner as well as up to 2 outer fission barriers and the
+first shape isomer for the 45 nuclei with Z>=90 for which empirical barriers 
+are available.
+Barriers heights and deformation parameters have been extracted from the multi-dimensional
+least-action path (lap) as well as the minimum-energy path (mep) and 
+can be found in the respective barriers-bskg3-lap.dat and barriers-bskg3_mep.dat
+files.
+More details are given in the RIPL-4 publication.
+
+Format
+------
+Each record of the file contains 
+
+     Z        : charge number
+     N        : neutron number
+     Binner   : inner barrier height [MeV] 
+     B20      : beta_20 quadrupole deformation parameter at the inner barrier
+     B22      : beta_22 triaxal deformation parameter at the inner barrier
+     B30      : beta_30 octupole deformation parameter at the inner barrier
+     Bouter 1 : first outer barrier height [MeV] 
+     B20      : beta_20 quadrupole deformation parameter at the first outer barrier
+     B22      : beta_22 triaxal deformation parameter at the first outer barrier
+     B30      : beta_30 octupole deformation parameter at the first outer barrier
+     Bouter 2 : second outer barrier height [MeV] 
+     B20      : beta_20 quadrupole deformation parameter at the second outer barrier
+     B22      : beta_22 triaxal deformation parameter at the second outer barrier
+     B30      : beta_30 octupole deformation parameter at the second outer barrier
+     BIsomer  : Energy of the first shape isomer [MeV] 
+     B20      : beta_20 quadrupole deformation parameter of the first isomer
+     B22      : beta_22 triaxal deformation parameter of the first isomer
+     B30      : beta_30 octupole deformation parameter of the first isomer
+
+The corresponding fortran format is (i3,i4,4(f10.3,3f6.2))
+
+References
+----------
+[1] G. Grams, W. Ryssens, G. Scamps, S. Goriely, N. Chamel, Eur. Phys. J. A59, 270 (2023)
