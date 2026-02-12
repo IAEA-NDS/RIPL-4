@@ -1,7 +1,7 @@
-# Normalization factors for the level density paramet er in the EGSM 
+# Normalization factors for the level density parameter in the EGSM 
 # a_exp/a_sys averaged over isotopes of an element, for which a_exp exists
 #  Z   factor
-#---------------------------------------------------- --------------------
+#------------------------------------------------------------------------
    11  1.0270
    12  1.1669
    13  1.0497
@@ -84,3 +84,4 @@
    96   .9963
    97   .9743
    98   .9986
+
