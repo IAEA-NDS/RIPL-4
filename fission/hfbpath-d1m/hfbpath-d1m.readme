@@ -1,0 +1,41 @@
+Directory: FISSION
+File:      hfbpath-d1m.readme (March 2026)
+**************************************************
+
+                         HFBPATH-D1M.DAT
+                        D1M fission path
+             (Provided by J.F. Lemaître, March 2026)
+       *****************************************************
+ 
+Contents
+--------
+The files contains the D1M predictions of the fission paths.
+The fission path corresponds to the path projected along one deformation 
+parameter, namely the quadrupole deformation beta20 derived from a 2D 
+potential energy surface. The fission paths are obtained within 
+the HFB approach based on the D1M energy density functional.
+The fission paths are included in the hfbpath-d1m/zxxxnyyy.dat file where 
+xxx stands for the proton number Z and yyy stands for neutron number N.
+
+Format
+------
+Each record of the file, per isotope, contains 
+- title line including
+     Z     : charge number
+     A     : mass number
+     s     : element symbol
+     nbeta : number of beta2 deformation points 
+     Egs   : Ground state binding energy in [MeV]
+
+The corresponding fortran format is (4x,i4,4x,i4,1x,a2,9x,i4,7x,f10.3)
+
+- nbeta data lines describing the fission path and including
+     beta20   : quadrupole deformation parameter
+     beta22   : quadrupole deformation parameter
+     beta30   : octupole deformation parameter
+     E-Egs    : energy above ground state in [MeV]
+     MI_ATD   : collective inertia along the fission path in [hbar^2/MeV] with respect to the line number
+     i        : index providing information on the ground state (-1), barriers (1) or wells (2)
+
+The corresponding fortran format is (5f11.3,6x,i2)
+

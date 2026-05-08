@@ -1,0 +1,35 @@
+Directory: FISSION
+File:      barriers-d1m.readme (March 2026)
+*******************************************************
+
+                          BARRIERS-D1M_LEP.DAT
+               Fission barrier heights and deformations
+             (Provided by J.F. Lemaître, March 2026)
+       ********************************************************
+ 
+Contents
+--------
+The file contains the HFB fission barrier heights and deformation parameters
+obtained within the Energy Density Functional theory with the D1M
+effective Gogny interaction. 
+It includes the inner and the outer fission barriers.
+Barriers heights and deformation parameters have been extracted from the 2-dimensional
+least-energy path (lep) and an be found in the barriers-d1m-lep.dat file.
+More details are given in the RIPL-4 publication.
+
+Format
+------
+Each record of the file contains 
+
+     Z        : charge number
+     N        : neutron number
+     A        : mass number
+     Binner   : inner barrier height [MeV] 
+     B20      : beta_20 quadrupole deformation parameter at the inner barrier
+     B30      : beta_30 octupole deformation parameter at the inner barrier
+     Bouter   : outer barrier height [MeV] 
+     B20      : beta_20 quadrupole deformation parameter at the first outer barrier
+     B30      : beta_30 octupole deformation parameter at the first outer barrier
+
+The corresponding fortran format is (i3,2i4,2(f10.3,3f6.2))
+
