@@ -13,7 +13,7 @@ NEUTRON RESONANCES: contains average resonance parameters obtained from both RIP
 OPTICAL MODEL: contains 495 sets of phenomenological optical model parameters defined in a wide energy range. When there is insufficient experimental data to define the parameters of the optical phenomenological model, the evaluator has to resort to either global parameterizations or microscopic
 approaches. Radial density distributions to be used as input for microscopic optical-model calculations are stored in the MASSES segment.
 
-LEVEL DENSITIES: contains phenomenological parameterizations based on the modified Fermi gas model similar to the RIPL-3 recommendations, but also updated microscopic calculations based on the combinatorial approach with realistic microscopic single-particle level schemes. All recommended level density models are consistent with the average neutron resonance spacings, discrete level schemes, and Oslo data.
+DENSITIES: contains phenomenological parameterizations based on the modified Fermi gas model similar to the RIPL-3 recommendations, but also updated microscopic calculations based on the combinatorial approach with realistic microscopic single-particle level schemes. All recommended level density models are consistent with the average neutron resonance spacings, discrete level schemes, and Oslo data.
 
 GAMMA: corresponds to the reference database for photon strength functions maintained at the IAEA and includes experimental information from various techniques as well as large-scale calculations based on the phenomenological Lorentzian approach and microscopic mean-field plus QRPA models. 
 
