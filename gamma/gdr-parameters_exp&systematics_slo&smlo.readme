@@ -1,0 +1,170 @@
+﻿Directory:   gdr_parameters_exp&systematics
+File:        gdr-parameters_exp&systematics_slo&smlo.readme
+Data:        May 14, 2018
+
+*****************************************************************************
+
+                      gdr-parameters_exp&systematics_slo.dat
+                      gdr-parameters_exp&systematics_smlo.dat
+
+      GIANT DIPOLE RESONANCE PARAMETERS OF GROUND-STATE PHOTOABSORPTION:
+                EXPERIMENTAL VALUES AND SYSTEMATICS
+
+            V.A. Plujko, O.M. Gorbachenko,  K.M. Solodovnyk
+
+     Nuclear Physics Department, Taras Shevchenko National University,
+                             Kyiv, Ukraine
+
+Contents
+--------
+The values of the parameters of the Isovector Giant Dipole Resonances (GDR)
+built on ground states of atomic nuclei are tabulated in the data-files
+"gdr-parameters_exp&systematics_slo.dat" and "gdr-parameters_exp&systematics_smlo.dat".
+These parameters were determined using a standard Lorentzian (SLO) model
+and the Simplified version of the modified Lorentzian (SMLO)
+approach [1-5].
+
+The parameters are given for  8980 isotopes, see COMMENT 1) below.
+
+The data files contain the recommended experimental values of the GDR parameters
+and the values which are calculated within systematics.
+The experimental parameters (index In=1) are taken from the data files
+"gdr_parameters_recommended_exp_slo.dat","gdr_parameters_recommended_exp_smlo.dat"
+which are located in the directory "gdr_parameters_exp".  For other isotopes,
+the values within systematics (index In=0) are given, see COMMENT 2) below.
+
+The lines 1-4 in data files contain the following texts:
+
+    1:   # texts "GDR parameters determined within SLO (SMLO)model"
+           for description of model used for determination of the GDR parameters
+    2:   # empty line
+    3:   # text "FORTRAN format (2I4, 9f9.3, I5)" indicated format for the  data reading
+    4:   # Short denotations "Z A Er1 Wr1 S1 Er2 Wr2 S2 S CSp1 CSp2 In"
+           of the quantities in the columns
+
+        Explanation of the column denotations in the line 4
+-----------------------------------------------------------------------------
+Z        : atomic number;
+A        : mass number;
+Er1      : GDR energy in spherical nuclei or
+           low value of GDR energy in deformed nuclei, MeV;
+Wr1      : GDR width in spherical nuclei or
+           width of the GDR mode with low energy in deformed nuclei, MeV;
+S1       : GDR strength in spherical nuclei or
+           strength of the GDR mode with low energy
+           in deformed nuclei, in units of
+           the Thomas-Reiche-Kuhn (TRK) sum rule CS_TRK,
+           CS_TRK= 60 NZ/A [mb];
+Er2      : high value of GDR energy in deformed nuclei, MeV;
+Wr2      : width of the GDR mode with high energy in deformed nuclei, MeV;
+S2       : strength of the GDR mode with high energy in deformed nuclei,
+           in units of the  TRK sum rule;
+S        : sum S=S1+S2 of strengths of the first and second component
+           of the GDR in units of the TRK sum rule;
+CSp1     : peak value of Lorentzian for spherical nuclei and peak value of
+           the Lorentzian for the first mode of GDR at  photon energy equals
+           to Er1, CSp1=2*S1/Wr1/Pi*CS_TRK;
+CSp2     : the peak  value of the Lorentzian for the second mode of GDR at
+           photon energy equals to Er2, CSp2=2*S2/Wr2/Pi*CS_TRK;
+In       : indicates the method of the determination of the GDR parameters:
+           "1" stands for experimental data and "0" - for systematics.
+-----------------------------------------------------------------------------
+
+COMMENT 1)
+
+The set of isotopes is taken from the file "deflib.dat"
+for the values of effective quadrupole deformation parameters (RIPL-2,3 [1,2]).
+It is equal to the list of nuclei in "Moller.dat"-file in RIPL-1 [3] with
+additional isotope Z=79, A=264 which is treated as spherical one
+in line with the data from the file "gdr-parameters-theor.dat"
+by Goriely (RIPL-2,3[1,2]).
+
+COMMENT 2)
+
+Systematics were obtained by the least-square fitting the recommended
+experimental GDR parameters in spherical and deformed nuclei in the
+ranges 150<A<190 and 220<A<253, where in good approximation deformed nuclei
+can be considered as axially deformed ones. 
+
+The average energies Er for each axially deformed nuclei 
+were calculated on the base of the experimental energies Erj
+and strengths Sj, corresponding to the normal vibrations:
+Er=(Er1*S1+Er2*S2)/S. 
+In spherical nuclei, the energy Er is equal to the corresponding 
+experimental GDR energy.
+
+
+The energy Er was fitted by least-squares method usinf the  following expression
+as systematics (in MeV):
+    Er =e1*(4NZ/A^2)^{1/2}*A^{-1/3}/(1+e2*A^{-1/3})^{1/2}
+with
+    e1=130.0 (+-0.9), e2=9.0 (+-0.2) (SLO);
+    e1=128.0 (+-0.9), e2=8.5 (+-0.2) (SMLO).
+This formula gives systematic values for GDR energy  in spherical nuclei
+and systematic values for average energy in axially deformed nuclei
+
+The approximation of axially deformed nuclei is adopted for all deformed nuclei
+with parameters "alfa2=alfa2_ef" for effective quadrupole deformation
+from the file "deflib.dat" [1,2]. The values of effective parameters
+"alfa2_ef" were recalculated from experimental values of the nuclear
+quadrupole momentum using approximation of the axially deformed nuclei.
+
+Expressions for systematics of the energies Era and Erb of normal modes 
+of the giant collective vibrations are obtained by the use 
+of the following formula for energy[6,7] Er,
+           Er= (Era+2*Erb)/3,
+where Era (Erb) is energy of the giant collective vibration
+along (perpendicular) to the symmetry axis, 
+and hydrodynamical ratio for Erb/Era [8]:
+    Erb/Era =0.911*a/b+0.089 = D
+with a (b)  for length of the ellipsoid semi-axis
+along (perpendicular) rotational symmetry axis:
+  a/b=(1+alfa2)/(1-alfa2/2).
+  So, the systematics  GDR resonance energies Erj
+with low value(j=1) and high values (j=2) were calculated
+by the formulas
+    Er1=Era, Er2=Erb (for prolate nuclei, a>b,i.e.,if Era<Erb),
+    Er1=Erb, Er2=Era (for oblate nuclei, a<b, i.e.,if Era>Erb),
+with
+    Era = Er*3/(1+2*D), Erb = D*Era
+
+The systematics of the GDR width is given by the formula
+    Wrj = c* Erj^d (MeV)
+with
+    c = 0.32 (+-0.03), d=0.98 (+-0.03) (SLO),
+    c = 0.42 (+-0.05), d=0.90 (+-0.04) (SMLO),
+where the systematics Erj was used in the width fitting.
+
+
+For SLO and SMLO models, the obtained systematic value
+of strength parameter S is
+    S=1.2
+in units of the Thomas-Reiche-Kuhn sum rule CS_TRK, CS_TRK=60*NZ/A [mb].
+
+For deformed nuclei,
+
+    S1=S/3; S2=2S/3(for prolate nuclei, a>b,i.e.,if Era<Erb),
+    s1=2s/3;s2= s/3(for oblate nuclei, a<b, i.e.,if Era>Erb).
+
+References to the contents
+-----------------------------------------------------------------------------
+1. T. Belgya, O. Bersillon, R. Capote et al., Handbook for calculations
+   of nuclear  reaction data, RIPL-2. IAEA-TECDOC-1506 (IAEA, Vienna, 2006).
+   https://www-nds.iaea.org/RIPL-2/gamma/
+2. R. Capote, M. Herman, P. Oblozinsky  et al.,
+   Nuclear Data Sheets 110 (2009) 3107–3214
+   https://www-nds.iaea.org/RIPL-3/gamma/
+3. P. Oblozinsky, M.B. Chadwick, T. Fukahori et al.,
+   Handbook for Calculations of Nuclear Reaction Data:
+   Reference Input Parameter Library, Tech. Rep. IAEA-TECDOC-1034,
+   IAEA, Vienna, Austria,
+   1998; chapter 1; see directory MASSES on the RIPL-1 web site at
+   http://www-nds.iaea.org/ripl/
+4. V.A.Plujko, R.Capote, O.M.Gorbachenko,
+   At. Data Nucl. Data Tables 97, 567 (2011).
+5. V.A.Plujko, O.M.Gorbachenko, R.Capote, P. Dimitriou,
+   At. Data Nucl. Data Tables, 123-124 (2018) 1, (2018);
+   arXiv e-Print – 2018: https://arxiv.org/abs/1804.04445
+6. B.L. Berman, S.C. Fultz, Rev. Mod. Phys. 4, 713 (1975).
+7. M. Di Toro, M. Pisa, G. Russo, Phys.Rev., C34, 2334 (1986).
+8. M. Danos, Nucl. Phys. 5, 23 (1958). 
