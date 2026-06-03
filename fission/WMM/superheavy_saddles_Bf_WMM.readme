@@ -1,0 +1,42 @@
+Directory: FISSION
+File:      superheavy_saddles_Bf_WMM.readme (24 May 2026)
+*********************************************************
+
+                  SUPERHEAVY_SADDLES_BF_WMM.DAT
+    Saddle-point properties and static fission barrier heights
+                   of isotopes with Z=98-126
+  (Provided by P. Jachimowicz, M. Kowal, J. Skalski, 24 May 2026)
+ *****************************************************************
+
+Contents
+--------
+The file contains saddle-point properties and corresponding static fission barrier heights
+calculated using the Warsaw macroscopic-microscopic (WMM) model [1]. It provides saddle-point masses,
+total energies, macroscopic and microscopic energy contributions, saddle-point deformation parameters,
+and static fission barrier heights corresponding to the primary (highest) saddle encountered along the fission path.
+The dataset covers 1305 heavy and superheavy nuclei with proton numbers Z=98-126 and neutron numbers N=134-192.
+For a given Z, the minimum neutron number increases incrementally with Z. A search for saddle-points was performed
+using the "imaginary water flow" method in three consecutive stages. The search was carried out within a deformation
+space defined by a standard spherical-harmonic expansion of the nuclear surface. Five- (for nonaxial shapes)
+and seven-dimensional (for reflection-asymmetric shapes) deformation spaces were used. Further details of the model
+and computational procedure can be found in Ref. [1].
+
+Format
+------
+Each record of the file contains
+
+     Z      : proton (charge) number
+     N      : neutron number
+     A      : mass number
+     M      : saddle-point mass excess [MeV]
+     Etot   : total saddle-point energy [MeV]
+     Emac   : macroscopic saddle-point energy [MeV]
+     Emic   : microscopic saddle-point energy [MeV]
+     b2-b8  : saddle-point deformation parameters
+     Bf     : static fission barrier height [MeV]
+
+The corresponding Fortran format specification is (3i4,15f8.2).
+
+References
+----------
+[1] P. Jachimowicz, M. Kowal, J. Skalski, At. Data Nucl. Data Tables 138, 101393 (2021).

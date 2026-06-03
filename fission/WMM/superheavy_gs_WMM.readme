@@ -1,0 +1,43 @@
+Directory: FISSION
+File:      superheavy_gs_WMM.readme (24 May 2026)
+*************************************************
+
+                     SUPREHEAVY_GS_WMM.DAT
+        Ground-state properties of isotopes with Z=98-126
+  (Provided by P. Jachimowicz, M. Kowal, J. Skalski, 24 May 2026)
+ *****************************************************************
+
+Contents
+--------
+The file contains ground-state properties calculated using the Warsaw macroscopic-microscopic (WMM) model [1].
+It provides ground-state masses, total binding energies, macroscopic and microscopic energy contributions,
+equilibrium deformation parameters, as well as ground-state-to-ground-state alpha-decay Q-values and nucleon
+separation energies. The dataset covers 1305 heavy and superheavy nuclei with proton numbers Z=98-126 and neutron
+numbers N=134-192. For a given Z, the minimum neutron number increases incrementally with Z. All calculations were
+performed by minimizing the total energy with respect to seven axially symmetric deformation parameters, which
+define the nuclear surface in a standard spherical-harmonic expansion. Further details of the model and computational
+procedure can be found in Ref. [1].
+
+Format
+------
+Each record of the file contains
+
+     Z      : proton (charge) number
+     N      : neutron number
+     A      : mass number
+     M      : ground-state mass excess [MeV]
+     Etot   : total ground-state energy [MeV]
+     Emac   : macroscopic energy contribution [MeV]
+     Emic   : microscopic energy contribution [MeV]
+     b2-b8  : equilibrium deformation parameters
+     Qa     : ground-state-to-ground-state alpha-decay Q-value [MeV]
+     Sp     : one-proton separation energy [MeV]
+     Sn     : one-neutron separation energy [MeV]
+     S2p    : two-proton separation energy [MeV]
+     S2n    : two-neutron separation energy [MeV]
+
+The corresponding Fortran format specification is (3i4,16f8.2).
+
+References
+----------
+[1] P. Jachimowicz, M. Kowal, J. Skalski, At. Data Nucl. Data Tables 138, 101393 (2021).

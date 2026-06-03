@@ -1,0 +1,41 @@
+Directory: FISSION
+File:      actinides_outer_saddles_Bf2_WMM.readme (24 May 2026)
+****************************************************************
+
+                     ACTINIDES_OUTER_SADDLES_BF2_WMM.DAT
+ Second (outer) saddle-point properties and second (outer) fission barrier heights
+                for 75 selected actinide isotopes with Z=89-98
+        (Provided by P. Jachimowicz, M. Kowal, J. Skalski, 24 May 2026)
+       *****************************************************************
+
+Contents
+--------
+The file contains properties of the second (outer) saddle point and second (outer) fission barrier heights
+for 75 selected actinide nuclei with Z=89-98. It provides masses, total energies, macroscopic and microscopic
+energy contributions, the corresponding deformation parameters at the second (outer) saddle point,
+and the calculated second (outer) fission barrier heights. A search for saddle points was performed using the
+“imaginary water flow” method in a seven-dimensional deformation space including reflection-asymmetric shapes,
+while nonaxial shapes were found to have a negligible effect in this case. For each set of deformations, the dipole (b1)
+deformation parameter was fixed by requiring that the center of mass of the nuclear shape is at the origin;
+thus, b1 is a function of the other deformation parameters. Further details of the model and computational procedure
+can be found in Ref. [1].
+
+Format
+------
+Each record of the file contains
+
+     Z      : proton (charge) number
+     N      : neutron number
+     A      : mass number
+     M      : saddle-point mass excess [MeV]
+     Etot   : total saddle-point energy [MeV]
+     Emac   : macroscopic saddle-point energy [MeV]
+     Emic   : microscopic saddle-point energy [MeV]
+     b1-b8  : deformation parameters at the second (outer) saddle point
+     Bf2    : second (outer) fission barrier height [MeV]
+
+The corresponding Fortran format specification is (3i4,13f8.2).
+
+References
+----------
+[1] P. Jachimowicz, M. Kowal, J. Skalski, At. Data Nucl. Data Tables 138, 101393 (2021).

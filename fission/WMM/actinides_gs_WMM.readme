@@ -1,0 +1,36 @@
+Directory: FISSION
+File:      actinides_gs_WMM.readme (24 May 2026)
+************************************************
+
+                     ACTINIDES_GS_WMM.DAT
+Ground-state properties of 75 selected actinide isotopes with Z=89-98
+  (Provided by P. Jachimowicz, M. Kowal, J. Skalski, 24 May 2026)
+ *****************************************************************
+
+Contents
+--------
+The file contains ground-state properties calculated using the Warsaw macroscopic-microscopic (WMM) model [1].
+It provides ground-state masses, total binding energies, macroscopic and microscopic energy contributions,
+and equilibrium deformation parameters for 75 selected actinide nuclei with Z=89-98. All calculations
+were performed by minimizing the total energy with respect to seven axially symmetric deformation parameters
+that define the nuclear surface in a standard spherical-harmonic expansion. Further details of the model
+and computational procedure can be found in Ref. [1].
+
+Format
+------
+Each record of the file contains
+
+     Z      : proton (charge) number
+     N      : neutron number
+     A      : mass number
+     M      : ground-state mass excess [MeV]
+     Etot   : total ground-state energy [MeV]
+     Emac   : macroscopic energy contribution [MeV]
+     Emic   : microscopic energy contribution [MeV]
+     b2-b8  : equilibrium deformation parameters
+
+The corresponding Fortran format specification is (3i4,11f8.2).
+
+References
+----------
+[1] P. Jachimowicz, M. Kowal, J. Skalski, At. Data Nucl. Data Tables 138, 101393 (2021).
