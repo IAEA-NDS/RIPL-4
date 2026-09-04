@@ -1,0 +1,2087 @@
+{
+  "densities": {
+    "bsfg": {
+      "status": "legacy/absent in this release"
+    },
+    "bsk14_comb": {
+      "entry_class": "Entry",
+      "fields": {
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "negative_parity": {
+          "description": "Level density data for negative parity states",
+          "type": "riplpy.densities.hfb.ParityData"
+        },
+        "positive_parity": {
+          "description": "Level density data for positive parity states",
+          "type": "riplpy.densities.hfb.ParityData"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 8508,
+      "status": "available"
+    },
+    "bskg3_comb": {
+      "entry_class": "Entry",
+      "fields": {
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "negative_parity": {
+          "description": "Level density data for negative parity states",
+          "type": "riplpy.densities.hfb.ParityData"
+        },
+        "positive_parity": {
+          "description": "Level density data for positive parity states",
+          "type": "riplpy.densities.hfb.ParityData"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 7677,
+      "status": "available"
+    },
+    "ct": {
+      "status": "legacy/absent in this release"
+    },
+    "egsm": {
+      "entry_class": "Entry",
+      "fields": {
+        "Bn": {
+          "description": "Neutron binding energy / Qn [MeV]",
+          "type": "float"
+        },
+        "Dcalc": {
+          "description": "Calculated s-wave resonance spacing [keV]",
+          "type": "float"
+        },
+        "Def": {
+          "description": "Ground-state deformation parameter",
+          "type": "float"
+        },
+        "Derr": {
+          "description": "Uncertainty on resonance spacing dDobs [keV]",
+          "type": "float"
+        },
+        "Do": {
+          "description": "Experimental s-wave resonance spacing Dobs [keV]",
+          "type": "float"
+        },
+        "Esh": {
+          "description": "Shell correction energy [MeV]",
+          "type": "float"
+        },
+        "Io": {
+          "description": "Ground state spin of target nucleus",
+          "type": "float"
+        },
+        "a": {
+          "description": "Level density parameter at Bn [MeV^-1]",
+          "type": "float"
+        },
+        "a_ratio": {
+          "description": "Ratio a_exp / a_sys",
+          "type": "float"
+        },
+        "a_sys": {
+          "description": "Systematic level density parameter a_sys [MeV^-1]",
+          "type": "float"
+        },
+        "dam": {
+          "description": "Lower uncertainty on level density parameter [MeV^-1]",
+          "type": "float"
+        },
+        "dap": {
+          "description": "Upper uncertainty on level density parameter [MeV^-1]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 291,
+      "status": "available"
+    },
+    "egsm_norm": {
+      "entry_class": "Entry",
+      "fields": {
+        "element": {
+          "description": "Target element",
+          "type": "Element"
+        },
+        "factor": {
+          "description": "Normalization factor (a_exp/a_sys averaged over isotopes)",
+          "type": "float"
+        }
+      },
+      "key_type": "Element",
+      "n_entries": 82,
+      "status": "available"
+    },
+    "hfb": {
+      "entry_class": null,
+      "fields": {},
+      "key_type": "Nuclide",
+      "n_entries": 0,
+      "status": "available"
+    },
+    "qrpabe": {
+      "entry_class": "Entry",
+      "fields": {
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "negative_parity": {
+          "description": "Level density data for negative parity states",
+          "type": "riplpy.densities.hfb.ParityData"
+        },
+        "positive_parity": {
+          "description": "Level density data for positive parity states",
+          "type": "riplpy.densities.hfb.ParityData"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 2706,
+      "status": "available"
+    },
+    "shellcorr_mk": {
+      "status": "legacy/absent in this release"
+    },
+    "shellcorr_ms": {
+      "entry_class": "ExtendedEntry",
+      "fields": {
+        "beta2": {
+          "description": "Quadrupole deformation parameter",
+          "type": "float"
+        },
+        "beta4": {
+          "description": "Hexadecapole deformation parameter",
+          "type": "float"
+        },
+        "corr": {
+          "description": "Deformation correction energy [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "shell": {
+          "description": "Shell correction energy [MeV]",
+          "type": "float"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 6830,
+      "status": "available"
+    },
+    "thfb_comb": {
+      "entry_class": "Entry",
+      "fields": {
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "negative_parity": {
+          "description": "Level density data for negative parity states",
+          "type": "riplpy.densities.hfb.ParityData"
+        },
+        "positive_parity": {
+          "description": "Level density data for positive parity states",
+          "type": "riplpy.densities.hfb.ParityData"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 7334,
+      "status": "available"
+    }
+  },
+  "fission": {
+    "bskg3_barriers": {
+      "entry_class": "Entry",
+      "fields": {
+        "inner": {
+          "description": "Inner barrier {E[MeV], B20, B22, B30}",
+          "type": "dict"
+        },
+        "isomer": {
+          "description": "First shape isomer {E[MeV], B20, B22, B30}",
+          "type": "dict"
+        },
+        "isomer2": {
+          "description": "Second shape isomer {E[MeV], B20, B22, B30} (None on the legacy layout)",
+          "type": "dict"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "outer1": {
+          "description": "First outer barrier {E[MeV], B20, B22, B30}",
+          "type": "dict"
+        },
+        "outer2": {
+          "description": "Second outer barrier {E[MeV], B20, B22, B30}",
+          "type": "dict"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 2449,
+      "status": "available"
+    },
+    "d1m_barriers": {
+      "entry_class": "Entry",
+      "fields": {
+        "inner": {
+          "description": "Inner barrier {E[MeV], B20, B22, B30}",
+          "type": "dict"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "outer": {
+          "description": "Outer barrier {E[MeV], B20, B22, B30}",
+          "type": "dict"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 45,
+      "status": "available"
+    },
+    "empire_barriers": {
+      "entry_class": "Entry",
+      "fields": {
+        "Deltaf": {
+          "description": "Pairing correction [MeV]",
+          "type": "float"
+        },
+        "Symb": {
+          "description": "Second barrier symmetry designation",
+          "type": "str"
+        },
+        "Va": {
+          "description": "First barrier height [MeV]",
+          "type": "float"
+        },
+        "Vb": {
+          "description": "Second barrier height [MeV]",
+          "type": "float"
+        },
+        "Vc": {
+          "description": "Third barrier height [MeV]",
+          "type": "float"
+        },
+        "hwa": {
+          "description": "First barrier curvature [MeV]",
+          "type": "float"
+        },
+        "hwb": {
+          "description": "Second barrier curvature [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "symmetry": {
+          "description": "Saddle point symmetry designation",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 76,
+      "status": "available"
+    },
+    "empirical_barriers": {
+      "entry_class": "Entry",
+      "fields": {
+        "Va": {
+          "description": "Inner barrier height [MeV]",
+          "type": "float"
+        },
+        "Vb": {
+          "description": "Outer barrier height [MeV]",
+          "type": "float"
+        },
+        "dVa": {
+          "description": "Uncertainty on Va [MeV]",
+          "type": "float"
+        },
+        "dVb": {
+          "description": "Uncertainty on Vb [MeV]",
+          "type": "float"
+        },
+        "dwa": {
+          "description": "Uncertainty on hwa [MeV]",
+          "type": "float"
+        },
+        "dwb": {
+          "description": "Uncertainty on hwb [MeV]",
+          "type": "float"
+        },
+        "hwa": {
+          "description": "Inner barrier curvature [MeV]",
+          "type": "float"
+        },
+        "hwb": {
+          "description": "Outer barrier curvature [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "s": {
+          "description": "Element symbol",
+          "type": "str"
+        },
+        "syma": {
+          "description": "Inner saddle-point symmetry (S/GA/MA)",
+          "type": "str"
+        },
+        "symb": {
+          "description": "Outer saddle-point symmetry (S/GA/MA)",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 77,
+      "status": "available"
+    },
+    "empirical_barriers_new": {
+      "entry_class": "Entry",
+      "fields": {
+        "Va": {
+          "description": "Inner barrier height [MeV]",
+          "type": "float"
+        },
+        "Vb": {
+          "description": "Outer barrier height [MeV]",
+          "type": "float"
+        },
+        "dVa": {
+          "description": "Uncertainty on Va [MeV]",
+          "type": "float"
+        },
+        "dVb": {
+          "description": "Uncertainty on Vb [MeV]",
+          "type": "float"
+        },
+        "dwa": {
+          "description": "Uncertainty on hwa [MeV]",
+          "type": "float"
+        },
+        "dwb": {
+          "description": "Uncertainty on hwb [MeV]",
+          "type": "float"
+        },
+        "hwa": {
+          "description": "Inner barrier curvature [MeV]",
+          "type": "float"
+        },
+        "hwb": {
+          "description": "Outer barrier curvature [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "s": {
+          "description": "Element symbol",
+          "type": "str"
+        },
+        "syma": {
+          "description": "Inner saddle-point symmetry (S/GA/MA)",
+          "type": "str"
+        },
+        "symb": {
+          "description": "Outer saddle-point symmetry (S/GA/MA)",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 77,
+      "status": "available"
+    },
+    "hfb_barriers": {
+      "entry_class": null,
+      "fields": {},
+      "key_type": "Nuclide",
+      "n_entries": 0,
+      "status": "available"
+    },
+    "hfbpath_bskg3": {
+      "status": "legacy/absent in this release"
+    },
+    "hfbpath_d1m": {
+      "entry_class": "Entry",
+      "fields": {
+        "A": {
+          "description": "Mass number",
+          "type": "int"
+        },
+        "Egs": {
+          "description": "Ground-state binding energy [MeV]",
+          "type": "float"
+        },
+        "MI": {
+          "description": "Collective inertia MI_ATD [hbar^2/MeV] (wrt line number)",
+          "type": "list"
+        },
+        "Z": {
+          "description": "Charge number",
+          "type": "int"
+        },
+        "beta20": {
+          "description": "Quadrupole deformation parameter",
+          "type": "list"
+        },
+        "beta22": {
+          "description": "Quadrupole (triaxial) deformation parameter",
+          "type": "list"
+        },
+        "beta30": {
+          "description": "Octupole deformation parameter",
+          "type": "list"
+        },
+        "dE": {
+          "description": "Energy above ground state E-Egs [MeV]",
+          "type": "list"
+        },
+        "idx": {
+          "description": "Index flag: -1 ground state, 1 barrier, 2 well",
+          "type": "list"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "nbeta": {
+          "description": "Number of beta deformation points",
+          "type": "int"
+        },
+        "sym": {
+          "description": "Element symbol from the title line",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 45,
+      "status": "available"
+    },
+    "nld_fis": {
+      "entry_class": "Entry",
+      "fields": {
+        "A": {
+          "description": "Mass number",
+          "type": "int"
+        },
+        "Z": {
+          "description": "Charge number",
+          "type": "int"
+        },
+        "label": {
+          "description": "Saddle/well label (Max1/Max2/Max3/Min1/Min2)",
+          "type": "str"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "negative_parity": {
+          "description": "Negative-parity level density (ParityData)",
+          "type": "riplpy.fission.nld_fis.ParityData"
+        },
+        "positive_parity": {
+          "description": "Positive-parity level density (ParityData)",
+          "type": "riplpy.fission.nld_fis.ParityData"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 2467,
+      "status": "available"
+    },
+    "rmf_axial": {
+      "entry_class": "Entry",
+      "fields": {
+        "A": {
+          "description": "Mass number",
+          "type": "int"
+        },
+        "E0": {
+          "description": "E(0+) band-head energy [MeV]",
+          "type": "float"
+        },
+        "Egs": {
+          "description": "Ground-state energy [MeV]",
+          "type": "float"
+        },
+        "Mu": {
+          "description": "Collective inertia Mu",
+          "type": "list"
+        },
+        "Z": {
+          "description": "Charge number",
+          "type": "int"
+        },
+        "beta20": {
+          "description": "Quadrupole deformation parameter",
+          "type": "list"
+        },
+        "beta22": {
+          "description": "Quadrupole (triaxial) deformation parameter",
+          "type": "list"
+        },
+        "beta30": {
+          "description": "Octupole deformation parameter",
+          "type": "list"
+        },
+        "dE": {
+          "description": "Energy relative to ground state E-EGS [MeV]",
+          "type": "list"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "nbeta": {
+          "description": "Number of beta deformation points",
+          "type": "int"
+        },
+        "sym": {
+          "description": "Element symbol from the header",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 45,
+      "status": "available"
+    },
+    "rmf_triaxial": {
+      "status": "legacy/absent in this release"
+    }
+  },
+  "gamma": {
+    "experiment_mlo": {
+      "entry_class": "Entry",
+      "fields": {
+        "CSp1": {
+          "description": "First component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "CSp2": {
+          "description": "Second component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "E1": {
+          "description": "First GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "E2": {
+          "description": "Second GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "Emax": {
+          "description": "Upper energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Emin": {
+          "description": "Lower energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Er1": {
+          "description": "First component energy [MeV]",
+          "type": "float"
+        },
+        "Er2": {
+          "description": "Second component energy [MeV]",
+          "type": "float"
+        },
+        "Id": {
+          "description": "Identifier string",
+          "type": "str"
+        },
+        "Sr": {
+          "description": "Total strength Sr1+Sr2 [TRK units]",
+          "type": "float"
+        },
+        "Sr1": {
+          "description": "First component strength [TRK units]",
+          "type": "float"
+        },
+        "Sr2": {
+          "description": "Second component strength [TRK units]",
+          "type": "float"
+        },
+        "W1": {
+          "description": "First GDR peak width [MeV]",
+          "type": "float"
+        },
+        "W2": {
+          "description": "Second GDR peak width [MeV]",
+          "type": "float"
+        },
+        "Wr1": {
+          "description": "First component width [MeV]",
+          "type": "float"
+        },
+        "Wr2": {
+          "description": "Second component width [MeV]",
+          "type": "float"
+        },
+        "dCSp1": {
+          "description": "Uncertainty on CSp1 [mb]",
+          "type": "float"
+        },
+        "dCSp2": {
+          "description": "Uncertainty on CSp2 [mb]",
+          "type": "float"
+        },
+        "dEr1": {
+          "description": "Uncertainty on Er1 [MeV]",
+          "type": "float"
+        },
+        "dEr2": {
+          "description": "Uncertainty on Er2 [MeV]",
+          "type": "float"
+        },
+        "dSr": {
+          "description": "Uncertainty on Sr",
+          "type": "float"
+        },
+        "dSr1": {
+          "description": "Uncertainty on Sr1",
+          "type": "float"
+        },
+        "dSr2": {
+          "description": "Uncertainty on Sr2",
+          "type": "float"
+        },
+        "dWr1": {
+          "description": "Uncertainty on Wr1 [MeV]",
+          "type": "float"
+        },
+        "dWr2": {
+          "description": "Uncertainty on Wr2 [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "reac": {
+          "description": "Reaction flag",
+          "type": "int"
+        },
+        "reference": {
+          "description": "Reference key",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 157,
+      "status": "available"
+    },
+    "experiment_slo": {
+      "entry_class": "Entry",
+      "fields": {
+        "CSp1": {
+          "description": "First component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "CSp2": {
+          "description": "Second component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "E1": {
+          "description": "First GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "E2": {
+          "description": "Second GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "Emax": {
+          "description": "Upper energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Emin": {
+          "description": "Lower energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Er1": {
+          "description": "First component energy [MeV]",
+          "type": "float"
+        },
+        "Er2": {
+          "description": "Second component energy [MeV]",
+          "type": "float"
+        },
+        "Id": {
+          "description": "Identifier string",
+          "type": "str"
+        },
+        "Sr": {
+          "description": "Total strength Sr1+Sr2 [TRK units]",
+          "type": "float"
+        },
+        "Sr1": {
+          "description": "First component strength [TRK units]",
+          "type": "float"
+        },
+        "Sr2": {
+          "description": "Second component strength [TRK units]",
+          "type": "float"
+        },
+        "W1": {
+          "description": "First GDR peak width [MeV]",
+          "type": "float"
+        },
+        "W2": {
+          "description": "Second GDR peak width [MeV]",
+          "type": "float"
+        },
+        "Wr1": {
+          "description": "First component width [MeV]",
+          "type": "float"
+        },
+        "Wr2": {
+          "description": "Second component width [MeV]",
+          "type": "float"
+        },
+        "dCSp1": {
+          "description": "Uncertainty on CSp1 [mb]",
+          "type": "float"
+        },
+        "dCSp2": {
+          "description": "Uncertainty on CSp2 [mb]",
+          "type": "float"
+        },
+        "dEr1": {
+          "description": "Uncertainty on Er1 [MeV]",
+          "type": "float"
+        },
+        "dEr2": {
+          "description": "Uncertainty on Er2 [MeV]",
+          "type": "float"
+        },
+        "dSr": {
+          "description": "Uncertainty on Sr",
+          "type": "float"
+        },
+        "dSr1": {
+          "description": "Uncertainty on Sr1",
+          "type": "float"
+        },
+        "dSr2": {
+          "description": "Uncertainty on Sr2",
+          "type": "float"
+        },
+        "dWr1": {
+          "description": "Uncertainty on Wr1 [MeV]",
+          "type": "float"
+        },
+        "dWr2": {
+          "description": "Uncertainty on Wr2 [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "reac": {
+          "description": "Reaction flag",
+          "type": "int"
+        },
+        "reference": {
+          "description": "Reference key",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 157,
+      "status": "available"
+    },
+    "experiment_slo_errors": {
+      "entry_class": "Entry",
+      "fields": {
+        "CSp1": {
+          "description": "First component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "CSp2": {
+          "description": "Second component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "E1": {
+          "description": "First GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "E2": {
+          "description": "Second GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "Emax": {
+          "description": "Upper energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Emin": {
+          "description": "Lower energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Er1": {
+          "description": "First component energy [MeV]",
+          "type": "float"
+        },
+        "Er2": {
+          "description": "Second component energy [MeV]",
+          "type": "float"
+        },
+        "Id": {
+          "description": "Identifier string",
+          "type": "str"
+        },
+        "Sr": {
+          "description": "Total strength Sr1+Sr2 [TRK units]",
+          "type": "float"
+        },
+        "Sr1": {
+          "description": "First component strength [TRK units]",
+          "type": "float"
+        },
+        "Sr2": {
+          "description": "Second component strength [TRK units]",
+          "type": "float"
+        },
+        "W1": {
+          "description": "First GDR peak width [MeV]",
+          "type": "float"
+        },
+        "W2": {
+          "description": "Second GDR peak width [MeV]",
+          "type": "float"
+        },
+        "Wr1": {
+          "description": "First component width [MeV]",
+          "type": "float"
+        },
+        "Wr2": {
+          "description": "Second component width [MeV]",
+          "type": "float"
+        },
+        "dCSp1": {
+          "description": "Uncertainty on CSp1 [mb]",
+          "type": "float"
+        },
+        "dCSp2": {
+          "description": "Uncertainty on CSp2 [mb]",
+          "type": "float"
+        },
+        "dEr1": {
+          "description": "Uncertainty on Er1 [MeV]",
+          "type": "float"
+        },
+        "dEr2": {
+          "description": "Uncertainty on Er2 [MeV]",
+          "type": "float"
+        },
+        "dSr": {
+          "description": "Uncertainty on Sr",
+          "type": "float"
+        },
+        "dSr1": {
+          "description": "Uncertainty on Sr1",
+          "type": "float"
+        },
+        "dSr2": {
+          "description": "Uncertainty on Sr2",
+          "type": "float"
+        },
+        "dWr1": {
+          "description": "Uncertainty on Wr1 [MeV]",
+          "type": "float"
+        },
+        "dWr2": {
+          "description": "Uncertainty on Wr2 [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "reac": {
+          "description": "Reaction flag",
+          "type": "int"
+        },
+        "reference": {
+          "description": "Reference key",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 157,
+      "status": "available"
+    },
+    "experiment_smlo": {
+      "entry_class": "Entry",
+      "fields": {
+        "CSp1": {
+          "description": "First component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "CSp2": {
+          "description": "Second component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "E1": {
+          "description": "First GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "E2": {
+          "description": "Second GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "Emax": {
+          "description": "Upper energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Emin": {
+          "description": "Lower energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Er1": {
+          "description": "First component energy [MeV]",
+          "type": "float"
+        },
+        "Er2": {
+          "description": "Second component energy [MeV]",
+          "type": "float"
+        },
+        "Id": {
+          "description": "Identifier string",
+          "type": "str"
+        },
+        "Sr": {
+          "description": "Total strength Sr1+Sr2 [TRK units]",
+          "type": "float"
+        },
+        "Sr1": {
+          "description": "First component strength [TRK units]",
+          "type": "float"
+        },
+        "Sr2": {
+          "description": "Second component strength [TRK units]",
+          "type": "float"
+        },
+        "W1": {
+          "description": "First GDR peak width [MeV]",
+          "type": "float"
+        },
+        "W2": {
+          "description": "Second GDR peak width [MeV]",
+          "type": "float"
+        },
+        "Wr1": {
+          "description": "First component width [MeV]",
+          "type": "float"
+        },
+        "Wr2": {
+          "description": "Second component width [MeV]",
+          "type": "float"
+        },
+        "dCSp1": {
+          "description": "Uncertainty on CSp1 [mb]",
+          "type": "float"
+        },
+        "dCSp2": {
+          "description": "Uncertainty on CSp2 [mb]",
+          "type": "float"
+        },
+        "dEr1": {
+          "description": "Uncertainty on Er1 [MeV]",
+          "type": "float"
+        },
+        "dEr2": {
+          "description": "Uncertainty on Er2 [MeV]",
+          "type": "float"
+        },
+        "dSr": {
+          "description": "Uncertainty on Sr",
+          "type": "float"
+        },
+        "dSr1": {
+          "description": "Uncertainty on Sr1",
+          "type": "float"
+        },
+        "dSr2": {
+          "description": "Uncertainty on Sr2",
+          "type": "float"
+        },
+        "dWr1": {
+          "description": "Uncertainty on Wr1 [MeV]",
+          "type": "float"
+        },
+        "dWr2": {
+          "description": "Uncertainty on Wr2 [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "reac": {
+          "description": "Reaction flag",
+          "type": "int"
+        },
+        "reference": {
+          "description": "Reference key",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 157,
+      "status": "available"
+    },
+    "experiment_smlo_errors": {
+      "entry_class": "Entry",
+      "fields": {
+        "CSp1": {
+          "description": "First component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "CSp2": {
+          "description": "Second component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "E1": {
+          "description": "First GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "E2": {
+          "description": "Second GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "Emax": {
+          "description": "Upper energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Emin": {
+          "description": "Lower energy limit of fit [MeV]",
+          "type": "float"
+        },
+        "Er1": {
+          "description": "First component energy [MeV]",
+          "type": "float"
+        },
+        "Er2": {
+          "description": "Second component energy [MeV]",
+          "type": "float"
+        },
+        "Id": {
+          "description": "Identifier string",
+          "type": "str"
+        },
+        "Sr": {
+          "description": "Total strength Sr1+Sr2 [TRK units]",
+          "type": "float"
+        },
+        "Sr1": {
+          "description": "First component strength [TRK units]",
+          "type": "float"
+        },
+        "Sr2": {
+          "description": "Second component strength [TRK units]",
+          "type": "float"
+        },
+        "W1": {
+          "description": "First GDR peak width [MeV]",
+          "type": "float"
+        },
+        "W2": {
+          "description": "Second GDR peak width [MeV]",
+          "type": "float"
+        },
+        "Wr1": {
+          "description": "First component width [MeV]",
+          "type": "float"
+        },
+        "Wr2": {
+          "description": "Second component width [MeV]",
+          "type": "float"
+        },
+        "dCSp1": {
+          "description": "Uncertainty on CSp1 [mb]",
+          "type": "float"
+        },
+        "dCSp2": {
+          "description": "Uncertainty on CSp2 [mb]",
+          "type": "float"
+        },
+        "dEr1": {
+          "description": "Uncertainty on Er1 [MeV]",
+          "type": "float"
+        },
+        "dEr2": {
+          "description": "Uncertainty on Er2 [MeV]",
+          "type": "float"
+        },
+        "dSr": {
+          "description": "Uncertainty on Sr",
+          "type": "float"
+        },
+        "dSr1": {
+          "description": "Uncertainty on Sr1",
+          "type": "float"
+        },
+        "dSr2": {
+          "description": "Uncertainty on Sr2",
+          "type": "float"
+        },
+        "dWr1": {
+          "description": "Uncertainty on Wr1 [MeV]",
+          "type": "float"
+        },
+        "dWr2": {
+          "description": "Uncertainty on Wr2 [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "reac": {
+          "description": "Reaction flag",
+          "type": "int"
+        },
+        "reference": {
+          "description": "Reference key",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 157,
+      "status": "available"
+    },
+    "experiment_systematics_slo": {
+      "entry_class": "Entry",
+      "fields": {
+        "CSp1": {
+          "description": "First component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "CSp2": {
+          "description": "Second component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "E1": {
+          "description": "First GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "E2": {
+          "description": "Second GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "In": {
+          "description": "Source flag (1 = experimental, 0 = systematics)",
+          "type": "int"
+        },
+        "Sr": {
+          "description": "Total strength Sr1+Sr2 [TRK units]",
+          "type": "float"
+        },
+        "Sr1": {
+          "description": "First component strength [TRK units]",
+          "type": "float"
+        },
+        "Sr2": {
+          "description": "Second component strength [TRK units]",
+          "type": "float"
+        },
+        "W1": {
+          "description": "First GDR peak width [MeV]",
+          "type": "float"
+        },
+        "W2": {
+          "description": "Second GDR peak width [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 8980,
+      "status": "available"
+    },
+    "experiment_systematics_smlo": {
+      "entry_class": "Entry",
+      "fields": {
+        "CSp1": {
+          "description": "First component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "CSp2": {
+          "description": "Second component Lorentzian peak cross section [mb]",
+          "type": "float"
+        },
+        "E1": {
+          "description": "First GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "E2": {
+          "description": "Second GDR peak energy [MeV]",
+          "type": "float"
+        },
+        "In": {
+          "description": "Source flag (1 = experimental, 0 = systematics)",
+          "type": "int"
+        },
+        "Sr": {
+          "description": "Total strength Sr1+Sr2 [TRK units]",
+          "type": "float"
+        },
+        "Sr1": {
+          "description": "First component strength [TRK units]",
+          "type": "float"
+        },
+        "Sr2": {
+          "description": "Second component strength [TRK units]",
+          "type": "float"
+        },
+        "W1": {
+          "description": "First GDR peak width [MeV]",
+          "type": "float"
+        },
+        "W2": {
+          "description": "Second GDR peak width [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 8980,
+      "status": "available"
+    },
+    "gsf": {
+      "entry_class": "PacketEntry",
+      "fields": {
+        "U": {
+          "description": "Photon-energy grid [MeV]",
+          "type": "list"
+        },
+        "fE1": {
+          "description": "E1 strength column [mb/MeV for legacy gamma-strength-micro files; MeV^-3 for the D1M+QRPA fallback]",
+          "type": "list"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 1,
+      "status": "available"
+    },
+    "gsf_d1m": {
+      "entry_class": "Entry",
+      "fields": {
+        "T": {
+          "description": "Temperature/excitation column labels [MeV]",
+          "type": "list"
+        },
+        "U": {
+          "description": "Photon-energy grid [MeV]",
+          "type": "list"
+        },
+        "fE1": {
+          "description": "Cold-nucleus (T=0) E1 photon strength function [MeV^-3]",
+          "type": "list"
+        },
+        "fE1_T": {
+          "description": "Per-temperature E1 strength rows (rows = U, cols = T) [MeV^-3]",
+          "type": "list"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 43,
+      "status": "available"
+    },
+    "psf": {
+      "entry_class": "Entry",
+      "fields": {
+        "E": {
+          "description": "Photon energy grid [MeV]",
+          "type": "list"
+        },
+        "columns": {
+          "description": "Column labels parsed from the file header",
+          "type": "list"
+        },
+        "f": {
+          "description": "Photon strength function [MeV^-3]",
+          "type": "list"
+        },
+        "filename": {
+          "description": "Source data file name",
+          "type": "str"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "rows": {
+          "description": "Raw numeric data table (one list per data line)",
+          "type": "list"
+        },
+        "source": {
+          "description": "Experimental technique category (subdirectory name)",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 103,
+      "status": "available"
+    },
+    "smlo_e1": {
+      "entry_class": "Entry",
+      "fields": {
+        "Er1": {
+          "description": "SMLO Lorentzian peak energy [MeV]",
+          "type": "float"
+        },
+        "S1": {
+          "description": "SMLO Lorentzian strength [TRK units]",
+          "type": "float"
+        },
+        "T": {
+          "description": "Temperature column labels (T=0.0..2.0 MeV)",
+          "type": "list"
+        },
+        "U": {
+          "description": "Photon-energy grid [MeV]",
+          "type": "list"
+        },
+        "Wr1": {
+          "description": "SMLO Lorentzian width [MeV]",
+          "type": "float"
+        },
+        "beta": {
+          "description": "Quadrupole deformation parameter",
+          "type": "float"
+        },
+        "fE1": {
+          "description": "Cold-nucleus (T=0) E1 photon strength function [MeV^-3]",
+          "type": "list"
+        },
+        "fE1_T": {
+          "description": "Per-temperature E1 strength rows (rows = U, cols = T) [MeV^-3]",
+          "type": "list"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 1,
+      "status": "available"
+    },
+    "smlo_m1": {
+      "entry_class": "Entry",
+      "fields": {
+        "T": {
+          "description": "Strength column labels (T=0, T>0)",
+          "type": "list"
+        },
+        "U": {
+          "description": "Photon-energy grid [MeV]",
+          "type": "list"
+        },
+        "fE1": {
+          "description": "Cold-nucleus (T=0) M1 photon strength function [MeV^-3]",
+          "type": "list"
+        },
+        "fE1_T": {
+          "description": "M1 strength rows (rows = U, cols = T=0 / T>0) [MeV^-3]",
+          "type": "list"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 43,
+      "status": "available"
+    },
+    "theory_gdr": {
+      "entry_class": null,
+      "fields": {},
+      "key_type": "Nuclide",
+      "n_entries": 0,
+      "status": "available"
+    },
+    "tlo": {
+      "entry_class": "Entry",
+      "fields": {
+        "U": {
+          "description": "Photon-energy grid [MeV]",
+          "type": "list"
+        },
+        "beta": {
+          "description": "Ground-state beta deformation parameter (Delaroche et al.)",
+          "type": "float"
+        },
+        "fE1": {
+          "description": "E1 dipole strength function [MeV^-3]",
+          "type": "list"
+        },
+        "fE1_T": {
+          "description": "Full per-nucleus strength rows (rows = U) [MeV^-3]",
+          "type": "list"
+        },
+        "gamma": {
+          "description": "Ground-state gamma deformation parameter [deg]",
+          "type": "float"
+        },
+        "mode": {
+          "description": "Deformation mode flag (EFF = reduced near shells, INTER = interpolated odd nuclei, 5DCH = Delaroche et al.)",
+          "type": "str"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 53,
+      "status": "available"
+    }
+  },
+  "levels": {
+    "constant_temperature": {
+      "entry_class": "Entry",
+      "fields": {
+        "Chi": {
+          "description": "Fit quality chi-squared",
+          "type": "float"
+        },
+        "Ex": {
+          "description": "Energy of first +X level [MeV]",
+          "type": "float"
+        },
+        "Fit": {
+          "description": "Fit flag (blank if no fit)",
+          "type": "str"
+        },
+        "Flag": {
+          "description": "F if poor fit (Chi>0.05)",
+          "type": "str"
+        },
+        "N0": {
+          "description": "First level included in fit",
+          "type": "int"
+        },
+        "Nc": {
+          "description": "Level where unique spin sequence ends",
+          "type": "int"
+        },
+        "Nlev": {
+          "description": "Total number of ENSDF levels",
+          "type": "int"
+        },
+        "Nmax": {
+          "description": "Completeness limit (level number)",
+          "type": "int"
+        },
+        "NoX": {
+          "description": "Number of levels with +X notation",
+          "type": "int"
+        },
+        "T": {
+          "description": "Nuclear temperature [MeV]",
+          "type": "float"
+        },
+        "U0": {
+          "description": "Back-shift energy [MeV]",
+          "type": "float"
+        },
+        "Uc": {
+          "description": "Energy at Nc [MeV]",
+          "type": "float"
+        },
+        "Umax": {
+          "description": "Energy at completeness limit [MeV]",
+          "type": "float"
+        },
+        "Xm": {
+          "description": "First level with +X notation",
+          "type": "int"
+        },
+        "dT": {
+          "description": "Uncertainty on T [MeV]",
+          "type": "float"
+        },
+        "dU0": {
+          "description": "Uncertainty on U0 [MeV]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "sigma": {
+          "description": "Spin cutoff parameter",
+          "type": "float"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 3557,
+      "status": "available"
+    },
+    "discrete_levels": {
+      "entry_class": "LevelEntry",
+      "fields": {
+        "extras": {
+          "description": "Additional ENSDF metadata",
+          "type": "list"
+        },
+        "gammas": {
+          "description": "Dict of gamma transitions by level index",
+          "type": "dict"
+        },
+        "levels": {
+          "description": "List of discrete levels (ordered by energy)",
+          "type": "list"
+        },
+        "nucleus": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 3557,
+      "status": "available"
+    }
+  },
+  "masses": {
+    "ame20": {
+      "entry_class": "Entry",
+      "fields": {
+        "Err": {
+          "description": "Uncertainty on mass excess [MeV]",
+          "type": "float"
+        },
+        "Mexp": {
+          "description": "Experimental mass excess [MeV]",
+          "type": "float"
+        },
+        "flag": {
+          "description": "Data quality flag (0=measured, 1=extrapolated)",
+          "type": "int"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 3558,
+      "status": "available"
+    },
+    "bskg3": {
+      "entry_class": "Entry",
+      "fields": {
+        "Err": {
+          "description": "Uncertainty on mass excess [MeV]",
+          "type": "float"
+        },
+        "Gamma": {
+          "description": "Triaxial deformation angle [deg]",
+          "type": "float"
+        },
+        "Mexp": {
+          "description": "Experimental mass excess [MeV]",
+          "type": "float"
+        },
+        "Mth": {
+          "description": "Calculated BSkG3 mass excess [MeV]",
+          "type": "float"
+        },
+        "Rch": {
+          "description": "Charge radius [fm]",
+          "type": "float"
+        },
+        "beta20": {
+          "description": "Quadrupole deformation (axial)",
+          "type": "float"
+        },
+        "beta22": {
+          "description": "Quadrupole deformation (triaxial)",
+          "type": "float"
+        },
+        "beta30": {
+          "description": "Octupole deformation (axial)",
+          "type": "float"
+        },
+        "beta32": {
+          "description": "Octupole deformation (triaxial)",
+          "type": "float"
+        },
+        "beta4": {
+          "description": "Hexadecapole deformation",
+          "type": "float"
+        },
+        "flag": {
+          "description": "Data quality flag",
+          "type": "int"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 8587,
+      "status": "available"
+    },
+    "d1m": {
+      "entry_class": "Entry",
+      "fields": {
+        "Err": {
+          "description": "Uncertainty on mass excess [MeV]",
+          "type": "float"
+        },
+        "Mexp": {
+          "description": "Experimental mass excess [MeV]",
+          "type": "float"
+        },
+        "Mth": {
+          "description": "Calculated D1M mass excess [MeV]",
+          "type": "float"
+        },
+        "Rch": {
+          "description": "Charge radius [fm]",
+          "type": "float"
+        },
+        "beta20": {
+          "description": "Quadrupole deformation",
+          "type": "float"
+        },
+        "flag": {
+          "description": "Data quality flag",
+          "type": "int"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 8447,
+      "status": "available"
+    },
+    "deformations": {
+      "entry_class": "Entry",
+      "fields": {
+        "beta2": {
+          "description": "Experimental quadrupole deformation",
+          "type": "float"
+        },
+        "error": {
+          "description": "Uncertainty on beta2",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 328,
+      "status": "available"
+    },
+    "density_bskg3": {
+      "status": "legacy/absent in this release"
+    },
+    "density_d1m": {
+      "status": "legacy/absent in this release"
+    },
+    "frdm1995": {
+      "entry_class": null,
+      "fields": {},
+      "key_type": "Nuclide",
+      "n_entries": 0,
+      "status": "available"
+    },
+    "frdm2012": {
+      "entry_class": "Entry",
+      "fields": {
+        "Emic": {
+          "description": "Microscopic correction energy [MeV]",
+          "type": "float"
+        },
+        "Err": {
+          "description": "Uncertainty on mass excess [MeV]",
+          "type": "float"
+        },
+        "Mexp": {
+          "description": "Experimental mass excess [MeV]",
+          "type": "float"
+        },
+        "Mth": {
+          "description": "Calculated FRDM2012 mass excess [MeV]",
+          "type": "float"
+        },
+        "beta2": {
+          "description": "Quadrupole deformation",
+          "type": "float"
+        },
+        "beta3": {
+          "description": "Octupole deformation",
+          "type": "float"
+        },
+        "beta4": {
+          "description": "Hexadecapole deformation",
+          "type": "float"
+        },
+        "beta6": {
+          "description": "Hexacontatetrapole deformation",
+          "type": "float"
+        },
+        "flag": {
+          "description": "Data quality flag (0=no exp, 1=recommended, 2=measured)",
+          "type": "int"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 9420,
+      "status": "available"
+    },
+    "hfb14": {
+      "entry_class": null,
+      "fields": {},
+      "key_type": "Nuclide",
+      "n_entries": 0,
+      "status": "available"
+    },
+    "hfb27": {
+      "entry_class": "Entry",
+      "fields": {
+        "Err": {
+          "description": "Uncertainty on mass excess [MeV]",
+          "type": "float"
+        },
+        "Mexp": {
+          "description": "Experimental mass excess [MeV]",
+          "type": "float"
+        },
+        "Mth": {
+          "description": "Calculated HFB-27 mass excess [MeV]",
+          "type": "float"
+        },
+        "Rch": {
+          "description": "Charge radius [fm]",
+          "type": "float"
+        },
+        "beta20": {
+          "description": "Quadrupole deformation",
+          "type": "float"
+        },
+        "beta40": {
+          "description": "Hexadecapole deformation",
+          "type": "float"
+        },
+        "flag": {
+          "description": "Data quality flag",
+          "type": "int"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 10277,
+      "status": "available"
+    },
+    "natab": {
+      "entry_class": "Entry",
+      "fields": {
+        "abundance": {
+          "description": "Natural isotopic abundance [%]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "uncertainty": {
+          "description": "Uncertainty on abundance [%]",
+          "type": "float"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 289,
+      "status": "available"
+    },
+    "ws4": {
+      "entry_class": "Entry",
+      "fields": {
+        "Err": {
+          "description": "Uncertainty on mass excess [MeV]",
+          "type": "float"
+        },
+        "Esh": {
+          "description": "Shell correction energy [MeV]",
+          "type": "float"
+        },
+        "Mexp": {
+          "description": "Experimental mass excess [MeV]",
+          "type": "float"
+        },
+        "Mth": {
+          "description": "Calculated WS4 mass excess [MeV]",
+          "type": "float"
+        },
+        "beta2": {
+          "description": "Quadrupole deformation",
+          "type": "float"
+        },
+        "beta4": {
+          "description": "Hexadecapole deformation",
+          "type": "float"
+        },
+        "beta6": {
+          "description": "Hexacontatetrapole deformation",
+          "type": "float"
+        },
+        "flag": {
+          "description": "Data quality flag",
+          "type": "int"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 10339,
+      "status": "available"
+    }
+  },
+  "optical": {
+    "deformations": {
+      "entry_class": "DeformationEntry",
+      "fields": {},
+      "key_type": "tuple",
+      "n_entries": 1423,
+      "status": "available"
+    },
+    "index": {
+      "entry_class": "IndexEntry",
+      "fields": {},
+      "key_type": "int",
+      "n_entries": 581,
+      "status": "available"
+    },
+    "potentials": {
+      "entry_class": "CoupledChannelOMP",
+      "fields": {},
+      "key_type": "int",
+      "n_entries": 584,
+      "status": "available"
+    },
+    "references": {
+      "entry_class": "Reference",
+      "fields": {},
+      "key_type": "int",
+      "n_entries": 143,
+      "status": "available"
+    },
+    "rop2013": {
+      "entry_class": "ROP2013Entry",
+      "fields": {},
+      "key_type": "tuple",
+      "n_entries": 79,
+      "status": "available"
+    }
+  },
+  "resonances": {
+    "pwave": {
+      "entry_class": "Entry",
+      "fields": {
+        "Bn": {
+          "description": "Neutron binding energy [MeV]",
+          "type": "float"
+        },
+        "D": {
+          "description": "Average resonance spacing (RIPL-3) [eV]",
+          "type": "float"
+        },
+        "D_BNL": {
+          "description": "Average resonance spacing (BNL) [eV]",
+          "type": "float"
+        },
+        "D_BNL_err": {
+          "description": "Uncertainty on D_BNL [eV]",
+          "type": "float"
+        },
+        "Derr": {
+          "description": "Uncertainty on D (RIPL-3) [eV]",
+          "type": "float"
+        },
+        "Gam": {
+          "description": "Average radiative width (RIPL-3) [eV]",
+          "type": "float"
+        },
+        "Gam_BNL": {
+          "description": "Average radiative width (BNL) [eV]",
+          "type": "float"
+        },
+        "Gam_BNL_err": {
+          "description": "Uncertainty on Gam_BNL [eV]",
+          "type": "float"
+        },
+        "Gerr": {
+          "description": "Uncertainty on Gam (RIPL-3) [eV]",
+          "type": "float"
+        },
+        "Io": {
+          "description": "Spin of the target ground state",
+          "type": "float"
+        },
+        "L": {
+          "description": "Angular momentum of incident neutron (0=s-wave, 1=p-wave)",
+          "type": "int"
+        },
+        "Serr": {
+          "description": "Uncertainty on Str (RIPL-3) [10^-4]",
+          "type": "float"
+        },
+        "Str": {
+          "description": "Neutron strength function (RIPL-3) [10^-4]",
+          "type": "float"
+        },
+        "Str_BNL": {
+          "description": "Neutron strength function (BNL) [10^-4]",
+          "type": "float"
+        },
+        "Str_BNL_err": {
+          "description": "Uncertainty on Str_BNL [10^-4]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "parity": {
+          "description": "Parity of the target ground state",
+          "type": "str"
+        },
+        "sym": {
+          "description": "Element symbol of target nucleus",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 248,
+      "status": "available"
+    },
+    "swave": {
+      "entry_class": "Entry",
+      "fields": {
+        "Bn": {
+          "description": "Neutron binding energy [MeV]",
+          "type": "float"
+        },
+        "D": {
+          "description": "Average resonance spacing (RIPL-3) [eV]",
+          "type": "float"
+        },
+        "D_BNL": {
+          "description": "Average resonance spacing (BNL) [eV]",
+          "type": "float"
+        },
+        "D_BNL_err": {
+          "description": "Uncertainty on D_BNL [eV]",
+          "type": "float"
+        },
+        "Derr": {
+          "description": "Uncertainty on D (RIPL-3) [eV]",
+          "type": "float"
+        },
+        "Gam": {
+          "description": "Average radiative width (RIPL-3) [eV]",
+          "type": "float"
+        },
+        "Gam_BNL": {
+          "description": "Average radiative width (BNL) [eV]",
+          "type": "float"
+        },
+        "Gam_BNL_err": {
+          "description": "Uncertainty on Gam_BNL [eV]",
+          "type": "float"
+        },
+        "Gerr": {
+          "description": "Uncertainty on Gam (RIPL-3) [eV]",
+          "type": "float"
+        },
+        "Io": {
+          "description": "Spin of the target ground state",
+          "type": "float"
+        },
+        "L": {
+          "description": "Angular momentum of incident neutron (0=s-wave, 1=p-wave)",
+          "type": "int"
+        },
+        "Serr": {
+          "description": "Uncertainty on Str (RIPL-3) [10^-4]",
+          "type": "float"
+        },
+        "Str": {
+          "description": "Neutron strength function (RIPL-3) [10^-4]",
+          "type": "float"
+        },
+        "Str_BNL": {
+          "description": "Neutron strength function (BNL) [10^-4]",
+          "type": "float"
+        },
+        "Str_BNL_err": {
+          "description": "Uncertainty on Str_BNL [10^-4]",
+          "type": "float"
+        },
+        "n": {
+          "description": "Target nucleus",
+          "type": "Nuclide"
+        },
+        "parity": {
+          "description": "Parity of the target ground state",
+          "type": "str"
+        },
+        "sym": {
+          "description": "Element symbol of target nucleus",
+          "type": "str"
+        }
+      },
+      "key_type": "Nuclide",
+      "n_entries": 324,
+      "status": "available"
+    }
+  }
+}
