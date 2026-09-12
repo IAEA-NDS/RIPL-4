@@ -44,6 +44,7 @@ import fortranformat as _ff
 import riplpy.collections as _c
 import riplpy.db as _db
 from riplpy.config import resolve_directory as _resolve_directory
+from riplpy.gamma import _layout as _layout
 from . import core as _core
 
 # Module logger
@@ -189,21 +190,24 @@ class Database(_db.Database):
         schema we replicate) so downstream code that relied on
         ``data[n]['U']`` and ``data[n]['fE1']`` keeps working.
         """
-        db_loc = _os.path.join(directory, local_data_dir)
-        if _os.path.isdir(db_loc):
+        db_loc = _layout.resolve_data_dir(directory, local_data_dir)
+        if db_loc is not None:
             for fn in _os.listdir(db_loc):
                 fpath = _os.path.join(db_loc, fn)
                 self.load(fpath)
             return
         # Fall back to the D1M+QRPA tables
-        _logger.warning(
-            f"GSF legacy directory not found ({db_loc}); falling back to "
-            "D1M+QRPA tables under 'gamma/d1m/'."
+        _logger.info(
+            f"GSF legacy directory '{local_data_dir}' not present under "
+            f"{directory}; falling back to the D1M+QRPA tables."
         )
         from . import d1m as _d1m
-        d1m_dir = _os.path.join(directory, _d1m.local_data_dir)
-        if not _os.path.isdir(d1m_dir):
-            _logger.warning(f"D1M fallback directory not found: {d1m_dir}")
+        d1m_dir = _layout.resolve_data_dir(directory, *_d1m._DIR_CANDIDATES)
+        if d1m_dir is None:
+            _logger.warning(
+                f"D1M fallback data not found under {directory} "
+                f"(looked for {_d1m.local_data_dir}/ and "
+                f"{_d1m.local_data_dir}.zip)")
             return
         for fn in _os.listdir(d1m_dir):
             fpath = _os.path.join(d1m_dir, fn)

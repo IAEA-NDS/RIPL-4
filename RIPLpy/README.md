@@ -486,8 +486,7 @@ for pot in potentials[:5]:  # Show first 5
 
 Install the required dependencies with `pip install .`, and the optional
 DataFrame/array exporters with `pip install ".[dataframe,numpy]"` (or
-`pip install ".[all]"`). See `requirements.txt` for the required dependency
-list.
+`pip install ".[all]"`).
 
 ## Author
 

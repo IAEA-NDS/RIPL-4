@@ -1,0 +1,10 @@
+# Metadata is declared statically in pyproject.toml, so nothing here is read
+# at build time; these rules only shape what lands in the sdist. README.md and
+# LICENSE.txt are pulled in automatically by the `readme`/`license-files`
+# fields, so only the test config needs naming explicitly.
+include pytest.ini
+
+# Never ship editor/OS cruft or bytecode.
+global-exclude .DS_Store
+global-exclude *.py[cod]
+prune build

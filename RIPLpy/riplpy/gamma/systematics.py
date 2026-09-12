@@ -22,6 +22,7 @@ import logging as _logging
 import riplpy.collections as _c
 import riplpy.db as _db
 from riplpy.config import resolve_directory as _resolve_directory
+from riplpy.gamma import _layout as _layout
 from . import core as _core
 
 # Module logger
@@ -35,12 +36,20 @@ __all__ = (
 )
 
 # Relative paths
+# RIPL-4 keeps these flat at gamma/; reorganised trees nest them under
+# gamma/gdr_parameters_exp&systematics/. Both are accepted, flat first.
 slo_local_file_path  = _os.path.join(
-    'gamma', 'gdr_parameters_exp&systematics', 'gdr-parameters_exp&systematics_slo.dat'
+    'gamma', 'gdr-parameters_exp&systematics_slo.dat'
 )
 smlo_local_file_path = _os.path.join(
-    'gamma', 'gdr_parameters_exp&systematics', 'gdr-parameters_exp&systematics_smlo.dat'
+    'gamma', 'gdr-parameters_exp&systematics_smlo.dat'
 )
+_SLO_CANDIDATES = (slo_local_file_path, _os.path.join(
+    'gamma', 'gdr_parameters_exp&systematics', 'gdr-parameters_exp&systematics_slo.dat'
+))
+_SMLO_CANDIDATES = (smlo_local_file_path, _os.path.join(
+    'gamma', 'gdr_parameters_exp&systematics', 'gdr-parameters_exp&systematics_smlo.dat'
+))
 
 
 def _safe_float(s: str) -> float | None:
@@ -101,12 +110,14 @@ class Database(_db.NuclideDatabase):
     entry : object = Entry
 
 
-def _load(rel_path: str, directory: str = None, file_path: str = None) -> Database:
+def _load(rel_path, directory: str = None, file_path: str = None) -> Database:
     db = Database()
     db_path = file_path
     if db_path is None:
         directory = _resolve_directory(directory)
-        db_path = _os.path.join(directory, rel_path)
+        candidates = (rel_path,) if isinstance(rel_path, str) else rel_path
+        db_path = (_layout.resolve_data_file(directory, *candidates)
+                   or _os.path.join(directory, candidates[0]))
     if db_path is None or not _os.path.exists(db_path):
         _logger.warning(
             f"systematics: data file not found at {db_path!r}; "
@@ -119,9 +130,9 @@ def _load(rel_path: str, directory: str = None, file_path: str = None) -> Databa
 
 def load_slo(directory: str = None, file_path: str = None) -> Database:
     """Load the SLO experimental+systematics GDR parameter database."""
-    return _load(slo_local_file_path, directory=directory, file_path=file_path)
+    return _load(_SLO_CANDIDATES, directory=directory, file_path=file_path)
 
 
 def load_smlo(directory: str = None, file_path: str = None) -> Database:
     """Load the SMLO experimental+systematics GDR parameter database."""
-    return _load(smlo_local_file_path, directory=directory, file_path=file_path)
+    return _load(_SMLO_CANDIDATES, directory=directory, file_path=file_path)

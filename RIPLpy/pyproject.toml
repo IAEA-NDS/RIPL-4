@@ -1,6 +1,48 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=77.0"]
 build-backend = "setuptools.build_meta"
 
-# Project metadata (name, version, dependencies, entry points, etc.) is defined
-# in setup.py, which computes the version and long description dynamically.
+[project]
+name = "riplpy"
+description = "A Python package for the Reference Input Parameter Library (RIPL)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "BSD-3-Clause"
+license-files = ["LICENSE.txt"]
+authors = [
+    { name = "Matthew Mumpower", email = "matthew@mumpower.net" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "fortranformat>=1.2.2",
+]
+# Read statically from riplpy/__init__.py; see [tool.setuptools.dynamic] below.
+dynamic = ["version"]
+
+# Optional features. pandas/numpy are only needed for their respective
+# exporters (Database.to_dataframe / to_numpy and their riplpy.* wrappers);
+# the package imports and the CSV/JSON/list exporters work without either.
+[project.optional-dependencies]
+dataframe = ["pandas"]
+numpy = ["numpy"]
+all = ["numpy", "pandas"]
+
+[project.urls]
+Homepage = "https://github.com/mrmumpow/riplpy"
+Source = "https://github.com/mrmumpow/riplpy"
+"Bug Tracker" = "https://github.com/mrmumpow/riplpy/issues"
+# Upstream RIPL-4 database; users must obtain this separately and point
+# RIPL_LOCATION at it (see riplpy.config).
+"RIPL-4 Database" = "https://github.com/IAEA-NDS/RIPL-4"
+
+[tool.setuptools.dynamic]
+version = { attr = "riplpy.__version__" }
+
+# Explicit package discovery (restricted to the riplpy tree) so installs
+# are deterministic and never sweep in tests/ under flat-layout
+# auto-discovery.
+[tool.setuptools.packages.find]
+include = ["riplpy*"]

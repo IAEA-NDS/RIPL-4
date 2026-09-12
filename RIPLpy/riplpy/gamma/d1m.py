@@ -32,6 +32,7 @@ import logging as _logging
 import riplpy.collections as _c
 import riplpy.db as _db
 from riplpy.config import resolve_directory as _resolve_directory
+from riplpy.gamma import _layout as _layout
 
 # Module logger
 _logger = _logging.getLogger(__name__)
@@ -42,6 +43,8 @@ __all__ = ('local_data_dir', 'read_ascii_file', 'Database', 'load',
            'load_all', 'load_element')
 
 local_data_dir = _os.path.join('gamma', 'd1m')
+# RIPL-4 ships this as gamma/d1m.zip; _layout unpacks it on first use.
+_DIR_CANDIDATES = (local_data_dir,)
 
 
 def _parse_zheader(line: str) -> tuple[int, int] | None:
@@ -157,9 +160,11 @@ class Database(_db.NuclideDatabase):
             self.data[n] = entry_cls(pkt)
 
     def load_all(self, directory: str) -> None:
-        db_loc = _os.path.join(directory, self.local_data_dir)
-        if not _os.path.isdir(db_loc):
-            _logger.warning(f"D1M data directory not found: {db_loc}")
+        db_loc = _layout.resolve_data_dir(directory, *_DIR_CANDIDATES)
+        if db_loc is None:
+            _logger.warning(
+                f"D1M data not found under {directory} "
+                f"(looked for {local_data_dir}/ and {local_data_dir}.zip)")
             return
         for fn in sorted(_os.listdir(db_loc)):
             fpath = _os.path.join(db_loc, fn)
@@ -191,9 +196,10 @@ def load_element(Z: int, directory: str = None,
     """Load D1M data for a single element (E1 or M1)."""
     directory = _resolve_directory(directory)
     db = Database()
-    fpath = _os.path.join(directory, local_data_dir,
-                          f"z{Z:03d}_{multipolarity.lower()}")
-    if _os.path.exists(fpath):
+    db_loc = _layout.resolve_data_dir(directory, *_DIR_CANDIDATES)
+    fpath = (_os.path.join(db_loc, f"z{Z:03d}_{multipolarity.lower()}")
+             if db_loc else None)
+    if fpath and _os.path.exists(fpath):
         db.load(fpath)
     else:
         _logger.warning(f"D1M file not found: {fpath}")
