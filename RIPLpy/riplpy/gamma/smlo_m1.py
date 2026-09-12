@@ -20,6 +20,7 @@ import logging as _logging
 # RIPLpy
 import riplpy.db as _db
 from riplpy.config import resolve_directory as _resolve_directory
+from riplpy.gamma import _layout as _layout
 from . import d1m as _d1m
 
 # Module logger
@@ -30,6 +31,8 @@ _logger = _logging.getLogger(__name__)
 __all__ = ('local_data_dir', 'Database', 'load', 'load_all', 'load_element')
 
 local_data_dir = _os.path.join('gamma', 'smlo_M1')
+# RIPL-4 ships this as gamma/smlo_M1.zip; _layout unpacks it on first use.
+_DIR_CANDIDATES = (local_data_dir,)
 
 
 class Entry(_db.PacketEntry):
@@ -55,8 +58,8 @@ class Database(_d1m.Database):
     local_data_dir: str = local_data_dir
 
     def load_all(self, directory: str) -> None:
-        db_loc = _os.path.join(directory, self.local_data_dir)
-        if not _os.path.isdir(db_loc):
+        db_loc = _layout.resolve_data_dir(directory, *_DIR_CANDIDATES)
+        if db_loc is None:
             _logger.warning(f"SMLO M1 data directory not found: {db_loc}")
             return
         for fn in sorted(_os.listdir(db_loc)):
@@ -85,8 +88,9 @@ def load_all(directory: str = None) -> Database:
 def load_element(Z: int, directory: str = None) -> Database:
     directory = _resolve_directory(directory)
     db = Database()
-    fpath = _os.path.join(directory, local_data_dir, f"z{Z:03d}_m1")
-    if _os.path.exists(fpath):
+    db_loc = _layout.resolve_data_dir(directory, *_DIR_CANDIDATES)
+    fpath = _os.path.join(db_loc, f"z{Z:03d}_m1") if db_loc else None
+    if fpath and _os.path.exists(fpath):
         db.load(fpath)
     else:
         _logger.warning(f"SMLO M1 file not found: {fpath}")

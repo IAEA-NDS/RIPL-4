@@ -35,6 +35,7 @@ import riplpy.collections as _c
 import riplpy.config as _config
 import riplpy.db as _db
 from riplpy.config import resolve_directory as _resolve_directory
+from riplpy.gamma import _layout as _layout
 from . import core as _core
 
 # Module logger
@@ -55,22 +56,31 @@ __all__ = (
 # ========================
 
 # Recommended (single-line) files
-slo_local_file_path  = _os.path.join(
-    'gamma', 'gdr_parameters_exp_new', 'gdr_parameters_recommended_exp_slo.dat'
-)
-smlo_local_file_path = _os.path.join(
-    'gamma', 'gdr_parameters_exp_new', 'gdr_parameters_recommended_exp_smlo.dat'
-)
+# RIPL-4 keeps these flat at gamma/; reorganised trees nest them under
+# gamma/gdr_parameters_exp_new/. Both are accepted, flat first.
+_NESTED = 'gdr_parameters_exp_new'
+
+
+def _candidates(fname: str) -> tuple[str, str]:
+    """Return the flat RIPL-4 path and the nested legacy path for ``fname``."""
+    return (_os.path.join('gamma', fname),
+            _os.path.join('gamma', _NESTED, fname))
+
+
+slo_local_file_path  = _os.path.join('gamma', 'gdr_parameters_recommended_exp_slo.dat')
+smlo_local_file_path = _os.path.join('gamma', 'gdr_parameters_recommended_exp_smlo.dat')
 # Backwards-compat alias: MLO == SMLO in RIPL-4
 mlo_local_file_path  = smlo_local_file_path
 
 # Errors files (two-line records)
-slo_errors_local_file_path  = _os.path.join(
-    'gamma', 'gdr_parameters_exp_new', 'gdr_parameters&errors_exp_slo.dat'
-)
-smlo_errors_local_file_path = _os.path.join(
-    'gamma', 'gdr_parameters_exp_new', 'gdr_parameters&errors_exp_smlo.dat'
-)
+slo_errors_local_file_path  = _os.path.join('gamma', 'gdr_parameters&errors_exp_slo.dat')
+smlo_errors_local_file_path = _os.path.join('gamma', 'gdr_parameters&errors_exp_smlo.dat')
+
+_SLO_CANDIDATES         = _candidates('gdr_parameters_recommended_exp_slo.dat')
+_SMLO_CANDIDATES        = _candidates('gdr_parameters_recommended_exp_smlo.dat')
+_MLO_CANDIDATES         = _SMLO_CANDIDATES
+_SLO_ERRORS_CANDIDATES  = _candidates('gdr_parameters&errors_exp_slo.dat')
+_SMLO_ERRORS_CANDIDATES = _candidates('gdr_parameters&errors_exp_smlo.dat')
 
 # ========================
 
@@ -354,7 +364,9 @@ def _load_db(db_cls, directory: str = None, file_path: str = None,
     if db_path is None:
         directory = _resolve_directory(directory)
         if rel_path is not None:
-            db_path = _os.path.join(directory, rel_path)
+            candidates = (rel_path,) if isinstance(rel_path, str) else rel_path
+            db_path = (_layout.resolve_data_file(directory, *candidates)
+                       or _os.path.join(directory, candidates[0]))
     if db_path is None or not _os.path.exists(db_path):
         _logger.warning(
             f"{db_cls.__name__}: data file not found at {db_path!r}; "
@@ -375,7 +387,7 @@ def load_slo(directory: str = None, file_path: str = None,
         errors:    If True, load the two-line file with 1-sigma uncertainties.
                    Defaults to the single-line recommended file.
     """
-    rel = slo_errors_local_file_path if errors else slo_local_file_path
+    rel = _SLO_ERRORS_CANDIDATES if errors else _SLO_CANDIDATES
     return _load_db(SLO_Database, directory=directory, file_path=file_path,
                     rel_path=rel)
 
@@ -383,7 +395,7 @@ def load_slo(directory: str = None, file_path: str = None,
 def load_smlo(directory: str = None, file_path: str = None,
               errors: bool = False) -> SMLO_Database:
     """Load the RIPL-4 SMLO experimental GDR parameter database."""
-    rel = smlo_errors_local_file_path if errors else smlo_local_file_path
+    rel = _SMLO_ERRORS_CANDIDATES if errors else _SMLO_CANDIDATES
     return _load_db(SMLO_Database, directory=directory, file_path=file_path,
                     rel_path=rel)
 
