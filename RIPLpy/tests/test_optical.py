@@ -83,6 +83,24 @@ class TestOMPIndex:
         for entry in neutron_idx.data.values():
             assert entry.projectile == 'n'
 
+    def test_filter_by_projectile_aliases_and_unknown(self, ripl_path):
+        """The index accepts the same names as the potentials database.
+
+        It used to compare names directly, so 'h', 'alpha' or a typo
+        returned an empty index instead of raising.
+        """
+        idx = optical.index.load(directory=ripl_path)
+
+        he3 = set(idx.filter_by_projectile('He3').data)
+        assert len(he3) > 0
+        for name in ('h', 'helion', '3He'):
+            assert set(idx.filter_by_projectile(name).data) == he3
+        assert set(idx.filter_by_projectile('alpha').data) == \
+            set(idx.filter_by_projectile('a').data)
+
+        with pytest.raises(ValueError, match="Unknown projectile"):
+            idx.filter_by_projectile('x')
+
     def test_filter_by_target(self, ripl_path):
         """Test filtering index by target Z and A."""
         idx = optical.index.load(directory=ripl_path)
@@ -339,6 +357,19 @@ class TestOMPDatabase:
 
         for omp in neutron_db.data.values():
             assert omp.projectile == 'n'
+
+    def test_filter_by_projectile_helion_aliases(self, ripl_path):
+        """Test that 'h' and 'helion' select the same potentials as 'He3'.
+
+        The find_omp and list_omps docstrings list 'h', which used to raise
+        ValueError.
+        """
+        db = optical.omp.load(directory=ripl_path)
+
+        he3 = set(db.filter_by_projectile('He3').data)
+        assert len(he3) > 0
+        for name in ('h', 'helion', '3He'):
+            assert set(db.filter_by_projectile(name).data) == he3
 
     def test_filter_by_target(self, ripl_path):
         """Test filtering database by target."""

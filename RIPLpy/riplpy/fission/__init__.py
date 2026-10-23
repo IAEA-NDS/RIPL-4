@@ -43,6 +43,11 @@ BARRIER_MODELS = {
 for _short, _canonical in BARRIER_MODELS.items():
     db.add_alias(_short, _canonical)
 
+# Databases this section skips unless asked (the heavy per-nucleus tables).
+# riplpy.missing_databases() leaves these out, since they are absent by
+# choice rather than because their data files are missing.
+_deferred = ()
+
 # ========================
 
 
@@ -124,3 +129,6 @@ def load(directory: str = None, include_paths: bool = False) -> None:
         db.rmf_axial     = None
         db.rmf_triaxial  = None
         db.nld_fis       = None
+
+    global _deferred
+    _deferred = () if include_paths else ('hfbpath_bskg3', 'hfbpath_d1m', 'rmf_axial', 'rmf_triaxial', 'nld_fis')

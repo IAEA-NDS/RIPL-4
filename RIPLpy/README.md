@@ -167,8 +167,9 @@ entry = riplpy.get_mass_entry(82, 208)                    # Full mass entry
 # Level density parameters
 ld_params = riplpy.get_level_density(50, 120, model='egsm')  # EGSM model for Sn-120
 
-# Giant Dipole Resonance (RIPL-3 legacy theoretical GDR; full distribution only)
+# Giant Dipole Resonance (RIPL-4 SMLO experiment + systematics by default)
 gdr = riplpy.get_gdr(82, 208)                             # GDR parameters for Pb-208
+gdr = riplpy.get_gdr(82, 208, model='exp_smlo')           # recommended experimental fit only
 
 # Resonance spacing
 res = riplpy.get_resonance(92, 238, wave='s')             # S-wave resonances for U-238

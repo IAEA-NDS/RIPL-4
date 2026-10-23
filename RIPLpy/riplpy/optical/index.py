@@ -142,12 +142,19 @@ class OMPIndex(_db.Database):
         """Filter index by projectile type.
 
         Args:
-            projectile: Projectile name ('n', 'p', 'd', 't', 'He3', 'a')
+            projectile: Projectile name: 'n', 'p', 'd', 't', 'He3' (or '3He',
+                'h', 'helion'), 'a' (or 'alpha', '4He'). Entries keep the
+                index file's own names ('3He', '4He').
 
         Returns:
             New OMPIndex with filtered entries
+
+        Raises:
+            ValueError: If the projectile name is not recognized
         """
-        filtered = {k: v for k, v in self.data.items() if v.projectile == projectile}
+        za = config.projectile_za(projectile)
+        filtered = {k: v for k, v in self.data.items()
+                    if config.PROJECTILE_ALIASES.get(v.projectile) == za}
         return OMPIndex(filtered)
 
     def filter_by_target(self, Z: int = None, A: int = None) -> "OMPIndex":
@@ -212,17 +219,22 @@ class OMPIndex(_db.Database):
         """Find all potentials valid for a specific reaction.
 
         Args:
-            projectile: Projectile type ('n', 'p', etc.)
+            projectile: Projectile type, as for filter_by_projectile()
             Z: Target atomic number
             A: Target mass number
             E: Projectile energy [MeV]
 
         Returns:
             List of IndexEntry objects valid for this reaction
+
+        Raises:
+            ValueError: If the projectile name is not recognized
         """
+        za = config.projectile_za(projectile)
         results = []
         for entry in self.data.values():
-            if entry.projectile == projectile and entry.valid_for(Z, A, E):
+            if (config.PROJECTILE_ALIASES.get(entry.projectile) == za
+                    and entry.valid_for(Z, A, E)):
                 results.append(entry)
         return results
 

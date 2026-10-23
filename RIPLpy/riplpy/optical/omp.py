@@ -138,28 +138,13 @@ class OMPDatabase(Database):
         """Filter potentials by projectile type.
 
         Args:
-            projectile: Projectile name ('n', 'p', 'd', 't', 'He3', 'a')
+            projectile: Projectile name: 'n', 'p', 'd', 't', 'He3' (or '3He',
+                'h', 'helion'), 'a' (or 'alpha', '4He')
 
         Returns:
             New OMPDatabase with filtered potentials
         """
-        # Map projectile names to (Z, A) pairs
-        proj_map = {
-            'n': (0, 1),
-            'p': (1, 1),
-            'd': (1, 2),
-            't': (1, 3),
-            'He3': (2, 3),
-            '3He': (2, 3),
-            'a': (2, 4),
-            'alpha': (2, 4),
-        }
-
-        if projectile not in proj_map:
-            raise ValueError(f"Unknown projectile: {projectile}. "
-                           f"Valid options: {list(proj_map.keys())}")
-
-        iz, ia = proj_map[projectile]
+        iz, ia = config.projectile_za(projectile)
         filtered = {
             k: v for k, v in self.data.items()
             if v.flags.iz_proj == iz and v.flags.ia_proj == ia
@@ -278,7 +263,7 @@ class OMPDatabase(Database):
         """Find all potentials valid for a specific reaction.
 
         Args:
-            projectile: Projectile type ('n', 'p', etc.)
+            projectile: Projectile type, as for filter_by_projectile()
             Z: Target atomic number
             A: Target mass number
             E: Projectile energy [MeV]. If None, no energy filtering.

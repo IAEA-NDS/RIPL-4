@@ -66,6 +66,30 @@ PROJECTILES = {
 # Reverse map: name to (Z, A)
 PROJECTILE_ZA = {v: k for k, v in PROJECTILES.items()}
 
+# Every name accepted when selecting potentials by projectile, -> (Z, A).
+# Covers the potentials' own names ('He3', 'a') and the index file's
+# ('3He', '4He'), plus the usual n, p, d, t, h, a shorthand.
+PROJECTILE_ALIASES = {
+    'n': (0, 1),
+    'p': (1, 1),
+    'd': (1, 2),
+    't': (1, 3),
+    'He3': (2, 3), '3He': (2, 3), 'h': (2, 3), 'helion': (2, 3),
+    'a': (2, 4), 'alpha': (2, 4), '4He': (2, 4),
+}
+
+
+def projectile_za(name: str) -> tuple:
+    """Return (Z, A) for a projectile name, accepting every alias.
+
+    Raises:
+        ValueError: If the name is not a known projectile.
+    """
+    if name not in PROJECTILE_ALIASES:
+        raise ValueError(f"Unknown projectile: {name}. "
+                         f"Valid options: {list(PROJECTILE_ALIASES.keys())}")
+    return PROJECTILE_ALIASES[name]
+
 
 def projectile_name(z: int, a: int) -> str:
     """Get the projectile name from Z and A.

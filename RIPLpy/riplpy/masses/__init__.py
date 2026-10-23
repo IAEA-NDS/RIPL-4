@@ -35,6 +35,11 @@ db.add_alias('frdm12', 'frdm2012')
 db.add_alias('frdm95', 'frdm1995')
 db.add_alias('ame2020', 'ame20')
 
+# Databases this section skips unless asked (the heavy per-nucleus tables).
+# riplpy.missing_databases() leaves these out, since they are absent by
+# choice rather than because their data files are missing.
+_deferred = ()
+
 # ========================
 
 # Model map: user-friendly name -> (db attribute name, mass excess field name)
@@ -153,3 +158,6 @@ def load(directory: str = None, include_heavy: bool = False) -> None:
     else:
         db.density_bskg3 = None
         db.density_d1m   = None
+
+    global _deferred
+    _deferred = () if include_heavy else ('density_bskg3', 'density_d1m')
