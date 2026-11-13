@@ -141,6 +141,32 @@ class TestDiscoveryIntrospection:
         assert 'ame20' in mass_dbs
         assert len(mass_dbs) > 5  # Should have multiple mass models
 
+    def test_list_databases_sorted(self, ripl_path):
+        """Names come back in alphabetical order, the same on every run.
+
+        They used to come from a set, whose order changes between runs.
+        """
+        masses.load(directory=ripl_path)
+        mass_dbs = riplpy.list_databases('masses')
+        assert mass_dbs == sorted(mass_dbs)
+        for names in riplpy.list_databases().values():
+            assert names == sorted(names)
+
+    def test_list_databases_include_empty(self, ripl_path):
+        """include_empty=False leaves out databases with no entries."""
+        masses.load(directory=ripl_path)
+        everything = riplpy.list_databases('masses')
+        loaded = riplpy.list_databases('masses', include_empty=False)
+        assert 'ame20' in loaded
+        assert set(loaded) <= set(everything)
+        for name in set(everything) - set(loaded):
+            db = getattr(masses.db, name)
+            assert db is None or len(db) == 0
+        if len(masses.db.frdm1995) == 0:  # not shipped in RIPL-4
+            assert 'frdm1995' in everything and 'frdm1995' not in loaded
+        by_section = riplpy.list_databases(include_empty=False)
+        assert by_section['masses'] == loaded
+
     def test_list_databases_invalid_section(self):
         """Test list_databases with invalid section raises ValueError."""
         with pytest.raises(ValueError, match="Unknown section"):
@@ -356,6 +382,23 @@ class TestFilterMethods:
         # All should have A=208
         for n in isobars.data.keys():
             assert n.A == 208
+
+    def test_filter_unknown_keyword_raises(self, ame20_db):
+        """Test that a keyword which is not an entry attribute raises.
+
+        Previously filter(func=...) or a typo such as filter(Zz=82) returned
+        an empty database, which looks like a valid answer.
+        """
+        with pytest.raises(TypeError, match="func"):
+            ame20_db.filter(func=lambda e: e.n.Z == 82)
+        with pytest.raises(TypeError, match="Zz"):
+            ame20_db.filter(Zz=82)
+
+    def test_filter_by_entry_attribute(self, ame20_db):
+        """Test that a real entry attribute is still accepted as a keyword."""
+        first = next(iter(ame20_db.data.values()))
+        matches = ame20_db.filter(Mexp=first.Mexp)
+        assert len(matches.data) > 0
 
     def test_filter_by_predicate(self, ame20_db):
         """Test filter with custom predicate function."""
@@ -925,3 +968,67 @@ class TestOpticalConvenienceFunctions:
         # Optical should be loaded
         assert riplpy.optical.db.potentials is not None
         assert len(riplpy.optical.db.potentials.data) > 0
+
+
+class TestGdrModels:
+    """Tests for the model argument of get_gdr / get_gdrs.
+
+    RIPL-4 does not ship the RIPL-3 theoretical GDR table, so before the
+    model argument get_gdr raised NucleusNotFoundError for every nucleus.
+    Reference values are the Pb-208 rows of the RIPL-4 files:
+      gdr-parameters_exp&systematics_smlo.dat  E1 13.34  W1 3.64  In 1
+      gdr_parameters_recommended_exp_smlo.dat  Er1 13.34 Wr1 3.64
+    """
+
+    @pytest.fixture(autouse=True)
+    def _load_gamma(self, ripl_path):
+        gamma.load(directory=ripl_path)
+
+    def test_auto_falls_back_to_smlo_systematics(self):
+        """Without the theory table, the default reads the SMLO systematics."""
+        if len(gamma.db.theory_gdr) > 0:
+            pytest.skip("Theoretical GDR table present; auto uses it")
+        entry = riplpy.get_gdr(82, 208)
+        assert entry is gamma.db.experiment_systematics_smlo.get(Nuclide(Z=82, A=208))
+        assert entry.E1 == pytest.approx(13.34)
+        assert entry.W1 == pytest.approx(3.64)
+        assert entry.In == 1
+
+    def test_systematics_covers_unmeasured_nuclei(self):
+        """Fe-56 has no recommended fit, but has a systematics value (In=0)."""
+        entry = riplpy.get_gdr(26, 56, model='smlo')
+        assert entry.In == 0
+        with pytest.raises(KeyError):
+            riplpy.get_gdr(26, 56, model='exp_smlo')
+
+    def test_explicit_models(self):
+        """Each named model reads its own table."""
+        assert riplpy.get_gdr(82, 208, model='exp_smlo').Er1 == pytest.approx(13.34)
+        assert riplpy.get_gdr(82, 208, model='slo') is \
+            gamma.db.experiment_systematics_slo.get(Nuclide(Z=82, A=208))
+        assert riplpy.get_gdr(82, 208, model='exp_slo') is \
+            gamma.db.experiment_slo.get(Nuclide(Z=82, A=208))
+
+    def test_theory_absent_says_so(self):
+        """Asking for the theory table on RIPL-4 names the missing table."""
+        if len(gamma.db.theory_gdr) > 0:
+            pytest.skip("Theoretical GDR table present")
+        with pytest.raises(KeyError, match="theory"):
+            riplpy.get_gdr(82, 208, model='theory')
+
+    def test_unknown_model_raises(self):
+        with pytest.raises(ValueError, match="smlo"):
+            riplpy.get_gdr(82, 208, model='smo')
+
+    def test_get_gdrs_uses_model(self):
+        """The batch getter takes the same model argument."""
+        result = riplpy.get_gdrs([(82, 208), (26, 56)], model='smlo')
+        assert len(result) == 2
+        result = riplpy.get_gdrs([(82, 208), (26, 56)], model='exp_smlo',
+                                 skip_missing=True)
+        assert list(result) == [Nuclide(Z=82, A=208)]
+
+    def test_models_enum(self):
+        """Models.Gdr values are accepted as model names."""
+        from riplpy import Models
+        assert riplpy.get_gdr(82, 208, model=Models.Gdr.SMLO).E1 == pytest.approx(13.34)

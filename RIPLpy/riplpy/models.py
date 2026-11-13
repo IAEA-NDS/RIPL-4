@@ -7,7 +7,7 @@ enabling IDE autocompletion and catching typos at development time.
 Examples:
     >>> from riplpy import Models
     >>> riplpy.get_mass(82, 208, model=Models.Mass.AME20)
-    >>> riplpy.get_level_density(82, 208, model=Models.Density.BSFG)
+    >>> riplpy.get_level_density(82, 208, model=Models.Density.EGSM)
 """
 
 from enum import Enum as _Enum
@@ -24,6 +24,7 @@ class MassModel(str, _Enum):
     HFB27 = 'hfb27'
     BSKG3 = 'bskg3'
     D1M = 'd1m'
+    WS4 = 'ws4'
 
 
 class DensityModel(str, _Enum):
@@ -37,6 +38,16 @@ class DensityModel(str, _Enum):
     BSKG3_COMB = 'bskg3_comb'
     QRPABE = 'qrpabe'
     THFB_COMB = 'thfb_comb'
+
+
+class GdrModel(str, _Enum):
+    """Giant Dipole Resonance (GDR) parameter model identifiers."""
+    AUTO = 'auto'
+    THEORY = 'theory'
+    SMLO = 'smlo'
+    SLO = 'slo'
+    EXP_SMLO = 'exp_smlo'
+    EXP_SLO = 'exp_slo'
 
 
 class FissionModel(str, _Enum):
@@ -64,14 +75,15 @@ class Models:
     Examples:
         >>> from riplpy import Models
         >>> riplpy.get_mass(82, 208, model=Models.Mass.AME20)
-        >>> riplpy.get_level_density(26, 56, model=Models.Density.BSFG)
-        >>> riplpy.get_fission_barrier(92, 238, model=Models.Fission.HFB)
+        >>> riplpy.get_level_density(26, 56, model=Models.Density.EGSM)
+        >>> riplpy.get_fission_barrier(92, 238, model=Models.Fission.BSKG3)
         >>> riplpy.get_resonance(82, 208, wave=Models.Wave.S)
     """
     Mass = MassModel
     Density = DensityModel
     Fission = FissionModel
+    Gdr = GdrModel
     Wave = ResonanceWave
 
 
-__all__ = ['Models', 'MassModel', 'DensityModel', 'FissionModel', 'ResonanceWave']
+__all__ = ['Models', 'MassModel', 'DensityModel', 'GdrModel', 'FissionModel', 'ResonanceWave']

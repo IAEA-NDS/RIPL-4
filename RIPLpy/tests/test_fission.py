@@ -122,6 +122,25 @@ class TestD1MBarriers:
             assert 'E[MeV]' in entry.inner and 'B20' in entry.inner
             assert 'E[MeV]' in entry.outer and 'B20' in entry.outer
 
+    def test_columns_match_file(self, ripl_path):
+        """Test that all 11 columns (including B22) land in the right fields.
+
+        File rows:
+          90 140 230     6.624  0.75  0.00  0.45     6.629  0.77  0.00  0.47
+          92 144 236     5.049  0.19  0.00  0.00     5.915  0.39  0.00  0.14
+        """
+        db = fission.d1m.load(directory=ripl_path)
+        expected = {
+            (90, 230): ({'E[MeV]': 6.624, 'B20': 0.75, 'B22': 0.00, 'B30': 0.45},
+                        {'E[MeV]': 6.629, 'B20': 0.77, 'B22': 0.00, 'B30': 0.47}),
+            (92, 236): ({'E[MeV]': 5.049, 'B20': 0.19, 'B22': 0.00, 'B30': 0.00},
+                        {'E[MeV]': 5.915, 'B20': 0.39, 'B22': 0.00, 'B30': 0.14}),
+        }
+        for (Z, A), (inner, outer) in expected.items():
+            entry = db.data[Nuclide(Z=Z, A=A)]
+            assert entry.inner == pytest.approx(inner)
+            assert entry.outer == pytest.approx(outer)
+
 
 class TestFissionComparison:
     """Tests comparing different fission barrier models."""

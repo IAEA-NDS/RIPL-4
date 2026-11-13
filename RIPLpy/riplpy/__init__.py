@@ -1,10 +1,11 @@
 
 
 # Code version
-__version__ = "0.6.2"
+__version__ = "0.6.6"
 
 # Logging
 import logging as _logging
+import warnings as _warnings
 
 # Set up library-level logger with NullHandler (users can configure their own handlers)
 logger = _logging.getLogger(__name__)
@@ -34,7 +35,7 @@ __all__ = [
     'densities', 'fission', 'gamma', 'levels', 'masses', 'optical',
     'resonances', 'config', 'sections',
     # Configuration
-    'set_path', 'get_path', 'load',
+    'set_path', 'get_path', 'load', 'missing_databases',
     # Discovery / introspection
     'in_ripl', 'in_sections', 'in_dbs', 'list_sections', 'list_databases',
     'list_nuclei', 'get_database',
@@ -168,6 +169,60 @@ def load(directory: str = None, quick: bool = False) -> None:
                f"load(): skipping section '{section}' (loader error): {exc}"
             )
 
+   # A database whose data file is absent is left empty (or None) so the rest
+   # of RIPL still loads. Say so with a warning that is shown by default:
+   # the per-file logging messages are invisible unless logging is set up.
+   missing = missing_databases()
+   if missing:
+      from .exceptions import MissingDataWarning as _MissingDataWarning
+      _warnings.warn(
+         f"riplpy.load(): {len(missing)} database(s) are empty because their "
+         f"data files were not found (or held no entries) under {directory}: "
+         f"{', '.join(missing)}. Lookups in these databases will fail. "
+         f"Call riplpy.missing_databases() to list them again.",
+         _MissingDataWarning, stacklevel=2,
+      )
+
+
+def missing_databases() -> list:
+   """List the loaded databases that hold no entries, as 'section.name'.
+
+   A database is listed when it is None or has zero entries after loading,
+   which on a RIPL-4 checkout means its data file is not part of the release.
+   Databases a section skips on purpose (the heavy per-nucleus tables that
+   load() only reads with include_heavy=True or include_paths=True) are not
+   listed.
+
+   Returns:
+      Sorted list of names such as 'masses.frdm1995'. Empty if nothing is
+      missing or nothing has been loaded yet.
+
+   Examples:
+      >>> riplpy.load()
+      >>> riplpy.missing_databases()
+      ['densities.bsfg', 'densities.ct', ...]
+   """
+   missing = []
+   for section in sections:
+      module = globals()[section]
+      accessor = getattr(module, 'db', None)
+      if not callable(accessor):
+         continue
+      deferred = getattr(module, '_deferred', ())
+      for name in accessor():
+         if name in deferred:
+            continue
+         value = getattr(accessor, name)
+         if value is None:
+            missing.append(f"{section}.{name}")
+            continue
+         try:
+            if len(value) == 0:
+               missing.append(f"{section}.{name}")
+         except TypeError:
+            continue  # Not a sized container; cannot tell, so do not report
+   return sorted(missing)
+
 
 def in_ripl(x: Nuclide | Element) -> bool:
    """Check if the given Nuclide (or Element) appears anywhere in the RIPL database. Returns True if so, False otherwise. 
@@ -267,22 +322,30 @@ def list_sections() -> list:
     return list(sections)
 
 
-def list_databases(section: str = None) -> list | dict:
-    """List available databases, optionally filtered by section.
+def list_databases(section: str = None, include_empty: bool = True) -> list | dict:
+    """List database names, optionally filtered by section.
 
     Args:
         section: Section name to filter by (e.g., 'masses', 'densities').
                  If None, returns a dict of all sections and their databases.
+        include_empty: If True (default), list every database name, including
+                 databases that hold no entries: those whose data file is
+                 missing from this RIPL release (see missing_databases()) and
+                 the heavy tables load() skips unless asked. If False, list
+                 only databases that hold at least one entry.
 
     Returns:
         If section is provided: List of database names in that section
         If section is None: Dict mapping section names to lists of database names
+        Names are in alphabetical order.
 
     Examples:
         >>> riplpy.list_databases('masses')
         ['ame20', 'bskg3', 'd1m', 'frdm1995', 'frdm2012', ...]
         >>> riplpy.list_databases()
-        {'densities': ['bsfg', 'ct', ...], 'masses': ['ame20', ...], ...}
+        {'densities': ['bsfg', 'bsk14_comb', ...], 'masses': ['ame20', ...], ...}
+        >>> riplpy.list_databases('masses', include_empty=False)
+        ['ame20', 'bskg3', 'd1m', 'deformations', 'frdm2012', ...]
 
     Raises:
         ValueError: If the section name is not recognized
@@ -290,18 +353,31 @@ def list_databases(section: str = None) -> list | dict:
     Note:
         Databases must be loaded first via riplpy.load() for this to return results.
     """
+    def _names(sec):
+        accessor = getattr(globals()[sec], 'db')
+        names = list(accessor())
+        if include_empty:
+            return names
+        kept = []
+        for name in names:
+            value = getattr(accessor, name)
+            if value is None:
+                continue
+            try:
+                if len(value) == 0:
+                    continue
+            except TypeError:
+                pass  # Not a sized container; keep it
+            kept.append(name)
+        return kept
+
     if section is not None:
         if section not in sections:
             raise ValueError(f"Unknown section '{section}'. Available: {list(sections)}")
-        module = globals()[section]
-        return list(getattr(module, 'db')())
+        return _names(section)
 
     # Return all sections
-    result = {}
-    for sec in sections:
-        module = globals()[sec]
-        result[sec] = list(getattr(module, 'db')())
-    return result
+    return {sec: _names(sec) for sec in sections}
 
 
 def list_nuclei(database: str, section: str = None) -> list:
@@ -636,27 +712,69 @@ def get_level_density(Z_or_nuclide, A: int = None, model: str = 'egsm') -> objec
     return db.get(n)
 
 
-def get_gdr(Z_or_nuclide, A: int = None) -> object:
+def _gdr_database(model: str):
+    """Return the GDR database for ``model``, resolving 'auto'.
+
+    'auto' is 'theory' when the RIPL-3 theoretical table is loaded, and
+    'smlo' otherwise (every RIPL-4 install). One model is used for the whole
+    call; there is no per-nucleus fallback between tables.
+    """
+    from riplpy.exceptions import NucleusNotFoundError
+
+    model = getattr(model, 'value', model)
+    if model == 'auto':
+        theory = getattr(gamma.db, 'theory_gdr', None)
+        model = 'theory' if theory is not None and len(theory) > 0 else 'smlo'
+
+    if model not in gamma.GDR_MODELS:
+        raise ValueError(
+            f"Unknown GDR model '{model}'. Available: "
+            f"{['auto'] + list(gamma.GDR_MODELS.keys())}"
+        )
+
+    db = getattr(gamma.db, gamma.GDR_MODELS[model], None)
+    if db is None or len(db) == 0:
+        raise NucleusNotFoundError(
+            f"GDR model '{model}' database ({gamma.GDR_MODELS[model]}) is not "
+            f"loaded or its data file is missing"
+        )
+    return db
+
+
+def get_gdr(Z_or_nuclide, A: int = None, model: str = 'auto') -> object:
     """Get Giant Dipole Resonance (GDR) parameters for a nucleus.
 
     Args:
         Z_or_nuclide: Either a Nuclide/Nucleus object, or the atomic number Z
         A: Mass number (required if Z_or_nuclide is an integer)
+        model: GDR parameter source. Options:
+               'smlo' / 'slo' -- RIPL-4 experiment + systematics tables (8980
+               nuclei); entry.In is 1 for a recommended experimental value
+               and 0 for a systematics value.
+               'exp_smlo' / 'exp_slo' -- RIPL-4 recommended experimental fits
+               only (157 nuclei), with uncertainties and fitted energy range.
+               'theory' -- RIPL-3 theoretical table (full RIPL-3 distribution
+               only).
+               'auto' (default) -- 'theory' if that table is loaded, else
+               'smlo'.
+               The entry fields differ between tables (e.g. E1/W1 in the
+               systematics and theory tables, Er1/Wr1 in the experimental
+               fits).
 
     Returns:
         Entry object containing GDR parameters
 
     Raises:
-        NucleusNotFoundError: If the nucleus is not in the database
+        ValueError: If the model is not recognized
+        NucleusNotFoundError: If the model's database is not loaded, or the
+            nucleus is not in it
+
+    Examples:
+        >>> riplpy.get_gdr(82, 208)                    # SMLO on RIPL-4
+        >>> riplpy.get_gdr(82, 208, model='exp_smlo')  # measured fit only
     """
-    from riplpy.exceptions import NucleusNotFoundError
     n = _resolve_nucleus(Z_or_nuclide, A)
-    db = gamma.db.theory_gdr
-    if db is None:
-        raise NucleusNotFoundError(
-            "Theoretical GDR database not loaded (gdr-parameters-theor.dat missing)"
-        )
-    return db.get(n)
+    return _gdr_database(model).get(n)
 
 
 def get_resonance(Z_or_nuclide, A: int = None, wave: str = 's') -> object:
@@ -913,7 +1031,7 @@ def get_level_densities(nuclei: list, model: str = 'egsm', skip_missing: bool = 
     return result
 
 
-def get_gdrs(nuclei: list, skip_missing: bool = False) -> dict:
+def get_gdrs(nuclei: list, skip_missing: bool = False, model: str = 'auto') -> dict:
     """Get Giant Dipole Resonance (GDR) parameters for multiple nuclei.
 
     Args:
@@ -921,8 +1039,10 @@ def get_gdrs(nuclei: list, skip_missing: bool = False) -> dict:
                 - A Nuclide/Nucleus object
                 - A tuple (Z, A)
                 - A list [Z, A]
-        skip_missing: If True, skip nuclei not in the database.
+        skip_missing: If True, skip nuclei not in the database, and return
+                      an empty dict if the model's database is not loaded.
                       If False (default), raise NucleusNotFoundError.
+        model: GDR parameter source, as for get_gdr(). Default: 'auto'
 
     Returns:
         Dictionary mapping Nuclide -> Entry object
@@ -930,8 +1050,10 @@ def get_gdrs(nuclei: list, skip_missing: bool = False) -> dict:
     Examples:
         >>> nuclei = [(82, 208), (50, 120), (28, 58)]
         >>> gdrs = riplpy.get_gdrs(nuclei)
+        >>> measured = riplpy.get_gdrs(nuclei, model='exp_smlo', skip_missing=True)
 
     Raises:
+        ValueError: If the model is not recognized
         NucleusNotFoundError: If a nucleus is not found and skip_missing=False
     """
     from riplpy.exceptions import NucleusNotFoundError
@@ -939,13 +1061,12 @@ def get_gdrs(nuclei: list, skip_missing: bool = False) -> dict:
     nuclide_list = _normalize_nuclei_list(nuclei)
     result = {}
 
-    db = gamma.db.theory_gdr
-    if db is None:
+    try:
+        db = _gdr_database(model)
+    except NucleusNotFoundError:
         if skip_missing:
             return result
-        raise NucleusNotFoundError(
-            "Theoretical GDR database not loaded (gdr-parameters-theor.dat missing)"
-        )
+        raise
 
     for n in nuclide_list:
         try:
@@ -1088,7 +1209,8 @@ def list_omps(projectile: str = None) -> list:
     """List all optical model potential reference numbers.
 
     Args:
-        projectile: Optional projectile filter ('n', 'p', 'd', 't', 'h', 'a').
+        projectile: Optional projectile filter: 'n', 'p', 'd', 't', 'He3' (or
+                    '3He', 'h', 'helion'), 'a' (or 'alpha', '4He').
                     If None, returns all potentials.
 
     Returns:
@@ -1111,7 +1233,8 @@ def find_omp(projectile: str, Z: int, A: int, E: float = None) -> list:
     """Find optical model potentials suitable for a specific reaction.
 
     Args:
-        projectile: Projectile type ('n', 'p', 'd', 't', 'h', 'a')
+        projectile: Projectile type: 'n', 'p', 'd', 't', 'He3' (or '3He', 'h',
+                    'helion'), 'a' (or 'alpha', '4He')
         Z: Target atomic number
         A: Target mass number
         E: Optional projectile energy in MeV. If provided, filters to

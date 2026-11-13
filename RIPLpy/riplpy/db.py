@@ -879,6 +879,9 @@ class Database:
             >>> # Chain filters
             >>> result = db.filter(Z=82).filter(lambda e: e.Mth < -10)
         """
+        if predicate is None:
+            self._check_filter_keywords(kwargs)
+
         # Create a new database of the same type
         result = type(self)()
 
@@ -894,6 +897,34 @@ class Database:
                 result.data[key] = entry
 
         return result
+
+    def _check_filter_keywords(self, kwargs) -> None:
+        """Raise TypeError for keyword filters that are not entry attributes.
+
+        Without this check a misspelled keyword (or ``func=`` in place of the
+        positional predicate) matches nothing and returns an empty database,
+        which is indistinguishable from a valid empty answer.
+        """
+        entry_cls = self.entry
+        sample = next(iter(self.data.values()), None)
+        if entry_cls is None and sample is not None:
+            entry_cls = type(sample)
+        if entry_cls is None:
+            return  # Empty database of unknown entry type: nothing to check
+
+        known = {'Z', 'A', 'N'}
+        if _is_dataclass(entry_cls):
+            known.update(f.name for f in _fields(entry_cls))
+        for name in kwargs:
+            if name in known or hasattr(entry_cls, name):
+                continue
+            if sample is not None and hasattr(sample, name):
+                continue
+            raise TypeError(
+                f"filter() got an unknown keyword {name!r}: it is not an "
+                f"attribute of {entry_cls.__name__}. Pass a predicate "
+                f"function positionally, e.g. filter(lambda e: ...)."
+            )
 
     def _matches_filters(self, key, entry, **kwargs) -> bool:
         """Check if an entry matches the given keyword filters."""
@@ -1167,8 +1198,12 @@ class _DbAccessor:
         return self.resolve(name) in self._attributes
 
     def __call__(self):
-        """Iterate over assigned (canonical) attributes. """
-        for attr_name in self._attributes:
+        """Iterate over assigned (canonical) attributes, in alphabetical order.
+
+        The names are stored in a set, whose iteration order changes between
+        runs; sorting makes every listing reproducible.
+        """
+        for attr_name in sorted(self._attributes):
             yield attr_name
 
 

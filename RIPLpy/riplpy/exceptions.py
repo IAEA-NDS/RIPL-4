@@ -36,3 +36,13 @@ class EntryNotFoundError(RIPLPyError, KeyError):
     handlers keep working.
     """
     pass
+
+
+class MissingDataWarning(UserWarning):
+    """Issued when databases are left empty because their data files are absent.
+
+    A subclass of ``UserWarning`` so it is shown by default (unlike a logging
+    message, which needs logging to be configured) and can be filtered or
+    turned into an error with the standard ``warnings`` machinery.
+    """
+    pass

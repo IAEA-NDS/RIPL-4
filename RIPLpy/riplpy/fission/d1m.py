@@ -71,7 +71,7 @@ def read_ascii_file(fpath: str) -> dict:
             # Tokenize the line and rely on whitespace separation; the file
             # is space-delimited with fixed-column data.
             tokens = stripped.split()
-            if len(tokens) < 9:
+            if len(tokens) < 11:
                 continue
             try:
                 Z = int(tokens[0])
@@ -79,17 +79,18 @@ def read_ascii_file(fpath: str) -> dict:
                 A = int(tokens[2])
                 inner_e = float(tokens[3])
                 inner_b20 = float(tokens[4])
-                inner_b22 = 0.0  # D1M LEP file does not include B22
-                inner_b30 = float(tokens[5])
-                outer_e = float(tokens[6])
-                outer_b20 = float(tokens[7])
-                outer_b22 = 0.0
-                outer_b30 = float(tokens[8])
+                inner_b22 = float(tokens[5])
+                inner_b30 = float(tokens[6])
+                outer_e = float(tokens[7])
+                outer_b20 = float(tokens[8])
+                outer_b22 = float(tokens[9])
+                outer_b30 = float(tokens[10])
             except (ValueError, IndexError):
                 continue
 
-            # The readme labels columns Binner, B20, B30, Bouter, B20, B30
-            # (no B22 in the D1M LEP file).
+            # The file has 11 columns: Z N A | Binner B20 B22 B30 | Bouter B20
+            # B22 B30. The RIPL-4 readme omits the two B22 columns, but the
+            # file's own header (and FILE_HEADER above) lists them.
             inner = {'E[MeV]': inner_e, 'B20': inner_b20, 'B22': inner_b22, 'B30': inner_b30}
             outer = {'E[MeV]': outer_e, 'B20': outer_b20, 'B22': outer_b22, 'B30': outer_b30}
 

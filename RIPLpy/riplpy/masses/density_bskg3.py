@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Python objects to parse and process the DENSITY-BSKG3 data. 
+r"""Python objects to parse and process the DENSITY-BSKG3 data. 
 
 The data file contains the predictions of the deformed density distribution obtained
 within the Hartree-Fock-Bogoliubov method with the BSkG3 Skyrme effective 
